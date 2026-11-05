@@ -3028,7 +3028,7 @@
                 <!-- Col 5: Remarks / Discipline (Col Q) - Editable -->
                 <td class="editable-cell py-2 px-2.5 text-xs text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="remarks_raw" data-row-num="${a.row_num || 0}" data-col-letter="Q"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
                     title="Double-click to edit (Excel style)">
                   <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
                   ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
@@ -3037,7 +3037,7 @@
                 <!-- Col 6: Status (Col P) - Editable -->
                 <td class="editable-cell py-2 px-2 text-center whitespace-nowrap"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status" data-row-num="${a.row_num || 0}" data-col-letter="P"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status')"
                     title="Double-click to edit (Excel style)">
                   ${statusBadge}
                 </td>
@@ -3060,7 +3060,7 @@
                 <!-- Col 10: PIC PMC (Col N) - Editable -->
                 <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pmc" data-row-num="${a.row_num || 0}" data-col-letter="N"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
                     title="Double-click to edit (Excel style)">
                   <span class="font-semibold">${esc(a.pic_pmc || "-")}</span>
                 </td>
@@ -3068,7 +3068,7 @@
                 <!-- Col 11: PIC PQ/BV (Col O) - Editable -->
                 <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pq" data-row-num="${a.row_num || 0}" data-col-letter="O"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
                     title="Double-click to edit (Excel style)">
                   <span class="font-semibold">${esc(a.pic_pq || "-")}</span>
                 </td>
@@ -3076,7 +3076,7 @@
                 <!-- Col 12: NOTE (Col M) - Editable -->
                 <td class="editable-cell py-2 px-2 text-xs text-slate-700 whitespace-pre-line"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="note" data-row-num="${a.row_num || 0}" data-col-letter="M"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'note')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'note')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'note')"
                     title="Double-click to edit (Excel style)">
                   <div class="leading-snug">${formatCellWithSpellcheck(a.note)}</div>
                 </td>
@@ -3091,7 +3091,7 @@
                 <!-- Col 14: Site Markup (Col R) - Editable -->
                 <td class="editable-cell py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="site_markup" data-row-num="${a.row_num || 0}" data-col-letter="R"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'site_markup')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
                     title="Double-click to edit (Excel style)">
                   <div class="leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
                 </td>
@@ -3102,7 +3102,7 @@
                 <!-- Col 16: Status Update (Col T) - Editable -->
                 <td class="editable-cell py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status_update" data-row-num="${a.row_num || 0}" data-col-letter="T"
-                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
+                    onclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status_update')" ondblclick="window.startZoomCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
                     title="Double-click to edit (Excel style)">
                   ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
                 </td>
@@ -3637,139 +3637,185 @@
     }
   };
 
-  window.startInlineCellEdit = function (tdElement, unit, actId, field) {
+  let activeZoomEditor = null;
+
+  window.startZoomCellEdit = function (tdElement, unit, actId, field) {
     if (!tdElement) return;
-    if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) return;
-    window.finishCurrentInlineEdit();
+    if (activeZoomEditor && activeZoomEditor.tdElement === tdElement) return;
+    if (activeZoomEditor) {
+      window.commitZoomEdit();
+    }
 
     const act = findActivity(unit, actId);
     if (!act) return;
 
     const curVal = act[field] || "";
-    activeInlineEditor = {
-      tdElement,
-      unit,
-      actId,
-      field,
-      act,
-      originalValue: curVal,
-      originalHtml: tdElement.innerHTML
-    };
+    const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
+    const fieldName = colInfo.name;
 
     tdElement.classList.add("cell-editing");
 
-    if (field === "status") {
-      tdElement.innerHTML = `
-        <select class="cell-inline-select font-bold text-xs bg-white">
+    // Position & dimension calculations
+    const rect = tdElement.getBoundingClientRect();
+    const isLongText = (field === "note" || field === "site_markup" || field === "status_update");
+    const isSelect = (field === "status");
+
+    let popoverWidth = isLongText ? Math.max(rect.width * 1.5, 420) : (isSelect ? 260 : 360);
+    popoverWidth = Math.min(popoverWidth, window.innerWidth - 24);
+
+    let left = rect.left + window.scrollX;
+    if (rect.left + popoverWidth > window.innerWidth - 16) {
+      left = Math.max(12 + window.scrollX, window.innerWidth - popoverWidth - 16 + window.scrollX);
+    }
+
+    let top = rect.top + window.scrollY;
+    const estHeight = isLongText ? 210 : (isSelect ? 130 : 140);
+    if (rect.top + estHeight > window.innerHeight && rect.top > estHeight) {
+      top = Math.max(window.scrollY + 10, rect.bottom + window.scrollY - estHeight);
+    }
+
+    const popover = document.createElement("div");
+    popover.id = "cell-zoom-popover";
+    popover.className = "cell-zoom-popover";
+    popover.style.top = `${top}px`;
+    popover.style.left = `${left}px`;
+    popover.style.width = `${popoverWidth}px`;
+
+    let inputHtml = "";
+    if (isSelect) {
+      inputHtml = `
+        <select class="cell-zoom-select">
           <option value="Done" ${curVal === "Done" ? "selected" : ""}>Done</option>
           <option value="Ongoing" ${curVal === "Ongoing" ? "selected" : ""}>Ongoing</option>
           <option value="Not yet" ${curVal === "Not yet" || !curVal ? "selected" : ""}>Not yet</option>
           <option value="N/A" ${curVal === "N/A" ? "selected" : ""}>N/A</option>
         </select>
       `;
-      const select = tdElement.querySelector("select");
-      select.focus();
-      select.addEventListener("change", () => window.commitInlineEdit(false));
-      select.addEventListener("blur", () => {
-        setTimeout(() => {
-          if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
-            window.commitInlineEdit(false);
-          }
-        }, 100);
-      });
-      select.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          window.commitInlineEdit(false);
-        } else if (e.key === "Tab") {
-          e.preventDefault();
-          window.commitInlineEdit(e.shiftKey ? -1 : 1);
-        } else if (e.key === "Escape") {
-          e.preventDefault();
-          window.cancelInlineEdit();
-        }
-      });
-      return;
-    }
-
-    if (field === "pic_pmc" || field === "pic_pq" || field === "remarks_raw") {
+    } else if (field === "pic_pmc" || field === "pic_pq" || field === "remarks_raw") {
       const datalistId = field === "pic_pmc" ? "datalist-pic-pmc" : (field === "pic_pq" ? "datalist-pic-pq" : "datalist-discipline");
-      tdElement.innerHTML = `<input type="text" list="${datalistId}" class="cell-inline-input" value="${esc(curVal)}" spellcheck="true" lang="en">`;
-      const input = tdElement.querySelector("input");
-      input.focus();
-      input.select();
-      input.addEventListener("input", () => updateActiveTypoHint(input, tdElement));
-      updateActiveTypoHint(input, tdElement);
-
-      input.addEventListener("blur", () => {
-        setTimeout(() => {
-          if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
-            window.commitInlineEdit(false);
-          }
-        }, 100);
-      });
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          window.commitInlineEdit(false);
-        } else if (e.key === "Tab") {
-          e.preventDefault();
-          window.commitInlineEdit(e.shiftKey ? -1 : 1);
-        } else if (e.key === "Escape") {
-          e.preventDefault();
-          window.cancelInlineEdit();
-        }
-      });
-      return;
+      inputHtml = `<input type="text" list="${datalistId}" class="cell-zoom-input" value="${esc(curVal)}" spellcheck="true" lang="en">`;
+    } else {
+      inputHtml = `<textarea class="cell-zoom-textarea" rows="4" spellcheck="true" lang="en">${esc(curVal)}</textarea>`;
     }
 
-    // Free text fields: note, site_markup, status_update
-    tdElement.innerHTML = `<textarea class="cell-inline-textarea" spellcheck="true" lang="en">${esc(curVal)}</textarea>`;
-    const textarea = tdElement.querySelector("textarea");
-    textarea.focus();
-    textarea.select();
-    textarea.addEventListener("input", () => updateActiveTypoHint(textarea, tdElement));
-    updateActiveTypoHint(textarea, tdElement);
+    popover.innerHTML = `
+      <div class="cell-zoom-header">
+        <div class="flex items-center gap-2 overflow-hidden">
+          <span class="cell-zoom-badge">${esc(fieldName)}</span>
+          <span class="text-xs text-slate-500 font-mono truncate">${esc(unit)} • Act ${esc(act.activity)}</span>
+        </div>
+        <button type="button" class="zoom-btn-close" title="Cancel (Esc)">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cell-zoom-body">
+        ${inputHtml}
+      </div>
+      <div class="cell-zoom-footer">
+        <div class="cell-zoom-typo-container flex-1 overflow-hidden"></div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button type="button" class="zoom-btn-cancel">Cancel</button>
+          <button type="button" class="zoom-btn-save"><i class="fas fa-check mr-1"></i> Save</button>
+        </div>
+      </div>
+    `;
 
-    textarea.addEventListener("blur", () => {
-      setTimeout(() => {
-        if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
-          window.commitInlineEdit(false);
-        }
-      }, 100);
-    });
-    textarea.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        window.commitInlineEdit(false);
-      } else if (e.key === "Tab") {
-        e.preventDefault();
-        window.commitInlineEdit(e.shiftKey ? -1 : 1);
-      } else if (e.key === "Escape") {
-        e.preventDefault();
-        window.cancelInlineEdit();
+    document.body.appendChild(popover);
+
+    activeZoomEditor = {
+      popover,
+      tdElement,
+      unit,
+      actId,
+      field,
+      act,
+      originalValue: curVal,
+      onOutsideClick: null
+    };
+
+    const targetEl = popover.querySelector("textarea") || popover.querySelector("input") || popover.querySelector("select");
+    const typoContainer = popover.querySelector(".cell-zoom-typo-container");
+    const btnSave = popover.querySelector(".zoom-btn-save");
+    const btnCancel = popover.querySelector(".zoom-btn-cancel");
+    const btnClose = popover.querySelector(".zoom-btn-close");
+
+    // Real-time spellcheck typo detector
+    const checkTypos = () => {
+      if (!window.SQCLSpellcheck || !targetEl || !typoContainer) return;
+      const typos = window.SQCLSpellcheck.findMisspelledWords(targetEl.value || "");
+      if (typos.length > 0) {
+        typoContainer.innerHTML = `<span class="text-[11px] text-rose-600 font-medium flex items-center gap-1 truncate" title="Spelling typos: ${typos.join(', ')}"><i class="fas fa-spell-check text-rose-500 shrink-0"></i> Typo: <b>${typos.slice(0, 2).map(esc).join(', ')}</b></span>`;
+      } else {
+        typoContainer.innerHTML = "";
       }
-    });
+    };
+
+    if (targetEl) {
+      targetEl.focus();
+      if (targetEl.select) targetEl.select();
+      targetEl.addEventListener("input", checkTypos);
+      checkTypos();
+
+      targetEl.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          if (!isLongText || e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            window.commitZoomEdit();
+          }
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          window.cancelZoomEdit();
+        } else if (e.key === "Tab") {
+          e.preventDefault();
+          window.commitZoomEdit(e.shiftKey ? -1 : 1);
+        }
+      });
+    }
+
+    if (btnSave) {
+      btnSave.addEventListener("click", () => window.commitZoomEdit());
+    }
+    if (btnCancel) {
+      btnCancel.addEventListener("click", () => window.cancelZoomEdit());
+    }
+    if (btnClose) {
+      btnClose.addEventListener("click", () => window.cancelZoomEdit());
+    }
+
+    // Auto-save on click outside
+    const onOutsideClick = (e) => {
+      if (!activeZoomEditor) return;
+      if (!popover.contains(e.target) && !tdElement.contains(e.target)) {
+        window.commitZoomEdit();
+      }
+    };
+    activeZoomEditor.onOutsideClick = onOutsideClick;
+    setTimeout(() => {
+      document.addEventListener("mousedown", onOutsideClick);
+    }, 60);
   };
 
-  window.commitInlineEdit = function (tabDirection) {
-    removeActiveTypoHint();
-    if (!activeInlineEditor) return;
-    const { tdElement, unit, actId, field, act, originalValue } = activeInlineEditor;
-    activeInlineEditor = null;
+  window.commitZoomEdit = function (tabDirection) {
+    if (!activeZoomEditor) return;
+    const { popover, tdElement, unit, actId, field, act, originalValue, onOutsideClick } = activeZoomEditor;
+    if (onOutsideClick) {
+      document.removeEventListener("mousedown", onOutsideClick);
+    }
+    activeZoomEditor = null;
 
     let newValue = originalValue;
-    const select = tdElement.querySelector("select");
-    const input = tdElement.querySelector("input");
-    const textarea = tdElement.querySelector("textarea");
+    const select = popover.querySelector("select");
+    const input = popover.querySelector("input");
+    const textarea = popover.querySelector("textarea");
 
     if (select) newValue = select.value.trim();
     else if (input) newValue = input.value.trim();
     else if (textarea) newValue = textarea.value.trim();
 
+    popover.remove();
     tdElement.classList.remove("cell-editing");
 
-    // 1. Update memory
+    // 1. Update in-memory data
     act[field] = newValue;
     act["_edited_" + field] = true;
     if (field === "status") {
@@ -3836,21 +3882,28 @@
           const nActId = nextTd.getAttribute("data-act-id");
           const nField = nextTd.getAttribute("data-field");
           setTimeout(() => {
-            window.startInlineCellEdit(nextTd, nUnit, nActId, nField);
+            window.startZoomCellEdit(nextTd, nUnit, nActId, nField);
           }, 50);
         }
       }
     }
   };
 
-  window.cancelInlineEdit = function () {
-    removeActiveTypoHint();
-    if (!activeInlineEditor) return;
-    const { tdElement, originalHtml } = activeInlineEditor;
-    activeInlineEditor = null;
+  window.cancelZoomEdit = function () {
+    if (!activeZoomEditor) return;
+    const { popover, tdElement, onOutsideClick } = activeZoomEditor;
+    if (onOutsideClick) {
+      document.removeEventListener("mousedown", onOutsideClick);
+    }
+    activeZoomEditor = null;
+    popover.remove();
     tdElement.classList.remove("cell-editing");
-    tdElement.innerHTML = originalHtml;
   };
+
+  // Backward compatibility aliases
+  window.startInlineCellEdit = window.startZoomCellEdit;
+  window.commitInlineEdit = window.commitZoomEdit;
+  window.cancelInlineEdit = window.cancelZoomEdit;
 
   function renderSingleCellDisplay(tdElement, a, field) {
     if (field === "status") {
