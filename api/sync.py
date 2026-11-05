@@ -39,8 +39,11 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
         self.end_headers()
+
+    def do_GET(self):
+        return self.do_POST()
 
     def do_POST(self):
         try:
@@ -49,12 +52,17 @@ class handler(BaseHTTPRequestHandler):
             req_json = json.loads(body.decode('utf-8') or '{}')
             target_url = req_json.get('url') or ONEDRIVE_SHARE_URL
 
-            # Import parse logic from root
-            import sys
-            root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            if root_dir not in sys.path:
-                sys.path.insert(0, root_dir)
-            from parse_data import parse_excel_workbook
+            # Safe multi-path import for Vercel Serverless environment
+            try:
+                from parse_data import parse_excel_workbook
+            except ImportError:
+                try:
+                    from api.parse_data import parse_excel_workbook
+                except ImportError:
+                    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    if root_dir not in sys.path:
+                        sys.path.insert(0, root_dir)
+                    from parse_data import parse_excel_workbook
 
             import tempfile
             xlsx_bytes = download_onedrive_bytes(target_url)

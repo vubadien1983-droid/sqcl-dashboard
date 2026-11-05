@@ -989,6 +989,9 @@
         endpoints.push(`${customBackendUrl.replace(/\/+$/, "")}/api/sync`);
       }
       endpoints.push("/api/sync");
+      // Auto-connect to Vercel Serverless Cloud Backends
+      endpoints.push("https://sqcl-dashboard.vercel.app/api/sync");
+      endpoints.push("https://sqcl-dashboard-vu-ba-dien-s-projects.vercel.app/api/sync");
       if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
         endpoints.push("http://localhost:8080/api/sync");
       }

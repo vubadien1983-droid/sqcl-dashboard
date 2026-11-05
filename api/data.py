@@ -6,6 +6,8 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         json_path = os.path.join(root_dir, "sqcl_data.json")
+        if not os.path.exists(json_path):
+            json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sqcl_data.json")
         try:
             with open(json_path, "r", encoding="utf-8") as f:
                 data_bytes = f.read().encode("utf-8")
