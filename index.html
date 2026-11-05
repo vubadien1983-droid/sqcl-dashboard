@@ -453,55 +453,67 @@
       </div>
 
       <div class="space-y-4 text-xs sm:text-sm">
-        <!-- Notice for Static Cloud Hosts (GitHub Pages) vs Local/Vercel -->
-        <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs leading-relaxed space-y-1">
-          <div class="font-bold flex items-center gap-1.5 text-blue-950">
-            <i class="fas fa-info-circle text-blue-600"></i> Live Data Update Methods:
+        <!-- Method 1: Automated 24/7 Background Cloud Sync -->
+        <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 text-xs space-y-2.5">
+          <div class="flex items-center justify-between text-emerald-950 font-extrabold text-xs sm:text-sm">
+            <span class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Method 1: Automated Cloud Background Sync (Active)
+            </span>
+            <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 text-[10px] uppercase font-bold">24/7 Cloud</span>
           </div>
-          <p>
-            • <strong>Instant In-Browser Update (Recommended for Phone & GitHub Pages):</strong> Choose your updated <code>.xlsx</code> file below. The browser parses all 4 sheets (2,022 activities) locally in 1 second!
+          <p class="text-emerald-900 leading-relaxed text-[11px]">
+            Hệ thống <strong>GitHub Actions Cloud</strong> đã được kích hoạt chạy ngầm tự động <strong>2 tiếng một lần</strong>. Mọi thay đổi trên file OneDrive sẽ được tự động tải về, phân tích và cập nhật lên Dashboard này mà không cần bạn phải thao tác bất cứ điều gì!
           </p>
-          <p>
-            • <strong>Direct Online Sync:</strong> Works automatically when running locally (<code>localhost:8080</code> via <code>start_dashboard.bat</code>) or on Vercel with serverless sync.
-          </p>
+          <div class="pt-1 flex items-center justify-between gap-2">
+            <span class="text-[10px] text-emerald-700">Cần đồng bộ ngay lập tức?</span>
+            <a
+              href="https://github.com/vubadien1983-droid/sqcl-dashboard/actions/workflows/auto-sync.yml"
+              target="_blank"
+              class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] flex items-center gap-1.5 shadow transition-colors"
+            >
+              <i class="fas fa-play text-[10px]"></i> Kích hoạt Sync thủ công (12s)
+            </a>
+          </div>
         </div>
 
-        <!-- Option A: In-Browser Instant Excel File Upload -->
-        <div class="p-4 rounded-xl border-2 border-dashed border-blue-300 bg-slate-50/70 hover:bg-blue-50/40 transition-colors">
-          <label class="block font-extrabold text-slate-900 mb-1 flex items-center gap-2">
-            <i class="fas fa-file-excel text-emerald-600 text-base"></i>
-            Method 1: Load Updated Excel File (.xlsx) Directly
-          </label>
-          <p class="text-xs text-slate-500 mb-3">
-            Select the updated SQCL file. All GTG#1 & GTG#2 data, systems, disciplines, schedules, and signatures will update immediately.
-          </p>
-          <input
-            type="file"
-            accept=".xlsx,.xls"
-            onchange="handleLocalExcelUpload(event)"
-            class="w-full text-xs text-slate-600 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
-          />
-        </div>
-
-        <!-- Option C: Automated Cloud Sync (Vercel Serverless / GitHub Actions) -->
-        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+        <!-- Method 2: Vercel Serverless Sync -->
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
           <div class="flex items-center justify-between text-slate-800 font-bold">
-            <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-amber-500"></i> Cloud Serverless Sync (Vercel):</span>
+            <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-indigo-600"></i> Method 2: Vercel Serverless Python Backend:</span>
+            <span class="text-[10px] font-semibold text-slate-400">On-Demand Sync</span>
           </div>
-          <p class="text-[11px] text-slate-500">
-            If deployed to Vercel, enter your Vercel URL below so GitHub Pages can call your live cloud sync engine directly:
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Nếu bạn đã Deploy lên Vercel, hãy dán link Vercel của bạn vào đây để nút <strong>Sync OneDrive</strong> trên GitHub Pages tự động kết nối qua máy chủ Vercel:
           </p>
           <div class="flex gap-2">
             <input
               id="vercel-backend-url-input"
               type="text"
-              placeholder="https://your-project.vercel.app"
+              placeholder="https://sqcl-dashboard.vercel.app"
               class="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-mono focus:outline-none focus:border-blue-500"
             />
-            <button onclick="saveBackendUrl()" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">
-              Save
+            <button onclick="saveBackendUrl()" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shrink-0">
+              Lưu URL
             </button>
           </div>
+        </div>
+
+        <!-- Method 3: In-Browser Instant Excel File Upload -->
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-blue-50/40 transition-colors">
+          <label class="block font-bold text-slate-900 mb-1 flex items-center gap-2">
+            <i class="fas fa-file-excel text-emerald-600 text-base"></i>
+            Method 3: Nạp file Excel (.xlsx) trực tiếp tại chỗ
+          </label>
+          <p class="text-[11px] text-slate-500 mb-2">
+            Chọn file Excel mới nhất từ máy tính hoặc điện thoại của bạn. Trình duyệt tự phân tích toàn bộ 2.022 hạng mục trong 1 giây.
+          </p>
+          <input
+            type="file"
+            accept=".xlsx,.xls"
+            onchange="handleLocalExcelUpload(event)"
+            class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3.5 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
+          />
         </div>
 
         <!-- Option B: OneDrive URL & Direct Download Link -->
