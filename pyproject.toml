@@ -1,0 +1,11 @@
+[project]
+name = "sqcl-dashboard"
+version = "1.0.0"
+description = "SOI0007689 SQCL Check List Dashboard"
+requires-python = ">=3.9"
+dependencies = [
+    "openpyxl>=3.1.2",
+]
+
+[tool.vercel]
+entrypoint = "api.index:handler"
