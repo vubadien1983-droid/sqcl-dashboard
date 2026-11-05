@@ -8,7 +8,7 @@
     "driven": "G.B. + 2BCL456/A CENTRIFUGAL COMPRESSOR",
     "source_file": "SOI0007689 SQCL Check List PK-1101 (updated 17Oct26).xlsx",
     "onedrive_url": "https://onedrive.live.com/:x:/g/personal/c22ad84bae02db35/IQC76AfwUxvyTbNOO9XK8XXwAV0qpYaWifkMEgRnOrqdC5M?rtime=EnbCOy0630g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9jMjJhZDg0YmFlMDJkYjM1L0lRQzc2QWZ3VXh2eVRiTk9POVhLOFhYd0FWMHFwWWFXaWZrTUVnUm5PcnFkQzVNP2U9YmVkQ1Jp",
-    "last_synced": "2026-11-04 13:26:14"
+    "last_synced": "2026-11-05 07:38:54"
   },
   "schedule_dates": [
     "2026-10-28",
@@ -64,7 +64,7 @@
           "section": "5.2",
           "title": "UNIT SKID POSITIONING OFF-SHORE (ref. TPI sect.7.3)",
           "pdf_sheet": "14",
-          "status_review": "",
+          "status_review": "done",
           "schedule": [],
           "activities_count": 13,
           "done": 13,
@@ -81,7 +81,7 @@
           "section": "5.3",
           "title": "PRELIMINARY ALIGNMENT OF MACHINES ON OFF-SHORE SKID (ref. TPI sect.7.4)",
           "pdf_sheet": "16",
-          "status_review": "",
+          "status_review": "done",
           "schedule": [],
           "activities_count": 8,
           "done": 8,
@@ -98,7 +98,7 @@
           "section": "5.4",
           "title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
           "pdf_sheet": "17",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-11-01",
@@ -130,21 +130,21 @@
             }
           ],
           "activities_count": 26,
-          "done": 11,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 15,
+          "not_yet": 13,
           "na": 0,
           "bh_signed": 12,
           "cu_signed": 11,
           "both_signed": 11,
-          "done_unsigned": 0,
-          "pct_done": 42.3
+          "done_unsigned": 2,
+          "pct_done": 50.0
         },
         {
           "section": "5.5",
           "title": "FILTER HOUSE AND INLET DUCT SUPPORT STRUCTURE INSTALLATION (ref. TPI sect.7.6)",
           "pdf_sheet": "21",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-29",
@@ -190,21 +190,21 @@
             }
           ],
           "activities_count": 12,
-          "done": 8,
+          "done": 11,
           "ongoing": 0,
-          "not_yet": 4,
+          "not_yet": 1,
           "na": 0,
           "bh_signed": 9,
           "cu_signed": 6,
           "both_signed": 6,
-          "done_unsigned": 2,
-          "pct_done": 66.7
+          "done_unsigned": 5,
+          "pct_done": 91.7
         },
         {
           "section": "5.6",
           "title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
           "pdf_sheet": "23",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-29",
@@ -244,38 +244,38 @@
             }
           ],
           "activities_count": 26,
-          "done": 19,
+          "done": 20,
           "ongoing": 0,
-          "not_yet": 7,
+          "not_yet": 6,
           "na": 0,
           "bh_signed": 16,
           "cu_signed": 9,
           "both_signed": 9,
-          "done_unsigned": 10,
-          "pct_done": 73.1
+          "done_unsigned": 11,
+          "pct_done": 76.9
         },
         {
           "section": "5.7",
           "title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
           "pdf_sheet": "28",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [],
           "activities_count": 17,
-          "done": 13,
+          "done": 12,
           "ongoing": 0,
-          "not_yet": 4,
+          "not_yet": 5,
           "na": 0,
           "bh_signed": 12,
           "cu_signed": 12,
           "both_signed": 12,
-          "done_unsigned": 1,
-          "pct_done": 76.5
+          "done_unsigned": 0,
+          "pct_done": 70.6
         },
         {
           "section": "5.8",
           "title": "VENTILATION DUCTS AND FANS INSTALLATION (ref. TPI sect.7.8)",
           "pdf_sheet": "31",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-29",
@@ -307,38 +307,38 @@
             }
           ],
           "activities_count": 25,
-          "done": 16,
+          "done": 14,
           "ongoing": 0,
-          "not_yet": 9,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 13,
           "cu_signed": 9,
           "both_signed": 9,
-          "done_unsigned": 7,
-          "pct_done": 64.0
+          "done_unsigned": 5,
+          "pct_done": 56.0
         },
         {
           "section": "5.9",
           "title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
           "pdf_sheet": "36",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [],
           "activities_count": 28,
-          "done": 22,
+          "done": 19,
           "ongoing": 0,
-          "not_yet": 6,
+          "not_yet": 9,
           "na": 0,
           "bh_signed": 19,
           "cu_signed": 19,
           "both_signed": 19,
-          "done_unsigned": 3,
-          "pct_done": 78.6
+          "done_unsigned": 0,
+          "pct_done": 67.9
         },
         {
           "section": "5.10",
           "title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
           "pdf_sheet": "41",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [],
           "activities_count": 10,
           "done": 0,
@@ -355,7 +355,7 @@
           "section": "5.11",
           "title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
           "pdf_sheet": "43",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -407,21 +407,21 @@
             }
           ],
           "activities_count": 33,
-          "done": 13,
+          "done": 23,
           "ongoing": 0,
-          "not_yet": 20,
+          "not_yet": 10,
           "na": 0,
           "bh_signed": 17,
           "cu_signed": 14,
           "both_signed": 14,
-          "done_unsigned": 7,
-          "pct_done": 39.4
+          "done_unsigned": 9,
+          "pct_done": 69.7
         },
         {
           "section": "5.12",
           "title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
           "pdf_sheet": "48",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [],
           "activities_count": 22,
           "done": 0,
@@ -438,7 +438,7 @@
           "section": "5.13",
           "title": "CENTRIFUGAL COMPRESSOR (CPPT-C-1101-01 - CPPT-C-1101-02) (2BCL456/A) ACTIVITIES (ref. TPI sect. 7.13)",
           "pdf_sheet": "52",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [],
           "activities_count": 12,
           "done": 5,
@@ -455,8 +455,31 @@
           "section": "5.14",
           "title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
           "pdf_sheet": "55",
-          "status_review": "",
-          "schedule": [],
+          "status_review": "can sign",
+          "schedule": [
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2,E&I 1,2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                },
+                {
+                  "raw": "E&I 1,2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 10,
           "done": 3,
           "ongoing": 0,
@@ -472,7 +495,7 @@
           "section": "5.15",
           "title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
           "pdf_sheet": "57",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -498,21 +521,21 @@
             }
           ],
           "activities_count": 22,
-          "done": 12,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 10,
+          "not_yet": 9,
           "na": 0,
           "bh_signed": 13,
           "cu_signed": 10,
           "both_signed": 10,
-          "done_unsigned": 2,
-          "pct_done": 54.5
+          "done_unsigned": 3,
+          "pct_done": 59.1
         },
         {
           "section": "5.16",
           "title": "MINERAL OIL VAPOR SEPARATOR (CPPT-SK-1101-02) (ref. TPI sect.7.14)",
           "pdf_sheet": "61",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -538,21 +561,21 @@
             }
           ],
           "activities_count": 26,
-          "done": 13,
+          "done": 15,
           "ongoing": 0,
-          "not_yet": 13,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 15,
           "cu_signed": 11,
           "both_signed": 11,
-          "done_unsigned": 2,
-          "pct_done": 50.0
+          "done_unsigned": 4,
+          "pct_done": 57.7
         },
         {
           "section": "5.17",
           "title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
           "pdf_sheet": "66",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -570,21 +593,21 @@
             }
           ],
           "activities_count": 32,
-          "done": 12,
+          "done": 16,
           "ongoing": 0,
-          "not_yet": 20,
+          "not_yet": 16,
           "na": 0,
           "bh_signed": 4,
           "cu_signed": 4,
           "both_signed": 4,
-          "done_unsigned": 8,
-          "pct_done": 37.5
+          "done_unsigned": 12,
+          "pct_done": 50.0
         },
         {
           "section": "5.18",
           "title": "MINERAL LUBE OIL PURIFIER TROLLEY (CPPT-TR-1101-02) POSITIONING (ref. TPI sect.7.14)",
           "pdf_sheet": "71",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [],
           "activities_count": 13,
           "done": 0,
@@ -601,7 +624,7 @@
           "section": "5.19",
           "title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
           "pdf_sheet": "73",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-30",
@@ -645,7 +668,7 @@
           "section": "5.20",
           "title": "HYDRAULIC STARTING SYSTEM (CPPT-P-1101-10) (ref. TPI sect.7.14)",
           "pdf_sheet": "79",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-28",
@@ -674,24 +697,51 @@
                   ]
                 }
               ]
+            },
+            {
+              "date": "2026-11-04",
+              "note": "E&I 1,2",
+              "items": [
+                {
+                  "raw": "E&I 1,2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            },
+            {
+              "date": "2026-11-05",
+              "note": "E&I 2",
+              "items": [
+                {
+                  "raw": "E&I 2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#2"
+                  ]
+                }
+              ]
             }
           ],
           "activities_count": 25,
-          "done": 19,
+          "done": 22,
           "ongoing": 0,
-          "not_yet": 6,
+          "not_yet": 3,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 19,
-          "pct_done": 76.0
+          "done_unsigned": 22,
+          "pct_done": 88.0
         },
         {
           "section": "5.21",
           "title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
           "pdf_sheet": "84",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [
             {
               "date": "2026-10-29",
@@ -703,6 +753,19 @@
                   "units": [
                     "GTG#1",
                     "GTG#2"
+                  ]
+                }
+              ]
+            },
+            {
+              "date": "2026-11-05",
+              "note": "Piping1",
+              "items": [
+                {
+                  "raw": "Piping1",
+                  "discipline": "Piping",
+                  "units": [
+                    "GTG#1"
                   ]
                 }
               ]
@@ -723,7 +786,7 @@
           "section": "5.22",
           "title": "MINERAL LUBE OIL SYSTEM FLUSHING (ref. TPI sect.7.14)",
           "pdf_sheet": "91",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 21,
           "done": 0,
@@ -740,7 +803,7 @@
           "section": "5.23",
           "title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
           "pdf_sheet": "97",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -758,21 +821,21 @@
             }
           ],
           "activities_count": 25,
-          "done": 11,
+          "done": 14,
           "ongoing": 0,
-          "not_yet": 14,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 9,
           "cu_signed": 9,
           "both_signed": 9,
-          "done_unsigned": 2,
-          "pct_done": 44.0
+          "done_unsigned": 5,
+          "pct_done": 56.0
         },
         {
           "section": "5.24",
           "title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
           "pdf_sheet": "102",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [
             {
               "date": "2026-11-03",
@@ -804,7 +867,7 @@
           "section": "5.25",
           "title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
           "pdf_sheet": "105",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-11-03",
@@ -819,25 +882,7 @@
                   ]
                 }
               ]
-            }
-          ],
-          "activities_count": 30,
-          "done": 17,
-          "ongoing": 0,
-          "not_yet": 13,
-          "na": 0,
-          "bh_signed": 1,
-          "cu_signed": 1,
-          "both_signed": 1,
-          "done_unsigned": 16,
-          "pct_done": 56.7
-        },
-        {
-          "section": "5.26",
-          "title": "SYNTHETIC OIL PURIFIER TROLLEY (CPPT-TR-1101-01) POSITIONING (ref. TPI sect.7.15)",
-          "pdf_sheet": "112",
-          "status_review": "",
-          "schedule": [
+            },
             {
               "date": "2026-11-04",
               "note": "E&I 1,2",
@@ -853,6 +898,23 @@
               ]
             }
           ],
+          "activities_count": 30,
+          "done": 22,
+          "ongoing": 0,
+          "not_yet": 8,
+          "na": 0,
+          "bh_signed": 1,
+          "cu_signed": 1,
+          "both_signed": 1,
+          "done_unsigned": 21,
+          "pct_done": 73.3
+        },
+        {
+          "section": "5.26",
+          "title": "SYNTHETIC OIL PURIFIER TROLLEY (CPPT-TR-1101-01) POSITIONING (ref. TPI sect.7.15)",
+          "pdf_sheet": "112",
+          "status_review": "can sign",
+          "schedule": [],
           "activities_count": 13,
           "done": 0,
           "ongoing": 0,
@@ -868,18 +930,17 @@
           "section": "5.27",
           "title": "SYNTHETIC OIL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.15)",
           "pdf_sheet": "114",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [
             {
-              "date": "2026-11-04",
-              "note": "E&I 1,2",
+              "date": "2026-11-05",
+              "note": "Piping1",
               "items": [
                 {
-                  "raw": "E&I 1,2",
-                  "discipline": "Electrical & Instruments",
+                  "raw": "Piping1",
+                  "discipline": "Piping",
                   "units": [
-                    "GTG#1",
-                    "GTG#2"
+                    "GTG#1"
                   ]
                 }
               ]
@@ -900,7 +961,7 @@
           "section": "5.28",
           "title": "SYNTHETIC OIL SYSTEM FLUSHING (ref. TPI sect.7.15)",
           "pdf_sheet": "119",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 20,
           "done": 0,
@@ -917,7 +978,7 @@
           "section": "5.29",
           "title": "FUEL GAS CHROMATOGRAPH SYSTEM (CPPT-SK-1101-01) (ref. TPI sect.7.16)",
           "pdf_sheet": "125",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [
             {
               "date": "2026-11-04",
@@ -935,21 +996,21 @@
             }
           ],
           "activities_count": 30,
-          "done": 0,
+          "done": 10,
           "ongoing": 0,
-          "not_yet": 30,
+          "not_yet": 20,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 0,
-          "pct_done": 0.0
+          "done_unsigned": 10,
+          "pct_done": 33.3
         },
         {
           "section": "5.30",
           "title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
           "pdf_sheet": "130",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [],
           "activities_count": 28,
           "done": 0,
@@ -966,7 +1027,7 @@
           "section": "5.31",
           "title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
           "pdf_sheet": "135",
-          "status_review": "",
+          "status_review": "on going",
           "schedule": [
             {
               "date": "2026-11-04",
@@ -984,21 +1045,21 @@
             }
           ],
           "activities_count": 23,
-          "done": 0,
+          "done": 7,
           "ongoing": 0,
-          "not_yet": 23,
+          "not_yet": 16,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 0,
-          "pct_done": 0.0
+          "done_unsigned": 7,
+          "pct_done": 30.4
         },
         {
           "section": "5.32",
           "title": "FUEL GAS SYSTEM BLOWING (ref. TPI sect.7.16)",
           "pdf_sheet": "140",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 17,
           "done": 0,
@@ -1015,7 +1076,7 @@
           "section": "5.33",
           "title": "PROCESS PIPING CONNECTION (ref. TPI sect.7.17)",
           "pdf_sheet": "144",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 15,
           "done": 0,
@@ -1032,23 +1093,8 @@
           "section": "5.34",
           "title": "ANTI-SURGE SYSTEM (ref. TPI sect. 7.17)",
           "pdf_sheet": "147",
-          "status_review": "",
-          "schedule": [
-            {
-              "date": "2026-10-31",
-              "note": "E&I1_2",
-              "items": [
-                {
-                  "raw": "E&I1_2",
-                  "discipline": "Electrical & Instruments",
-                  "units": [
-                    "GTG#1",
-                    "GTG#2"
-                  ]
-                }
-              ]
-            }
-          ],
+          "status_review": "on going",
+          "schedule": [],
           "activities_count": 20,
           "done": 0,
           "ongoing": 0,
@@ -1064,7 +1110,7 @@
           "section": "5.35",
           "title": "DGS TREATMENT SKID (CPPT-SK-1101-05) INSTALLATION (ref. TPI sect. 7.18)",
           "pdf_sheet": "152",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-10-31",
@@ -1093,6 +1139,20 @@
                   ]
                 }
               ]
+            },
+            {
+              "date": "2026-11-05",
+              "note": "E&I 1,2",
+              "items": [
+                {
+                  "raw": "E&I 1,2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
             }
           ],
           "activities_count": 23,
@@ -1110,24 +1170,61 @@
           "section": "5.36",
           "title": "DGS PANEL AND HEATER CANTILEVER INSTALLATION (ref. TPI sect. 7.18)",
           "pdf_sheet": "157",
-          "status_review": "",
-          "schedule": [],
+          "status_review": "can sign",
+          "schedule": [
+            {
+              "date": "2026-10-31",
+              "note": "E&I1_2",
+              "items": [
+                {
+                  "raw": "E&I1_2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            },
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2,E&I 1,2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                },
+                {
+                  "raw": "E&I 1,2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 24,
-          "done": 10,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 14,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 10,
           "cu_signed": 10,
           "both_signed": 10,
-          "done_unsigned": 0,
-          "pct_done": 41.7
+          "done_unsigned": 3,
+          "pct_done": 54.2
         },
         {
           "section": "5.37",
           "title": "DGS TREATMENT SYSTEM COMPLETION (ref. TPI sect.7.18)",
           "pdf_sheet": "162",
-          "status_review": "",
+          "status_review": "can sign",
           "schedule": [
             {
               "date": "2026-11-01",
@@ -1145,22 +1242,45 @@
             }
           ],
           "activities_count": 23,
-          "done": 13,
+          "done": 15,
           "ongoing": 0,
-          "not_yet": 10,
+          "not_yet": 8,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 13,
-          "pct_done": 56.5
+          "done_unsigned": 15,
+          "pct_done": 65.2
         },
         {
           "section": "5.38",
           "title": "DGS PANEL AND HEATER CANTILEVER COMPLETION (ref. TPI sect.7.18)",
           "pdf_sheet": "167",
-          "status_review": "",
-          "schedule": [],
+          "status_review": "can sign",
+          "schedule": [
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2,E&I 1,2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                },
+                {
+                  "raw": "E&I 1,2",
+                  "discipline": "Electrical & Instruments",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 26,
           "done": 0,
           "ongoing": 0,
@@ -1176,7 +1296,7 @@
           "section": "5.39",
           "title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
           "pdf_sheet": "173",
-          "status_review": "",
+          "status_review": "on going, E&I checked ready to sign",
           "schedule": [
             {
               "date": "2026-11-03",
@@ -1188,6 +1308,19 @@
                   "units": [
                     "GTG#1",
                     "GTG#2"
+                  ]
+                }
+              ]
+            },
+            {
+              "date": "2026-11-05",
+              "note": "Piping1",
+              "items": [
+                {
+                  "raw": "Piping1",
+                  "discipline": "Piping",
+                  "units": [
+                    "GTG#1"
                   ]
                 }
               ]
@@ -1208,7 +1341,7 @@
           "section": "5.40",
           "title": "DRY GAS SEAL SYSTEM BLOWING (ref. TPI sect.7.18)",
           "pdf_sheet": "179",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [
             {
               "date": "2026-11-03",
@@ -1240,7 +1373,7 @@
           "section": "5.41",
           "title": "DRY GAS SEALS INSTALLATION (IF REQUIRED) (ref. TPI sect.7.18)",
           "pdf_sheet": "183",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 7,
           "done": 0,
@@ -1257,7 +1390,7 @@
           "section": "5.42",
           "title": "GAS TURBINE (CPPT-GT-1101) INSTALLATION CHECK (ref. TPI sect.7.19)",
           "pdf_sheet": "185",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 42,
           "done": 0,
@@ -1274,7 +1407,7 @@
           "section": "5.43",
           "title": "FINAL ALIGNMENT & COUPLINGS INSTALLATION (ref. TPI sect.7.20)",
           "pdf_sheet": "190",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 24,
           "done": 0,
@@ -1291,7 +1424,7 @@
           "section": "5.44",
           "title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
           "pdf_sheet": "195",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [
             {
               "date": "2026-10-30",
@@ -1337,7 +1470,7 @@
           "section": "5.45",
           "title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
           "pdf_sheet": "203",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 36,
           "done": 0,
@@ -1354,7 +1487,7 @@
           "section": "5.46",
           "title": "TEST",
           "pdf_sheet": "211",
-          "status_review": "",
+          "status_review": "not now",
           "schedule": [],
           "activities_count": 8,
           "done": 0,
@@ -2474,7 +2607,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161420\nSOM896161129\nSMO0907622\nSOM6909255\nITN02118",
@@ -2485,10 +2618,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "17"
         },
         {
@@ -2639,7 +2772,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161420\nSOM896161471\nSOM896161129\nSMO0907622\nSOM6909255",
@@ -2650,10 +2783,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "17"
         },
         {
@@ -2717,9 +2850,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Re fab on site, because mis-centerline pen plate for piping",
           "pdf_sheet": "18"
         },
         {
@@ -3464,7 +3597,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896161129\nSOM6918170\nSOM9913923\nITN02118",
@@ -3475,10 +3608,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "done by PTSC, not yet inspected",
+          "site_markup": "Signed 4-Nov for 1 and 2, PUNCH: replace anchor bolts",
           "pdf_sheet": "21"
         },
         {
@@ -3497,7 +3630,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896161129\nSOM6918170\nSOM9913923",
@@ -3508,10 +3641,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "done by PTSC, not yet inspected",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "21"
         },
         {
@@ -3542,8 +3675,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "21"
         },
@@ -3575,8 +3708,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "22"
         },
@@ -3629,7 +3762,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "BH Signed Only",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM6918170\nSOM896291882\nSOM896292013",
@@ -3640,10 +3773,10 @@
           "note": "1.2",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "signed 31-OCT for 1+2",
           "pdf_sheet": "22"
         },
         {
@@ -3973,7 +4106,7 @@
           "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
-          "site_markup": "Not yet completed",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "24"
         },
         {
@@ -4202,8 +4335,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -4268,8 +4401,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -4301,8 +4434,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -4367,8 +4500,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
@@ -4400,8 +4533,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
@@ -4454,7 +4587,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "BH Signed Only",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9908206\nSOM896161129\nSOM896292013\nSOM896291882",
@@ -4465,10 +4598,10 @@
           "note": "1.2",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
         {
@@ -5048,7 +5181,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161420\nSOM6904686\nSOM9908206\nSOM6918170\nSOM896161129",
@@ -5059,7 +5192,7 @@
           "note": "Personnel have been instructed about consequences for foreign object left inside the inlet system",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
           "site_markup": "Not yet completed- later",
@@ -5576,7 +5709,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6829395\nSOM6829415\nSOM896220118\nSOM896161129",
@@ -5587,7 +5720,7 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
           "site_markup": "done by BH, inspec later",
@@ -5675,7 +5808,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "BH Signed Only",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6829395\nSOM896220118\nSOM6918170\nSOM896161129\nSOM896292013\nSOM896291882",
@@ -5686,7 +5819,7 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
           "site_markup": "E&I",
@@ -6038,7 +6171,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6802900\nSOM896260097\nSOM896161129",
@@ -6049,7 +6182,7 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
           "site_markup": "done by PTSC, need to modify the guide support?",
@@ -6137,7 +6270,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6802900\nSOM896260097\nSOM896161129",
@@ -6148,7 +6281,7 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
           "site_markup": "done by BH, need to verify the internal cladding?",
@@ -6335,7 +6468,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": true,
+          "done_unsigned": false,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6802900\nSOM896260097\nSOM896161129",
@@ -6346,10 +6479,10 @@
           "note": "On LM2500 Six Pack GT, the exh.plenum insp.door will be opened several times during erection and commiss. period, for alignment checks and load coupling installation. Perform the check at final closure of the door.",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Done",
+          "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical Chung checked & confirmed",
-          "site_markup": "done by BH, not yet inspected",
+          "site_markup": "done by BH, not right now",
           "pdf_sheet": "37"
         },
         {
@@ -7391,7 +7524,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -7399,12 +7532,12 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "mech",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments\n-> Mech",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "43"
         },
@@ -7465,13 +7598,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -7498,13 +7631,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -7531,13 +7664,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -7601,8 +7734,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1, 2 NOT COMPLETED. E&I SCOPE",
           "pdf_sheet": "44"
         },
@@ -7688,7 +7821,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -7699,10 +7832,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
-          "discipline": "Mechanical",
-          "remarks_raw": "Mechanical",
-          "site_markup": "E&I",
+          "status": "Done",
+          "discipline": "Electrical & Instruments",
+          "remarks_raw": "Electrical & Instruments",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "45"
         },
         {
@@ -7729,13 +7862,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -7762,13 +7895,13 @@
           "acceptance": "SIC00243",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -7894,13 +8027,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -7927,13 +8060,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -7960,13 +8093,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -7993,13 +8126,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -8026,13 +8159,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -8059,13 +8192,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "1.2",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -8092,13 +8225,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "Victor Check",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "",
           "pdf_sheet": "46"
         },
         {
@@ -8125,13 +8258,13 @@
           "acceptance": "CONFORMITY WITH DESIGN",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "Victor Check",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "",
           "pdf_sheet": "46"
         },
         {
@@ -8224,13 +8357,13 @@
           "acceptance": "SIC00254",
           "check_type": "V",
           "service_report": "Not requested. See note 1.3.1.",
-          "note": "precom",
+          "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments\n-> Precom",
-          "site_markup": "Pls arrange site check and sign off",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "47"
         },
         {
@@ -10163,7 +10296,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOK0857704\nSOM896161153\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -10174,10 +10307,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "N/a",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "59"
         },
         {
@@ -10736,8 +10869,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 31-OCT for 1+2",
           "pdf_sheet": "62"
         },
@@ -10889,7 +11022,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS046970770\nSOM896161129\nSOM896161153\nSOM896280195\nSOM508050435",
@@ -10900,10 +11033,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "n/a?",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "63"
         },
         {
@@ -10922,7 +11055,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS046970770\nSOM896161129\nSOM896161153\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -10933,10 +11066,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "63"
         },
         {
@@ -11912,7 +12045,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -11923,10 +12056,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -11945,7 +12078,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -11956,10 +12089,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "N/A",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -11978,7 +12111,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -11989,10 +12122,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -12011,7 +12144,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435",
@@ -12022,10 +12155,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "N/A",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -14102,8 +14235,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "80"
         },
@@ -14156,7 +14289,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSMO9906564\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6762910\nSOM896291880",
@@ -14167,10 +14300,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "signed 04-Nov for 1",
           "pdf_sheet": "80"
         },
         {
@@ -14300,8 +14433,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "81"
         },
@@ -14321,7 +14454,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSMO9906564\nSOM896161129\nSOM896161153\nSOM896291882\nSOM896292013",
@@ -14332,10 +14465,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "signed 04-Nov for 1",
           "pdf_sheet": "81"
         },
         {
@@ -14399,8 +14532,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "81"
         },
@@ -14465,8 +14598,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -14531,8 +14664,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -14552,7 +14685,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSMO9906564\nSOM896161129\nSOM896161153\nSOM896291880\nSOM896291882\nSOM896292013",
@@ -14563,10 +14696,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "Pls arrange site check and sign off",
+          "site_markup": "signed 04-Nov for 1",
           "pdf_sheet": "82"
         },
         {
@@ -14597,8 +14730,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -14696,8 +14829,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -14729,8 +14862,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -14762,8 +14895,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -14795,8 +14928,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -14828,8 +14961,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "85"
         },
@@ -14927,8 +15060,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "85"
         },
@@ -16697,7 +16830,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107",
@@ -16708,10 +16841,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "n/a",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -16730,7 +16863,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107\nSOM896291880",
@@ -16741,10 +16874,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Orifices internal or external?",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -16796,7 +16929,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107\nSOM896291880",
@@ -16807,10 +16940,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -17732,8 +17865,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "105"
         },
@@ -17765,8 +17898,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
@@ -17798,8 +17931,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
@@ -17831,8 +17964,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
@@ -17897,8 +18030,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
@@ -17918,7 +18051,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -17929,9 +18062,9 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "107"
         },
@@ -17963,8 +18096,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "107"
         },
@@ -18062,8 +18195,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
@@ -18095,8 +18228,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
@@ -18116,7 +18249,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -18127,10 +18260,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "108"
         },
         {
@@ -18161,8 +18294,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
@@ -18227,8 +18360,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "109"
         },
@@ -18248,7 +18381,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880\nSOM896292013",
@@ -18259,10 +18392,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "109"
         },
         {
@@ -18281,7 +18414,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880\nSOM896291882\nSOM896292013",
@@ -18292,10 +18425,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "109"
         },
         {
@@ -18326,8 +18459,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "109"
         },
@@ -18359,8 +18492,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "110"
         },
@@ -18392,8 +18525,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "110"
         },
@@ -18479,7 +18612,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -18490,10 +18623,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "111"
         },
         {
@@ -18557,8 +18690,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "111"
         },
@@ -20591,7 +20724,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "PACKING LIST BOM ITN02175.00",
@@ -20602,10 +20735,10 @@
           "note": "Preservation plan respected and relevant check list filled.",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20624,7 +20757,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -20635,10 +20768,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20657,7 +20790,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -20668,10 +20801,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20690,7 +20823,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -20701,10 +20834,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "not yet inspected",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20723,7 +20856,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129\nSOM896161153",
@@ -20734,10 +20867,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20756,7 +20889,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129\nSOM896161153",
@@ -20767,10 +20900,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -20789,7 +20922,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -20800,10 +20933,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "126"
         },
         {
@@ -20822,7 +20955,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -20833,10 +20966,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "126"
         },
         {
@@ -20869,7 +21002,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "not yet inspected",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -20902,7 +21035,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -20935,7 +21068,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "not yet inspected",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -20968,7 +21101,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I, waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -21001,7 +21134,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I, waiting for piping, tubing",
           "pdf_sheet": "127"
         },
         {
@@ -21034,7 +21167,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "not yet inspected",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "127"
         },
         {
@@ -21067,7 +21200,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "not yet inspected",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "127"
         },
         {
@@ -21100,7 +21233,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "NEED Victor check",
           "pdf_sheet": "127"
         },
         {
@@ -21119,7 +21252,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195\nSOM896291880",
@@ -21130,10 +21263,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "127"
         },
         {
@@ -21166,7 +21299,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Orifices inside or outside skid?",
           "pdf_sheet": "127"
         },
         {
@@ -21185,7 +21318,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -21196,10 +21329,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "128"
         },
         {
@@ -21232,7 +21365,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -21265,7 +21398,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -21298,7 +21431,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "waiting for cable termination",
           "pdf_sheet": "128"
         },
         {
@@ -21331,7 +21464,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -21364,7 +21497,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -21397,7 +21530,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "129"
         },
         {
@@ -21496,7 +21629,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "129"
         },
         {
@@ -21560,8 +21693,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "129"
         },
@@ -22519,7 +22652,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "135"
         },
         {
@@ -22552,7 +22685,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "135"
         },
         {
@@ -22571,7 +22704,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nSOM896162294\nSOM896291880\nSOM896161462",
@@ -22582,10 +22715,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "135"
         },
         {
@@ -22604,7 +22737,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nSOM896162294\nSOM896291880\nSOM896161462",
@@ -22615,10 +22748,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "135"
         },
         {
@@ -22651,7 +22784,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "No relief valve",
           "pdf_sheet": "136"
         },
         {
@@ -22670,7 +22803,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -22681,10 +22814,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "136"
         },
         {
@@ -22703,7 +22836,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259",
@@ -22714,10 +22847,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "136"
         },
         {
@@ -22750,7 +22883,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "136"
         },
         {
@@ -22783,7 +22916,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "136"
         },
         {
@@ -22882,7 +23015,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -22915,7 +23048,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -22948,7 +23081,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -22967,7 +23100,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -22978,10 +23111,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "137"
         },
         {
@@ -23000,7 +23133,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -23011,10 +23144,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2. NEED report from piping team",
           "pdf_sheet": "138"
         },
         {
@@ -23033,7 +23166,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896211417",
@@ -23044,10 +23177,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "138"
         },
         {
@@ -23080,7 +23213,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "138"
         },
         {
@@ -23113,7 +23246,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "138"
         },
         {
@@ -23146,7 +23279,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "138"
         },
         {
@@ -23179,7 +23312,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "139"
         },
         {
@@ -26366,7 +26499,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291882\nSOM896292013",
@@ -26377,10 +26510,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -26399,7 +26532,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291882\nSOM896292013",
@@ -26410,10 +26543,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -26432,7 +26565,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291880",
@@ -26443,10 +26576,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -27158,7 +27291,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123905\nSOM896161129\nSOM896161153\nSOM896291880\nSOM896291882\nSOM896292013",
@@ -27169,10 +27302,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "166"
         },
         {
@@ -27191,7 +27324,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123905\nSOM896161129\nSOM896161153\nSOM896291880",
@@ -27202,10 +27335,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "166"
         },
         {
@@ -29282,9 +29415,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments\n-> Precom",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "180"
         },
         {
@@ -29381,9 +29514,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments\n-> Precom",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "181"
         },
         {
@@ -34234,7 +34367,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "waiting for cable termination",
           "pdf_sheet": "208"
         },
         {
@@ -34463,8 +34596,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "210"
         },
@@ -34831,15 +34964,15 @@
             }
           ],
           "activities_count": 26,
-          "done": 11,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 15,
+          "not_yet": 13,
           "na": 0,
           "bh_signed": 11,
           "cu_signed": 11,
           "both_signed": 11,
-          "done_unsigned": 0,
-          "pct_done": 42.3
+          "done_unsigned": 2,
+          "pct_done": 50.0
         },
         {
           "section": "5.5",
@@ -34891,15 +35024,15 @@
             }
           ],
           "activities_count": 12,
-          "done": 6,
+          "done": 11,
           "ongoing": 0,
-          "not_yet": 6,
+          "not_yet": 1,
           "na": 0,
           "bh_signed": 6,
           "cu_signed": 6,
           "both_signed": 6,
-          "done_unsigned": 0,
-          "pct_done": 50.0
+          "done_unsigned": 5,
+          "pct_done": 91.7
         },
         {
           "section": "5.6",
@@ -34945,15 +35078,15 @@
             }
           ],
           "activities_count": 26,
-          "done": 18,
+          "done": 20,
           "ongoing": 0,
-          "not_yet": 8,
+          "not_yet": 6,
           "na": 0,
           "bh_signed": 9,
           "cu_signed": 9,
           "both_signed": 9,
-          "done_unsigned": 9,
-          "pct_done": 69.2
+          "done_unsigned": 11,
+          "pct_done": 76.9
         },
         {
           "section": "5.7",
@@ -35108,15 +35241,15 @@
             }
           ],
           "activities_count": 33,
-          "done": 6,
+          "done": 22,
           "ongoing": 0,
-          "not_yet": 27,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 6,
           "cu_signed": 6,
           "both_signed": 6,
-          "done_unsigned": 0,
-          "pct_done": 18.2
+          "done_unsigned": 16,
+          "pct_done": 66.7
         },
         {
           "section": "5.12",
@@ -35157,7 +35290,22 @@
           "title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
           "pdf_sheet": "25",
           "status_review": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 10,
           "done": 3,
           "ongoing": 0,
@@ -35199,15 +35347,15 @@
             }
           ],
           "activities_count": 22,
-          "done": 12,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 10,
+          "not_yet": 9,
           "na": 0,
           "bh_signed": 10,
           "cu_signed": 10,
           "both_signed": 10,
-          "done_unsigned": 2,
-          "pct_done": 54.5
+          "done_unsigned": 3,
+          "pct_done": 59.1
         },
         {
           "section": "5.16",
@@ -35239,15 +35387,15 @@
             }
           ],
           "activities_count": 26,
-          "done": 13,
+          "done": 15,
           "ongoing": 0,
-          "not_yet": 13,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 11,
           "cu_signed": 11,
           "both_signed": 11,
-          "done_unsigned": 2,
-          "pct_done": 50.0
+          "done_unsigned": 4,
+          "pct_done": 57.7
         },
         {
           "section": "5.17",
@@ -35271,15 +35419,15 @@
             }
           ],
           "activities_count": 32,
-          "done": 12,
+          "done": 16,
           "ongoing": 0,
-          "not_yet": 20,
+          "not_yet": 16,
           "na": 0,
           "bh_signed": 4,
           "cu_signed": 4,
           "both_signed": 4,
-          "done_unsigned": 8,
-          "pct_done": 37.5
+          "done_unsigned": 12,
+          "pct_done": 50.0
         },
         {
           "section": "5.18",
@@ -35459,15 +35607,15 @@
             }
           ],
           "activities_count": 25,
-          "done": 11,
+          "done": 14,
           "ongoing": 0,
-          "not_yet": 14,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 9,
           "cu_signed": 9,
           "both_signed": 9,
-          "done_unsigned": 2,
-          "pct_done": 44.0
+          "done_unsigned": 5,
+          "pct_done": 56.0
         },
         {
           "section": "5.24",
@@ -35523,15 +35671,15 @@
             }
           ],
           "activities_count": 30,
-          "done": 1,
+          "done": 22,
           "ongoing": 0,
-          "not_yet": 29,
+          "not_yet": 8,
           "na": 0,
           "bh_signed": 1,
           "cu_signed": 1,
           "both_signed": 1,
-          "done_unsigned": 0,
-          "pct_done": 3.3
+          "done_unsigned": 21,
+          "pct_done": 73.3
         },
         {
           "section": "5.26",
@@ -35636,15 +35784,15 @@
             }
           ],
           "activities_count": 30,
-          "done": 0,
+          "done": 10,
           "ongoing": 0,
-          "not_yet": 30,
+          "not_yet": 20,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 0,
-          "pct_done": 0.0
+          "done_unsigned": 10,
+          "pct_done": 33.3
         },
         {
           "section": "5.30",
@@ -35685,15 +35833,15 @@
             }
           ],
           "activities_count": 23,
-          "done": 0,
+          "done": 7,
           "ongoing": 0,
-          "not_yet": 23,
+          "not_yet": 16,
           "na": 0,
           "bh_signed": 0,
           "cu_signed": 0,
           "both_signed": 0,
-          "done_unsigned": 0,
-          "pct_done": 0.0
+          "done_unsigned": 7,
+          "pct_done": 30.4
         },
         {
           "section": "5.32",
@@ -35812,17 +35960,32 @@
           "title": "DGS PANEL AND HEATER CANTILEVER INSTALLATION (ref. TPI sect. 7.18)",
           "pdf_sheet": "47",
           "status_review": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 24,
-          "done": 10,
+          "done": 13,
           "ongoing": 0,
-          "not_yet": 14,
+          "not_yet": 11,
           "na": 0,
           "bh_signed": 10,
           "cu_signed": 10,
           "both_signed": 10,
-          "done_unsigned": 0,
-          "pct_done": 41.7
+          "done_unsigned": 3,
+          "pct_done": 54.2
         },
         {
           "section": "5.37",
@@ -35861,7 +36024,22 @@
           "title": "DGS PANEL AND HEATER CANTILEVER COMPLETION (ref. TPI sect.7.18)",
           "pdf_sheet": "49",
           "status_review": "",
-          "schedule": [],
+          "schedule": [
+            {
+              "date": "2026-11-05",
+              "note": "Mech1_2",
+              "items": [
+                {
+                  "raw": "Mech1_2",
+                  "discipline": "Mechanical",
+                  "units": [
+                    "GTG#1",
+                    "GTG#2"
+                  ]
+                }
+              ]
+            }
+          ],
           "activities_count": 26,
           "done": 0,
           "ongoing": 0,
@@ -37175,7 +37353,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161420\nSOM896161129\nSMO0907622\nSOM6909255\nITN02118",
@@ -37186,10 +37364,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "17"
         },
         {
@@ -37340,7 +37518,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161420\nSOM896161471\nSOM896161129\nSMO0907622\nSOM6909255",
@@ -37351,10 +37529,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "17"
         },
         {
@@ -37418,9 +37596,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Re fab on site, because mis-centerline pen plate for piping",
           "pdf_sheet": "18"
         },
         {
@@ -37552,7 +37730,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Done, except for the inside of the enclosure, as the engine has not yet arrived. Not yet inspected.",
           "pdf_sheet": "18"
         },
         {
@@ -37585,7 +37763,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Pls arrange site check and sign off",
           "pdf_sheet": "18"
         },
         {
@@ -37618,7 +37796,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Status shall be updated",
           "pdf_sheet": "18"
         },
         {
@@ -38165,7 +38343,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896161129\nSOM6918170\nSOM9913923\nITN02118",
@@ -38176,10 +38354,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Bolt tightening: not yet\n[BH col] not yet",
+          "site_markup": "Signed 4-Nov for 1 and 2, PUNCH: replace anchor bolts",
           "pdf_sheet": "21"
         },
         {
@@ -38198,7 +38376,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896161129\nSOM6918170\nSOM9913923",
@@ -38209,10 +38387,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Support & grating: not yet\n[BH col] not yet",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "21"
         },
         {
@@ -38231,7 +38409,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM6918170\nSOM896291882\nSOM896292013",
@@ -38242,10 +38420,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I items: not yet\n[BH col] not yet",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "21"
         },
         {
@@ -38264,7 +38442,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM6918170\nSOM896291880\nSOM896291882\nSOM896292013",
@@ -38275,10 +38453,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I items: not yet\n[BH col] not yet",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "22"
         },
         {
@@ -38330,7 +38508,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM6918170\nSOM896291882\nSOM896292013",
@@ -38341,10 +38519,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "E&I items: not yet\n[BH col] not yet",
+          "site_markup": "signed 31-OCT for 1+2",
           "pdf_sheet": "22"
         },
         {
@@ -38660,7 +38838,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "W",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9908206\nSOM6904686\nSOM6918170\nSOM896161129\nSOM6664411",
@@ -38671,10 +38849,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
-          "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "remarks_raw": "Mechanical Chung checked & confirmed",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "24"
         },
         {
@@ -38903,8 +39081,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -38969,8 +39147,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -39002,8 +39180,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "26"
         },
@@ -39068,8 +39246,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
@@ -39101,8 +39279,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
@@ -39155,7 +39333,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9908206\nSOM896161129\nSOM896292013\nSOM896291882",
@@ -39166,10 +39344,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "27"
         },
         {
@@ -42059,7 +42237,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129\nSOM896161153",
@@ -42070,10 +42248,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "43"
         },
         {
@@ -42092,7 +42270,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -42103,10 +42281,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "43"
         },
         {
@@ -42139,7 +42317,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "INSTALL AFTER GT INSTALLATION",
           "pdf_sheet": "44"
         },
         {
@@ -42158,7 +42336,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -42169,10 +42347,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -42191,7 +42369,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291882\nSOM896161129",
@@ -42202,10 +42380,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -42224,7 +42402,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291882\nSOM896161129",
@@ -42235,10 +42413,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 31-Oct for 1 and 2",
           "pdf_sheet": "44"
         },
         {
@@ -42271,7 +42449,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "LATER",
           "pdf_sheet": "44"
         },
         {
@@ -42356,7 +42534,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -42367,10 +42545,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
-          "discipline": "Mechanical",
-          "remarks_raw": "Mechanical",
-          "site_markup": "fan positioning & leveling: not yet",
+          "status": "Done",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
+          "site_markup": "",
           "pdf_sheet": "45"
         },
         {
@@ -42389,7 +42567,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161129",
@@ -42400,10 +42578,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "45"
         },
         {
@@ -42422,7 +42600,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896291880\nSOM896161129",
@@ -42433,10 +42611,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -42455,7 +42633,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896291880\nSOM896161129",
@@ -42466,10 +42644,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -42554,7 +42732,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896161420\nSOM896161129",
@@ -42565,10 +42743,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "45"
         },
         {
@@ -42587,7 +42765,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896291880\nSOM896161129",
@@ -42598,10 +42776,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "45"
         },
         {
@@ -42620,7 +42798,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896291880\nSOM896161129",
@@ -42631,10 +42809,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -42653,7 +42831,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291882\nSOM896161129",
@@ -42664,10 +42842,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -42686,7 +42864,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291880\nSOM896161129",
@@ -42697,10 +42875,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -42719,7 +42897,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291880\nSOM896161129",
@@ -42730,10 +42908,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -42752,7 +42930,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161446\nSOM896292013\nSOM896291880\nSOM896291882\nSOM896161129",
@@ -42763,10 +42941,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "Signed 3-Nov for 1 and 01-Nov for 2",
           "pdf_sheet": "46"
         },
         {
@@ -42799,7 +42977,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "",
           "pdf_sheet": "46"
         },
         {
@@ -42832,7 +43010,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "fan positioning & leveling: not yet",
+          "site_markup": "",
           "pdf_sheet": "46"
         },
         {
@@ -44864,7 +45042,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOK0857704\nSOM896161153\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -44875,10 +45053,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "59"
         },
         {
@@ -45437,8 +45615,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 31-OCT for 1+2",
           "pdf_sheet": "62"
         },
@@ -45590,7 +45768,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS046970770\nSOM896161129\nSOM896161153\nSOM896280195\nSOM508050435",
@@ -45601,10 +45779,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "n/a?",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "63"
         },
         {
@@ -45623,7 +45801,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS046970770\nSOM896161129\nSOM896161153\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -45634,10 +45812,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "63"
         },
         {
@@ -46613,7 +46791,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -46624,10 +46802,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -46646,7 +46824,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -46657,10 +46835,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "N/A",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -46679,7 +46857,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435\nSOM896291880",
@@ -46690,10 +46868,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -46712,7 +46890,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSG-6016019\nSOM896161153\nSOM896161129\nSOM896280195\nSOM508050435",
@@ -46723,10 +46901,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "N/A",
+          "site_markup": "signed 4-Nov for 1 and 2",
           "pdf_sheet": "68"
         },
         {
@@ -48803,8 +48981,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "80"
         },
@@ -48904,7 +49082,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "AFTER engine installation",
           "pdf_sheet": "80"
         },
         {
@@ -49001,8 +49179,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "81"
         },
@@ -49100,8 +49278,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "81"
         },
@@ -49166,8 +49344,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -49232,8 +49410,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -49298,8 +49476,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 28-OCT for 1+2",
           "pdf_sheet": "82"
         },
@@ -49397,8 +49575,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -49430,8 +49608,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -49463,8 +49641,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -49496,8 +49674,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "84"
         },
@@ -49529,8 +49707,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Done",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "85"
         },
@@ -49628,8 +49806,8 @@
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
           "status": "Done",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
           "site_markup": "signed 29-OCT for 1+2",
           "pdf_sheet": "85"
         },
@@ -51398,7 +51576,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107",
@@ -51409,10 +51587,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "n/a",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -51431,7 +51609,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107\nSOM896291880",
@@ -51442,10 +51620,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "Orifices internal or external?",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -51497,7 +51675,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM9923029\nSOM896161129\nSOM896161153\nSOM896280195\nSOM6900412\nSMO9893107\nSOM896291880",
@@ -51508,10 +51686,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "waiting piping completion",
+          "site_markup": "signed 4-Nov for 1+2",
           "pdf_sheet": "99"
         },
         {
@@ -51973,7 +52151,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting piping completion",
           "pdf_sheet": "102"
         },
         {
@@ -52006,7 +52184,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting piping completion",
           "pdf_sheet": "103"
         },
         {
@@ -52039,7 +52217,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting piping completion",
           "pdf_sheet": "103"
         },
         {
@@ -52334,9 +52512,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "LATER FLUSH",
           "pdf_sheet": "105"
         },
         {
@@ -52369,7 +52547,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "LATER, COME WITH ENGINE",
           "pdf_sheet": "105"
         },
         {
@@ -52388,7 +52566,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "W",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52399,10 +52577,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "105"
         },
         {
@@ -52421,7 +52599,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -52432,10 +52610,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "105"
         },
         {
@@ -52454,7 +52632,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52465,10 +52643,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
         {
@@ -52487,7 +52665,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -52498,10 +52676,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
         {
@@ -52520,7 +52698,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52531,10 +52709,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
         {
@@ -52553,7 +52731,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nITN31012",
@@ -52564,10 +52742,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
         {
@@ -52586,7 +52764,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52597,10 +52775,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "106"
         },
         {
@@ -52619,7 +52797,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52630,10 +52808,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "107"
         },
         {
@@ -52652,7 +52830,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -52663,10 +52841,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "107"
         },
         {
@@ -52699,7 +52877,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "INCOMPLETE",
           "pdf_sheet": "107"
         },
         {
@@ -52718,7 +52896,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52729,10 +52907,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "107"
         },
         {
@@ -52751,7 +52929,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52762,10 +52940,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
         {
@@ -52784,7 +52962,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52795,10 +52973,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
         {
@@ -52817,7 +52995,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52828,10 +53006,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "108"
         },
         {
@@ -52850,7 +53028,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412",
@@ -52861,10 +53039,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
         {
@@ -52883,7 +53061,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nITN31012",
@@ -52894,10 +53072,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "108"
         },
         {
@@ -52928,8 +53106,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "109"
         },
@@ -52949,7 +53127,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880\nSOM896292013",
@@ -52960,10 +53138,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "109"
         },
         {
@@ -52982,7 +53160,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880\nSOM896291882\nSOM896292013",
@@ -52993,10 +53171,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "109"
         },
         {
@@ -53015,7 +53193,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880\nSOM896292013",
@@ -53026,10 +53204,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "109"
         },
         {
@@ -53048,7 +53226,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -53059,10 +53237,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "110"
         },
         {
@@ -53081,7 +53259,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153",
@@ -53092,10 +53270,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 3-Nov for 1 and 2",
           "pdf_sheet": "110"
         },
         {
@@ -53128,7 +53306,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "110"
         },
         {
@@ -53161,7 +53339,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "110"
         },
         {
@@ -53180,7 +53358,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM6770140\nSOM896161129\nSOM896161153\nSOM896280195\nSMO9893107\nSOM6900412\nSOM896291880",
@@ -53191,10 +53369,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1,2",
           "pdf_sheet": "111"
         },
         {
@@ -53225,9 +53403,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "111"
         },
         {
@@ -53258,8 +53436,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "111"
         },
@@ -55292,7 +55470,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "PACKING LIST BOM ITN02175.00",
@@ -55303,10 +55481,10 @@
           "note": "Preservation plan respected and relevant check list filled.",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55325,7 +55503,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -55336,10 +55514,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55358,7 +55536,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -55369,10 +55547,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55391,7 +55569,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129",
@@ -55402,10 +55580,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55424,7 +55602,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129\nSOM896161153",
@@ -55435,10 +55613,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55457,7 +55635,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161129\nSOM896161153",
@@ -55468,10 +55646,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "125"
         },
         {
@@ -55490,7 +55668,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -55501,10 +55679,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "126"
         },
         {
@@ -55523,7 +55701,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -55534,10 +55712,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "126"
         },
         {
@@ -55570,7 +55748,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -55603,7 +55781,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -55636,7 +55814,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "126"
         },
         {
@@ -55669,7 +55847,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "126"
         },
         {
@@ -55702,7 +55880,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "127"
         },
         {
@@ -55735,7 +55913,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "127"
         },
         {
@@ -55768,7 +55946,7 @@
           "status": "Not yet",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "waiting for piping, tubing",
           "pdf_sheet": "127"
         },
         {
@@ -55801,7 +55979,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "NEED Victor check",
           "pdf_sheet": "127"
         },
         {
@@ -55820,7 +55998,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195\nSOM896291880",
@@ -55831,10 +56009,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "127"
         },
         {
@@ -55867,7 +56045,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Orifices inside or outside skid?",
           "pdf_sheet": "127"
         },
         {
@@ -55886,7 +56064,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896292282\nSOM896161153\nSOM896161129\nSOM896280195",
@@ -55897,10 +56075,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "128"
         },
         {
@@ -55933,7 +56111,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -55966,7 +56144,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -55999,7 +56177,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -56032,7 +56210,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -56065,7 +56243,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "128"
         },
         {
@@ -56098,7 +56276,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "129"
         },
         {
@@ -56197,7 +56375,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "129"
         },
         {
@@ -56228,9 +56406,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "129"
         },
         {
@@ -57220,7 +57398,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "135"
         },
         {
@@ -57253,7 +57431,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "135"
         },
         {
@@ -57272,7 +57450,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nSOM896162294\nSOM896291880\nSOM896161462",
@@ -57283,10 +57461,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "135"
         },
         {
@@ -57305,7 +57483,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nSOM896162294\nSOM896291880\nSOM896161462",
@@ -57316,10 +57494,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "135"
         },
         {
@@ -57352,7 +57530,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "No relief valve",
           "pdf_sheet": "136"
         },
         {
@@ -57371,7 +57549,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -57382,10 +57560,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "136"
         },
         {
@@ -57404,7 +57582,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259",
@@ -57415,10 +57593,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "136"
         },
         {
@@ -57451,7 +57629,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "136"
         },
         {
@@ -57484,7 +57662,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "136"
         },
         {
@@ -57583,7 +57761,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -57616,7 +57794,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -57649,7 +57827,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "137"
         },
         {
@@ -57668,7 +57846,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -57679,10 +57857,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "137"
         },
         {
@@ -57701,7 +57879,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOM896161129\nSOM896161153\nSOM896280195\nSOM896161259\nITN31012",
@@ -57712,10 +57890,10 @@
           "note": "",
           "pic_pmc": "Duy NT",
           "pic_pq": "Cong NV",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Mechanical",
           "remarks_raw": "Mechanical",
-          "site_markup": "",
+          "site_markup": "Signed 4-Nov for 1 and 2. NEED report from piping team",
           "pdf_sheet": "138"
         },
         {
@@ -57734,7 +57912,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM896211417",
@@ -57745,10 +57923,10 @@
           "note": "",
           "pic_pmc": "Thi",
           "pic_pq": "Hoang QC",
-          "status": "Not yet",
-          "discipline": "Piping",
-          "remarks_raw": "Piping",
-          "site_markup": "",
+          "status": "Done",
+          "discipline": "Mechanical",
+          "remarks_raw": "Mechanical",
+          "site_markup": "Signed 4-Nov for 1 and 2",
           "pdf_sheet": "138"
         },
         {
@@ -57781,7 +57959,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "138"
         },
         {
@@ -57814,7 +57992,7 @@
           "status": "Not yet",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "E&I",
           "pdf_sheet": "138"
         },
         {
@@ -57847,7 +58025,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "waiting for piping installation",
           "pdf_sheet": "138"
         },
         {
@@ -57880,7 +58058,7 @@
           "status": "Not yet",
           "discipline": "Piping",
           "remarks_raw": "Piping",
-          "site_markup": "",
+          "site_markup": "LATER",
           "pdf_sheet": "139"
         },
         {
@@ -57911,9 +58089,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "139"
         },
         {
@@ -61067,7 +61245,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291882\nSOM896292013",
@@ -61078,10 +61256,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -61100,7 +61278,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291882\nSOM896292013",
@@ -61111,10 +61289,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -61133,7 +61311,7 @@
           "cu_signed": false,
           "both_signed": false,
           "sig_status": "Unsigned",
-          "done_unsigned": false,
+          "done_unsigned": true,
           "bh_role": "O",
           "cu_role": "W",
           "ref_doc": "SOM9913412\nSOS047123241\nSMO0907622\nSOM896161129\nSOM896161153\nSOM896291880",
@@ -61144,10 +61322,10 @@
           "note": "",
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
-          "status": "Not yet",
+          "status": "Done",
           "discipline": "Electrical & Instruments",
           "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "site_markup": "Signed 3-Nov for 1 and  2",
           "pdf_sheet": "161"
         },
         {
@@ -61178,9 +61356,9 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
-          "site_markup": "",
+          "discipline": "Pre-Commissioning",
+          "remarks_raw": "Pre/commissioning",
+          "site_markup": "not applicable this construction phase",
           "pdf_sheet": "161"
         },
         {
@@ -69164,8 +69342,8 @@
           "pic_pmc": "Son NT",
           "pic_pq": "A Chung",
           "status": "Not yet",
-          "discipline": "Electrical & Instruments",
-          "remarks_raw": "Electrical & Instruments",
+          "discipline": "Unassigned",
+          "remarks_raw": "",
           "site_markup": "",
           "pdf_sheet": "210"
         },

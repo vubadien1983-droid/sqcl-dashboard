@@ -82,8 +82,36 @@
     "Pre-Commissioning": { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", bar: "#D97706", badge: "bg-amber-100 text-amber-800 border-amber-200" },
     "Structural": { bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200", bar: "#4F46E5", badge: "bg-indigo-100 text-indigo-800 border-indigo-200" },
     "Material": { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200", bar: "#0D9488", badge: "bg-teal-100 text-teal-800 border-teal-200" },
+    "Package": { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", bar: "#059669", badge: "bg-emerald-100 text-emerald-800 border-emerald-200" },
+    "Civil": { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", bar: "#EA580C", badge: "bg-orange-100 text-orange-800 border-orange-200" },
     "Unassigned": { bg: "bg-slate-50", text: "text-slate-600", border: "border-slate-200", bar: "#64748B", badge: "bg-slate-100 text-slate-700 border-slate-200" }
   };
+
+  const DYNAMIC_PALETTE = [
+    { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200", bar: "#0D9488", badge: "bg-teal-100 text-teal-800 border-teal-200" },
+    { bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200", bar: "#4F46E5", badge: "bg-indigo-100 text-indigo-800 border-indigo-200" },
+    { bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200", bar: "#E11D48", badge: "bg-rose-100 text-rose-800 border-rose-200" },
+    { bg: "bg-lime-50", text: "text-lime-700", border: "border-lime-200", bar: "#65A30D", badge: "bg-lime-100 text-lime-800 border-lime-200" },
+    { bg: "bg-fuchsia-50", text: "text-fuchsia-700", border: "border-fuchsia-200", bar: "#C026D3", badge: "bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200" },
+    { bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200", bar: "#0284C7", badge: "bg-sky-100 text-sky-800 border-sky-200" }
+  ];
+
+  function getDisciplineTheme(dName) {
+    if (!dName || dName === "Unassigned") return DISCIPLINE_COLORS["Unassigned"];
+    if (DISCIPLINE_COLORS[dName]) return DISCIPLINE_COLORS[dName];
+    let hash = 0;
+    for (let i = 0; i < dName.length; i++) hash = (hash * 31 + dName.charCodeAt(i)) & 0xffffffff;
+    return DYNAMIC_PALETTE[Math.abs(hash) % DYNAMIC_PALETTE.length];
+  }
+
+  function getDisciplineShortLabel(dName) {
+    if (!dName) return "-";
+    if (dName === "Electrical & Instruments") return "E&I";
+    if (dName === "Mechanical") return "Mech";
+    if (dName === "Pre-Commissioning") return "Pre-Com";
+    if (dName === "Structural") return "Struct";
+    return dName;
+  }
 
   function esc(str) {
     if (str === null || str === undefined) return "";
@@ -534,6 +562,377 @@
     renderDetailTabTableOnly(tab);
   };
 
+  function normalizeDisciplineInBrowser(raw) {
+    const s = String(raw || "").trim();
+    if (!s) return "Unassigned";
+    const sl = s.toLowerCase();
+    if (sl.includes("electrical") || sl.includes("instrument") || sl.includes("e&i")) {
+      return "Electrical & Instruments";
+    }
+    if (sl.includes("pip")) {
+      return "Piping";
+    }
+    if (sl.includes("mech")) {
+      return "Mechanical";
+    }
+    if (sl.includes("pre/com") || sl.includes("precom") || sl.includes("commissioning")) {
+      return "Pre-Commissioning";
+    }
+    if (sl.includes("struct")) {
+      return "Structural";
+    }
+    if (sl.includes("material") || sl.includes("mat")) {
+      return "Material";
+    }
+    if (sl.includes("pkg") || sl.includes("package")) {
+      return "Package";
+    }
+    if (sl.includes("civil")) {
+      return "Civil";
+    }
+    return s;
+  }
+
+  function normalizeStatusInBrowser(raw) {
+    const s = String(raw || "").trim();
+    const sl = s.toLowerCase();
+    if (sl === "done") return "Done";
+    if (sl === "ongoing") return "Ongoing";
+    if (sl === "not yet") return "Not yet";
+    if (sl === "n/a" || sl === "na") return "N/A";
+    return s || "Not yet";
+  }
+
+  function parseSigInBrowser(raw) {
+    const s = String(raw || "").trim();
+    const sl = s.toLowerCase();
+    if (!s) return { signed: false, label: "Pending", raw: "" };
+    if (sl.includes("signed") || sl.includes("done") || sl.includes("ok") || /^\d{4}-\d{2}-\d{2}/.test(s)) {
+      return { signed: true, label: "Signed", raw: s };
+    }
+    return { signed: false, label: s, raw: s };
+  }
+
+  function parseScheduleCellInBrowser(raw) {
+    const s = String(raw || "").trim();
+    if (!s || s === "?") return [];
+    const parts = s.split(/,\s*(?=[A-Za-z])/).map((p) => p.trim()).filter(Boolean);
+    const items = [];
+    parts.forEach((p) => {
+      const pl = p.toLowerCase();
+      let disc = p;
+      if (pl.includes("mech")) disc = "Mechanical";
+      else if (pl.includes("e&i") || pl.includes("elect") || pl.includes("inst")) disc = "Electrical & Instruments";
+      else if (pl.includes("pip")) disc = "Piping";
+      else if (pl.includes("mat")) disc = "Material";
+      else if (pl.includes("struct")) disc = "Structural";
+      else if (pl.includes("precom") || pl.includes("pre/com") || pl.includes("commission")) disc = "Pre-Commissioning";
+      else if (pl.includes("pkg") || pl.includes("package")) disc = "Package";
+      else if (pl.includes("civil")) disc = "Civil";
+      else {
+        const clean = p.replace(/[\d_#\s]+$/, "").trim();
+        disc = clean || p;
+      }
+
+      const has1 = p.includes("1");
+      const has2 = p.includes("2");
+      let units = ["GTG#1", "GTG#2"];
+      if (has1 && !has2) units = ["GTG#1"];
+      else if (has2 && !has1) units = ["GTG#2"];
+
+      items.push({
+        raw: p,
+        discipline: disc,
+        units: units
+      });
+    });
+    return items;
+  }
+
+  function parseWorkbookInBrowser(wb) {
+    const unitsConfig = [
+      { id: "GTG#1", summarySheet: "Summary GTC#1", checkSheet: "SQCL Check Sheet GTC#1" },
+      { id: "GTG#2", summarySheet: "Summary GTC#2", checkSheet: "SQCL Check Sheet GTC#2" }
+    ];
+
+    const result = {
+      project_info: {
+        doc_title: "SITE QUALITY CHECK LIST (SQCL) – Doc. SOI0007689 Rev. 0",
+        customer: "MCDERMOTT",
+        owner: "PETROVIETNAM",
+        location: "VIETNAM BLOCK B GAS PROJECT",
+        contract_no: "MEC002",
+        package_info: "PRODUCTION & PIPELINE COMPRESSOR GTG#1 & GTG#2",
+        last_synced: new Date().toISOString().replace("T", " ").substring(0, 19)
+      },
+      schedule_dates: [],
+      units: {}
+    };
+
+    let allSchedDates = [];
+
+    unitsConfig.forEach((cfg) => {
+      const uid = cfg.id;
+      const wsSum = wb.Sheets[cfg.summarySheet];
+      const wsChk = wb.Sheets[cfg.checkSheet];
+      if (!wsSum || !wsChk) return;
+
+      const sumData = XLSX.utils.sheet_to_json(wsSum, { header: 1, raw: false, defval: "" });
+      const chkData = XLSX.utils.sheet_to_json(wsChk, { header: 1, raw: false, defval: "" });
+
+      const dateCols = {};
+      if (sumData.length > 2) {
+        const headerRow = sumData[2] || [];
+        for (let c = 11; c < headerRow.length; c++) {
+          let val = String(headerRow[c] || "").trim();
+          if (val) {
+            val = val.split(" ")[0].trim();
+            dateCols[c] = val;
+            if (!allSchedDates.includes(val)) allSchedDates.push(val);
+          }
+        }
+      }
+
+      const sectionsMap = {};
+      const sectionsList = [];
+      for (let r = 3; r < sumData.length; r++) {
+        const row = sumData[r] || [];
+        const secCode = String(row[0] || "").trim();
+        const titleRaw = String(row[1] || "").trim();
+        const statusReview = String(row[2] || "").trim();
+        const pdfSheet = String(row[9] || "").trim();
+        if (!secCode && !titleRaw) continue;
+
+        const scheduleNotes = [];
+        for (const [cStr, dStr] of Object.entries(dateCols)) {
+          const c = parseInt(cStr, 10);
+          const cellVal = String(row[c] || "").trim();
+          if (cellVal && cellVal !== "?") {
+            const parsedItems = parseScheduleCellInBrowser(cellVal);
+            scheduleNotes.push({
+              date: dStr,
+              note: cellVal,
+              items: parsedItems
+            });
+          }
+        }
+
+        const secObj = {
+          section: secCode,
+          title: titleRaw,
+          pdf_sheet: pdfSheet,
+          status_review: statusReview,
+          schedule: scheduleNotes,
+          activities_count: 0,
+          done: 0,
+          ongoing: 0,
+          not_yet: 0,
+          na: 0,
+          bh_signed: 0,
+          cu_signed: 0,
+          both_signed: 0,
+          done_unsigned: 0,
+          pct_done: 0.0
+        };
+        sectionsMap[secCode] = secObj;
+        sectionsList.push(secObj);
+      }
+
+      const activities = [];
+      let currentSecCode = "5.1";
+      let currentSecTitle = "GENERAL";
+      let secCounter = 0;
+
+      for (let r = 8; r < chkData.length; r++) {
+        const row = chkData[r] || [];
+        const c1 = String(row[0] || "").trim();
+        const c2 = String(row[1] || "").trim();
+
+        if (!c1 && !c2) continue;
+
+        if (c1 && !c2) {
+          secCounter++;
+          const m = c1.match(/^(\d+\.\d+)\s+(.*)$/);
+          if (m) {
+            currentSecCode = m[1];
+            currentSecTitle = m[2].trim();
+          } else {
+            currentSecCode = `5.${secCounter}`;
+            currentSecTitle = c1;
+          }
+          continue;
+        }
+
+        const actCode = c1;
+        const parts = actCode.split(".");
+        if (parts.length >= 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+          const derivedSec = `${parts[0]}.${parts[1]}`;
+          if (sectionsMap[derivedSec]) {
+            currentSecCode = derivedSec;
+          }
+        }
+
+        const secInfo = sectionsMap[currentSecCode] || { section: currentSecCode, title: currentSecTitle };
+
+        let sigDate = String(row[2] || "").trim().split(" ")[0];
+        const bhSigInfo = parseSigInBrowser(row[3]);
+        const cuSigInfo = parseSigInBrowser(row[4]);
+        const bhRole = String(row[5] || "").trim();
+        const cuRole = String(row[6] || "").trim();
+        const refDoc = String(row[7] || "").trim();
+        const procedure = String(row[8] || "").trim();
+        const acceptance = String(row[9] || "").trim();
+        const checkType = String(row[10] || "").trim();
+        const serviceReport = String(row[11] || "").trim();
+        const note = String(row[12] || "").trim();
+        const picPmc = String(row[13] || "").trim();
+        const picPq = String(row[14] || "").trim();
+        const status = normalizeStatusInBrowser(row[15]);
+        const rawRemarks = String(row[16] || "").trim();
+        const discipline = normalizeDisciplineInBrowser(rawRemarks);
+        const siteMarkup = String(row[17] || "").trim();
+        const pdfSheet = String(row[18] || "").trim();
+
+        if (!sigDate && /^\d{4}-\d{2}-\d{2}/.test(cuSigInfo.raw)) {
+          sigDate = cuSigInfo.raw.substring(0, 10);
+        }
+
+        const bhSigned = bhSigInfo.signed;
+        const cuSigned = cuSigInfo.signed;
+        const bothSigned = bhSigned && cuSigned;
+
+        let sigStatus = "Unsigned";
+        if (bothSigned) sigStatus = "Both Signed";
+        else if (bhSigned && !cuSigned) sigStatus = "BH Signed Only";
+        else if (cuSigned && !bhSigned) sigStatus = "CU Signed Only";
+
+        const doneUnsigned = (status === "Done") && (!bothSigned);
+
+        const actItem = {
+          id: `${uid}-${actCode}`,
+          unit: uid,
+          activity: actCode,
+          section: currentSecCode,
+          section_title: secInfo.title,
+          description: c2,
+          sig_date: sigDate,
+          bh_signed: bhSigned,
+          cu_signed: cuSigned,
+          both_signed: bothSigned,
+          sig_status: sigStatus,
+          bh_sig_raw: bhSigInfo.raw,
+          cu_sig_raw: cuSigInfo.raw,
+          bh_role: bhRole,
+          cu_role: cuRole,
+          ref_doc: refDoc,
+          procedure: procedure,
+          acceptance: acceptance,
+          check_type: checkType,
+          service_report: serviceReport,
+          note: note,
+          pic_pmc: picPmc,
+          pic_pq: picPq,
+          status: status,
+          discipline: discipline,
+          remarks_raw: rawRemarks,
+          site_markup: siteMarkup,
+          pdf_sheet: pdfSheet || secInfo.pdf_sheet,
+          done_unsigned: doneUnsigned
+        };
+
+        activities.push(actItem);
+      }
+
+      const totalActs = activities.length;
+      let totalDone = 0, totalOngoing = 0, totalNotYet = 0, totalNa = 0;
+      let totalBhSigned = 0, totalCuSigned = 0, totalBothSigned = 0, totalDoneUnsigned = 0;
+
+      const discMap = {};
+
+      activities.forEach((a) => {
+        if (a.status === "Done") totalDone++;
+        else if (a.status === "Ongoing") totalOngoing++;
+        else if (a.status === "N/A") totalNa++;
+        else totalNotYet++;
+
+        if (a.bh_signed) totalBhSigned++;
+        if (a.cu_signed) totalCuSigned++;
+        if (a.both_signed) totalBothSigned++;
+        if (a.done_unsigned) totalDoneUnsigned++;
+
+        if (!discMap[a.discipline]) {
+          discMap[a.discipline] = {
+            discipline: a.discipline,
+            total: 0,
+            done: 0,
+            ongoing: 0,
+            not_yet: 0,
+            bh_signed: 0,
+            cu_signed: 0,
+            both_signed: 0,
+            pct_done: 0.0
+          };
+        }
+        const dm = discMap[a.discipline];
+        dm.total++;
+        if (a.status === "Done") dm.done++;
+        else if (a.status === "Ongoing") dm.ongoing++;
+        else dm.not_yet++;
+        if (a.bh_signed) dm.bh_signed++;
+        if (a.cu_signed) dm.cu_signed++;
+        if (a.both_signed) dm.both_signed++;
+
+        const sec = sectionsMap[a.section];
+        if (sec) {
+          sec.activities_count++;
+          if (a.status === "Done") sec.done++;
+          else if (a.status === "Ongoing") sec.ongoing++;
+          else if (a.status === "N/A") sec.na++;
+          else sec.not_yet++;
+          if (a.bh_signed) sec.bh_signed++;
+          if (a.cu_signed) sec.cu_signed++;
+          if (a.both_signed) sec.both_signed++;
+          if (a.done_unsigned) sec.done_unsigned++;
+        }
+      });
+
+      sectionsList.forEach((s) => {
+        s.pct_done = s.activities_count > 0 ? Math.round((s.done / s.activities_count) * 1000) / 10 : 0.0;
+      });
+
+      const discList = Object.values(discMap);
+      discList.forEach((dm) => {
+        dm.pct_done = dm.total > 0 ? Math.round((dm.done / dm.total) * 1000) / 10 : 0.0;
+      });
+      discList.sort((a, b) => b.total - a.total);
+
+      const pctDone = totalActs > 0 ? Math.round((totalDone / totalActs) * 1000) / 10 : 0.0;
+
+      result.units[uid] = {
+        name: uid === "GTG#1" ? "GTG#1 (CPPT-PK-1101)" : "GTG#2 (CPPT-PK-2101)",
+        tag: uid === "GTG#1" ? "CPPT-PK-1101" : "CPPT-PK-2101",
+        kpis: {
+          total: totalActs,
+          done: totalDone,
+          ongoing: totalOngoing,
+          not_yet: totalNotYet,
+          na: totalNa,
+          pct_done: pctDone,
+          bh_signed: totalBhSigned,
+          cu_signed: totalCuSigned,
+          both_signed: totalBothSigned,
+          done_unsigned: totalDoneUnsigned
+        },
+        disciplines: discList,
+        sections: sectionsList,
+        activities: activities
+      };
+    });
+
+    result.schedule_dates = allSchedDates.sort();
+    return result;
+  }
+
   window.syncFromOneDrive = async function (customUrl) {
     const btn = document.getElementById("btn-sync-onedrive");
     const statusText = document.getElementById("sync-status-text");
@@ -541,48 +940,96 @@
       btn.disabled = true;
       btn.innerHTML = `<i class="fas fa-spinner fa-spin mr-1"></i> Syncing...`;
     }
-    try {
-      const resp = await fetch("/api/sync", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: customUrl || "" })
-      });
-      const res = await resp.json();
-      if (resp.ok && res.status === "ok" && res.data) {
-        state.data = res.data;
-        window.SQCL_INITIAL_DATA = res.data;
-        if (statusText) {
-          statusText.textContent = `Last Synced: ${res.data.project_info.last_synced}`;
+
+    let synced = false;
+    let syncErrorMsg = "";
+
+    const endpoints = ["/api/sync"];
+    if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+      endpoints.push("http://localhost:8080/api/sync");
+    }
+
+    for (const endpoint of endpoints) {
+      try {
+        const resp = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: customUrl || "" })
+        });
+        const contentType = resp.headers.get("content-type") || "";
+        if (!resp.ok || !contentType.includes("application/json")) {
+          continue;
         }
-        showToast("Synced latest Excel data from OneDrive successfully!", "success");
-        renderAll();
-      } else {
-        throw new Error(res.message || "Failed to sync from OneDrive.");
+
+        const res = await resp.json();
+        if (res && res.status === "ok" && res.data) {
+          state.data = res.data;
+          window.SQCL_INITIAL_DATA = res.data;
+          try {
+            localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(res.data));
+          } catch (e) {}
+          if (statusText) {
+            statusText.textContent = `Last Synced: ${res.data.project_info.last_synced || new Date().toLocaleString()}`;
+          }
+          showToast("Synced latest Excel data from OneDrive successfully!", "success");
+          renderAll();
+          synced = true;
+          break;
+        } else if (res && res.message) {
+          syncErrorMsg = res.message;
+        }
+      } catch (err) {
+        // Network or CORS failure
       }
-    } catch (err) {
-      showToast("Sync Error: " + err.message, "error");
-    } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = `<i class="fas fa-sync-alt mr-1"></i> Sync OneDrive`;
-      }
+    }
+
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fas fa-sync-alt mr-1"></i> Sync OneDrive`;
+    }
+
+    if (!synced) {
+      showToast("Notice: Static cloud host cannot run Python backend directly. Opening Data Source to upload your updated Excel file!", "info");
+      openSourceModal();
     }
   };
 
-  // Local Excel (.xlsx) file upload fallback
+  // Local Excel (.xlsx) file upload: in-browser parsing with SheetJS
   window.handleLocalExcelUpload = function (event) {
     const file = event.target.files[0];
     if (!file) return;
-    showToast("Processing uploaded Excel file...", "info");
+    showToast("Processing uploaded Excel file directly in browser...", "info");
     const reader = new FileReader();
     reader.onload = function (e) {
       try {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: "array" });
-        showToast(`Loaded workbook with ${workbook.SheetNames.length} sheets!`, "success");
+        const parsedData = parseWorkbookInBrowser(workbook);
+
+        if (!parsedData || !parsedData.units || !parsedData.units["GTG#1"]) {
+          throw new Error("Could not find required sheets (Summary GTC#1 & SQCL Check Sheet GTC#1) in uploaded file.");
+        }
+
+        state.data = parsedData;
+        window.SQCL_INITIAL_DATA = parsedData;
+        try {
+          localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(parsedData));
+        } catch (storageErr) {}
+
+        const statusText = document.getElementById("sync-status-text");
+        if (statusText) {
+          statusText.textContent = `Uploaded: ${parsedData.project_info.last_synced}`;
+        }
+
+        const totalActivities =
+          (parsedData.units["GTG#1"].activities.length || 0) +
+          ((parsedData.units["GTG#2"] && parsedData.units["GTG#2"].activities.length) || 0);
+
+        showToast(`Successfully parsed and loaded ${totalActivities} activities from Excel!`, "success");
         closeSourceModal();
+        renderAll();
       } catch (err) {
-        showToast("Error reading Excel: " + err.message, "error");
+        showToast("Error parsing Excel file: " + err.message, "error");
       }
     };
     reader.readAsArrayBuffer(file);
@@ -1655,19 +2102,62 @@
     const unit = state.selectedUnit;
     const schedDiscFilter = state.summaryFilters.scheduleDiscipline || "ALL";
 
+    const allTuples = getAllScheduleTuples(unit);
+    const activeDatesSet = new Set();
+    allTuples.forEach((t) => activeDatesSet.add(t.date));
+    const activeDates = Array.from(activeDatesSet).sort();
+
+    // Dynamically discover all disciplines present in schedule tuples (Mechanical, E&I, Piping, Material, etc.)
+    const schedDisciplineSet = new Set();
+    allTuples.forEach((t) => {
+      if (t.discipline && t.discipline !== "Unassigned") {
+        schedDisciplineSet.add(t.discipline);
+      }
+    });
+
+    // Also include any active disciplines that have activities in the project
+    const currentUnitObj = unit === "ALL" ? null : state.data.units[unit];
+    const targetUnits = currentUnitObj ? [currentUnitObj] : [state.data.units["GTG#1"], state.data.units["GTG#2"]].filter(Boolean);
+    targetUnits.forEach((uObj) => {
+      (uObj.disciplines || []).forEach((d) => {
+        if (d.discipline && d.discipline !== "Unassigned") {
+          if (allTuples.some((t) => t.discipline === d.discipline)) {
+            schedDisciplineSet.add(d.discipline);
+          }
+        }
+      });
+    });
+
+    if (schedDisciplineSet.size === 0) {
+      schedDisciplineSet.add("Mechanical");
+      schedDisciplineSet.add("Electrical & Instruments");
+    }
+
+    const priority = ["Mechanical", "Electrical & Instruments", "Piping", "Material", "Structural", "Pre-Commissioning", "Package", "Civil"];
+    const schedDisciplines = Array.from(schedDisciplineSet).sort((a, b) => {
+      const ia = priority.indexOf(a);
+      const ib = priority.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return a.localeCompare(b);
+    });
+
     const filterBarEl = document.getElementById("schedule-discipline-filter");
     if (filterBarEl) {
       const opts = [
         { id: "ALL", label: "All Scheduled Disciplines" },
-        { id: "Mechanical", label: "Mechanical" },
-        { id: "Electrical & Instruments", label: "Electrical & Instruments" }
+        ...schedDisciplines.map((d) => ({
+          id: d,
+          label: getDisciplineShortLabel(d) === d ? d : `${d} (${getDisciplineShortLabel(d)})`
+        }))
       ];
       filterBarEl.innerHTML = opts
         .map((o) => {
           const active = schedDiscFilter === o.id;
           return `
-            <button onclick="updateSummaryFilter('scheduleDiscipline', '${o.id}')" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-              active ? "bg-blue-600 text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
+            <button onclick="updateSummaryFilter('scheduleDiscipline', '${esc(o.id)}')" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+              active ? "bg-blue-600 text-white shadow-sm" : "text-slate-600 hover:text-slate-900 hover:bg-slate-200"
             }">
               ${esc(o.label)}
             </button>
@@ -1676,14 +2166,8 @@
         .join("");
     }
 
-    const allTuples = getAllScheduleTuples(unit);
-    const activeDatesSet = new Set();
-    allTuples.forEach((t) => activeDatesSet.add(t.date));
-    const activeDates = Array.from(activeDatesSet).sort();
-
     const summaryEl = document.getElementById("schedule-by-discipline-summary");
     if (summaryEl) {
-      const schedDisciplines = ["Mechanical", "Electrical & Instruments"];
       const dateHeadersHtml = activeDates
         .map(
           (dt) => `
@@ -1704,7 +2188,8 @@
           const dSectionsSet = new Set(
             allTuples.filter((t) => t.discipline === dName).map((t) => t.section)
           );
-          const theme = DISCIPLINE_COLORS[dName] || DISCIPLINE_COLORS["Unassigned"];
+          const theme = getDisciplineTheme(dName);
+          const shortD = getDisciplineShortLabel(dName);
 
           const dateCellsHtml = activeDates
             .map((dt) => {
@@ -1746,6 +2231,7 @@
                 <button onclick='openDetailTab({unit:"${unit}", discipline:"${esc(dName)}", scheduledOnly:true, title:"${unit} • Scheduled ${esc(dName)}"})' class="hover:text-blue-600 flex items-center gap-2 text-left">
                   <span class="w-2.5 h-2.5 rounded-full" style="background:${theme.bar}"></span>
                   <span>${esc(dName)}</span>
+                  <span class="text-[10px] text-slate-400 font-normal">(${esc(shortD)})</span>
                 </button>
               </td>
               <td class="py-2.5 px-2 text-center font-bold text-slate-700">${dSectionsSet.size} Systems</td>
@@ -1848,8 +2334,8 @@
           .map((dName) => {
             const acts = getActivitiesByFilter({ unit, section: sec.section, discipline: dName });
             const st = computeStats(acts);
-            const theme = DISCIPLINE_COLORS[dName] || DISCIPLINE_COLORS["Unassigned"];
-            const shortD = dName === "Electrical & Instruments" ? "E&I" : dName;
+            const theme = getDisciplineTheme(dName);
+            const shortD = getDisciplineShortLabel(dName);
             return `
               <button
                 onclick='openDetailTab({unit:"${unit}", section:"${sec.section}", discipline:"${esc(dName)}", title:"${unit} • Sec ${sec.section} (${shortD})"})'
@@ -1878,10 +2364,10 @@
             }
             const pills = matchingItems
               .map((it) => {
-                const theme = DISCIPLINE_COLORS[it.discipline] || DISCIPLINE_COLORS["Unassigned"];
+                const theme = getDisciplineTheme(it.discipline);
                 const targetUnit = unit !== "ALL" ? unit : it.units.length === 1 ? it.units[0] : "ALL";
                 const unitTag = it.units.length === 2 ? "GTG#1&2" : it.units[0];
-                const shortD = it.discipline === "Electrical & Instruments" ? "E&I" : "Mech";
+                const shortD = getDisciplineShortLabel(it.discipline);
                 return `
                   <button
                     onclick='openDetailTab({unit:"${targetUnit}", section:"${sec.section}", discipline:"${esc(it.discipline)}", title:"${targetUnit} • Sec ${sec.section} • ${shortD} (${formatShortDate(dt)})"})'
@@ -2599,6 +3085,21 @@
 
     if (state.deviceMode === "phone") {
       document.body.classList.add("phone-mode-active");
+    }
+
+    // Prioritize cached offline data from user uploads/syncs if available
+    try {
+      const cached = localStorage.getItem("SQCL_OFFLINE_DATA");
+      if (cached) {
+        const parsedCached = JSON.parse(cached);
+        if (parsedCached && parsedCached.units && parsedCached.units["GTG#1"]) {
+          state.data = parsedCached;
+        }
+      }
+    } catch (storageErr) {}
+
+    if (!state.data && window.SQCL_INITIAL_DATA) {
+      state.data = window.SQCL_INITIAL_DATA;
     }
 
     if (!state.data) {

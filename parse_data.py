@@ -20,18 +20,22 @@ def normalize_discipline(raw_remarks):
     if not s:
         return "Unassigned"
     sl = s.lower()
-    if "piping" in sl:
-        return "Piping"
     if "electrical" in sl or "instrument" in sl or "e&i" in sl:
         return "Electrical & Instruments"
+    if "pip" in sl:
+        return "Piping"
     if "mech" in sl:
         return "Mechanical"
     if "pre/com" in sl or "precom" in sl or "commissioning" in sl:
         return "Pre-Commissioning"
     if "struct" in sl:
         return "Structural"
-    if "material" in sl:
+    if "material" in sl or "mat" in sl:
         return "Material"
+    if "pkg" in sl or "package" in sl:
+        return "Package"
+    if "civil" in sl:
+        return "Civil"
     return s
 
 def normalize_status(raw_status):
@@ -70,8 +74,19 @@ def parse_schedule_cell(raw_str):
             disc = 'Electrical & Instruments'
         elif 'pip' in pl:
             disc = 'Piping'
+        elif 'mat' in pl:
+            disc = 'Material'
+        elif 'struct' in pl:
+            disc = 'Structural'
+        elif 'precom' in pl or 'pre/com' in pl or 'commission' in pl:
+            disc = 'Pre-Commissioning'
+        elif 'pkg' in pl or 'package' in pl:
+            disc = 'Package'
+        elif 'civil' in pl:
+            disc = 'Civil'
         else:
-            disc = p
+            clean_disc = re.sub(r'[\d_#\s]+$', '', p).strip()
+            disc = clean_disc if clean_disc else p
         has1 = '1' in p
         has2 = '2' in p
         if has1 and not has2:

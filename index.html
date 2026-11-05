@@ -427,41 +427,78 @@
   </main>
 
   <!-- MODAL: CONFIGURE ONEDRIVE SOURCE LINK OR UPLOAD LOCAL EXCEL -->
+  <!-- MODAL: DATA SOURCE & SYNC -->
   <div id="source-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
       <div class="flex items-center justify-between pb-3 border-b border-slate-100">
         <h3 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
           <i class="fas fa-cloud-arrow-down text-blue-600"></i>
-          Data Source (OneDrive Online & Excel Upload)
+          Data Source & Update Engine
         </h3>
         <button onclick="closeSourceModal()" class="text-slate-400 hover:text-slate-600">
           <i class="fas fa-times"></i>
         </button>
       </div>
+
       <div class="space-y-4 text-xs sm:text-sm">
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">1. OneDrive Live Shared URL:</label>
-          <input
-            id="custom-onedrive-url"
-            type="text"
-            value="https://onedrive.live.com/:x:/g/personal/c22ad84bae02db35/IQC76AfwUxvyTbNOO9XK8XXwAV0qpYaWifkMEgRnOrqdC5M?rtime=EnbCOy0630g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9jMjJhZDg0YmFlMDJkYjM1L0lRQzc2QWZ3VXh2eVRiTk9POVhLOFhYd0FWMHFwWWFXaWZrTUVnUm5PcnFkQzVNP2U9YmVkQ1Jp"
-            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-blue-500"
-          />
-          <button onclick="handleCustomUrlSync()" class="mt-2 w-full px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow">
-            <i class="fas fa-sync-alt mr-1"></i> Sync from OneDrive URL
-          </button>
+        <!-- Notice for Static Cloud Hosts (GitHub Pages) vs Local/Vercel -->
+        <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs leading-relaxed space-y-1">
+          <div class="font-bold flex items-center gap-1.5 text-blue-950">
+            <i class="fas fa-info-circle text-blue-600"></i> Live Data Update Methods:
+          </div>
+          <p>
+            • <strong>Instant In-Browser Update (Recommended for Phone & GitHub Pages):</strong> Choose your updated <code>.xlsx</code> file below. The browser parses all 4 sheets (2,022 activities) locally in 1 second!
+          </p>
+          <p>
+            • <strong>Direct Online Sync:</strong> Works automatically when running locally (<code>localhost:8080</code> via <code>start_dashboard.bat</code>) or on Vercel with serverless sync.
+          </p>
         </div>
 
-        <div class="pt-3 border-t border-slate-200">
-          <label class="block font-bold text-slate-700 mb-1">2. Or Load Updated Excel File (.xlsx) Directly:</label>
+        <!-- Option A: In-Browser Instant Excel File Upload -->
+        <div class="p-4 rounded-xl border-2 border-dashed border-blue-300 bg-slate-50/70 hover:bg-blue-50/40 transition-colors">
+          <label class="block font-extrabold text-slate-900 mb-1 flex items-center gap-2">
+            <i class="fas fa-file-excel text-emerald-600 text-base"></i>
+            Method 1: Load Updated Excel File (.xlsx) Directly
+          </label>
+          <p class="text-xs text-slate-500 mb-3">
+            Select the updated SQCL file. All GTG#1 & GTG#2 data, systems, disciplines, schedules, and signatures will update immediately.
+          </p>
           <input
             type="file"
             accept=".xlsx,.xls"
             onchange="handleLocalExcelUpload(event)"
-            class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-slate-100 file:text-slate-800 hover:file:bg-blue-50"
+            class="w-full text-xs text-slate-600 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
           />
         </div>
+
+        <!-- Option B: OneDrive URL & Direct Download Link -->
+        <div class="pt-3 border-t border-slate-200 space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block font-bold text-slate-800">Method 2: OneDrive Live Shared Link:</label>
+            <a
+              href="https://1drv.ms/x/c/c22ad84bae02db35/IQC76AfwUxvyTbNOO9XK8XXwAV0qpYaWifkMEgRnOrqdC5M?e=bedCRi"
+              target="_blank"
+              class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+              title="Open OneDrive directly in browser"
+            >
+              Open in OneDrive <i class="fas fa-external-link-alt text-[10px]"></i>
+            </a>
+          </div>
+          <input
+            id="custom-onedrive-url"
+            type="text"
+            value="https://onedrive.live.com/:x:/g/personal/c22ad84bae02db35/IQC76AfwUxvyTbNOO9XK8XXwAV0qpYaWifkMEgRnOrqdC5M?rtime=EnbCOy0630g&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9jMjJhZDg0YmFlMDJkYjM1L0lRQzc2QWZ3VXh2eVRiTk9POVhLOFhYd0FWMHFwWWFXaWZrTUVnUm5PcnFkQzVNP2U9YmVkQ1Jp"
+            class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-blue-500 font-mono text-[11px]"
+          />
+          <button
+            onclick="handleCustomUrlSync()"
+            class="w-full px-4 py-2 rounded-xl bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold shadow transition-colors flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-sync-alt"></i> Trigger OneDrive Server Sync
+          </button>
+        </div>
       </div>
+
       <div class="flex justify-end pt-3 border-t border-slate-100">
         <button onclick="closeSourceModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
           Close
