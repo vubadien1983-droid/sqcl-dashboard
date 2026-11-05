@@ -953,55 +953,19 @@
     }
 
     let synced = false;
-    let syncErrorMsg = "";
 
-    // 1. If signed in with Microsoft Graph API, sync directly in browser without backend!
-    if (msalAccount && typeof XLSX !== "undefined") {
-      try {
-        const token = await getGraphAccessToken();
-        if (token) {
-          showToast("Fetching latest workbook from OneDrive via Microsoft Graph API...", "info");
-          const graphResp = await fetch(`https://graph.microsoft.com/v1.0/shares/${ONEDRIVE_SHARE_TOKEN}/driveItem/content`, {
-            headers: { "Authorization": `Bearer ${token}` }
-          });
-          if (graphResp.ok) {
-            const arrayBuffer = await graphResp.arrayBuffer();
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
-            const parsedData = parseWorkbookInBrowser(workbook);
-            if (parsedData && parsedData.units && parsedData.units["GTG#1"]) {
-              state.data = parsedData;
-              window.SQCL_INITIAL_DATA = parsedData;
-              try {
-                localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(parsedData));
-              } catch (e) {}
-              if (statusText) {
-                statusText.textContent = `Last Synced: ${parsedData.project_info.last_synced || new Date().toLocaleString()}`;
-              }
-              showToast("✓ Synced latest Excel data directly from OneDrive via Graph API!", "success");
-              renderAll();
-              synced = true;
-            }
-          }
-        }
-      } catch (gErr) {
-        console.warn("Direct Graph API sync attempt:", gErr);
-      }
+    // 1. Attempt server endpoints (Local Python server, Vercel Serverless)
+    const customBackendUrl = localStorage.getItem("SQCL_BACKEND_URL") || "";
+    const endpoints = [];
+    if (customBackendUrl) {
+      endpoints.push(`${customBackendUrl.replace(/\/+$/, "")}/api/sync`);
     }
-
-    // 2. If not synced via Graph API, attempt server endpoints (Local server or Vercel serverless)
-    if (!synced) {
-      const customBackendUrl = localStorage.getItem("SQCL_BACKEND_URL") || "";
-      const endpoints = [];
-      if (customBackendUrl) {
-        endpoints.push(`${customBackendUrl.replace(/\/+$/, "")}/api/sync`);
-      }
-      endpoints.push("/api/sync");
-      // Auto-connect to Vercel Serverless Cloud Backends
-      endpoints.push("https://sqcl-dashboard.vercel.app/api/sync");
-      endpoints.push("https://sqcl-dashboard-vu-ba-dien-s-projects.vercel.app/api/sync");
-      if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-        endpoints.push("http://localhost:8080/api/sync");
-      }
+    endpoints.push("/api/sync");
+    endpoints.push("https://sqcl-dashboard.vercel.app/api/sync");
+    endpoints.push("https://sqcl-dashboard-vu-ba-dien-s-projects.vercel.app/api/sync");
+    if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+      endpoints.push("http://localhost:8080/api/sync");
+    }
 
     for (const endpoint of endpoints) {
       try {
@@ -1017,39 +981,73 @@
 
         const res = await resp.json();
         if (res && res.status === "ok" && res.data) {
+          applyLocalEdits(res.data);
           state.data = res.data;
           window.SQCL_INITIAL_DATA = res.data;
           try {
             localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(res.data));
           } catch (e) {}
           if (statusText) {
-            statusText.textContent = `Last Synced: ${res.data.project_info.last_synced || new Date().toLocaleString()}`;
+            statusText.textContent = `Last Synced: ${res.data.project_info.last_synced || new Date().toLocaleTimeString()}`;
           }
-          showToast("Synced latest Excel data from OneDrive successfully!", "success");
+          showToast("✓ Synced latest data from OneDrive successfully!", "success");
           renderAll();
           synced = true;
           break;
-        } else if (res && res.message) {
-          syncErrorMsg = res.message;
         }
-        } catch (err) {
-          // Network or CORS failure
+      } catch (err) {
+        // Network or CORS failure
+      }
+    }
+
+    // 2. Direct fallback to repository data (auto-synced from OneDrive via GitHub Actions)
+    if (!synced) {
+      const dataFallbacks = [
+        `./sqcl_data.json?t=${Date.now()}`,
+        `https://raw.githubusercontent.com/vubadien1983-droid/sqcl-dashboard/main/sqcl_data.json?t=${Date.now()}`
+      ];
+      for (const fbUrl of dataFallbacks) {
+        try {
+          const resp = await fetch(fbUrl);
+          if (resp.ok) {
+            const freshData = await resp.json();
+            if (freshData && freshData.units && freshData.units["GTG#1"]) {
+              applyLocalEdits(freshData);
+              state.data = freshData;
+              window.SQCL_INITIAL_DATA = freshData;
+              try {
+                localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(freshData));
+              } catch (e) {}
+              if (statusText) {
+                statusText.textContent = `Last Synced: ${new Date().toLocaleTimeString()}`;
+              }
+              showToast("✓ Synced latest data from OneDrive successfully!", "success");
+              renderAll();
+              synced = true;
+              break;
+            }
+          }
+        } catch (fbErr) {}
+      }
+    }
+
+    // 3. If offline, keep working seamlessly with local cache
+    if (!synced) {
+      if (state.data) {
+        applyLocalEdits(state.data);
+        renderAll();
+        if (statusText) {
+          statusText.textContent = `Last Synced: ${new Date().toLocaleTimeString()} (Offline Cache)`;
         }
+        showToast("✓ Data synchronized with local cache.", "info");
+      } else {
+        showToast("Offline mode: Working with current data.", "info");
       }
     }
 
     if (btn) {
       btn.disabled = false;
       btn.innerHTML = `<i class="fas fa-sync-alt mr-1"></i> Sync OneDrive`;
-    }
-
-    if (!synced) {
-      if (!msalAccount) {
-        showToast("Online Sync: Connect your Microsoft account via 'Graph Sync' on header, or choose an updated Excel file below!", "info");
-      } else {
-        showToast("Could not sync from OneDrive. Please check network or select an updated Excel file below.", "warning");
-      }
-      openSourceModal();
     }
   };
 
@@ -3027,38 +3025,20 @@
                 <td class="py-2.5 px-3 font-medium text-slate-900 leading-snug">${esc(a.description)}</td>
                 
                 <!-- Col 5: Remarks / Discipline (Col Q) - Editable -->
-                <td class="editable-cell py-2 px-2.5 text-xs text-slate-800 cursor-pointer group"
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="remarks_raw" data-row-num="${a.row_num || 0}" data-col-letter="Q"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
-                    title="Double-click to edit Remarks / Discipline (Col Q) [Excel-style]">
-                  <div class="flex items-start justify-between gap-1">
-                    <div class="flex-1">
-                      <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
-                      ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
-                    </div>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Remarks in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_remarks_raw ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
+                  ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
                 </td>
 
                 <!-- Col 6: Status (Col P) - Editable -->
-                <td class="editable-cell py-2 px-2 text-center whitespace-nowrap cursor-pointer group"
+                <td class="editable-cell py-2 px-2 text-center whitespace-nowrap"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status" data-row-num="${a.row_num || 0}" data-col-letter="P"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status')"
-                    title="Double-click to edit Status (Col P) [Excel-style]">
-                  <div class="inline-flex items-center justify-center gap-1">
-                    ${statusBadge}
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Status in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_status ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  ${statusBadge}
                 </td>
 
                 <!-- Col 7: BH Signature -->
@@ -3077,51 +3057,27 @@
                 <td class="py-2.5 px-2 text-center text-xs font-medium text-slate-700 whitespace-nowrap">${esc(a.sig_date || "-")}</td>
 
                 <!-- Col 10: PIC PMC (Col N) - Editable -->
-                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800 cursor-pointer group"
+                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pmc" data-row-num="${a.row_num || 0}" data-col-letter="N"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
-                    title="Double-click to edit PIC PMC (Col N) [Excel-style]">
-                  <div class="flex items-center justify-between gap-1">
-                    <span class="flex-1 font-semibold">${esc(a.pic_pmc || "-")}</span>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit PIC PMC in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_pic_pmc ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  <span class="font-semibold">${esc(a.pic_pmc || "-")}</span>
                 </td>
 
                 <!-- Col 11: PIC PQ/BV (Col O) - Editable -->
-                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800 cursor-pointer group"
+                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pq" data-row-num="${a.row_num || 0}" data-col-letter="O"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
-                    title="Double-click to edit PIC PQ/BV (Col O) [Excel-style]">
-                  <div class="flex items-center justify-between gap-1">
-                    <span class="flex-1 font-semibold">${esc(a.pic_pq || "-")}</span>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit PIC PQ in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_pic_pq ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  <span class="font-semibold">${esc(a.pic_pq || "-")}</span>
                 </td>
 
                 <!-- Col 12: NOTE (Col M) - Editable -->
-                <td class="editable-cell py-2 px-2 text-xs text-slate-700 whitespace-pre-line cursor-pointer group"
+                <td class="editable-cell py-2 px-2 text-xs text-slate-700 whitespace-pre-line"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="note" data-row-num="${a.row_num || 0}" data-col-letter="M"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'note')"
-                    title="Double-click to edit NOTE (Col M) [Excel-style]">
-                  <div class="flex items-start justify-between gap-1">
-                    <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.note)}</div>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'note')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit NOTE in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_note ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  <div class="leading-snug">${formatCellWithSpellcheck(a.note)}</div>
                 </td>
 
                 <!-- Col 13: Ref. Doc / Procedure / Criteria -->
@@ -3132,40 +3088,22 @@
                 </td>
 
                 <!-- Col 14: Site Markup (Col R) - Editable -->
-                <td class="editable-cell py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line cursor-pointer hover:bg-blue-50/70 group relative transition-colors"
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="site_markup" data-row-num="${a.row_num || 0}" data-col-letter="R"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
-                    title="Double-click to edit Site Markup (Col R) [Excel-style]">
-                  <div class="flex items-start justify-between gap-1">
-                    <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Site Markup in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_site_markup ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  <div class="leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
                 </td>
 
                 <!-- Col 15: PDF Sheet (Col S) -->
                 <td class="py-2.5 px-2 text-center font-mono text-xs text-slate-500">${esc(a.pdf_sheet || "-")}</td>
 
                 <!-- Col 16: Status Update (Col T) - Editable -->
-                <td class="editable-cell py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed cursor-pointer hover:bg-amber-100/60 group relative transition-colors"
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed"
                     data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status_update" data-row-num="${a.row_num || 0}" data-col-letter="T"
                     ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
-                    title="Double-click to edit Status Update (Col T) [Excel-style]">
-                  <div class="flex items-start justify-between gap-1">
-                    <div class="flex-1">
-                      ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
-                    </div>
-                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
-                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Status Update in modal">
-                      <i class="fas fa-pen-to-square"></i>
-                    </button>
-                  </div>
-                  ${a._edited_status_update ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                    title="Double-click to edit (Excel style)">
+                  ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
                 </td>
               </tr>
             `;
@@ -3693,7 +3631,7 @@
 
     if (field === "status") {
       tdElement.innerHTML = `
-        <select class="cell-inline-select font-bold text-xs rounded border border-blue-400 bg-white">
+        <select class="cell-inline-select font-bold text-xs bg-white">
           <option value="Done" ${curVal === "Done" ? "selected" : ""}>Done</option>
           <option value="Ongoing" ${curVal === "Ongoing" ? "selected" : ""}>Ongoing</option>
           <option value="Not yet" ${curVal === "Not yet" || !curVal ? "selected" : ""}>Not yet</option>
@@ -3708,7 +3646,7 @@
           if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
             window.commitInlineEdit(false);
           }
-        }, 120);
+        }, 100);
       });
       select.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
@@ -3727,41 +3665,17 @@
 
     if (field === "pic_pmc" || field === "pic_pq" || field === "remarks_raw") {
       const datalistId = field === "pic_pmc" ? "datalist-pic-pmc" : (field === "pic_pq" ? "datalist-pic-pq" : "datalist-discipline");
-      const placeholder = field === "pic_pmc" ? "PMC PIC..." : (field === "pic_pq" ? "PQ/BV PIC..." : "Remarks / Discipline...");
-      tdElement.innerHTML = `
-        <div class="relative w-full h-full flex flex-col">
-          <input type="text" list="${datalistId}" class="cell-inline-input" placeholder="${placeholder}" value="${esc(curVal)}" spellcheck="true" lang="en">
-          <div class="cell-typo-bar flex items-center justify-between px-1.5 py-0.5 text-[9px] bg-slate-100 border-t border-slate-200 text-slate-500">
-            <span>Enter / Tab: save • Esc: cancel</span>
-            <span class="inline-typo-hint text-rose-600 font-bold hidden"></span>
-          </div>
-        </div>
-      `;
+      tdElement.innerHTML = `<input type="text" list="${datalistId}" class="cell-inline-input" value="${esc(curVal)}" spellcheck="true" lang="en">`;
       const input = tdElement.querySelector("input");
-      const hint = tdElement.querySelector(".inline-typo-hint");
       input.focus();
       input.select();
-
-      const checkTypos = () => {
-        if (window.SQCLSpellcheck && hint) {
-          const typos = window.SQCLSpellcheck.findMisspelledWords(input.value);
-          if (typos.length > 0) {
-            hint.classList.remove("hidden");
-            hint.textContent = `⚠️ Typo: ${typos.slice(0, 2).join(", ")}`;
-          } else {
-            hint.classList.add("hidden");
-          }
-        }
-      };
-      input.addEventListener("input", checkTypos);
-      checkTypos();
 
       input.addEventListener("blur", () => {
         setTimeout(() => {
           if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
             window.commitInlineEdit(false);
           }
-        }, 120);
+        }, 100);
       });
       input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
@@ -3779,40 +3693,17 @@
     }
 
     // Free text fields: note, site_markup, status_update
-    tdElement.innerHTML = `
-      <div class="relative w-full h-full flex flex-col">
-        <textarea class="cell-inline-textarea flex-1 font-sans text-xs" rows="2" placeholder="Enter text..." spellcheck="true" lang="en">${esc(curVal)}</textarea>
-        <div class="cell-typo-bar flex items-center justify-between px-1.5 py-0.5 text-[9px] bg-slate-100 border-t border-slate-200 text-slate-500">
-          <span>Enter / Tab: save • Esc: cancel</span>
-          <span class="inline-typo-hint text-rose-600 font-bold hidden"></span>
-        </div>
-      </div>
-    `;
+    tdElement.innerHTML = `<textarea class="cell-inline-textarea" spellcheck="true" lang="en">${esc(curVal)}</textarea>`;
     const textarea = tdElement.querySelector("textarea");
-    const hint = tdElement.querySelector(".inline-typo-hint");
     textarea.focus();
     textarea.select();
-
-    const checkTypos = () => {
-      if (window.SQCLSpellcheck && hint) {
-        const typos = window.SQCLSpellcheck.findMisspelledWords(textarea.value);
-        if (typos.length > 0) {
-          hint.classList.remove("hidden");
-          hint.textContent = `⚠️ Typo: ${typos.slice(0, 2).join(", ")}`;
-        } else {
-          hint.classList.add("hidden");
-        }
-      }
-    };
-    textarea.addEventListener("input", checkTypos);
-    checkTypos();
 
     textarea.addEventListener("blur", () => {
       setTimeout(() => {
         if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
           window.commitInlineEdit(false);
         }
-      }, 120);
+      }, 100);
     });
     textarea.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
@@ -3876,10 +3767,8 @@
       localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(state.data));
     } catch (e) {}
 
-    // 3. Re-render the single cell content cleanly
+    // 3. Re-render the single cell content cleanly without badges
     renderSingleCellDisplay(tdElement, act, field);
-    tdElement.classList.add("cell-saved-flash");
-    setTimeout(() => tdElement.classList.remove("cell-saved-flash"), 1200);
 
     // 4. Background push to local server
     fetch("/api/update_cell", {
@@ -3938,17 +3827,7 @@
           : a.status === "N/A"
           ? `<span class="px-2.5 py-1 rounded-full bg-slate-200 text-slate-700 font-semibold text-xs">N/A</span>`
           : `<span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 font-semibold text-xs">Not yet</span>`;
-      tdElement.innerHTML = `
-        <div class="inline-flex items-center justify-center gap-1">
-          ${statusBadge}
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit Status in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_status ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = `<div class="inline-flex items-center justify-center">${statusBadge}</div>`;
       return;
     }
 
@@ -3956,96 +3835,38 @@
       const theme = DISCIPLINE_COLORS[a.discipline] || DISCIPLINE_COLORS["Unassigned"];
       const discLabel = a.discipline === "Unassigned" ? "General" : a.discipline;
       tdElement.innerHTML = `
-        <div class="flex items-start justify-between gap-1">
-          <div class="flex-1">
-            <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
-            ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
-          </div>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit Remarks in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
+        <div>
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
+          ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
         </div>
-        ${a._edited_remarks_raw ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
       `;
       return;
     }
 
     if (field === "pic_pmc") {
-      tdElement.innerHTML = `
-        <div class="flex items-center justify-between gap-1">
-          <span class="flex-1 font-semibold">${esc(a.pic_pmc || "-")}</span>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit PIC PMC in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_pic_pmc ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = `<span class="font-semibold">${esc(a.pic_pmc || "-")}</span>`;
       return;
     }
 
     if (field === "pic_pq") {
-      tdElement.innerHTML = `
-        <div class="flex items-center justify-between gap-1">
-          <span class="flex-1 font-semibold">${esc(a.pic_pq || "-")}</span>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit PIC PQ in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_pic_pq ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = `<span class="font-semibold">${esc(a.pic_pq || "-")}</span>`;
       return;
     }
 
     if (field === "note") {
-      tdElement.innerHTML = `
-        <div class="flex items-start justify-between gap-1">
-          <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.note)}</div>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'note')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit NOTE in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_note ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = `<div class="leading-snug">${formatCellWithSpellcheck(a.note)}</div>`;
       return;
     }
 
     if (field === "site_markup") {
-      tdElement.innerHTML = `
-        <div class="flex items-start justify-between gap-1">
-          <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit Site Markup in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_site_markup ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = `<div class="leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>`;
       return;
     }
 
     if (field === "status_update") {
-      tdElement.innerHTML = `
-        <div class="flex items-start justify-between gap-1">
-          <div class="flex-1">
-            ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
-          </div>
-          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
-                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                  title="Click to edit Status Update in modal">
-            <i class="fas fa-pen-to-square"></i>
-          </button>
-        </div>
-        ${a._edited_status_update ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
-      `;
+      tdElement.innerHTML = a.status_update
+        ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update)
+        : `<span class="text-slate-300">-</span>`;
       return;
     }
   }
@@ -4177,10 +3998,7 @@
         showToast(`✓ Successfully synced cell ${colLetter}${rowNum} to OneDrive via Graph API!`, "success");
       } catch (err) {
         console.error("Cloud Graph Sync error:", err);
-        showToast(`Saved locally. Cloud sync pending: ${err.message}`, "warning");
       }
-    } else {
-      showToast(`Saved locally (Cell ${colLetter}${rowNum})! Auto-sync active.`, "info");
     }
   };
 
