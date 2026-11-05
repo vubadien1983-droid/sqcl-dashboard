@@ -812,6 +812,7 @@
 
         const actItem = {
           id: `${uid}-${actCode}`,
+          row_num: r + 1,
           unit: uid,
           activity: actCode,
           section: currentSecCode,
@@ -2986,10 +2987,34 @@
                   ${a.procedure ? `<div><strong>Proc:</strong> ${esc(a.procedure)}</div>` : ""}
                   ${a.acceptance ? `<div class="text-[11px] text-slate-500"><strong>Crit:</strong> ${esc(a.acceptance)}</div>` : ""}
                 </td>
-                <td class="py-2.5 px-3 text-xs text-slate-700 whitespace-pre-line">${esc(a.site_markup || "-")}</td>
+                <td class="py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line cursor-pointer hover:bg-blue-50/70 group relative transition-colors"
+                    ondblclick="window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
+                    title="Double-click to edit Site Markup (Col R) and sync to OneDrive">
+                  <div class="flex items-start justify-between gap-1">
+                    <span class="flex-1">${esc(a.site_markup || "-")}</span>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit Site Markup">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_site_markup ? `<div class="mt-0.5"><span class="inline-block px-1.5 py-0.2 text-[9px] rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">● Local Edit</span></div>` : ""}
+                </td>
                 <td class="py-2.5 px-2 text-center font-mono text-xs text-slate-500">${esc(a.pdf_sheet || "-")}</td>
-                <td class="py-2.5 px-3 text-xs text-slate-900 bg-amber-50/20 whitespace-pre-line font-medium leading-relaxed">
-                  ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + esc(a.status_update) : `<span class="text-slate-300">-</span>`}
+                <td class="py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed cursor-pointer hover:bg-amber-100/60 group relative transition-colors"
+                    ondblclick="window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
+                    title="Double-click to edit Status Update (Col T) and sync to OneDrive">
+                  <div class="flex items-start justify-between gap-1">
+                    <div class="flex-1">
+                      ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + esc(a.status_update) : `<span class="text-slate-300">-</span>`}
+                    </div>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit Status Update">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_status_update ? `<div class="mt-0.5"><span class="inline-block px-1.5 py-0.2 text-[9px] rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">● Local Edit</span></div>` : ""}
                 </td>
               </tr>
             `;
@@ -3079,6 +3104,448 @@
     }
   };
 
+  /* =========================================================
+   * MICROSOFT GRAPH API & MSAL TWO-WAY CLOUD SYNC MODULE
+   * ========================================================= */
+  const ONEDRIVE_SHARE_TOKEN = "u!aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9jMjJhZDg0YmFlMDJkYjM1L0lRQzc2QWZ3VXh2eVRiTk9POVhLOFhYd0FWMHFwWWFXaWZrTUVnUm5PcnFkQzVNP2U9YmVkQ1Jp";
+  let msalClient = null;
+  let msalAccount = null;
+  let activeEditingCell = null;
+
+  function getAzureClientId() {
+    return localStorage.getItem("SQCL_AZURE_CLIENT_ID") || "";
+  }
+
+  function getStoredEdits() {
+    try {
+      return JSON.parse(localStorage.getItem("SQCL_USER_EDITS") || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveStoredEdits(edits) {
+    try {
+      localStorage.setItem("SQCL_USER_EDITS", JSON.stringify(edits));
+    } catch (e) {}
+    updatePendingEditsBadge();
+  }
+
+  function updatePendingEditsBadge() {
+    const edits = getStoredEdits();
+    const pendingCount = Object.values(edits).filter(e => !e.synced).length;
+    const badge = document.getElementById("pending-edits-count");
+    if (badge) {
+      badge.textContent = `${pendingCount} pending`;
+      if (pendingCount > 0) {
+        badge.className = "px-2 py-0.5 rounded-full bg-amber-500 text-white font-extrabold text-[10px] animate-pulse";
+      } else {
+        badge.className = "px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 font-extrabold text-[10px]";
+      }
+    }
+  }
+
+  function applyLocalEdits(data) {
+    if (!data || !data.units) return;
+    const edits = getStoredEdits();
+    for (const key of Object.keys(edits)) {
+      const edit = edits[key];
+      if (!edit || !edit.unit || !data.units[edit.unit]) continue;
+      const acts = data.units[edit.unit].activities || [];
+      const act = acts.find(a => a.id === edit.actId || (edit.row_num && a.row_num === edit.row_num));
+      if (act) {
+        act[edit.field] = edit.value;
+        act["_edited_" + edit.field] = true;
+      }
+    }
+  }
+
+  async function initMsal() {
+    if (typeof window.msal === "undefined") {
+      updateGraphUiStatus("unavailable");
+      return;
+    }
+    const clientId = getAzureClientId();
+    if (!clientId) {
+      updateGraphUiStatus("not_configured");
+      return;
+    }
+
+    try {
+      const msalConfig = {
+        auth: {
+          clientId: clientId,
+          authority: "https://login.microsoftonline.com/common",
+          redirectUri: window.location.origin + window.location.pathname
+        },
+        cache: {
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: false
+        }
+      };
+
+      msalClient = new msal.PublicClientApplication(msalConfig);
+      if (msalClient.initialize) {
+        await msalClient.initialize();
+      }
+
+      const accounts = msalClient.getAllAccounts();
+      if (accounts && accounts.length > 0) {
+        msalAccount = accounts[0];
+        updateGraphUiStatus("connected", msalAccount);
+      } else {
+        updateGraphUiStatus("disconnected");
+      }
+    } catch (e) {
+      console.warn("MSAL initialization notice:", e);
+      updateGraphUiStatus("error", null, e.message);
+    }
+  }
+
+  function updateGraphUiStatus(status, account = null, errMsg = "") {
+    const dot = document.getElementById("graph-status-dot");
+    const label = document.getElementById("graph-status-label");
+    const badge = document.getElementById("graph-badge");
+    const userNameEl = document.getElementById("graph-user-name");
+    const userEmailEl = document.getElementById("graph-user-email");
+    const btnLogin = document.getElementById("btn-graph-login");
+    const btnLogout = document.getElementById("btn-graph-logout");
+    const clientIdInp = document.getElementById("graph-client-id-input");
+
+    if (clientIdInp && !clientIdInp.value) {
+      clientIdInp.value = getAzureClientId();
+    }
+    updatePendingEditsBadge();
+
+    if (status === "connected" && account) {
+      if (dot) dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+      if (label) label.textContent = account.name ? account.name.split(" ")[0] : "Graph Live";
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800";
+        badge.textContent = "Live Connected";
+      }
+      if (userNameEl) userNameEl.textContent = account.name || "Microsoft Account";
+      if (userEmailEl) userEmailEl.textContent = account.username || "";
+      if (btnLogin) btnLogin.classList.add("hidden");
+      if (btnLogout) btnLogout.classList.remove("hidden");
+    } else if (status === "not_configured") {
+      if (dot) dot.className = "w-2 h-2 rounded-full bg-amber-400";
+      if (label) label.textContent = "Graph Setup";
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800";
+        badge.textContent = "Need Client ID";
+      }
+      if (userNameEl) userNameEl.textContent = "Setup Azure Client ID";
+      if (userEmailEl) userEmailEl.textContent = "Enter your free Azure App Client ID to enable cloud sync";
+      if (btnLogin) btnLogin.classList.remove("hidden");
+      if (btnLogout) btnLogout.classList.add("hidden");
+    } else {
+      if (dot) dot.className = "w-2 h-2 rounded-full bg-slate-400";
+      if (label) label.textContent = "Graph Sync";
+      if (badge) {
+        badge.className = "px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-600";
+        badge.textContent = "Disconnected";
+      }
+      if (userNameEl) userNameEl.textContent = "Not Connected";
+      if (userEmailEl) userEmailEl.textContent = "Sign in with Microsoft to enable 2-way cloud sync";
+      if (btnLogin) btnLogin.classList.remove("hidden");
+      if (btnLogout) btnLogout.classList.add("hidden");
+    }
+  }
+
+  window.openGraphModal = function () {
+    const modal = document.getElementById("graph-modal");
+    if (modal) modal.classList.remove("hidden");
+    updateGraphUiStatus(msalAccount ? "connected" : (getAzureClientId() ? "disconnected" : "not_configured"), msalAccount);
+  };
+
+  window.closeGraphModal = function () {
+    const modal = document.getElementById("graph-modal");
+    if (modal) modal.classList.add("hidden");
+  };
+
+  window.handleMicrosoftLogin = async function () {
+    const clientId = getAzureClientId();
+    if (!clientId) {
+      showToast("Please enter an Azure Client ID in the box below first.", "warning");
+      const inp = document.getElementById("graph-client-id-input");
+      if (inp) inp.focus();
+      return;
+    }
+    if (!msalClient) {
+      await initMsal();
+    }
+    if (!msalClient) {
+      showToast("Failed to initialize MSAL. Check your Client ID.", "error");
+      return;
+    }
+
+    try {
+      const loginRequest = {
+        scopes: ["Files.ReadWrite", "User.Read"]
+      };
+      const response = await msalClient.loginPopup(loginRequest);
+      msalAccount = response.account;
+      updateGraphUiStatus("connected", msalAccount);
+      showToast(`Signed in as ${msalAccount.name || msalAccount.username}!`, "success");
+      await pushAllPendingEditsToGraph();
+    } catch (e) {
+      console.error("Microsoft Login Error:", e);
+      showToast("Sign-in canceled or failed: " + (e.message || e), "error");
+    }
+  };
+
+  window.handleMicrosoftLogout = async function () {
+    if (!msalClient || !msalAccount) return;
+    try {
+      await msalClient.logoutPopup({ account: msalAccount });
+      msalAccount = null;
+      updateGraphUiStatus("disconnected");
+      showToast("Signed out from Microsoft account.", "info");
+    } catch (e) {
+      msalAccount = null;
+      updateGraphUiStatus("disconnected");
+    }
+  };
+
+  window.saveClientId = function () {
+    const inp = document.getElementById("graph-client-id-input");
+    if (!inp) return;
+    const val = inp.value.trim();
+    if (!val) {
+      localStorage.removeItem("SQCL_AZURE_CLIENT_ID");
+      showToast("Client ID cleared.", "info");
+    } else {
+      localStorage.setItem("SQCL_AZURE_CLIENT_ID", val);
+      showToast("Azure Client ID saved!", "success");
+    }
+    initMsal();
+  };
+
+  async function getGraphAccessToken() {
+    if (!msalClient || !msalAccount) return null;
+    try {
+      const tokenResp = await msalClient.acquireTokenSilent({
+        scopes: ["Files.ReadWrite", "User.Read"],
+        account: msalAccount
+      });
+      return tokenResp.accessToken;
+    } catch (e) {
+      try {
+        const tokenResp = await msalClient.acquireTokenPopup({
+          scopes: ["Files.ReadWrite", "User.Read"],
+          account: msalAccount
+        });
+        return tokenResp.accessToken;
+      } catch (err2) {
+        return null;
+      }
+    }
+  }
+
+  async function syncCellToMicrosoftGraph(unit, rowNum, colLetter, newValue) {
+    const token = await getGraphAccessToken();
+    if (!token) throw new Error("Please sign in with Microsoft to sync directly to OneDrive.");
+
+    const sheetName = unit === "GTG#1" ? "SQCL Check Sheet GTC#1" : "SQCL Check Sheet GTC#2";
+    const cellAddr = `${colLetter}${rowNum}`;
+    const endpoint = `https://graph.microsoft.com/v1.0/shares/${ONEDRIVE_SHARE_TOKEN}/driveItem/workbook/worksheets('${encodeURIComponent(sheetName)}')/range(address='${cellAddr}')`;
+
+    const resp = await fetch(endpoint, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        values: [[newValue]]
+      })
+    });
+
+    if (!resp.ok) {
+      const errText = await resp.text();
+      let errMsg = `HTTP ${resp.status}`;
+      try {
+        const errJson = JSON.parse(errText);
+        errMsg = errJson.error ? errJson.error.message : errMsg;
+      } catch (pe) {}
+      throw new Error(`Graph API error: ${errMsg}`);
+    }
+
+    return await resp.json();
+  }
+
+  window.pushAllPendingEditsToGraph = async function () {
+    const edits = getStoredEdits();
+    const pendingKeys = Object.keys(edits).filter(k => !edits[k].synced);
+    if (pendingKeys.length === 0) {
+      showToast("No pending edits to sync.", "info");
+      return;
+    }
+
+    if (!msalAccount) {
+      showToast("Please sign in with Microsoft first to push edits.", "warning");
+      openGraphModal();
+      return;
+    }
+
+    showToast(`Syncing ${pendingKeys.length} pending edit(s) to OneDrive...`, "info");
+    let successCount = 0;
+    let failCount = 0;
+
+    for (const key of pendingKeys) {
+      const edit = edits[key];
+      try {
+        await syncCellToMicrosoftGraph(edit.unit, edit.row_num, edit.colLetter, edit.value);
+        edit.synced = true;
+        successCount++;
+      } catch (err) {
+        console.error(`Failed to sync cell ${edit.colLetter}${edit.row_num}:`, err);
+        failCount++;
+      }
+    }
+
+    saveStoredEdits(edits);
+    if (successCount > 0) {
+      showToast(`✓ Successfully synced ${successCount} cell(s) to OneDrive!`, "success");
+    }
+    if (failCount > 0) {
+      showToast(`${failCount} edit(s) could not be synced. Check connection.`, "warning");
+    }
+  };
+
+  /* =========================================================
+   * QUICK CELL EDITOR (DOUBLE CLICK / TAP)
+   * ========================================================= */
+  window.openCellEditor = function (unit, actId, field) {
+    if (!state.data || !state.data.units || !state.data.units[unit]) return;
+    const activities = state.data.units[unit].activities || [];
+    const act = activities.find(a => a.id === actId);
+    if (!act) return;
+
+    activeEditingCell = { unit, actId, field, act };
+
+    const modal = document.getElementById("cell-edit-modal");
+    const badge = document.getElementById("edit-field-badge");
+    const title = document.getElementById("edit-modal-title");
+    const unitEl = document.getElementById("edit-unit-label");
+    const actEl = document.getElementById("edit-act-label");
+    const descEl = document.getElementById("edit-desc-label");
+    const cellEl = document.getElementById("edit-cell-label");
+    const sheetEl = document.getElementById("edit-sheet-label");
+    const textarea = document.getElementById("cell-edit-textarea");
+    const syncMsg = document.getElementById("cell-sync-status-msg");
+
+    const colLetter = field === "site_markup" ? "R" : "T";
+    const fieldName = field === "site_markup" ? "Site Markup (Checked PDF)" : "Status Update";
+    const sheetName = unit === "GTG#1" ? "SQCL Check Sheet GTC#1" : "SQCL Check Sheet GTC#2";
+
+    if (badge) badge.textContent = `${fieldName} • Col ${colLetter}`;
+    if (title) title.textContent = `Edit Activity ${act.activity}`;
+    if (unitEl) unitEl.textContent = `${unit} (${act.unit_code || ""})`;
+    if (actEl) actEl.textContent = act.activity;
+    if (descEl) descEl.textContent = act.description || "-";
+    if (cellEl) cellEl.textContent = `${colLetter}${act.row_num || "?"}`;
+    if (sheetEl) sheetEl.textContent = sheetName;
+    if (textarea) textarea.value = act[field] || "";
+
+    if (syncMsg) {
+      if (msalAccount) {
+        syncMsg.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected: ${esc(msalAccount.name || "Microsoft Account")}`;
+      } else {
+        syncMsg.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> Saved Locally (Push via Graph Sync button)`;
+      }
+    }
+
+    if (modal) modal.classList.remove("hidden");
+    if (textarea) {
+      setTimeout(() => textarea.focus(), 80);
+    }
+  };
+
+  window.closeCellEditModal = function () {
+    const modal = document.getElementById("cell-edit-modal");
+    if (modal) modal.classList.add("hidden");
+    activeEditingCell = null;
+  };
+
+  window.commitCellEdit = async function () {
+    if (!activeEditingCell) return;
+    const { unit, actId, field, act } = activeEditingCell;
+    const textarea = document.getElementById("cell-edit-textarea");
+    if (!textarea) return;
+
+    const newValue = textarea.value.trim();
+    const colLetter = field === "site_markup" ? "R" : "T";
+    const rowNum = act.row_num || 0;
+
+    // 1. Update in-memory state
+    act[field] = newValue;
+    act["_edited_" + field] = true;
+
+    // 2. Save into local persistent edits
+    const edits = getStoredEdits();
+    const editKey = `${unit}_${actId}_${field}`;
+    edits[editKey] = {
+      unit,
+      actId,
+      row_num: rowNum,
+      field,
+      colLetter,
+      value: newValue,
+      timestamp: new Date().toISOString(),
+      synced: false
+    };
+    saveStoredEdits(edits);
+
+    // Save offline snapshot
+    try {
+      localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(state.data));
+    } catch (e) {}
+
+    // Close modal & refresh view immediately
+    closeCellEditModal();
+    if (state.activeTab === "detail" || state.activeTab.startsWith("detail-")) {
+      renderDetailTab(state.activeTab);
+    }
+
+    // 3. Attempt local Python server update if running
+    try {
+      fetch("/api/update_cell", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ unit, row_num: rowNum, field, value: newValue })
+      }).catch(() => {});
+    } catch (e) {}
+
+    // 4. Attempt Microsoft Graph API Cloud Sync
+    if (msalAccount) {
+      showToast(`Syncing cell ${colLetter}${rowNum} to OneDrive...`, "info");
+      try {
+        await syncCellToMicrosoftGraph(unit, rowNum, colLetter, newValue);
+        edits[editKey].synced = true;
+        saveStoredEdits(edits);
+        showToast(`✓ Successfully synced cell ${colLetter}${rowNum} to OneDrive via Graph API!`, "success");
+      } catch (err) {
+        console.error("Cloud Graph Sync error:", err);
+        showToast(`Saved locally. Cloud sync pending: ${err.message}`, "warning");
+      }
+    } else {
+      showToast(`Saved locally (Cell ${colLetter}${rowNum})! Click 'Graph Sync' on header to push to OneDrive.`, "info");
+    }
+  };
+
+  document.addEventListener("keydown", (e) => {
+    if (activeEditingCell) {
+      if (e.key === "Escape") {
+        closeCellEditModal();
+      } else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        commitCellEdit();
+      }
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const modeParam = params.get("mode");
@@ -3121,6 +3588,13 @@
       const syncEl = document.getElementById("sync-status-text");
       if (syncEl) syncEl.textContent = `Last Synced: ${state.data.project_info.last_synced}`;
     }
+
+    // Apply any local edits saved in browser
+    if (state.data) {
+      applyLocalEdits(state.data);
+    }
+    // Initialize Microsoft MSAL / Graph API
+    initMsal();
 
     if (params.get("view") === "detail") {
       const criteria = {

@@ -16,6 +16,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
   <!-- SheetJS for Client-Side Excel Parsing -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- Microsoft Authentication Library (MSAL) Browser for Microsoft Graph API -->
+  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
   <!-- jsPDF & AutoTable for PDF Export -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
@@ -166,6 +168,16 @@
           <!-- Sync Status & Button -->
           <div class="flex items-center gap-1.5">
             <span id="sync-status-text" class="hidden xl:inline-block text-[11px] text-slate-400 mr-1"></span>
+            <!-- Microsoft Graph API Two-Way Sync Button -->
+            <button
+              id="btn-graph-sync"
+              onclick="openGraphModal()"
+              class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold shadow flex items-center gap-1.5 transition-all"
+              title="Microsoft Graph API Two-Way Live Sync (OneDrive)"
+            >
+              <span id="graph-status-dot" class="w-2 h-2 rounded-full bg-slate-400"></span>
+              <span id="graph-status-label" class="hidden sm:inline">Graph Sync</span>
+            </button>
             <button
               id="btn-sync-onedrive"
               onclick="syncFromOneDrive()"
@@ -548,6 +560,176 @@
       <div class="flex justify-end pt-2 border-t border-slate-100">
         <button onclick="closeShareModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
           Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: QUICK CELL EDIT (SITE MARKUP & STATUS UPDATE) -->
+  <div id="cell-edit-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div>
+          <span id="edit-field-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-blue-100 text-blue-800">
+            Site Markup
+          </span>
+          <h3 id="edit-modal-title" class="font-extrabold text-slate-900 text-base mt-1">
+            Edit Activity 5.5.3
+          </h3>
+        </div>
+        <button onclick="closeCellEditModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 text-xs space-y-1">
+          <div><strong class="text-slate-900">Unit:</strong> <span id="edit-unit-label"></span></div>
+          <div><strong class="text-slate-900">Activity:</strong> <span id="edit-act-label" class="font-bold text-blue-700"></span></div>
+          <div><strong class="text-slate-900">Description:</strong> <span id="edit-desc-label"></span></div>
+          <div class="pt-1 text-[11px] text-slate-500 border-t border-slate-200 flex items-center justify-between">
+            <span>Target Cell: <strong id="edit-cell-label" class="font-mono text-blue-600 font-bold"></strong></span>
+            <span>Sheet: <strong id="edit-sheet-label" class="font-mono text-slate-700"></strong></span>
+          </div>
+        </div>
+
+        <div>
+          <label id="edit-input-label" class="block font-bold text-slate-800 mb-1.5 flex items-center justify-between">
+            <span>Edit Content:</span>
+            <span class="text-[11px] font-normal text-slate-400">Ctrl+Enter to save</span>
+          </label>
+          <textarea
+            id="cell-edit-textarea"
+            rows="5"
+            placeholder="Enter markup or status update note..."
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:border-blue-500 font-sans leading-relaxed"
+          ></textarea>
+        </div>
+
+        <!-- Sync Status Box -->
+        <div id="cell-sync-status-box" class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 flex items-center justify-between">
+          <span id="cell-sync-status-msg" class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-slate-400"></span> Ready to save
+          </span>
+          <span id="cell-sync-mode-badge" class="font-semibold text-blue-600">OneDrive Graph API</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+        <button onclick="closeCellEditModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
+          Cancel
+        </button>
+        <button
+          id="btn-save-cell"
+          onclick="commitCellEdit()"
+          class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold shadow flex items-center gap-1.5 transition-all"
+        >
+          <i class="fas fa-cloud-arrow-up"></i> Save & Sync to OneDrive
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MICROSOFT GRAPH API SETTINGS & CONNECTION -->
+  <div id="graph-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
+          <i class="fab fa-microsoft text-blue-600 text-lg"></i>
+          Microsoft Graph API Two-Way Sync
+        </h3>
+        <button onclick="closeGraphModal()" class="text-slate-400 hover:text-slate-600">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Account Connection Card -->
+      <div id="graph-account-card" class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div id="graph-user-avatar" class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <div id="graph-user-name" class="font-extrabold text-xs sm:text-sm text-slate-900">Not Connected</div>
+              <div id="graph-user-email" class="text-[11px] text-slate-500">Sign in with Microsoft to enable 2-way cloud sync</div>
+            </div>
+          </div>
+          <span id="graph-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 text-slate-600">Disconnected</span>
+        </div>
+
+        <div class="pt-2 flex gap-2">
+          <button
+            id="btn-graph-login"
+            onclick="handleMicrosoftLogin()"
+            class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow transition-colors"
+          >
+            <i class="fab fa-windows"></i> Sign In with Microsoft
+          </button>
+          <button
+            id="btn-graph-logout"
+            onclick="handleMicrosoftLogout()"
+            class="hidden py-2 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs transition-colors"
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Azure App Client ID Configuration -->
+      <div class="space-y-2 text-xs">
+        <div class="flex items-center justify-between">
+          <label class="font-extrabold text-slate-900 flex items-center gap-1.5">
+            <i class="fas fa-key text-amber-500"></i> Azure App Client ID:
+          </label>
+          <span class="text-[10px] text-slate-400">Microsoft Entra / Azure AD</span>
+        </div>
+        <input
+          id="graph-client-id-input"
+          type="text"
+          placeholder="e.g. 11111111-2222-3333-4444-555555555555"
+          class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono focus:outline-none focus:border-blue-500"
+        />
+        <div class="flex justify-between items-center text-[11px] text-slate-500">
+          <span>Leave blank to use default public multi-tenant client.</span>
+          <button onclick="saveClientId()" class="text-blue-600 font-bold hover:underline">Save Client ID</button>
+        </div>
+      </div>
+
+      <!-- Pending Edits / Local Changes Sync -->
+      <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs space-y-2">
+        <div class="flex items-center justify-between text-amber-950 font-bold">
+          <span><i class="fas fa-clock-rotate-left mr-1"></i> Local Edits Queue:</span>
+          <span id="pending-edits-count" class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 font-extrabold text-[10px]">0 pending</span>
+        </div>
+        <p class="text-[11px] text-amber-800 leading-relaxed">
+          Edits made while offline or before signing in are saved safely in your browser. Click below to push all to OneDrive.
+        </p>
+        <button
+          onclick="pushAllPendingEditsToGraph()"
+          class="w-full py-1.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow transition-colors"
+        >
+          <i class="fas fa-cloud-arrow-up"></i> Push All Pending Changes Now
+        </button>
+      </div>
+
+      <!-- Quick 3-Step Setup Guide Accordion -->
+      <details class="text-xs bg-slate-50 p-3 rounded-xl border border-slate-200">
+        <summary class="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
+          <span><i class="fas fa-question-circle text-blue-500 mr-1"></i> How to create an Azure Client ID (2 mins, Free)</span>
+          <i class="fas fa-chevron-down text-slate-400 text-[10px]"></i>
+        </summary>
+        <div class="mt-2.5 space-y-1.5 text-slate-600 text-[11px] leading-relaxed">
+          <p>1. Go to <strong>portal.azure.com</strong> ➔ <em>Microsoft Entra ID</em> ➔ <em>App registrations</em> ➔ <strong>New registration</strong>.</p>
+          <p>2. Name: <code>SQCL Dashboard</code>. Supported account types: <em>"Accounts in any organizational directory and personal Microsoft accounts"</em>.</p>
+          <p>3. Redirect URI: Platform <strong>Single-page application (SPA)</strong>, URL: <code>https://vubadien1983-droid.github.io/sqcl-dashboard/</code> (and <code>http://localhost:8080/</code> for local dev).</p>
+          <p>4. Click <strong>Register</strong> and copy the <strong>Application (client) ID</strong> into the box above!</p>
+        </div>
+      </details>
+
+      <div class="flex justify-end pt-2 border-t border-slate-100">
+        <button onclick="closeGraphModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
+          Close
         </button>
       </div>
     </div>

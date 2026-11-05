@@ -491,6 +491,59 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": str(e)}, ensure_ascii=False).encode("utf-8"))
             return
 
+        if path == "/api/update_cell":
+            try:
+                payload = json.loads(body.decode("utf-8") or "{}")
+                unit = payload.get("unit", "GTG#1")
+                row_num = int(payload.get("row_num", 0))
+                field = payload.get("field", "site_markup")
+                new_value = payload.get("value", "")
+
+                col_idx = 18 if field == "site_markup" else 20
+                col_letter = "R" if field == "site_markup" else "T"
+                sheet_name = "SQCL Check Sheet GTC#1" if unit == "GTG#1" else "SQCL Check Sheet GTC#2"
+
+                # 1. Update Excel workbook on disk if it exists
+                if os.path.exists(EXCEL_FILE_PATH) and row_num > 0:
+                    wb = openpyxl.load_workbook(EXCEL_FILE_PATH)
+                    if sheet_name in wb.sheetnames:
+                        ws = wb[sheet_name]
+                        ws.cell(row=row_num, column=col_idx).value = new_value
+                        wb.save(EXCEL_FILE_PATH)
+
+                # 2. Update sqcl_data.json
+                if os.path.exists(DATA_JSON_PATH):
+                    with open(DATA_JSON_PATH, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    
+                    unit_acts = data.get("units", {}).get(unit, {}).get("activities", [])
+                    for act in unit_acts:
+                        if act.get("row_num") == row_num:
+                            act[field] = new_value
+                            break
+                    
+                    with open(DATA_JSON_PATH, "w", encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False)
+
+                self.send_response(200)
+                self.send_cors_headers()
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "status": "ok",
+                    "message": f"Successfully updated cell {col_letter}{row_num} in sheet '{sheet_name}'",
+                    "cell": f"{col_letter}{row_num}",
+                    "sheet": sheet_name,
+                    "value": new_value
+                }, ensure_ascii=False).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self.send_cors_headers()
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "message": str(e)}, ensure_ascii=False).encode("utf-8"))
+            return
+
         self.send_response(404)
         self.end_headers()
 
