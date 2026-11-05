@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const DEFAULT_COL_WIDTHS = [48, 75, 85, 360, 145, 110, 120, 120, 110, 150, 240, 220, 55, 260];
+  const DEFAULT_COL_WIDTHS = [45, 65, 75, 300, 140, 105, 105, 105, 100, 110, 110, 160, 180, 180, 50, 210];
 
   const state = {
     data: window.SQCL_INITIAL_DATA || null,
@@ -945,6 +945,13 @@
       btn.innerHTML = `<i class="fas fa-spinner fa-spin mr-1"></i> Syncing...`;
     }
 
+    // Always push pending local edits to cloud/local server first before pulling
+    try {
+      await pushAllPendingEditsSilently();
+    } catch (pushErr) {
+      console.warn("Pre-sync push pending edits error:", pushErr);
+    }
+
     let synced = false;
     let syncErrorMsg = "";
 
@@ -1212,13 +1219,13 @@
     ws.views = [{ showGridLines: true }];
 
     // Title banner
-    ws.mergeCells("A1:N1");
+    ws.mergeCells("A1:P1");
     ws.getCell("A1").value = `VIETNAM BLOCK B GAS PROJECT  |  ${payload.title}`;
     ws.getCell("A1").font = { name: "Calibri", size: 14, bold: true, color: { argb: "FFFFFFFF" } };
     ws.getCell("A1").fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF0F172A" } };
     ws.getRow(1).height = 28;
 
-    ws.mergeCells("A2:N2");
+    ws.mergeCells("A2:P2");
     ws.getCell("A2").value = `Doc: SOI0007689 Rev. 0 • Customer: MCDERMOTT PTSC CONSORTIUM (MPC) • Scope: ${payload.filter_desc}`;
     ws.getCell("A2").font = { name: "Calibri", size: 10, color: { argb: "FFE2E8F0" } };
     ws.getCell("A2").fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1E293B" } };
@@ -1226,9 +1233,10 @@
 
     // Header row
     const headers = [
-      "Unit", "Section", "Activity", "Activity Description", "Discipline",
-      "Status", "BH Sig", "CU Sig", "Signature Date", "Role (BH/CU)",
-      "PIC (PMC / PQ&BV)", "Ref.Doc / Procedure", "Acceptance / Site Markup", "PDF", "Status Update"
+      "Unit", "Section", "Activity", "Activity Description", "Remarks / Discipline",
+      "Status", "BH Sig", "CU Sig", "Signature Date",
+      "PIC (PMC)", "PIC (PQ/BV)", "NOTE", "Ref.Doc / Procedure / Criteria",
+      "Site Markup", "PDF", "Status Update"
     ];
     ws.getRow(4).values = headers;
     ws.getRow(4).font = { name: "Calibri", size: 10, bold: true, color: { argb: "FFFFFFFF" } };
@@ -1241,7 +1249,7 @@
       const secKey = `${a.unit}__${a.section}`;
       if (secKey !== lastSecKey) {
         lastSecKey = secKey;
-        ws.mergeCells(`A${curRow}:O${curRow}`);
+        ws.mergeCells(`A${curRow}:P${curRow}`);
         ws.getCell(`A${curRow}`).value = `[${a.unit}] SECTION ${a.section} — ${a.section_title} (PDF Sheet: ${a.pdf_sheet || "-"})`;
         ws.getCell(`A${curRow}`).font = { name: "Calibri", size: 10, bold: true, color: { argb: "FF1E3A8A" } };
         ws.getCell(`A${curRow}`).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFDBEAFE" } };
@@ -1250,19 +1258,21 @@
       }
 
       ws.getRow(curRow).values = [
-        a.unit, a.section, a.activity, a.description, a.discipline,
+        a.unit, a.section, a.activity, a.description, a.remarks_raw || a.discipline,
         a.status, a.bh_signed ? "Signed" : "Pending", a.cu_signed ? "Signed" : "Pending",
-        a.sig_date || "", `BH:${a.bh_role||"-"}/CU:${a.cu_role||"-"}`,
-        [a.pic_pmc, a.pic_pq].filter(Boolean).join(" / "),
-        [a.ref_doc ? a.ref_doc.replace(/\n/g, ", ") : "", a.procedure].filter(Boolean).join(" | "),
-        [a.acceptance, a.site_markup ? a.site_markup.replace(/\n/g, "; ") : ""].filter(Boolean).join(" | "),
+        a.sig_date || "",
+        a.pic_pmc || "",
+        a.pic_pq || "",
+        a.note || "",
+        [a.ref_doc ? a.ref_doc.replace(/\n/g, ", ") : "", a.procedure, a.acceptance].filter(Boolean).join(" | "),
+        a.site_markup || "",
         a.pdf_sheet || "",
         a.status_update || ""
       ];
       curRow++;
     });
 
-    const colWidths = [10, 10, 12, 45, 20, 12, 12, 12, 13, 14, 18, 28, 35, 10, 30];
+    const colWidths = [10, 10, 12, 45, 20, 12, 12, 12, 13, 16, 16, 25, 30, 25, 10, 30];
     colWidths.forEach((w, i) => {
       ws.getColumn(i + 1).width = w;
     });
@@ -1523,7 +1533,7 @@
             pdfRows.push([
               {
                 content: `[${a.unit}] SECTION ${a.section} — ${a.section_title}  (PDF Sheet: ${a.pdf_sheet || "-"})`,
-                colSpan: 12,
+                colSpan: 13,
                 styles: {
                   fillColor: [219, 234, 254],
                   textColor: [30, 58, 138],
@@ -1543,6 +1553,7 @@
             `${a.cu_signed ? "Signed" : "Pending"}${a.cu_role ? " (" + a.cu_role + ")" : ""}`,
             a.sig_date || "-",
             [a.pic_pmc, a.pic_pq].filter(Boolean).join(" / ") || "-",
+            a.note || "-",
             [a.site_markup ? a.site_markup.replace(/\n/g, "; ") : "", a.ref_doc ? a.ref_doc.split("\n")[0] : ""].filter(Boolean).join(" | ") || "-",
             a.pdf_sheet || "-",
             a.status_update || "-"
@@ -1568,7 +1579,7 @@
             halign: "center"
           },
           head: [
-            ["Unit", "Activity", "Activity Description", "Discipline", "Status", "BH Signature", "CU Signature", "Sig Date", "PIC (PMC/PQ)", "Site Markup / Ref Doc", "PDF", "Status Update"]
+            ["Unit", "Activity", "Activity Description", "Discipline", "Status", "BH Signature", "CU Signature", "Sig Date", "PIC (PMC/PQ)", "NOTE", "Site Markup / Ref Doc", "PDF", "Status Update"]
           ],
           body: pdfRows
         });
@@ -2963,7 +2974,7 @@
         const grpStats = computeStats(grp.items);
         const sectionHeaderRow = `
           <tr class="bg-blue-100/90 border-y-2 border-blue-300">
-            <td colspan="14" class="py-2.5 px-3">
+            <td colspan="16" class="py-2.5 px-3">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded bg-blue-700 text-white font-extrabold text-xs">${esc(grp.unit)}</span>
@@ -2991,6 +3002,8 @@
                 ? `<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs inline-flex items-center gap-1"><i class="fas fa-check text-[10px]"></i>Done</span>`
                 : a.status === "Ongoing"
                 ? `<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-xs inline-flex items-center gap-1"><i class="fas fa-spinner text-[10px]"></i>Ongoing</span>`
+                : a.status === "N/A"
+                ? `<span class="px-2.5 py-1 rounded-full bg-slate-200 text-slate-700 font-semibold text-xs">N/A</span>`
                 : `<span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 font-semibold text-xs">Not yet</span>`;
 
             const bhBadge = a.bh_signed
@@ -3012,57 +3025,147 @@
                 </td>
                 <td class="py-2.5 px-2 text-center font-extrabold text-blue-700 whitespace-nowrap">${esc(a.activity)}</td>
                 <td class="py-2.5 px-3 font-medium text-slate-900 leading-snug">${esc(a.description)}</td>
-                <td class="py-2.5 px-2">
-                  <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
+                
+                <!-- Col 5: Remarks / Discipline (Col Q) - Editable -->
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-800 cursor-pointer group"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="remarks_raw" data-row-num="${a.row_num || 0}" data-col-letter="Q"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
+                    title="Double-click to edit Remarks / Discipline (Col Q) [Excel-style]">
+                  <div class="flex items-start justify-between gap-1">
+                    <div class="flex-1">
+                      <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
+                      ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
+                    </div>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit Remarks in modal">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_remarks_raw ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
                 </td>
-                <td class="py-2.5 px-2 text-center whitespace-nowrap">${statusBadge}</td>
+
+                <!-- Col 6: Status (Col P) - Editable -->
+                <td class="editable-cell py-2 px-2 text-center whitespace-nowrap cursor-pointer group"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status" data-row-num="${a.row_num || 0}" data-col-letter="P"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status')"
+                    title="Double-click to edit Status (Col P) [Excel-style]">
+                  <div class="inline-flex items-center justify-center gap-1">
+                    ${statusBadge}
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit Status in modal">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_status ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                </td>
+
+                <!-- Col 7: BH Signature -->
                 <td class="py-2.5 px-2 text-center whitespace-nowrap">
                   ${bhBadge}
                   ${a.bh_role ? `<div class="text-[10px] text-slate-400 mt-0.5">Role: ${esc(a.bh_role)} | Check: ${esc(a.check_type)}</div>` : ""}
                 </td>
+
+                <!-- Col 8: CU Signature -->
                 <td class="py-2.5 px-2 text-center whitespace-nowrap">
                   ${cuBadge}
                   ${a.cu_role ? `<div class="text-[10px] text-slate-400 mt-0.5">Role: ${esc(a.cu_role)}</div>` : ""}
                 </td>
+
+                <!-- Col 9: Signature Date -->
                 <td class="py-2.5 px-2 text-center text-xs font-medium text-slate-700 whitespace-nowrap">${esc(a.sig_date || "-")}</td>
-                <td class="py-2.5 px-2 text-xs">
-                  ${a.pic_pmc ? `<div><span class="text-slate-400">PMC:</span> <strong>${esc(a.pic_pmc)}</strong></div>` : ""}
-                  ${a.pic_pq ? `<div><span class="text-slate-400">PQ/BV:</span> <strong>${esc(a.pic_pq)}</strong></div>` : ""}
-                  ${!a.pic_pmc && !a.pic_pq ? `<span class="text-slate-300">-</span>` : ""}
+
+                <!-- Col 10: PIC PMC (Col N) - Editable -->
+                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800 cursor-pointer group"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pmc" data-row-num="${a.row_num || 0}" data-col-letter="N"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
+                    title="Double-click to edit PIC PMC (Col N) [Excel-style]">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="flex-1 font-semibold">${esc(a.pic_pmc || "-")}</span>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit PIC PMC in modal">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_pic_pmc ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
                 </td>
+
+                <!-- Col 11: PIC PQ/BV (Col O) - Editable -->
+                <td class="editable-cell py-2 px-2 text-xs font-medium text-slate-800 cursor-pointer group"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="pic_pq" data-row-num="${a.row_num || 0}" data-col-letter="O"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
+                    title="Double-click to edit PIC PQ/BV (Col O) [Excel-style]">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="flex-1 font-semibold">${esc(a.pic_pq || "-")}</span>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit PIC PQ in modal">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_pic_pq ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                </td>
+
+                <!-- Col 12: NOTE (Col M) - Editable -->
+                <td class="editable-cell py-2 px-2 text-xs text-slate-700 whitespace-pre-line cursor-pointer group"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="note" data-row-num="${a.row_num || 0}" data-col-letter="M"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'note')"
+                    title="Double-click to edit NOTE (Col M) [Excel-style]">
+                  <div class="flex items-start justify-between gap-1">
+                    <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.note)}</div>
+                    <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'note')"
+                            class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                            title="Click to edit NOTE in modal">
+                      <i class="fas fa-pen-to-square"></i>
+                    </button>
+                  </div>
+                  ${a._edited_note ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+                </td>
+
+                <!-- Col 13: Ref. Doc / Procedure / Criteria -->
                 <td class="py-2.5 px-3 text-xs text-slate-600">
                   ${a.ref_doc ? `<div class="truncate max-w-[220px]" title="${esc(a.ref_doc)}"><strong>Ref:</strong> ${esc(a.ref_doc.replace(/\n/g, ", "))}</div>` : ""}
                   ${a.procedure ? `<div><strong>Proc:</strong> ${esc(a.procedure)}</div>` : ""}
                   ${a.acceptance ? `<div class="text-[11px] text-slate-500"><strong>Crit:</strong> ${esc(a.acceptance)}</div>` : ""}
                 </td>
-                <td class="py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line cursor-pointer hover:bg-blue-50/70 group relative transition-colors"
-                    ondblclick="window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
-                    title="Double-click to edit Site Markup (Col R) and sync to OneDrive">
+
+                <!-- Col 14: Site Markup (Col R) - Editable -->
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-700 whitespace-pre-line cursor-pointer hover:bg-blue-50/70 group relative transition-colors"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="site_markup" data-row-num="${a.row_num || 0}" data-col-letter="R"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
+                    title="Double-click to edit Site Markup (Col R) [Excel-style]">
                   <div class="flex items-start justify-between gap-1">
-                    <span class="flex-1">${esc(a.site_markup || "-")}</span>
+                    <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
                     <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
                             class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Site Markup">
+                            title="Click to edit Site Markup in modal">
                       <i class="fas fa-pen-to-square"></i>
                     </button>
                   </div>
-                  ${a._edited_site_markup ? `<div class="mt-0.5"><span class="inline-block px-1.5 py-0.2 text-[9px] rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">● Local Edit</span></div>` : ""}
+                  ${a._edited_site_markup ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
                 </td>
+
+                <!-- Col 15: PDF Sheet (Col S) -->
                 <td class="py-2.5 px-2 text-center font-mono text-xs text-slate-500">${esc(a.pdf_sheet || "-")}</td>
-                <td class="py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed cursor-pointer hover:bg-amber-100/60 group relative transition-colors"
-                    ondblclick="window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
-                    title="Double-click to edit Status Update (Col T) and sync to OneDrive">
+
+                <!-- Col 16: Status Update (Col T) - Editable -->
+                <td class="editable-cell py-2 px-2.5 text-xs text-slate-900 bg-amber-50/25 whitespace-pre-line font-medium leading-relaxed cursor-pointer hover:bg-amber-100/60 group relative transition-colors"
+                    data-unit="${esc(a.unit)}" data-act-id="${esc(a.id)}" data-field="status_update" data-row-num="${a.row_num || 0}" data-col-letter="T"
+                    ondblclick="window.startInlineCellEdit(this, '${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
+                    title="Double-click to edit Status Update (Col T) [Excel-style]">
                   <div class="flex items-start justify-between gap-1">
                     <div class="flex-1">
-                      ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + esc(a.status_update) : `<span class="text-slate-300">-</span>`}
+                      ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
                     </div>
                     <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
                             class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
-                            title="Click to edit Status Update">
+                            title="Click to edit Status Update in modal">
                       <i class="fas fa-pen-to-square"></i>
                     </button>
                   </div>
-                  ${a._edited_status_update ? `<div class="mt-0.5"><span class="inline-block px-1.5 py-0.2 text-[9px] rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">● Local Edit</span></div>` : ""}
+                  ${a._edited_status_update ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
                 </td>
               </tr>
             `;
@@ -3074,9 +3177,9 @@
       .join("");
 
     const thHeaders = [
-      "#", "Unit", "Activity", "Activity Description", "Discipline",
+      "#", "Unit", "Activity", "Activity Description", "Remarks / Discipline",
       "Status", "BH Signature", "CU Signature", "Signature Date",
-      "PIC (PMC / PQ&BV)", "Ref. Doc / Procedure / Criteria",
+      "PIC (PMC)", "PIC (PQ/BV)", "NOTE", "Ref. Doc / Procedure / Criteria",
       "Site Markup (Checked PDF)", "PDF", "Status Update"
     ];
 
@@ -3217,8 +3320,18 @@
       const acts = data.units[edit.unit].activities || [];
       const act = acts.find(a => a.id === edit.actId || (edit.row_num && a.row_num === edit.row_num));
       if (act) {
-        act[edit.field] = edit.value;
-        act["_edited_" + edit.field] = true;
+        if (edit.field === "remarks_raw" || edit.field === "remarks" || edit.field === "discipline") {
+          act.remarks_raw = edit.value;
+          act.discipline = normalizeDisciplineInBrowser(edit.value);
+          act._edited_remarks_raw = true;
+        } else if (edit.field === "status") {
+          act.status = edit.value;
+          act.done_unsigned = (edit.value === "Done") && (!act.both_signed);
+          act._edited_status = true;
+        } else {
+          act[edit.field] = edit.value;
+          act["_edited_" + edit.field] = true;
+        }
       }
     }
   }
@@ -3478,7 +3591,467 @@
   };
 
   /* =========================================================
-   * QUICK CELL EDITOR (DOUBLE CLICK / TAP)
+   * BACKGROUND AUTO-SYNC & EXCEL-LIKE INLINE CELL EDITING
+   * ========================================================= */
+  async function pushAllPendingEditsSilently() {
+    const edits = getStoredEdits();
+    const pendingKeys = Object.keys(edits).filter(k => !edits[k].synced);
+    if (pendingKeys.length === 0) return;
+
+    for (const key of pendingKeys) {
+      const edit = edits[key];
+      let syncedThis = false;
+
+      // 1. Try local server
+      try {
+        const resp = await fetch("/api/update_cell", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ unit: edit.unit, row_num: edit.row_num, field: edit.field, value: edit.value })
+        });
+        if (resp.ok) {
+          const res = await resp.json();
+          if (res && res.status === "ok") {
+            edit.synced = true;
+            syncedThis = true;
+          }
+        }
+      } catch (e) {}
+
+      // 2. Try Microsoft Graph API if signed in
+      if (!syncedThis && msalAccount) {
+        try {
+          await syncCellToMicrosoftGraph(edit.unit, edit.row_num, edit.colLetter, edit.value);
+          edit.synced = true;
+          syncedThis = true;
+        } catch (e) {}
+      }
+    }
+    saveStoredEdits(edits);
+  }
+
+  // Periodic background auto-sync every 30 seconds
+  setInterval(() => {
+    pushAllPendingEditsSilently().catch(() => {});
+  }, 30000);
+
+  function formatCellWithSpellcheck(text) {
+    if (!text) return '<span class="text-slate-300">-</span>';
+    if (window.SQCLSpellcheck && typeof window.SQCLSpellcheck.highlightEnglishTypos === "function") {
+      return window.SQCLSpellcheck.highlightEnglishTypos(text);
+    }
+    return esc(text);
+  }
+
+  const FIELD_MAP_INFO = {
+    note: { col: 13, letter: "M", name: "NOTE" },
+    pic_pmc: { col: 14, letter: "N", name: "Person-In-Charge (PMC)" },
+    pic_pq: { col: 15, letter: "O", name: "Person-In-Charge (PQ POC & BV)" },
+    status: { col: 16, letter: "P", name: "Status" },
+    remarks_raw: { col: 17, letter: "Q", name: "Remarks / Discipline" },
+    remarks: { col: 17, letter: "Q", name: "Remarks / Discipline" },
+    discipline: { col: 17, letter: "Q", name: "Remarks / Discipline" },
+    site_markup: { col: 18, letter: "R", name: "Site Markup (Checked PDF)" },
+    pdf_sheet: { col: 19, letter: "S", name: "PDF Sheet" },
+    status_update: { col: 20, letter: "T", name: "Status Update" }
+  };
+
+  let activeInlineEditor = null;
+
+  function findActivity(unit, actId) {
+    if (!state.data || !state.data.units || !state.data.units[unit]) return null;
+    const acts = state.data.units[unit].activities || [];
+    return acts.find((a) => a.id === actId);
+  }
+
+  window.finishCurrentInlineEdit = function () {
+    if (activeInlineEditor) {
+      window.commitInlineEdit(false);
+    }
+  };
+
+  window.startInlineCellEdit = function (tdElement, unit, actId, field) {
+    if (!tdElement) return;
+    if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) return;
+    window.finishCurrentInlineEdit();
+
+    const act = findActivity(unit, actId);
+    if (!act) return;
+
+    const curVal = act[field] || "";
+    activeInlineEditor = {
+      tdElement,
+      unit,
+      actId,
+      field,
+      act,
+      originalValue: curVal,
+      originalHtml: tdElement.innerHTML
+    };
+
+    tdElement.classList.add("cell-editing");
+
+    if (field === "status") {
+      tdElement.innerHTML = `
+        <select class="cell-inline-select font-bold text-xs rounded border border-blue-400 bg-white">
+          <option value="Done" ${curVal === "Done" ? "selected" : ""}>Done</option>
+          <option value="Ongoing" ${curVal === "Ongoing" ? "selected" : ""}>Ongoing</option>
+          <option value="Not yet" ${curVal === "Not yet" || !curVal ? "selected" : ""}>Not yet</option>
+          <option value="N/A" ${curVal === "N/A" ? "selected" : ""}>N/A</option>
+        </select>
+      `;
+      const select = tdElement.querySelector("select");
+      select.focus();
+      select.addEventListener("change", () => window.commitInlineEdit(false));
+      select.addEventListener("blur", () => {
+        setTimeout(() => {
+          if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
+            window.commitInlineEdit(false);
+          }
+        }, 120);
+      });
+      select.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          window.commitInlineEdit(false);
+        } else if (e.key === "Tab") {
+          e.preventDefault();
+          window.commitInlineEdit(e.shiftKey ? -1 : 1);
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          window.cancelInlineEdit();
+        }
+      });
+      return;
+    }
+
+    if (field === "pic_pmc" || field === "pic_pq" || field === "remarks_raw") {
+      const datalistId = field === "pic_pmc" ? "datalist-pic-pmc" : (field === "pic_pq" ? "datalist-pic-pq" : "datalist-discipline");
+      const placeholder = field === "pic_pmc" ? "PMC PIC..." : (field === "pic_pq" ? "PQ/BV PIC..." : "Remarks / Discipline...");
+      tdElement.innerHTML = `
+        <div class="relative w-full h-full flex flex-col">
+          <input type="text" list="${datalistId}" class="cell-inline-input" placeholder="${placeholder}" value="${esc(curVal)}" spellcheck="true" lang="en">
+          <div class="cell-typo-bar flex items-center justify-between px-1.5 py-0.5 text-[9px] bg-slate-100 border-t border-slate-200 text-slate-500">
+            <span>Enter / Tab: save • Esc: cancel</span>
+            <span class="inline-typo-hint text-rose-600 font-bold hidden"></span>
+          </div>
+        </div>
+      `;
+      const input = tdElement.querySelector("input");
+      const hint = tdElement.querySelector(".inline-typo-hint");
+      input.focus();
+      input.select();
+
+      const checkTypos = () => {
+        if (window.SQCLSpellcheck && hint) {
+          const typos = window.SQCLSpellcheck.findMisspelledWords(input.value);
+          if (typos.length > 0) {
+            hint.classList.remove("hidden");
+            hint.textContent = `⚠️ Typo: ${typos.slice(0, 2).join(", ")}`;
+          } else {
+            hint.classList.add("hidden");
+          }
+        }
+      };
+      input.addEventListener("input", checkTypos);
+      checkTypos();
+
+      input.addEventListener("blur", () => {
+        setTimeout(() => {
+          if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
+            window.commitInlineEdit(false);
+          }
+        }, 120);
+      });
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          window.commitInlineEdit(false);
+        } else if (e.key === "Tab") {
+          e.preventDefault();
+          window.commitInlineEdit(e.shiftKey ? -1 : 1);
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          window.cancelInlineEdit();
+        }
+      });
+      return;
+    }
+
+    // Free text fields: note, site_markup, status_update
+    tdElement.innerHTML = `
+      <div class="relative w-full h-full flex flex-col">
+        <textarea class="cell-inline-textarea flex-1 font-sans text-xs" rows="2" placeholder="Enter text..." spellcheck="true" lang="en">${esc(curVal)}</textarea>
+        <div class="cell-typo-bar flex items-center justify-between px-1.5 py-0.5 text-[9px] bg-slate-100 border-t border-slate-200 text-slate-500">
+          <span>Enter / Tab: save • Esc: cancel</span>
+          <span class="inline-typo-hint text-rose-600 font-bold hidden"></span>
+        </div>
+      </div>
+    `;
+    const textarea = tdElement.querySelector("textarea");
+    const hint = tdElement.querySelector(".inline-typo-hint");
+    textarea.focus();
+    textarea.select();
+
+    const checkTypos = () => {
+      if (window.SQCLSpellcheck && hint) {
+        const typos = window.SQCLSpellcheck.findMisspelledWords(textarea.value);
+        if (typos.length > 0) {
+          hint.classList.remove("hidden");
+          hint.textContent = `⚠️ Typo: ${typos.slice(0, 2).join(", ")}`;
+        } else {
+          hint.classList.add("hidden");
+        }
+      }
+    };
+    textarea.addEventListener("input", checkTypos);
+    checkTypos();
+
+    textarea.addEventListener("blur", () => {
+      setTimeout(() => {
+        if (activeInlineEditor && activeInlineEditor.tdElement === tdElement) {
+          window.commitInlineEdit(false);
+        }
+      }, 120);
+    });
+    textarea.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        window.commitInlineEdit(false);
+      } else if (e.key === "Tab") {
+        e.preventDefault();
+        window.commitInlineEdit(e.shiftKey ? -1 : 1);
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        window.cancelInlineEdit();
+      }
+    });
+  };
+
+  window.commitInlineEdit = function (tabDirection) {
+    if (!activeInlineEditor) return;
+    const { tdElement, unit, actId, field, act, originalValue } = activeInlineEditor;
+    activeInlineEditor = null;
+
+    let newValue = originalValue;
+    const select = tdElement.querySelector("select");
+    const input = tdElement.querySelector("input");
+    const textarea = tdElement.querySelector("textarea");
+
+    if (select) newValue = select.value.trim();
+    else if (input) newValue = input.value.trim();
+    else if (textarea) newValue = textarea.value.trim();
+
+    tdElement.classList.remove("cell-editing");
+
+    // 1. Update memory
+    act[field] = newValue;
+    act["_edited_" + field] = true;
+    if (field === "status") {
+      act.done_unsigned = (newValue === "Done") && (!act.both_signed);
+    }
+    if (field === "remarks_raw") {
+      act.discipline = normalizeDisciplineInBrowser(newValue);
+    }
+
+    // 2. Save locally into SQCL_USER_EDITS
+    const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
+    const rowNum = act.row_num || 0;
+    const edits = getStoredEdits();
+    const editKey = `${unit}_${actId}_${field}`;
+    edits[editKey] = {
+      unit,
+      actId,
+      row_num: rowNum,
+      field,
+      colLetter: colInfo.letter,
+      value: newValue,
+      timestamp: new Date().toISOString(),
+      synced: false
+    };
+    saveStoredEdits(edits);
+
+    // Save offline snapshot
+    try {
+      localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(state.data));
+    } catch (e) {}
+
+    // 3. Re-render the single cell content cleanly
+    renderSingleCellDisplay(tdElement, act, field);
+    tdElement.classList.add("cell-saved-flash");
+    setTimeout(() => tdElement.classList.remove("cell-saved-flash"), 1200);
+
+    // 4. Background push to local server
+    fetch("/api/update_cell", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ unit, row_num: rowNum, field, value: newValue })
+    }).then(r => r.ok && r.json()).then(res => {
+      if (res && res.status === "ok") {
+        edits[editKey].synced = true;
+        saveStoredEdits(edits);
+      }
+    }).catch(() => {});
+
+    // 5. Cloud Graph push if logged in
+    if (msalAccount) {
+      syncCellToMicrosoftGraph(unit, rowNum, colInfo.letter, newValue).then(() => {
+        edits[editKey].synced = true;
+        saveStoredEdits(edits);
+      }).catch(() => {});
+    }
+
+    // 6. Handle Tab key navigation to next editable cell
+    if (tabDirection && typeof tabDirection === "number") {
+      const allEditable = Array.from(document.querySelectorAll(".editable-cell"));
+      const curIdx = allEditable.indexOf(tdElement);
+      if (curIdx !== -1) {
+        const nextIdx = curIdx + tabDirection;
+        if (nextIdx >= 0 && nextIdx < allEditable.length) {
+          const nextTd = allEditable[nextIdx];
+          const nUnit = nextTd.getAttribute("data-unit");
+          const nActId = nextTd.getAttribute("data-act-id");
+          const nField = nextTd.getAttribute("data-field");
+          setTimeout(() => {
+            window.startInlineCellEdit(nextTd, nUnit, nActId, nField);
+          }, 50);
+        }
+      }
+    }
+  };
+
+  window.cancelInlineEdit = function () {
+    if (!activeInlineEditor) return;
+    const { tdElement, originalHtml } = activeInlineEditor;
+    activeInlineEditor = null;
+    tdElement.classList.remove("cell-editing");
+    tdElement.innerHTML = originalHtml;
+  };
+
+  function renderSingleCellDisplay(tdElement, a, field) {
+    if (field === "status") {
+      const statusBadge =
+        a.status === "Done"
+          ? `<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs inline-flex items-center gap-1"><i class="fas fa-check text-[10px]"></i>Done</span>`
+          : a.status === "Ongoing"
+          ? `<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-xs inline-flex items-center gap-1"><i class="fas fa-spinner text-[10px]"></i>Ongoing</span>`
+          : a.status === "N/A"
+          ? `<span class="px-2.5 py-1 rounded-full bg-slate-200 text-slate-700 font-semibold text-xs">N/A</span>`
+          : `<span class="px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 font-semibold text-xs">Not yet</span>`;
+      tdElement.innerHTML = `
+        <div class="inline-flex items-center justify-center gap-1">
+          ${statusBadge}
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit Status in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_status ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "remarks_raw") {
+      const theme = DISCIPLINE_COLORS[a.discipline] || DISCIPLINE_COLORS["Unassigned"];
+      const discLabel = a.discipline === "Unassigned" ? "General" : a.discipline;
+      tdElement.innerHTML = `
+        <div class="flex items-start justify-between gap-1">
+          <div class="flex-1">
+            <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold border ${theme.badge}">${esc(discLabel)}</span>
+            ${a.remarks_raw && a.remarks_raw !== discLabel ? `<div class="mt-1 text-[11px] text-slate-600">${formatCellWithSpellcheck(a.remarks_raw)}</div>` : ""}
+          </div>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'remarks_raw')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit Remarks in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_remarks_raw ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "pic_pmc") {
+      tdElement.innerHTML = `
+        <div class="flex items-center justify-between gap-1">
+          <span class="flex-1 font-semibold">${esc(a.pic_pmc || "-")}</span>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pmc')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit PIC PMC in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_pic_pmc ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "pic_pq") {
+      tdElement.innerHTML = `
+        <div class="flex items-center justify-between gap-1">
+          <span class="flex-1 font-semibold">${esc(a.pic_pq || "-")}</span>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'pic_pq')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit PIC PQ in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_pic_pq ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "note") {
+      tdElement.innerHTML = `
+        <div class="flex items-start justify-between gap-1">
+          <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.note)}</div>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'note')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit NOTE in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_note ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "site_markup") {
+      tdElement.innerHTML = `
+        <div class="flex items-start justify-between gap-1">
+          <div class="flex-1 leading-snug">${formatCellWithSpellcheck(a.site_markup)}</div>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'site_markup')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit Site Markup in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_site_markup ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+
+    if (field === "status_update") {
+      tdElement.innerHTML = `
+        <div class="flex items-start justify-between gap-1">
+          <div class="flex-1">
+            ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + formatCellWithSpellcheck(a.status_update) : `<span class="text-slate-300">-</span>`}
+          </div>
+          <button onclick="event.stopPropagation(); window.openCellEditor('${esc(a.unit)}', '${esc(a.id)}', 'status_update')"
+                  class="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-blue-600 transition-opacity text-[11px] shrink-0"
+                  title="Click to edit Status Update in modal">
+            <i class="fas fa-pen-to-square"></i>
+          </button>
+        </div>
+        ${a._edited_status_update ? `<div class="mt-0.5"><span class="local-edit-pill">● Saved</span></div>` : ""}
+      `;
+      return;
+    }
+  }
+
+  /* =========================================================
+   * MODAL CELL EDITOR (POPUP DIALOG OPTION)
    * ========================================================= */
   window.openCellEditor = function (unit, actId, field) {
     if (!state.data || !state.data.units || !state.data.units[unit]) return;
@@ -3499,8 +4072,9 @@
     const textarea = document.getElementById("cell-edit-textarea");
     const syncMsg = document.getElementById("cell-sync-status-msg");
 
-    const colLetter = field === "site_markup" ? "R" : "T";
-    const fieldName = field === "site_markup" ? "Site Markup (Checked PDF)" : "Status Update";
+    const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
+    const colLetter = colInfo.letter;
+    const fieldName = colInfo.name;
     const sheetName = unit === "GTG#1" ? "SQCL Check Sheet GTC#1" : "SQCL Check Sheet GTC#2";
 
     if (badge) badge.textContent = `${fieldName} • Col ${colLetter}`;
@@ -3516,7 +4090,7 @@
       if (msalAccount) {
         syncMsg.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected: ${esc(msalAccount.name || "Microsoft Account")}`;
       } else {
-        syncMsg.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> Saved Locally (Push via Graph Sync button)`;
+        syncMsg.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> Saved Locally (Auto-syncs in background)`;
       }
     }
 
@@ -3539,12 +4113,19 @@
     if (!textarea) return;
 
     const newValue = textarea.value.trim();
-    const colLetter = field === "site_markup" ? "R" : "T";
+    const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
+    const colLetter = colInfo.letter;
     const rowNum = act.row_num || 0;
 
     // 1. Update in-memory state
     act[field] = newValue;
     act["_edited_" + field] = true;
+    if (field === "status") {
+      act.done_unsigned = (newValue === "Done") && (!act.both_signed);
+    }
+    if (field === "remarks_raw") {
+      act.discipline = normalizeDisciplineInBrowser(newValue);
+    }
 
     // 2. Save into local persistent edits
     const edits = getStoredEdits();
@@ -3578,6 +4159,11 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ unit, row_num: rowNum, field, value: newValue })
+      }).then(r => r.ok && r.json()).then(res => {
+        if (res && res.status === "ok") {
+          edits[editKey].synced = true;
+          saveStoredEdits(edits);
+        }
       }).catch(() => {});
     } catch (e) {}
 
@@ -3594,7 +4180,7 @@
         showToast(`Saved locally. Cloud sync pending: ${err.message}`, "warning");
       }
     } else {
-      showToast(`Saved locally (Cell ${colLetter}${rowNum})! Click 'Graph Sync' on header to push to OneDrive.`, "info");
+      showToast(`Saved locally (Cell ${colLetter}${rowNum})! Auto-sync active.`, "info");
     }
   };
 

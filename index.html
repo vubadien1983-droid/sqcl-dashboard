@@ -25,6 +25,8 @@
   <script src="./static/fonts/roboto_vfs.js"></script>
   <!-- Pre-bundled Initial Data from OneDrive Excel -->
   <script src="./sqcl_data_bundle.js"></script>
+  <!-- English Spellcheck & Typo Highlighter -->
+  <script src="./static/spellcheck.js"></script>
 
   <style>
     body {
@@ -123,6 +125,88 @@
       box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
       padding-left: 10px !important;
       padding-right: 10px !important;
+    }
+
+    /* Excel-style Inline Editable Cell Styles */
+    .editable-cell {
+      cursor: cell;
+      position: relative;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .editable-cell:hover {
+      background-color: rgba(224, 242, 254, 0.7) !important;
+      outline: 1.5px dashed #0284c7;
+      outline-offset: -1.5px;
+    }
+    .editable-cell.cell-editing {
+      background-color: #ffffff !important;
+      outline: 2.5px solid #2563eb !important;
+      outline-offset: -2px;
+      padding: 0 !important;
+      z-index: 30;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .cell-inline-input,
+    .cell-inline-select,
+    .cell-inline-textarea {
+      width: 100%;
+      height: 100%;
+      min-height: 38px;
+      padding: 6px 8px;
+      font-size: 12px;
+      line-height: 1.35;
+      font-family: inherit;
+      border: none;
+      outline: none;
+      background: #ffffff;
+      color: #0f172a;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .cell-inline-select {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .cell-inline-input:focus,
+    .cell-inline-select:focus,
+    .cell-inline-textarea:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 2px #2563eb;
+    }
+    .cell-saved-flash {
+      animation: cellSaveFlash 1.2s ease-out;
+    }
+    @keyframes cellSaveFlash {
+      0% { background-color: #bbf7d0 !important; }
+      50% { background-color: #dcfce7 !important; }
+      100% { background-color: transparent; }
+    }
+    /* English Spellcheck Typo Highlighter */
+    .spell-typo {
+      text-decoration: underline wavy #ef4444;
+      text-decoration-skip-ink: none;
+      font-weight: 600;
+      color: #b91c1c;
+      background-color: rgba(254, 226, 226, 0.4);
+      padding: 0 2px;
+      border-radius: 2px;
+      cursor: help;
+    }
+    .spell-typo:hover {
+      background-color: rgba(254, 202, 202, 0.85);
+    }
+    .local-edit-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 4px;
+      background-color: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -767,6 +851,60 @@
       </div>
     </div>
   </div>
+
+  <!-- AUTOSUGGEST DATALISTS FOR EXCEL-LIKE EDITING -->
+  <datalist id="datalist-status">
+    <option value="Done">Done</option>
+    <option value="Ongoing">Ongoing</option>
+    <option value="Not yet">Not yet</option>
+    <option value="N/A">N/A</option>
+  </datalist>
+
+  <datalist id="datalist-pic-pmc">
+    <option value="Duy NT">Duy NT (PMC)</option>
+    <option value="Hoang">Hoang (PMC)</option>
+    <option value="Kien">Kien (PMC)</option>
+    <option value="Luong DK">Luong DK (PMC)</option>
+    <option value="Son NT">Son NT (PMC)</option>
+    <option value="Thi">Thi (PMC)</option>
+    <option value="Thuy">Thuy (PMC)</option>
+  </datalist>
+
+  <datalist id="datalist-pic-pq">
+    <option value="Cong NV">Cong NV (PQ POC)</option>
+    <option value="Hoang QC">Hoang QC (PQ POC)</option>
+    <option value="Anthony">Anthony (PQ POC)</option>
+    <option value="A Chung">A Chung (PQ POC)</option>
+    <option value="A Ton">A Ton (PQ POC)</option>
+    <option value="Luu">Luu (PQ POC)</option>
+    <option value="Tuan">Tuan (PQ POC)</option>
+  </datalist>
+
+  <datalist id="datalist-discipline">
+    <option value="Mechanical">Mechanical</option>
+    <option value="Piping">Piping</option>
+    <option value="Electrical & Instruments">Electrical & Instruments</option>
+    <option value="Material">Material</option>
+    <option value="Structural">Structural</option>
+    <option value="Civil">Civil</option>
+    <option value="Pre-Commissioning">Pre-Commissioning</option>
+    <option value="Package">Package</option>
+    <option value="General">General</option>
+  </datalist>
+
+  <datalist id="datalist-common-phrases">
+    <option value="Checked and accepted on site">Checked and accepted on site</option>
+    <option value="Visual inspection completed without remarks">Visual inspection completed without remarks</option>
+    <option value="Tightening torque verified as per spec">Tightening torque verified as per spec</option>
+    <option value="Punch list item pending vendor rectification">Punch list item pending vendor rectification</option>
+    <option value="Hydrostatic test witnessed and accepted">Hydrostatic test witnessed and accepted</option>
+    <option value="Alignment check passed within tolerance">Alignment check passed within tolerance</option>
+    <option value="Flange joint inspection completed">Flange joint inspection completed</option>
+    <option value="Awaiting calibration certificate">Awaiting calibration certificate</option>
+    <option value="Signed off by PMC and Contractor">Signed off by PMC and Contractor</option>
+    <option value="Re-inspection required after site work">Re-inspection required after site work</option>
+    <option value="NCR issued and pending vendor closure">NCR issued and pending vendor closure</option>
+  </datalist>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2"></div>

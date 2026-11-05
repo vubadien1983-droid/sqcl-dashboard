@@ -127,9 +127,21 @@ class handler(BaseHTTPRequestHandler):
         if path == "/api/update_cell":
             unit = req_json.get('unit', 'GTG#1')
             row_num = int(req_json.get('row_num', 0))
-            field = req_json.get('field', 'site_markup')
-            col_letter = 'R' if field == 'site_markup' else 'T'
-            resp = json.dumps({"status": "ok", "message": f"Received cell update {col_letter}{row_num}"}, ensure_ascii=False).encode('utf-8')
+            field = str(req_json.get('field', 'site_markup')).lower()
+            field_map = {
+                "note": (13, "M"),
+                "pic_pmc": (14, "N"),
+                "pic_pq": (15, "O"),
+                "status": (16, "P"),
+                "remarks_raw": (17, "Q"),
+                "remarks": (17, "Q"),
+                "discipline": (17, "Q"),
+                "site_markup": (18, "R"),
+                "pdf_sheet": (19, "S"),
+                "status_update": (20, "T")
+            }
+            col_idx, col_letter = field_map.get(field, (18, "R"))
+            resp = json.dumps({"status": "ok", "message": f"Received cell update {col_letter}{row_num}", "col": col_letter, "row": row_num}, ensure_ascii=False).encode('utf-8')
             self.send_response(200)
             self.send_cors()
             self.send_header("Content-Type", "application/json; charset=utf-8")

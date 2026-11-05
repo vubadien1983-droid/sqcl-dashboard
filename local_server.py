@@ -496,11 +496,22 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
                 payload = json.loads(body.decode("utf-8") or "{}")
                 unit = payload.get("unit", "GTG#1")
                 row_num = int(payload.get("row_num", 0))
-                field = payload.get("field", "site_markup")
+                field = str(payload.get("field", "site_markup")).lower()
                 new_value = payload.get("value", "")
 
-                col_idx = 18 if field == "site_markup" else 20
-                col_letter = "R" if field == "site_markup" else "T"
+                field_map = {
+                    "note": (13, "M"),
+                    "pic_pmc": (14, "N"),
+                    "pic_pq": (15, "O"),
+                    "status": (16, "P"),
+                    "remarks_raw": (17, "Q"),
+                    "remarks": (17, "Q"),
+                    "discipline": (17, "Q"),
+                    "site_markup": (18, "R"),
+                    "pdf_sheet": (19, "S"),
+                    "status_update": (20, "T")
+                }
+                col_idx, col_letter = field_map.get(field, (18, "R"))
                 sheet_name = "SQCL Check Sheet GTC#1" if unit == "GTG#1" else "SQCL Check Sheet GTC#2"
 
                 # 1. Update Excel workbook on disk if it exists
@@ -519,7 +530,15 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
                     unit_acts = data.get("units", {}).get(unit, {}).get("activities", [])
                     for act in unit_acts:
                         if act.get("row_num") == row_num:
-                            act[field] = new_value
+                            if field in ("remarks_raw", "remarks", "discipline"):
+                                act["remarks_raw"] = new_value
+                                from parse_data import normalize_discipline
+                                act["discipline"] = normalize_discipline(new_value)
+                            elif field == "status":
+                                act["status"] = new_value
+                                act["done_unsigned"] = (new_value == "Done") and (not act.get("both_signed", False))
+                            else:
+                                act[field] = new_value
                             break
                     
                     with open(DATA_JSON_PATH, "w", encoding="utf-8") as f:

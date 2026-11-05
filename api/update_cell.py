@@ -17,9 +17,21 @@ class handler(BaseHTTPRequestHandler):
             payload = json.loads(body.decode('utf-8') or '{}')
             unit = payload.get('unit', 'GTG#1')
             row_num = int(payload.get('row_num', 0))
-            field = payload.get('field', 'site_markup')
+            field = str(payload.get('field', 'site_markup')).lower()
             new_value = payload.get('value', '')
-            col_letter = 'R' if field == 'site_markup' else 'T'
+            field_map = {
+                "note": (13, "M"),
+                "pic_pmc": (14, "N"),
+                "pic_pq": (15, "O"),
+                "status": (16, "P"),
+                "remarks_raw": (17, "Q"),
+                "remarks": (17, "Q"),
+                "discipline": (17, "Q"),
+                "site_markup": (18, "R"),
+                "pdf_sheet": (19, "S"),
+                "status_update": (20, "T")
+            }
+            col_idx, col_letter = field_map.get(field, (18, "R"))
             sheet_name = 'SQCL Check Sheet GTC#1' if unit == 'GTG#1' else 'SQCL Check Sheet GTC#2'
 
             self.send_response(200)
