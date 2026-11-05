@@ -948,10 +948,45 @@
     let synced = false;
     let syncErrorMsg = "";
 
-    const endpoints = ["/api/sync"];
-    if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-      endpoints.push("http://localhost:8080/api/sync");
+    // 1. If signed in with Microsoft Graph API, sync directly in browser without backend!
+    if (msalAccount && typeof XLSX !== "undefined") {
+      try {
+        const token = await getGraphAccessToken();
+        if (token) {
+          showToast("Fetching latest workbook from OneDrive via Microsoft Graph API...", "info");
+          const graphResp = await fetch(`https://graph.microsoft.com/v1.0/shares/${ONEDRIVE_SHARE_TOKEN}/driveItem/content`, {
+            headers: { "Authorization": `Bearer ${token}` }
+          });
+          if (graphResp.ok) {
+            const arrayBuffer = await graphResp.arrayBuffer();
+            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
+            const parsedData = parseWorkbookInBrowser(workbook);
+            if (parsedData && parsedData.units && parsedData.units["GTG#1"]) {
+              state.data = parsedData;
+              window.SQCL_INITIAL_DATA = parsedData;
+              try {
+                localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(parsedData));
+              } catch (e) {}
+              if (statusText) {
+                statusText.textContent = `Last Synced: ${parsedData.project_info.last_synced || new Date().toLocaleString()}`;
+              }
+              showToast("✓ Synced latest Excel data directly from OneDrive via Graph API!", "success");
+              renderAll();
+              synced = true;
+            }
+          }
+        }
+      } catch (gErr) {
+        console.warn("Direct Graph API sync attempt:", gErr);
+      }
     }
+
+    // 2. If not synced via Graph API, attempt server endpoints (Local server or Vercel serverless)
+    if (!synced) {
+      const endpoints = ["/api/sync"];
+      if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+        endpoints.push("http://localhost:8080/api/sync");
+      }
 
     for (const endpoint of endpoints) {
       try {
@@ -982,8 +1017,9 @@
         } else if (res && res.message) {
           syncErrorMsg = res.message;
         }
-      } catch (err) {
-        // Network or CORS failure
+        } catch (err) {
+          // Network or CORS failure
+        }
       }
     }
 
@@ -993,7 +1029,11 @@
     }
 
     if (!synced) {
-      showToast("Notice: Static cloud host cannot run Python backend directly. Opening Data Source to upload your updated Excel file!", "info");
+      if (!msalAccount) {
+        showToast("Online Sync: Connect your Microsoft account via 'Graph Sync' on header, or choose an updated Excel file below!", "info");
+      } else {
+        showToast("Could not sync from OneDrive. Please check network or select an updated Excel file below.", "warning");
+      }
       openSourceModal();
     }
   };
