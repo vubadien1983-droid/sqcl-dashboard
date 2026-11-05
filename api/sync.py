@@ -56,12 +56,21 @@ class handler(BaseHTTPRequestHandler):
                 sys.path.insert(0, root_dir)
             from parse_data import parse_excel_workbook
 
+            import tempfile
             xlsx_bytes = download_onedrive_bytes(target_url)
             
-            tmp_path = "/tmp/onedrive_file.xlsx"
-            with open(tmp_path, "wb") as f:
-                f.write(xlsx_bytes)
-            data = parse_excel_workbook(tmp_path)
+            with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as tf:
+                tf.write(xlsx_bytes)
+                tmp_path = tf.name
+
+            try:
+                data = parse_excel_workbook(tmp_path)
+            finally:
+                if os.path.exists(tmp_path):
+                    try:
+                        os.unlink(tmp_path)
+                    except Exception:
+                        pass
 
             resp_data = json.dumps({"status": "ok", "message": "Synced from OneDrive successfully!", "data": data}, ensure_ascii=False).encode('utf-8')
             self.send_response(200)

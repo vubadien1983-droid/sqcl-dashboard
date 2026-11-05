@@ -983,7 +983,12 @@
 
     // 2. If not synced via Graph API, attempt server endpoints (Local server or Vercel serverless)
     if (!synced) {
-      const endpoints = ["/api/sync"];
+      const customBackendUrl = localStorage.getItem("SQCL_BACKEND_URL") || "";
+      const endpoints = [];
+      if (customBackendUrl) {
+        endpoints.push(`${customBackendUrl.replace(/\/+$/, "")}/api/sync`);
+      }
+      endpoints.push("/api/sync");
       if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
         endpoints.push("http://localhost:8080/api/sync");
       }
@@ -3110,11 +3115,26 @@
   window.openSourceModal = function () {
     const modal = document.getElementById("source-modal");
     if (modal) modal.classList.remove("hidden");
+    const inp = document.getElementById("vercel-backend-url-input");
+    if (inp) inp.value = localStorage.getItem("SQCL_BACKEND_URL") || "";
   };
 
   window.closeSourceModal = function () {
     const modal = document.getElementById("source-modal");
     if (modal) modal.classList.add("hidden");
+  };
+
+  window.saveBackendUrl = function () {
+    const inp = document.getElementById("vercel-backend-url-input");
+    if (!inp) return;
+    const val = inp.value.trim();
+    if (!val) {
+      localStorage.removeItem("SQCL_BACKEND_URL");
+      showToast("Cloud Backend URL cleared.", "info");
+    } else {
+      localStorage.setItem("SQCL_BACKEND_URL", val);
+      showToast("Cloud Backend URL saved! Online sync will route through this server.", "success");
+    }
   };
 
   window.handleCustomUrlSync = function () {

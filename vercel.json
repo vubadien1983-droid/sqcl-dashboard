@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
 }

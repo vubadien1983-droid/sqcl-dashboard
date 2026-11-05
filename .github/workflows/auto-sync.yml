@@ -1,0 +1,40 @@
+name: Automated OneDrive Cloud Sync
+
+on:
+  schedule:
+    # Run every 2 hours automatically
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+    # Allows manual trigger anytime from GitHub Actions tab or via API
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install openpyxl requests
+
+      - name: Execute Automated Sync
+        run: |
+          python sync_cli.py
+
+      - name: Commit and Push Changes if Updated
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add sqcl_data.json sqcl_data_bundle.js onedrive_file.xlsx
+          git diff --staged --quiet || (git commit -m "chore(auto-sync): update SQCL data from OneDrive [skip ci]" && git push)

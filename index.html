@@ -483,6 +483,27 @@
           />
         </div>
 
+        <!-- Option C: Automated Cloud Sync (Vercel Serverless / GitHub Actions) -->
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
+          <div class="flex items-center justify-between text-slate-800 font-bold">
+            <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-amber-500"></i> Cloud Serverless Sync (Vercel):</span>
+          </div>
+          <p class="text-[11px] text-slate-500">
+            If deployed to Vercel, enter your Vercel URL below so GitHub Pages can call your live cloud sync engine directly:
+          </p>
+          <div class="flex gap-2">
+            <input
+              id="vercel-backend-url-input"
+              type="text"
+              placeholder="https://your-project.vercel.app"
+              class="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-mono focus:outline-none focus:border-blue-500"
+            />
+            <button onclick="saveBackendUrl()" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs">
+              Save
+            </button>
+          </div>
+        </div>
+
         <!-- Option B: OneDrive URL & Direct Download Link -->
         <div class="pt-3 border-t border-slate-200 space-y-2">
           <div class="flex items-center justify-between">
