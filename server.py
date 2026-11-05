@@ -92,8 +92,8 @@ def generate_styled_excel(payload):
     activities = payload.get("activities", [])
     now_str = datetime.datetime.now().strftime("%d-%b-%Y %H:%M")
 
-    # 1. Banner Header (Cols A to N)
-    max_col_letter = "N"
+    # 1. Banner Header (Cols A to O)
+    max_col_letter = "O"
     ws.merge_cells(f"A1:{max_col_letter}1")
     ws["A1"] = f"VIETNAM BLOCK B GAS PROJECT  |  {report_title}"
     ws["A1"].font = title_font
@@ -247,7 +247,8 @@ def generate_styled_excel(payload):
             "PIC (PMC / PQ&BV)",
             "Ref.Doc / Procedure",
             "Acceptance Criteria / Site Markup",
-            "PDF Sheet"
+            "PDF Sheet",
+            "Status Update"
         ]
         header_row_idx = current_row
         ws.row_dimensions[header_row_idx].height = 26
@@ -270,7 +271,7 @@ def generate_styled_excel(payload):
                 ws[f"A{current_row}"].font = sys_banner_font
                 ws[f"A{current_row}"].fill = sys_banner_fill
                 ws[f"A{current_row}"].alignment = Alignment(horizontal="left", vertical="center", indent=1)
-                for col_i in range(1, 15):
+                for col_i in range(1, 16):
                     ws.cell(current_row, col_i).border = grid_border
                     ws.cell(current_row, col_i).fill = sys_banner_fill
                 ws.row_dimensions[current_row].height = 22
@@ -302,7 +303,8 @@ def generate_styled_excel(payload):
                 pic_str,
                 doc_str,
                 markup_str,
-                act.get("pdf_sheet", "")
+                act.get("pdf_sheet", ""),
+                act.get("status_update", "")
             ]
 
             for idx, val in enumerate(row_vals, start=1):
@@ -384,7 +386,7 @@ def generate_styled_excel(payload):
         for idx, w in enumerate(sec_widths, start=1):
             ws_sec.column_dimensions[get_column_letter(idx)].width = w
 
-    col_widths = [10, 10, 11, 48, 22, 12, 12, 12, 13, 14, 18, 28, 36, 10]
+    col_widths = [10, 10, 11, 48, 22, 12, 12, 12, 13, 14, 18, 28, 36, 10, 32]
     for idx, w in enumerate(col_widths, start=1):
         ws.column_dimensions[get_column_letter(idx)].width = w
 

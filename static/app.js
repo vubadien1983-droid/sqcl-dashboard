@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const DEFAULT_COL_WIDTHS = [48, 75, 85, 360, 145, 110, 120, 120, 110, 150, 240, 240, 55];
+  const DEFAULT_COL_WIDTHS = [48, 75, 85, 360, 145, 110, 120, 120, 110, 150, 240, 220, 55, 260];
 
   const state = {
     data: window.SQCL_INITIAL_DATA || null,
@@ -258,7 +258,8 @@
           (a.procedure && a.procedure.toLowerCase().includes(q)) ||
           (a.pic_pmc && a.pic_pmc.toLowerCase().includes(q)) ||
           (a.pic_pq && a.pic_pq.toLowerCase().includes(q)) ||
-          (a.site_markup && a.site_markup.toLowerCase().includes(q))
+          (a.site_markup && a.site_markup.toLowerCase().includes(q)) ||
+          (a.status_update && a.status_update.toLowerCase().includes(q))
         );
       });
     }
@@ -792,6 +793,7 @@
         const discipline = normalizeDisciplineInBrowser(rawRemarks);
         const siteMarkup = String(row[17] || "").trim();
         const pdfSheet = String(row[18] || "").trim();
+        const statusUpdate = String(row[19] || "").trim();
 
         if (!sigDate && /^\d{4}-\d{2}-\d{2}/.test(cuSigInfo.raw)) {
           sigDate = cuSigInfo.raw.substring(0, 10);
@@ -837,6 +839,7 @@
           remarks_raw: rawRemarks,
           site_markup: siteMarkup,
           pdf_sheet: pdfSheet || secInfo.pdf_sheet,
+          status_update: statusUpdate,
           done_unsigned: doneUnsigned
         };
 
@@ -1176,7 +1179,7 @@
     const headers = [
       "Unit", "Section", "Activity", "Activity Description", "Discipline",
       "Status", "BH Sig", "CU Sig", "Signature Date", "Role (BH/CU)",
-      "PIC (PMC / PQ&BV)", "Ref.Doc / Procedure", "Acceptance / Site Markup", "PDF"
+      "PIC (PMC / PQ&BV)", "Ref.Doc / Procedure", "Acceptance / Site Markup", "PDF", "Status Update"
     ];
     ws.getRow(4).values = headers;
     ws.getRow(4).font = { name: "Calibri", size: 10, bold: true, color: { argb: "FFFFFFFF" } };
@@ -1189,7 +1192,7 @@
       const secKey = `${a.unit}__${a.section}`;
       if (secKey !== lastSecKey) {
         lastSecKey = secKey;
-        ws.mergeCells(`A${curRow}:N${curRow}`);
+        ws.mergeCells(`A${curRow}:O${curRow}`);
         ws.getCell(`A${curRow}`).value = `[${a.unit}] SECTION ${a.section} — ${a.section_title} (PDF Sheet: ${a.pdf_sheet || "-"})`;
         ws.getCell(`A${curRow}`).font = { name: "Calibri", size: 10, bold: true, color: { argb: "FF1E3A8A" } };
         ws.getCell(`A${curRow}`).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFDBEAFE" } };
@@ -1204,12 +1207,13 @@
         [a.pic_pmc, a.pic_pq].filter(Boolean).join(" / "),
         [a.ref_doc ? a.ref_doc.replace(/\n/g, ", ") : "", a.procedure].filter(Boolean).join(" | "),
         [a.acceptance, a.site_markup ? a.site_markup.replace(/\n/g, "; ") : ""].filter(Boolean).join(" | "),
-        a.pdf_sheet || ""
+        a.pdf_sheet || "",
+        a.status_update || ""
       ];
       curRow++;
     });
 
-    const colWidths = [10, 10, 12, 45, 20, 12, 12, 12, 13, 14, 18, 28, 35, 10];
+    const colWidths = [10, 10, 12, 45, 20, 12, 12, 12, 13, 14, 18, 28, 35, 10, 30];
     colWidths.forEach((w, i) => {
       ws.getColumn(i + 1).width = w;
     });
@@ -1470,7 +1474,7 @@
             pdfRows.push([
               {
                 content: `[${a.unit}] SECTION ${a.section} — ${a.section_title}  (PDF Sheet: ${a.pdf_sheet || "-"})`,
-                colSpan: 11,
+                colSpan: 12,
                 styles: {
                   fillColor: [219, 234, 254],
                   textColor: [30, 58, 138],
@@ -1491,7 +1495,8 @@
             a.sig_date || "-",
             [a.pic_pmc, a.pic_pq].filter(Boolean).join(" / ") || "-",
             [a.site_markup ? a.site_markup.replace(/\n/g, "; ") : "", a.ref_doc ? a.ref_doc.split("\n")[0] : ""].filter(Boolean).join(" | ") || "-",
-            a.pdf_sheet || "-"
+            a.pdf_sheet || "-",
+            a.status_update || "-"
           ]);
         });
 
@@ -1514,7 +1519,7 @@
             halign: "center"
           },
           head: [
-            ["Unit", "Activity", "Activity Description", "Discipline", "Status", "BH Signature", "CU Signature", "Sig Date", "PIC (PMC/PQ)", "Site Markup / Ref Doc", "PDF"]
+            ["Unit", "Activity", "Activity Description", "Discipline", "Status", "BH Signature", "CU Signature", "Sig Date", "PIC (PMC/PQ)", "Site Markup / Ref Doc", "PDF", "Status Update"]
           ],
           body: pdfRows
         });
@@ -2909,7 +2914,7 @@
         const grpStats = computeStats(grp.items);
         const sectionHeaderRow = `
           <tr class="bg-blue-100/90 border-y-2 border-blue-300">
-            <td colspan="13" class="py-2.5 px-3">
+            <td colspan="14" class="py-2.5 px-3">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded bg-blue-700 text-white font-extrabold text-xs">${esc(grp.unit)}</span>
@@ -2983,6 +2988,9 @@
                 </td>
                 <td class="py-2.5 px-3 text-xs text-slate-700 whitespace-pre-line">${esc(a.site_markup || "-")}</td>
                 <td class="py-2.5 px-2 text-center font-mono text-xs text-slate-500">${esc(a.pdf_sheet || "-")}</td>
+                <td class="py-2.5 px-3 text-xs text-slate-900 bg-amber-50/20 whitespace-pre-line font-medium leading-relaxed">
+                  ${a.status_update ? `<span class="px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-extrabold text-[10px] mr-1 uppercase">Update</span>` + esc(a.status_update) : `<span class="text-slate-300">-</span>`}
+                </td>
               </tr>
             `;
           })
@@ -2996,7 +3004,7 @@
       "#", "Unit", "Activity", "Activity Description", "Discipline",
       "Status", "BH Signature", "CU Signature", "Signature Date",
       "PIC (PMC / PQ&BV)", "Ref. Doc / Procedure / Criteria",
-      "Site Markup (Checked PDF)", "PDF"
+      "Site Markup (Checked PDF)", "PDF", "Status Update"
     ];
 
     const colGroupHtml = state.colWidths.map((w) => `<col style="width: ${w}px;">`).join("");

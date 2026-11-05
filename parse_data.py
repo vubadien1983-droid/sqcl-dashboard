@@ -252,6 +252,7 @@ def parse_excel_workbook(filepath):
             discipline = normalize_discipline(raw_remarks)
             site_markup = clean_str(ws_chk.cell(r, 18).value)
             pdf_sheet = clean_str(ws_chk.cell(r, 19).value)
+            status_update = clean_str(ws_chk.cell(r, 20).value)
             
             if not sig_date and re.match(r'^\d{4}-\d{2}-\d{2}', cu_sig_info["raw"]):
                 sig_date = cu_sig_info["raw"]
@@ -302,7 +303,8 @@ def parse_excel_workbook(filepath):
                 "discipline": discipline,
                 "remarks_raw": raw_remarks,
                 "site_markup": site_markup,
-                "pdf_sheet": pdf_sheet
+                "pdf_sheet": pdf_sheet,
+                "status_update": status_update
             }
             activities.append(act_item)
             
