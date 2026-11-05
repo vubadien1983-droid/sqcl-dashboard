@@ -1,0 +1,9 @@
+local_server.py
+server.py
+start_dashboard.bat
+*.bat
+.github
+scratch
+download_fonts.py
+make_font_vfs.py
+SOI0007689 SQCL Check List.xlsx

@@ -3,7 +3,10 @@ import sys
 import json
 import datetime
 from parse_data import parse_excel_workbook, ONEDRIVE_SHARE_URL
-from server import download_from_onedrive
+try:
+    from local_server import download_from_onedrive
+except ImportError:
+    from server import download_from_onedrive
 
 EXCEL_FILE = "onedrive_file.xlsx"
 DATA_JSON = "sqcl_data.json"

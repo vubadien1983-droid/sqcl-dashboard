@@ -547,6 +547,8 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
         self.send_response(404)
         self.end_headers()
 
+handler = SQCLRequestHandler
+
 if __name__ == "__main__":
     print(f"Starting SQCL Dashboard Server on http://0.0.0.0:{PORT} ...")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), SQCLRequestHandler)
