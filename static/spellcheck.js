@@ -14,13 +14,13 @@
     'rt', 'ut', 'mt', 'pt', 'vt', 'pmi', 'pwht', 'dft', 'wps', 'pqr', 'wqt', 'p&id', 'pfd', 'iso', 'ga',
     'pk', 'tag', 'k', 'no', 'ref', 'proc', 'crit', 'doc', 'spec', 'dwg', 'std', 'sec', 'col', 'row',
     'ok', 'na', 'done', 'ong', 'ny', 'pm', 'am', 'mm', 'cm', 'm', 'in', 'ft', 'psi', 'bar', 'kpa', 'mpa',
-    'deg', 'c', 'f', 'rpm', 'gpm', 'm3', 'kg', 'lb', 'ton', 'kw', 'mw', 'hp', 'v', 'a', 'kv', 'hz', 'ohm'
+    'deg', 'c', 'f', 'rpm', 'gpm', 'm3', 'kg', 'lb', 'ton', 'kw', 'mw', 'hp', 'v', 'a', 'kv', 'hz', 'ohm', 'pid', 'p&id', 'tpi', 'som', 'sok', 'sko', 'sic', 'ro', 'pdt', 'pic'
   ]);
 
   // Project known personnel names
   const KNOWN_NAMES = new Set([
     'duy', 'hoang', 'kien', 'luong', 'son', 'thi', 'thuy',
-    'cong', 'anthony', 'chung', 'ton', 'luu', 'tuan', 'baker', 'hughes', 'dien'
+    'cong', 'anthony', 'chung', 'ton', 'luu', 'tuan', 'baker', 'hughes', 'dien', 'vu', 'ba', 'hai', 'nam', 'long', 'minh', 'anh', 'quang', 'hung', 'cuong', 'hieu', 'trung'
   ]);
 
   /**
@@ -28,6 +28,7 @@
    */
   function isValidWord(word) {
     if (!word || word.length < 2) return true;
+    if (/[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i.test(word)) return true;
     const lower = word.toLowerCase();
     
     // Ignore pure numbers or units like 100mm, 25bar, 50psi
@@ -94,7 +95,7 @@
    */
   function findMisspelledWords(text) {
     if (!text) return [];
-    const tokens = text.match(/[A-Za-z]{2,}/g) || [];
+    const tokens = text.match(/\b[A-Za-z]+(?:&[A-Za-z]+)?\b/g) || [];
     const misspelled = [];
     for (const token of tokens) {
       if (!isValidWord(token)) {

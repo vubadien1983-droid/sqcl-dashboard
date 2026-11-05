@@ -13,6 +13,8 @@ def clean_str(val):
     if isinstance(val, datetime.date):
         return val.strftime("%Y-%m-%d")
     s = str(val).replace('\xa0', ' ').strip()
+    # Normalize typist typo "P&I" -> "P&ID"
+    s = re.sub(r'\bP&I\b(?![Dd])', 'P&ID', s)
     return s
 
 def normalize_discipline(raw_remarks):

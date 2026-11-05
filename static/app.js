@@ -775,25 +775,26 @@
 
         const secInfo = sectionsMap[currentSecCode] || { section: currentSecCode, title: currentSecTitle };
 
+        const cleanCellVal = (v) => String(v || "").trim().replace(/\bP&I\b(?![Dd])/g, "P&ID");
         let sigDate = String(row[2] || "").trim().split(" ")[0];
         const bhSigInfo = parseSigInBrowser(row[3]);
         const cuSigInfo = parseSigInBrowser(row[4]);
-        const bhRole = String(row[5] || "").trim();
-        const cuRole = String(row[6] || "").trim();
-        const refDoc = String(row[7] || "").trim();
-        const procedure = String(row[8] || "").trim();
-        const acceptance = String(row[9] || "").trim();
-        const checkType = String(row[10] || "").trim();
-        const serviceReport = String(row[11] || "").trim();
-        const note = String(row[12] || "").trim();
-        const picPmc = String(row[13] || "").trim();
-        const picPq = String(row[14] || "").trim();
+        const bhRole = cleanCellVal(row[5]);
+        const cuRole = cleanCellVal(row[6]);
+        const refDoc = cleanCellVal(row[7]);
+        const procedure = cleanCellVal(row[8]);
+        const acceptance = cleanCellVal(row[9]);
+        const checkType = cleanCellVal(row[10]);
+        const serviceReport = cleanCellVal(row[11]);
+        const note = cleanCellVal(row[12]);
+        const picPmc = cleanCellVal(row[13]);
+        const picPq = cleanCellVal(row[14]);
         const status = normalizeStatusInBrowser(row[15]);
-        const rawRemarks = String(row[16] || "").trim();
+        const rawRemarks = cleanCellVal(row[16]);
         const discipline = normalizeDisciplineInBrowser(rawRemarks);
-        const siteMarkup = String(row[17] || "").trim();
-        const pdfSheet = String(row[18] || "").trim();
-        const statusUpdate = String(row[19] || "").trim();
+        const siteMarkup = cleanCellVal(row[17]);
+        const pdfSheet = cleanCellVal(row[18]);
+        const statusUpdate = cleanCellVal(row[19]);
 
         if (!sigDate && /^\d{4}-\d{2}-\d{2}/.test(cuSigInfo.raw)) {
           sigDate = cuSigInfo.raw.substring(0, 10);
@@ -3573,12 +3574,40 @@
     pushAllPendingEditsSilently().catch(() => {});
   }, 30000);
 
+  function updateActiveTypoHint(el, tdElement) {
+    let hintEl = document.getElementById("active-cell-typo-hint");
+    if (!window.SQCLSpellcheck || !el || !tdElement) {
+      if (hintEl) hintEl.remove();
+      return;
+    }
+    const val = el.value || "";
+    const typos = window.SQCLSpellcheck.findMisspelledWords(val);
+    if (typos.length === 0) {
+      if (hintEl) hintEl.remove();
+      return;
+    }
+    if (!hintEl) {
+      hintEl = document.createElement("div");
+      hintEl.id = "active-cell-typo-hint";
+      hintEl.className = "active-cell-typo-floating";
+      document.body.appendChild(hintEl);
+    }
+    const rect = tdElement.getBoundingClientRect();
+    hintEl.style.top = `${rect.bottom + window.scrollY + 2}px`;
+    hintEl.style.left = `${rect.left + window.scrollX}px`;
+    hintEl.innerHTML = `<i class="fas fa-spell-check mr-1 text-rose-500"></i> Spelling: <span class="font-bold underline text-rose-600">${typos.slice(0, 3).map(esc).join(", ")}</span>`;
+  }
+
+  function removeActiveTypoHint() {
+    const hintEl = document.getElementById("active-cell-typo-hint");
+    if (hintEl) hintEl.remove();
+  }
+
   function formatCellWithSpellcheck(text) {
     if (!text) return '<span class="text-slate-300">-</span>';
-    if (window.SQCLSpellcheck && typeof window.SQCLSpellcheck.highlightEnglishTypos === "function") {
-      return window.SQCLSpellcheck.highlightEnglishTypos(text);
-    }
-    return esc(text);
+    // Ensure typist typo P&I is normalized to P&ID without changing any other content
+    const clean = String(text).replace(/\bP&I\b(?![Dd])/g, "P&ID");
+    return esc(clean);
   }
 
   const FIELD_MAP_INFO = {
@@ -3669,6 +3698,8 @@
       const input = tdElement.querySelector("input");
       input.focus();
       input.select();
+      input.addEventListener("input", () => updateActiveTypoHint(input, tdElement));
+      updateActiveTypoHint(input, tdElement);
 
       input.addEventListener("blur", () => {
         setTimeout(() => {
@@ -3697,6 +3728,8 @@
     const textarea = tdElement.querySelector("textarea");
     textarea.focus();
     textarea.select();
+    textarea.addEventListener("input", () => updateActiveTypoHint(textarea, tdElement));
+    updateActiveTypoHint(textarea, tdElement);
 
     textarea.addEventListener("blur", () => {
       setTimeout(() => {
@@ -3720,6 +3753,7 @@
   };
 
   window.commitInlineEdit = function (tabDirection) {
+    removeActiveTypoHint();
     if (!activeInlineEditor) return;
     const { tdElement, unit, actId, field, act, originalValue } = activeInlineEditor;
     activeInlineEditor = null;
@@ -3810,6 +3844,7 @@
   };
 
   window.cancelInlineEdit = function () {
+    removeActiveTypoHint();
     if (!activeInlineEditor) return;
     const { tdElement, originalHtml } = activeInlineEditor;
     activeInlineEditor = null;
