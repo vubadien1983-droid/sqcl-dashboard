@@ -2548,6 +2548,8 @@
     const ledger = getClosingLedger();
     const records = ledger.records || {};
     const unit = state.selectedUnit;
+    const allActivities = getActivitiesByFilter({ unit });
+    const stats = computeStats(allActivities);
 
     const matchingRecords = [];
     Object.values(records).forEach((r) => {
@@ -2663,22 +2665,37 @@
               General: "bg-emerald-100 text-emerald-800 border-emerald-200"
             }[disc] || "bg-slate-100 text-slate-800 border-slate-200";
 
+          const discStat = stats.disciplines.find(
+            (x) => x.discipline === disc || (disc === "General" && x.discipline === "Unassigned")
+          ) || { total: 0, done: 0, pct_done: 0 };
+
           const discTotal = matchingRecords.filter((r) => {
             let d = r.discipline || "General";
             if (d === "Unassigned") d = "General";
             return d === disc;
           }).length;
 
+          const pctDone = discStat.total > 0 ? Number(((discTotal / discStat.total) * 100).toFixed(1)) : 0;
+
           const totalBtnHtml =
-            discTotal > 0
+            discStat.total > 0
               ? `<button
-                   onclick="openDetailTab({ discipline: '${esc(disc === "General" ? "General" : disc)}', status: 'Done', unit: '${unit}', title: 'Completed • ${esc(disc)} (Status: Done • ${discTotal})' })"
-                   class="px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-600 border border-blue-200 text-blue-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
-                   title="Click xem ${discTotal} hạng mục hoàn thành thuộc ${esc(disc)}"
+                   onclick="openDetailTab({ discipline: '${esc(disc === "General" ? "General" : disc)}', status: 'Done', unit: '${unit}', title: 'Completed • ${esc(disc)} (${discTotal}/${discStat.total} • ${pctDone}%)' })"
+                   class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-600 border border-blue-200 text-blue-900 hover:text-white font-bold text-xs transition-all shadow-sm group whitespace-nowrap"
+                   title="Click xem ${discTotal} / ${discStat.total} hạng mục hoàn thành thuộc ${esc(disc)} (${pctDone}%)"
                  >
-                   ${state.closingRange !== "all" && rowTotal !== discTotal ? `${rowTotal} / ${discTotal}` : discTotal}
+                   <span class="font-extrabold text-blue-900 group-hover:text-white">${discTotal} / ${discStat.total}</span>
+                   <span class="px-1.5 py-0.5 rounded-md text-[10px] font-black ${
+                     pctDone >= 100
+                       ? "bg-emerald-600 text-white"
+                       : pctDone > 0
+                       ? "bg-emerald-100 text-emerald-800 group-hover:bg-white group-hover:text-blue-700"
+                       : "bg-slate-200 text-slate-600"
+                   }">
+                     ${pctDone}%
+                   </span>
                  </button>`
-              : `<span class="text-slate-400 text-xs font-mono">0</span>`;
+              : `<span class="inline-flex items-center gap-1 text-slate-400 text-xs font-mono">0 / 0 (0%)</span>`;
 
           return `
             <tr class="hover:bg-blue-50/30 border-b border-slate-100 text-xs sm:text-sm bg-white">
@@ -2717,13 +2734,15 @@
           })
           .join("");
 
+        const grandPct = stats.total > 0 ? Number(((matchingRecords.length / stats.total) * 100).toFixed(1)) : 0;
+
         matrixContainer.innerHTML = `
           <table class="w-full text-left sqcl-grid-table">
             <thead>
               <tr class="bg-slate-900 text-white text-xs uppercase font-extrabold tracking-wider">
                 <th class="py-3 px-4 min-w-[200px]">Discipline / Remarks</th>
                 ${dateHeadersHtml}
-                <th class="py-3 px-3 text-center border-l border-slate-700 bg-slate-800 text-amber-400 min-w-[100px]">Total Completed</th>
+                <th class="py-3 px-3 text-center border-l border-slate-700 bg-slate-800 text-amber-400 min-w-[150px] whitespace-nowrap">Completed / Total (% Done)</th>
               </tr>
             </thead>
             <tbody>
@@ -2738,13 +2757,16 @@
                   </div>
                 </td>
                 ${footerColsHtml}
-                <td class="py-3 px-3 text-center border-l border-slate-700 bg-slate-950 align-middle">
+                <td class="py-3 px-3 text-center border-l border-slate-700 bg-slate-950 align-middle whitespace-nowrap">
                   <button
-                    onclick="openDetailTab({ status: 'Done', unit: '${unit}', title: 'All Completed Activities (Status: Done • ${matchingRecords.length})' })"
-                    class="px-3.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs transition-all shadow-md"
-                    title="Click xem toàn bộ ${matchingRecords.length} hạng mục đã hoàn thành (Status: Done)"
+                    onclick="openDetailTab({ status: 'Done', unit: '${unit}', title: 'All Completed Activities (${matchingRecords.length}/${stats.total} • ${grandPct}%)' })"
+                    class="inline-flex items-center justify-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs transition-all shadow-md group whitespace-nowrap"
+                    title="Click xem toàn bộ ${matchingRecords.length} / ${stats.total} hạng mục đã hoàn thành (${grandPct}%)"
                   >
-                    ${state.closingRange !== "all" && grandTotal !== matchingRecords.length ? `${grandTotal} / ${matchingRecords.length}` : matchingRecords.length}
+                    <span>${matchingRecords.length} / ${stats.total}</span>
+                    <span class="px-1.5 py-0.5 rounded-md bg-slate-950 text-emerald-300 text-[10px] font-black">
+                      ${grandPct}%
+                    </span>
                   </button>
                 </td>
               </tr>
