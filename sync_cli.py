@@ -28,11 +28,11 @@ def main():
         
         with open(DATA_JSON, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False)
-            
-        with open(DATA_BUNDLE, "w", encoding="utf-8") as f:
-            f.write("window.SQCL_INITIAL_DATA = " + json.dumps(data, ensure_ascii=False) + ";")
-            
-        print("Data files updated successfully.")
+
+        from crypto_utils import generate_encrypted_bundles
+        generate_encrypted_bundles()
+
+        print("Data files updated and encrypted successfully.")
         return 0
     except Exception as e:
         print(f"Sync error: {e}", file=sys.stderr)

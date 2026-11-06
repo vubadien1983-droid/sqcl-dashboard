@@ -780,13 +780,12 @@
           </p>
           <div class="pt-1 flex items-center justify-between gap-2">
             <span class="text-[10px] text-emerald-700">Cần đồng bộ ngay lập tức?</span>
-            <a
-              href="https://github.com/vubadien1983-droid/sqcl-dashboard/actions/workflows/auto-sync.yml"
-              target="_blank"
+            <button
+              onclick="syncFromOneDrive()"
               class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] flex items-center gap-1.5 shadow transition-colors"
             >
-              <i class="fas fa-play text-[10px]"></i> Kích hoạt Sync thủ công (12s)
-            </a>
+              <i class="fas fa-sync-alt text-[10px]"></i> Kích hoạt Sync ngay
+            </button>
           </div>
         </div>
 
@@ -1138,7 +1137,7 @@
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2"></div>
 
-  <!-- Main App Logic -->
-  <script src="./static/app.js"></script>
+  <!-- Main App Logic (Protected Production Obfuscated Bundle) -->
+  <script src="./static/app.min.js"></script>
 </body>
 </html>

@@ -2,10 +2,113 @@
 (function () {
   "use strict";
 
+  // --- Proprietary Data Protection & Runtime Decryption Engine ---
+  const _SQCL_SEC_KEY = "SQCL_BLOCK_B_MEC002_OFFSHORE_2026_SECURITY_TOKEN";
+
+  function decryptSqclPayload(b64Str) {
+    if (!b64Str || typeof b64Str !== "string") return null;
+    try {
+      const bin = atob(b64Str);
+      const len = bin.length;
+      const bytes = new Uint8Array(len);
+      const klen = _SQCL_SEC_KEY.length;
+      for (let i = 0; i < len; i++) {
+        bytes[i] = bin.charCodeAt(i) ^ _SQCL_SEC_KEY.charCodeAt(i % klen);
+      }
+      const jsonStr = new TextDecoder("utf-8").decode(bytes);
+      return JSON.parse(jsonStr);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getInitialSqclData() {
+    if (window.SQCL_INITIAL_DATA && window.SQCL_INITIAL_DATA.units) return window.SQCL_INITIAL_DATA;
+    if (window.__SQCL_DATA_ENC__) {
+      const dec = decryptSqclPayload(window.__SQCL_DATA_ENC__);
+      if (dec && dec.units) {
+        window.SQCL_INITIAL_DATA = dec;
+        return dec;
+      }
+    }
+    return window.SQCL_INITIAL_DATA || null;
+  }
+
+  function getInitialClosingLedger() {
+    if (window.SQCL_CLOSING_LEDGER && window.SQCL_CLOSING_LEDGER.records) return window.SQCL_CLOSING_LEDGER;
+    if (window.__SQCL_LEDGER_ENC__) {
+      const dec = decryptSqclPayload(window.__SQCL_LEDGER_ENC__);
+      if (dec && dec.records) {
+        window.SQCL_CLOSING_LEDGER = dec;
+        return dec;
+      }
+    }
+    return window.SQCL_CLOSING_LEDGER || null;
+  }
+
+  // --- Security & Anti-Inspection Deterrents ---
+  (function initSecurityGuards() {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
+    // 1. Disable Right-Click Context Menu
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      return false;
+    }, { capture: true });
+
+    // 2. Disable DevTools & Source Inspection Shortcuts
+    document.addEventListener("keydown", (e) => {
+      // F12
+      if (e.key === "F12" || e.keyCode === 123) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      // Ctrl+Shift+I / J / C (DevTools, Console, Inspector)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "I" || e.key === "i" || e.key === "J" || e.key === "j" || e.key === "C" || e.key === "c")) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      // Ctrl+U (View Page Source)
+      if ((e.ctrlKey || e.metaKey) && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+      // Ctrl+S (Save Page)
+      if ((e.ctrlKey || e.metaKey) && (e.key === "S" || e.key === "s")) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    }, { capture: true });
+
+    // 3. Clear Console & Security Banner
+    try {
+      console.clear();
+      console.log(
+        "%c🔒 SQCL SYSTEM SECURITY GUARD %c\nToàn bộ mã nguồn, cấu trúc dữ liệu và tài liệu dự án Block B đã được mã hóa bảo vệ.\nMọi hành vi can thiệp, sao chép hoặc trích xuất dữ liệu đều bị ghi nhận.",
+        "background:#0f172a;color:#38bdf8;font-size:13px;font-weight:bold;padding:4px 8px;border-radius:4px;",
+        "color:#ef4444;font-size:11px;font-weight:bold;"
+      );
+    } catch (e) {}
+
+    // 4. Debugger Protection (halts if DevTools console is active)
+    setInterval(() => {
+      const startTime = performance.now();
+      debugger;
+      const endTime = performance.now();
+      if (endTime - startTime > 100) {
+        try { console.clear(); } catch (e) {}
+      }
+    }, 2000);
+  })();
+
   const DEFAULT_COL_WIDTHS = [45, 65, 75, 300, 140, 105, 105, 105, 100, 110, 110, 160, 180, 180, 50, 210];
 
   const state = {
-    data: window.SQCL_INITIAL_DATA || null,
+    data: getInitialSqclData(),
     selectedUnit: "ALL", // "ALL", "GTG#1", "GTG#2"
     deviceMode: window.innerWidth < 768 ? "phone" : "laptop",
     openMode: "IN_APP", // "IN_APP" or "NEW_WINDOW"
@@ -27,7 +130,7 @@
     closingViewMode: "matrix",
     closingChartMetric: "daily",
     closingRange: "all",
-    closingLedger: null,
+    closingLedger: getInitialClosingLedger(),
     charts: {}
   };
 
@@ -117,7 +220,7 @@
       if (stored) {
         const parsed = JSON.parse(stored);
         if (parsed && parsed.records) {
-          const bundleLedger = window.SQCL_CLOSING_LEDGER;
+          const bundleLedger = getInitialClosingLedger();
           if (!bundleLedger || (parsed.last_updated && parsed.last_updated >= (bundleLedger.last_updated || ""))) {
             state.closingLedger = parsed;
             return state.closingLedger;
@@ -126,8 +229,9 @@
       }
     } catch (e) {}
 
-    if (window.SQCL_CLOSING_LEDGER) {
-      state.closingLedger = window.SQCL_CLOSING_LEDGER;
+    const bundleLedger = getInitialClosingLedger();
+    if (bundleLedger) {
+      state.closingLedger = bundleLedger;
       return state.closingLedger;
     }
 
@@ -4844,7 +4948,7 @@
     } catch (e) {}
 
     // Prioritize newest data between bundled script and cached offline data
-    const bundleData = window.SQCL_INITIAL_DATA;
+    const bundleData = getInitialSqclData();
     const bundleTimestamp = (bundleData && bundleData.project_info && bundleData.project_info.last_synced) || "";
     let cachedData = null;
     try {
