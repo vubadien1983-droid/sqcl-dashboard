@@ -452,13 +452,21 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
                 target_url = req_json.get("url") or ONEDRIVE_SHARE_URL
                 download_from_onedrive(target_url, EXCEL_FILE_PATH)
                 data = parse_excel_workbook(EXCEL_FILE_PATH)
+
+                # Sync Closing Ledger (07:30 AM Cut-off)
+                from ledger_manager import sync_data_with_ledger
+                ledger, _ = sync_data_with_ledger(data)
+
                 with open(DATA_JSON_PATH, "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False)
+                with open("sqcl_data_bundle.js", "w", encoding="utf-8") as f:
+                    f.write("window.SQCL_INITIAL_DATA = " + json.dumps(data, ensure_ascii=False) + ";\n")
 
                 resp_bytes = json.dumps({
                     "status": "ok",
                     "message": "Synced latest data from OneDrive successfully!",
-                    "data": data
+                    "data": data,
+                    "ledger": ledger
                 }, ensure_ascii=False).encode("utf-8")
                 self.send_response(200)
                 self.send_cors_headers()

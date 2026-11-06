@@ -111,12 +111,18 @@
   }
 
   function getClosingLedger() {
-    if (state.closingLedger) return state.closingLedger;
+    if (state.closingLedger && state.closingLedger.records) return state.closingLedger;
     try {
       const stored = localStorage.getItem("SQCL_CLOSING_LEDGER");
       if (stored) {
-        state.closingLedger = JSON.parse(stored);
-        return state.closingLedger;
+        const parsed = JSON.parse(stored);
+        if (parsed && parsed.records) {
+          const bundleLedger = window.SQCL_CLOSING_LEDGER;
+          if (!bundleLedger || (parsed.last_updated && parsed.last_updated >= (bundleLedger.last_updated || ""))) {
+            state.closingLedger = parsed;
+            return state.closingLedger;
+          }
+        }
       }
     } catch (e) {}
 
@@ -145,6 +151,85 @@
     try {
       localStorage.setItem("SQCL_CLOSING_LEDGER", JSON.stringify(ledger));
     } catch (e) {}
+  }
+
+  // Guarantees 100% two-way data consistency between state.data and state.closingLedger
+  // strictly driven by Column Status (Column P == 'Done') as requested by user.
+  function ensureDataLedgerConsistency() {
+    if (!state.data || !state.data.units) return;
+    const ledger = getClosingLedger();
+    if (!ledger.records) ledger.records = {};
+
+    let changed = false;
+    const activeDoneIds = new Set();
+
+    ["GTG#1", "GTG#2"].forEach((uid) => {
+      const uObj = state.data.units[uid];
+      if (!uObj || !uObj.activities) return;
+
+      uObj.activities.forEach((act) => {
+        const isDone = act.status === "Done";
+        let disc = act.discipline || "General";
+        if (disc === "Unassigned") disc = "General";
+
+        if (isDone) {
+          activeDoneIds.add(act.id);
+          if (!ledger.records[act.id]) {
+            let wDate = "2026-08-24";
+            if (act.sig_date && act.sig_date.trim()) {
+              wDate = act.sig_date.slice(0, 10);
+            } else {
+              wDate = computeWorkDateJS(new Date());
+            }
+            ledger.records[act.id] = {
+              id: act.id,
+              unit: uid,
+              activity: act.activity,
+              section: act.section,
+              section_title: act.section_title,
+              description: act.description,
+              discipline: disc,
+              work_date: wDate,
+              status: "Done",
+              col_c_date: act.sig_date || "",
+              closed_timestamp: new Date().toISOString(),
+              source: "status_column_p_sync"
+            };
+            changed = true;
+          } else {
+            const rec = ledger.records[act.id];
+            if (rec.discipline !== disc) {
+              rec.discipline = disc;
+              changed = true;
+            }
+            if (rec.unit !== uid) {
+              rec.unit = uid;
+              changed = true;
+            }
+            if (rec.status !== "Done") {
+              rec.status = "Done";
+              changed = true;
+            }
+          }
+        } else {
+          if (ledger.records[act.id]) {
+            delete ledger.records[act.id];
+            changed = true;
+          }
+        }
+      });
+    });
+
+    // Purge any orphan records that do not exist or are no longer Done
+    Object.keys(ledger.records).forEach((rId) => {
+      if (!activeDoneIds.has(rId)) {
+        delete ledger.records[rId];
+        changed = true;
+      }
+    });
+
+    ledger.total_closed_items = Object.keys(ledger.records).length;
+    saveClosingLedger(ledger);
   }
 
   const CORE_DISCIPLINES = [
@@ -301,7 +386,12 @@
       list = list.filter((a) => a.section === criteria.section);
     }
     if (criteria.discipline && criteria.discipline !== "ALL") {
-      list = list.filter((a) => a.discipline === criteria.discipline);
+      list = list.filter((a) => {
+        if (criteria.discipline === "General" || criteria.discipline === "Unassigned") {
+          return a.discipline === "General" || a.discipline === "Unassigned" || !a.discipline;
+        }
+        return a.discipline === criteria.discipline;
+      });
     }
     if (criteria.status && criteria.status !== "ALL") {
       list = list.filter((a) => a.status === criteria.status);
@@ -1086,6 +1176,12 @@
           applyLocalEdits(res.data);
           state.data = res.data;
           window.SQCL_INITIAL_DATA = res.data;
+          if (res.ledger) {
+            state.closingLedger = res.ledger;
+            window.SQCL_CLOSING_LEDGER = res.ledger;
+            saveClosingLedger(res.ledger);
+          }
+          ensureDataLedgerConsistency();
           try {
             localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(res.data));
           } catch (e) {}
@@ -1120,8 +1216,24 @@
               try {
                 localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(freshData));
               } catch (e) {}
+
+              // Also fetch matching closing ledger
+              try {
+                const ledgerUrl = fbUrl.replace("sqcl_data.json", "sqcl_closing_ledger.json");
+                const lResp = await fetch(ledgerUrl);
+                if (lResp.ok) {
+                  const freshLedger = await lResp.json();
+                  if (freshLedger && freshLedger.records) {
+                    state.closingLedger = freshLedger;
+                    window.SQCL_CLOSING_LEDGER = freshLedger;
+                    saveClosingLedger(freshLedger);
+                  }
+                }
+              } catch (lErr) {}
+
+              ensureDataLedgerConsistency();
               if (statusText) {
-                statusText.textContent = `Last Synced: ${new Date().toLocaleTimeString()}`;
+                statusText.textContent = `Last Synced: ${(freshData.project_info && freshData.project_info.last_synced) || new Date().toLocaleTimeString()}`;
               }
               showToast("✓ Synced latest data from OneDrive successfully!", "success");
               renderAll();
@@ -1137,6 +1249,7 @@
     if (!synced) {
       if (state.data) {
         applyLocalEdits(state.data);
+        ensureDataLedgerConsistency();
         renderAll();
         if (statusText) {
           statusText.textContent = `Last Synced: ${new Date().toLocaleTimeString()} (Offline Cache)`;
@@ -1171,6 +1284,7 @@
 
         state.data = parsedData;
         window.SQCL_INITIAL_DATA = parsedData;
+        ensureDataLedgerConsistency();
         try {
           localStorage.setItem("SQCL_OFFLINE_DATA", JSON.stringify(parsedData));
         } catch (storageErr) {}
@@ -2349,8 +2463,8 @@
       "Mechanical",
       "Electrical & Instruments",
       "Piping",
-      "Structural",
       "Pre-Commissioning",
+      "Structural",
       "Material",
       "General"
     ];
@@ -2445,14 +2559,20 @@
               General: "bg-emerald-100 text-emerald-800 border-emerald-200"
             }[disc] || "bg-slate-100 text-slate-800 border-slate-200";
 
+          const discTotal = matchingRecords.filter((r) => {
+            let d = r.discipline || "General";
+            if (d === "Unassigned") d = "General";
+            return d === disc;
+          }).length;
+
           const totalBtnHtml =
-            rowTotal > 0
+            discTotal > 0
               ? `<button
-                   onclick="openDetailTab({ discipline: '${esc(disc)}', status: 'Done', unit: '${unit}', title: 'Completed • ${esc(disc)} (Status: Done • ${rowTotal})' })"
+                   onclick="openDetailTab({ discipline: '${esc(disc === "General" ? "General" : disc)}', status: 'Done', unit: '${unit}', title: 'Completed • ${esc(disc)} (Status: Done • ${discTotal})' })"
                    class="px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-600 border border-blue-200 text-blue-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
-                   title="Click xem ${rowTotal} hạng mục hoàn thành thuộc ${esc(disc)}"
+                   title="Click xem ${discTotal} hạng mục hoàn thành thuộc ${esc(disc)}"
                  >
-                   ${rowTotal}
+                   ${state.closingRange !== "all" && rowTotal !== discTotal ? `${rowTotal} / ${discTotal}` : discTotal}
                  </button>`
               : `<span class="text-slate-400 text-xs font-mono">0</span>`;
 
@@ -2516,11 +2636,11 @@
                 ${footerColsHtml}
                 <td class="py-3 px-3 text-center border-l border-slate-700 bg-slate-950 align-middle">
                   <button
-                    onclick="openDetailTab({ status: 'Done', unit: '${unit}', title: 'All Completed Activities (Status: Done • ${grandTotal})' })"
+                    onclick="openDetailTab({ status: 'Done', unit: '${unit}', title: 'All Completed Activities (Status: Done • ${matchingRecords.length})' })"
                     class="px-3.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs transition-all shadow-md"
-                    title="Click xem toàn bộ ${grandTotal} hạng mục đã hoàn thành (Status: Done)"
+                    title="Click xem toàn bộ ${matchingRecords.length} hạng mục đã hoàn thành (Status: Done)"
                   >
-                    ${grandTotal}
+                    ${state.closingRange !== "all" && grandTotal !== matchingRecords.length ? `${grandTotal} / ${matchingRecords.length}` : matchingRecords.length}
                   </button>
                 </td>
               </tr>
@@ -4377,31 +4497,6 @@
     act["_edited_" + field] = true;
     if (field === "status") {
       act.done_unsigned = (newValue === "Done") && (!act.both_signed);
-      const ledger = getClosingLedger();
-      if (newValue === "Done") {
-        if (ledger && ledger.records && !ledger.records[act.id]) {
-          const wDate = computeWorkDateJS(new Date());
-          ledger.records[act.id] = {
-            id: act.id,
-            unit,
-            activity: act.activity,
-            section: act.section,
-            section_title: act.section_title,
-            description: act.description,
-            discipline: act.discipline || "General",
-            work_date: wDate,
-            status: "Done",
-            closed_timestamp: new Date().toISOString(),
-            source: "in_app_edit"
-          };
-          saveClosingLedger(ledger);
-        }
-      } else {
-        if (ledger && ledger.records && ledger.records[act.id]) {
-          delete ledger.records[act.id];
-          saveClosingLedger(ledger);
-        }
-      }
     }
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);
@@ -4414,25 +4509,17 @@
       act.both_signed = act.bh_signed && act.cu_signed;
       if (act.both_signed) {
         act.sig_status = "Both Signed";
-        const ledger = getClosingLedger();
-        if (ledger && ledger.records && !ledger.records[act.id]) {
-          const wDate = computeWorkDateJS(new Date());
-          ledger.records[act.id] = {
-            id: act.id,
-            unit,
-            activity: act.activity,
-            section: act.section,
-            section_title: act.section_title,
-            description: act.description,
-            discipline: act.discipline || "General",
-            work_date: wDate,
-            closed_timestamp: new Date().toISOString(),
-            source: "in_app_edit"
-          };
-          saveClosingLedger(ledger);
-        }
+      } else if (act.bh_signed) {
+        act.sig_status = "BH Signed Only";
+      } else if (act.cu_signed) {
+        act.sig_status = "CU Signed Only";
+      } else {
+        act.sig_status = "Unsigned";
       }
+      act.done_unsigned = (act.status === "Done") && (!act.both_signed);
     }
+
+    ensureDataLedgerConsistency();
 
     // 2. Save locally into SQCL_USER_EDITS
     const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
@@ -4640,31 +4727,6 @@
     act["_edited_" + field] = true;
     if (field === "status") {
       act.done_unsigned = (newValue === "Done") && (!act.both_signed);
-      const ledger = getClosingLedger();
-      if (newValue === "Done") {
-        if (ledger && ledger.records && !ledger.records[act.id]) {
-          const wDate = computeWorkDateJS(new Date());
-          ledger.records[act.id] = {
-            id: act.id,
-            unit,
-            activity: act.activity,
-            section: act.section,
-            section_title: act.section_title,
-            description: act.description,
-            discipline: act.discipline || "General",
-            work_date: wDate,
-            status: "Done",
-            closed_timestamp: new Date().toISOString(),
-            source: "in_app_edit"
-          };
-          saveClosingLedger(ledger);
-        }
-      } else {
-        if (ledger && ledger.records && ledger.records[act.id]) {
-          delete ledger.records[act.id];
-          saveClosingLedger(ledger);
-        }
-      }
     }
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);
@@ -4677,25 +4739,17 @@
       act.both_signed = act.bh_signed && act.cu_signed;
       if (act.both_signed) {
         act.sig_status = "Both Signed";
-        const ledger = getClosingLedger();
-        if (ledger && ledger.records && !ledger.records[act.id]) {
-          const wDate = computeWorkDateJS(new Date());
-          ledger.records[act.id] = {
-            id: act.id,
-            unit,
-            activity: act.activity,
-            section: act.section,
-            section_title: act.section_title,
-            description: act.description,
-            discipline: act.discipline || "General",
-            work_date: wDate,
-            closed_timestamp: new Date().toISOString(),
-            source: "in_app_edit"
-          };
-          saveClosingLedger(ledger);
-        }
+      } else if (act.bh_signed) {
+        act.sig_status = "BH Signed Only";
+      } else if (act.cu_signed) {
+        act.sig_status = "CU Signed Only";
+      } else {
+        act.sig_status = "Unsigned";
       }
+      act.done_unsigned = (act.status === "Done") && (!act.both_signed);
     }
+
+    ensureDataLedgerConsistency();
 
     // 2. Save into local persistent edits
     const edits = getStoredEdits();
@@ -4778,19 +4832,34 @@
       document.body.classList.add("phone-mode-active");
     }
 
-    // Prioritize cached offline data from user uploads/syncs if available
+    // Invalidate stale caches if a new build or bundle data is available
+    const SQCL_APP_BUILD_ID = "2026-11-06-v2-synced-status-p";
     try {
-      const cached = localStorage.getItem("SQCL_OFFLINE_DATA");
-      if (cached) {
-        const parsedCached = JSON.parse(cached);
-        if (parsedCached && parsedCached.units && parsedCached.units["GTG#1"]) {
-          state.data = parsedCached;
-        }
+      const storedBuild = localStorage.getItem("SQCL_APP_BUILD_ID");
+      if (storedBuild !== SQCL_APP_BUILD_ID) {
+        localStorage.removeItem("SQCL_OFFLINE_DATA");
+        localStorage.removeItem("SQCL_CLOSING_LEDGER");
+        localStorage.setItem("SQCL_APP_BUILD_ID", SQCL_APP_BUILD_ID);
       }
+    } catch (e) {}
+
+    // Prioritize newest data between bundled script and cached offline data
+    const bundleData = window.SQCL_INITIAL_DATA;
+    const bundleTimestamp = (bundleData && bundleData.project_info && bundleData.project_info.last_synced) || "";
+    let cachedData = null;
+    try {
+      const cachedStr = localStorage.getItem("SQCL_OFFLINE_DATA");
+      if (cachedStr) cachedData = JSON.parse(cachedStr);
     } catch (storageErr) {}
 
-    if (!state.data && window.SQCL_INITIAL_DATA) {
-      state.data = window.SQCL_INITIAL_DATA;
+    const cachedTimestamp = (cachedData && cachedData.project_info && cachedData.project_info.last_synced) || "";
+
+    if (bundleData && (!cachedTimestamp || bundleTimestamp >= cachedTimestamp)) {
+      state.data = bundleData;
+    } else if (cachedData && cachedData.units && cachedData.units["GTG#1"]) {
+      state.data = cachedData;
+    } else if (bundleData) {
+      state.data = bundleData;
     }
 
     if (!state.data) {
@@ -4809,6 +4878,9 @@
     if (state.data) {
       applyLocalEdits(state.data);
     }
+
+    // Guarantee 100% two-way data consistency between state.data and state.closingLedger
+    ensureDataLedgerConsistency();
     // Initialize Microsoft MSAL / Graph API
     initMsal();
 

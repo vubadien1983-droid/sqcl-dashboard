@@ -103,13 +103,22 @@ class handler(BaseHTTPRequestHandler):
                     tmp_path = tf.name
                 try:
                     data = parse_excel_workbook(tmp_path)
+                    ledger = None
+                    try:
+                        from ledger_manager import sync_data_with_ledger
+                        ledger, _ = sync_data_with_ledger(data)
+                    except Exception:
+                        pass
                 finally:
                     if os.path.exists(tmp_path):
                         try:
                             os.unlink(tmp_path)
                         except Exception:
                             pass
-                resp = json.dumps({"status": "ok", "message": "Synced from OneDrive successfully!", "data": data}, ensure_ascii=False).encode('utf-8')
+                resp_payload = {"status": "ok", "message": "Synced from OneDrive successfully!", "data": data}
+                if ledger:
+                    resp_payload["ledger"] = ledger
+                resp = json.dumps(resp_payload, ensure_ascii=False).encode('utf-8')
                 self.send_response(200)
                 self.send_cors()
                 self.send_header("Content-Type", "application/json; charset=utf-8")
