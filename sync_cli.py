@@ -7,6 +7,7 @@ try:
     from local_server import download_from_onedrive
 except ImportError:
     from server import download_from_onedrive
+from ledger_manager import sync_data_with_ledger
 
 EXCEL_FILE = "onedrive_file.xlsx"
 DATA_JSON = "sqcl_data.json"
@@ -20,6 +21,10 @@ def main():
         
         data = parse_excel_workbook(EXCEL_FILE)
         print(f"Parsed successfully: {len(data['units']['GTG#1']['activities'])} GTG#1 activities, {len(data['units']['GTG#2']['activities'])} GTG#2 activities.")
+        
+        # Sync with Closing Ledger (07:30 AM Cut-off)
+        ledger, new_closed = sync_data_with_ledger(data)
+        print(f"Ledger synced: {ledger['total_closed_items']} total closed items ({new_closed} newly closed).")
         
         with open(DATA_JSON, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False)

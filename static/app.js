@@ -24,6 +24,10 @@
       scheduleDiscipline: "ALL" // "ALL", "Mechanical", "Electrical & Instruments"
     },
     colWidths: loadSavedColWidths(),
+    closingViewMode: "matrix",
+    closingChartMetric: "daily",
+    closingRange: "all",
+    closingLedger: null,
     charts: {}
   };
 
@@ -63,6 +67,84 @@
         col.style.width = `${state.colWidths[idx]}px`;
       });
     }
+  }
+
+  // Closing Ledger Helpers (07:30 AM Cut-off)
+  function computeWorkDateJS(dateObj) {
+    const d = new Date(dateObj);
+    const hour = d.getHours();
+    const minute = d.getMinutes();
+    if (hour < 7 || (hour === 7 && minute < 30)) {
+      d.setDate(d.getDate() - 1);
+    }
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function formatWorkDateLabel(dateStr) {
+    if (!dateStr || dateStr === "ALL") return "";
+    try {
+      const parts = dateStr.split("-");
+      const y = parseInt(parts[0], 10);
+      const m = parseInt(parts[1], 10) - 1;
+      const d = parseInt(parts[2], 10);
+      const curD = new Date(y, m, d);
+      const nextD = new Date(y, m, d + 1);
+      const curStr = `${String(curD.getDate()).padStart(2, "0")}/${String(curD.getMonth() + 1).padStart(2, "0")}`;
+      const nextStr = `${String(nextD.getDate()).padStart(2, "0")}/${String(nextD.getMonth() + 1).padStart(2, "0")}`;
+      return `${curStr} (Cut-off 07:30 ${nextStr})`;
+    } catch (e) {
+      return dateStr;
+    }
+  }
+
+  function formatWorkDateShort(dateStr) {
+    if (!dateStr || dateStr === "ALL") return "";
+    try {
+      const parts = dateStr.split("-");
+      return `${parts[2]}/${parts[1]}`;
+    } catch (e) {
+      return dateStr;
+    }
+  }
+
+  function getClosingLedger() {
+    if (state.closingLedger) return state.closingLedger;
+    try {
+      const stored = localStorage.getItem("SQCL_CLOSING_LEDGER");
+      if (stored) {
+        state.closingLedger = JSON.parse(stored);
+        return state.closingLedger;
+      }
+    } catch (e) {}
+
+    if (window.SQCL_CLOSING_LEDGER) {
+      state.closingLedger = window.SQCL_CLOSING_LEDGER;
+      return state.closingLedger;
+    }
+
+    if (state.data && state.data.closing_ledger_full) {
+      state.closingLedger = state.data.closing_ledger_full;
+      return state.closingLedger;
+    }
+
+    state.closingLedger = {
+      version: "1.0",
+      total_closed_items: 0,
+      records: {},
+      daily_summary: {}
+    };
+    return state.closingLedger;
+  }
+
+  function saveClosingLedger(ledger) {
+    state.closingLedger = ledger;
+    window.SQCL_CLOSING_LEDGER = ledger;
+    try {
+      localStorage.setItem("SQCL_CLOSING_LEDGER", JSON.stringify(ledger));
+    } catch (e) {}
   }
 
   const CORE_DISCIPLINES = [
@@ -204,6 +286,15 @@
         validTriples.add(`${t.unit}__${t.section}__${t.discipline}`);
       });
       list = list.filter((a) => validTriples.has(`${a.unit}__${a.section}__${a.discipline}`));
+    }
+
+    if (criteria.closingWorkDate && criteria.closingWorkDate !== "ALL") {
+      const ledger = getClosingLedger();
+      const recs = (ledger && ledger.records) || {};
+      list = list.filter((a) => {
+        const rec = recs[a.id];
+        return Boolean(a.both_signed && rec && rec.work_date === criteria.closingWorkDate);
+      });
     }
 
     if (criteria.section && criteria.section !== "ALL") {
@@ -391,6 +482,9 @@
     if (criteria.scheduleDate && criteria.scheduleDate !== "ALL") {
       parts.push(`Scheduled Date: ${formatShortDate(criteria.scheduleDate)} (${criteria.scheduleDate})`);
     }
+    if (criteria.closingWorkDate && criteria.closingWorkDate !== "ALL") {
+      parts.push(`Work Date: ${formatWorkDateLabel(criteria.closingWorkDate)}`);
+    }
     if (criteria.section && criteria.section !== "ALL") {
       const secTitle = getSectionTitle(criteria.section);
       parts.push(`System: ${criteria.section}${secTitle ? " - " + secTitle : ""}`);
@@ -431,6 +525,7 @@
     if (criteria.sigFilter && criteria.sigFilter !== "ALL") params.set("sigFilter", criteria.sigFilter);
     if (criteria.scheduleDate && criteria.scheduleDate !== "ALL") params.set("scheduleDate", criteria.scheduleDate);
     if (criteria.scheduledOnly) params.set("scheduledOnly", "1");
+    if (criteria.closingWorkDate && criteria.closingWorkDate !== "ALL") params.set("closingWorkDate", criteria.closingWorkDate);
     if (criteria.title) params.set("title", criteria.title);
     return `${window.location.pathname}?${params.toString()}`;
   }
@@ -449,7 +544,8 @@
       criteria.status || "ALL",
       criteria.sigFilter || "ALL",
       criteria.scheduleDate || "ALL",
-      criteria.scheduledOnly ? "SCHED" : "ALL"
+      criteria.scheduledOnly ? "SCHED" : "ALL",
+      criteria.closingWorkDate || "ALL"
     ];
     const tabKey = "detail_" + keyParts.join("__").replace(/[^a-zA-Z0-9_#-]/g, "_");
 
@@ -467,6 +563,10 @@
         shortTitle = `${uPrefix} • ${formatShortDate(criteria.scheduleDate)}${
           criteria.discipline && criteria.discipline !== "ALL" ? " (" + criteria.discipline + ")" : ""
         }`;
+      } else if (criteria.closingWorkDate && criteria.closingWorkDate !== "ALL") {
+        const wLabel = formatWorkDateShort(criteria.closingWorkDate);
+        const dSuffix = criteria.discipline && criteria.discipline !== "ALL" ? ` • ${criteria.discipline}` : "";
+        shortTitle = `${uPrefix} • Closed ${wLabel}${dSuffix}`;
       } else if (criteria.section && criteria.section !== "ALL") {
         shortTitle = `${uPrefix} • Sec ${criteria.section}`;
       } else if (criteria.discipline && criteria.discipline !== "ALL") {
@@ -492,7 +592,8 @@
         status: criteria.status || "ALL",
         sigFilter: criteria.sigFilter || "ALL",
         scheduleDate: criteria.scheduleDate || "ALL",
-        scheduledOnly: Boolean(criteria.scheduledOnly)
+        scheduledOnly: Boolean(criteria.scheduledOnly),
+        closingWorkDate: criteria.closingWorkDate || "ALL"
       },
       subFilter: {
         search: "",
@@ -1129,6 +1230,7 @@
       sigFilter: sub.sigFilter !== "ALL" ? sub.sigFilter : base.sigFilter,
       scheduleDate: base.scheduleDate,
       scheduledOnly: base.scheduledOnly,
+      closingWorkDate: base.closingWorkDate,
       search: sub.search
     };
   }
@@ -1950,6 +2052,9 @@
     // 5. Discipline Summary Section
     renderDisciplineSummarySection(unit, stats);
 
+    // 5B. Daily Closed Items Tracking Section (07:30 AM Cut-off)
+    renderDailyClosingSection();
+
     // 6. Inspection Schedule by Discipline Section
     renderInspectionScheduleSection();
 
@@ -2157,6 +2262,444 @@
           `;
         })
         .join("");
+    }
+  }
+
+  // Section 4B: Daily Closed Items Tracking & Discipline Trend (07:30 AM Cut-off)
+  window.setClosingViewMode = function (mode) {
+    state.closingViewMode = mode;
+    renderDailyClosingSection();
+  };
+
+  window.setClosingChartMetric = function (metric) {
+    state.closingChartMetric = metric;
+    renderDailyClosingSection();
+  };
+
+  window.setClosingRange = function (range) {
+    state.closingRange = range;
+    renderDailyClosingSection();
+  };
+
+  function renderDailyClosingSection() {
+    const badgeEl = document.getElementById("closing-total-badge");
+    const matrixContainer = document.getElementById("closing-matrix-container");
+    const chartContainer = document.getElementById("closing-chart-container");
+    const metricToggleContainer = document.getElementById("closing-metric-toggle-container");
+    const btnMatrix = document.getElementById("btn-closing-view-matrix");
+    const btnChart = document.getElementById("btn-closing-view-chart");
+    const btnMetricDaily = document.getElementById("btn-closing-metric-daily");
+    const btnMetricCum = document.getElementById("btn-closing-metric-cumulative");
+    const rangeSelect = document.getElementById("closing-range-select");
+
+    if (!matrixContainer && !chartContainer) return;
+
+    // View mode button states
+    if (btnMatrix && btnChart) {
+      if (state.closingViewMode === "matrix") {
+        btnMatrix.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnChart.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+        if (matrixContainer) matrixContainer.classList.remove("hidden");
+        if (chartContainer) chartContainer.classList.add("hidden");
+        if (metricToggleContainer) metricToggleContainer.classList.add("hidden");
+      } else {
+        btnChart.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnMatrix.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+        if (matrixContainer) matrixContainer.classList.add("hidden");
+        if (chartContainer) chartContainer.classList.remove("hidden");
+        if (metricToggleContainer) metricToggleContainer.classList.remove("hidden");
+      }
+    }
+
+    // Chart metric buttons state
+    if (btnMetricDaily && btnMetricCum) {
+      if (state.closingChartMetric === "daily") {
+        btnMetricDaily.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnMetricCum.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+      } else {
+        btnMetricCum.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnMetricDaily.className = "px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+      }
+    }
+
+    if (rangeSelect) {
+      rangeSelect.value = state.closingRange;
+    }
+
+    // Retrieve ledger records
+    const ledger = getClosingLedger();
+    const records = ledger.records || {};
+    const unit = state.selectedUnit;
+
+    const matchingRecords = [];
+    Object.values(records).forEach((r) => {
+      if (unit === "ALL" || r.unit === unit) {
+        matchingRecords.push(r);
+      }
+    });
+
+    if (badgeEl) {
+      badgeEl.textContent = `${matchingRecords.length} items closed`;
+    }
+
+    // Grouping
+    const dateSet = new Set();
+    const matrixData = {};
+    const DISCIPLINES = [
+      "Mechanical",
+      "Electrical & Instruments",
+      "Piping",
+      "Structural",
+      "Pre-Commissioning",
+      "Material",
+      "General"
+    ];
+
+    DISCIPLINES.forEach((d) => {
+      matrixData[d] = {};
+    });
+
+    matchingRecords.forEach((r) => {
+      const wDate = r.work_date || "2026-08-24";
+      dateSet.add(wDate);
+      let disc = r.discipline || "General";
+      if (!DISCIPLINES.includes(disc)) {
+        disc = "General";
+      }
+      if (!matrixData[disc]) matrixData[disc] = {};
+      matrixData[disc][wDate] = (matrixData[disc][wDate] || 0) + 1;
+    });
+
+    let sortedDates = Array.from(dateSet).sort();
+    if (state.closingRange !== "all") {
+      const c = parseInt(state.closingRange, 10);
+      if (!isNaN(c) && c > 0) {
+        sortedDates = sortedDates.slice(-c);
+      }
+    }
+
+    // 1. Render Matrix Table
+    if (matrixContainer) {
+      if (sortedDates.length === 0) {
+        matrixContainer.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-xs">
+            <i class="fas fa-inbox text-3xl mb-2 text-slate-300"></i>
+            <div>Không có hạng mục nào được đóng trong phạm vi ngày đã chọn (${esc(unit)}).</div>
+          </div>
+        `;
+      } else {
+        const dateHeadersHtml = sortedDates
+          .map(
+            (d) => `
+              <th class="py-3 px-3 text-center border-l border-slate-700/60" title="${esc(formatWorkDateLabel(d))}">
+                <div class="font-bold text-white text-xs">${esc(formatWorkDateShort(d))}</div>
+                <div class="text-[10px] text-amber-300 font-semibold tracking-tight">Cut-off 07:30</div>
+              </th>
+            `
+          )
+          .join("");
+
+        const colTotals = {};
+        sortedDates.forEach((d) => {
+          colTotals[d] = 0;
+        });
+        let grandTotal = 0;
+
+        const rowsHtml = DISCIPLINES.map((disc) => {
+          let rowTotal = 0;
+          const cellsHtml = sortedDates
+            .map((d) => {
+              const c = matrixData[disc][d] || 0;
+              rowTotal += c;
+              colTotals[d] += c;
+              grandTotal += c;
+              if (c > 0) {
+                return `
+                  <td class="py-2.5 px-2 text-center border-l border-slate-100 align-middle">
+                    <button
+                      onclick="openDetailTab({ closingWorkDate: '${d}', discipline: '${esc(disc)}', unit: '${unit}', title: 'Closed • ${esc(formatWorkDateShort(d))} • ${esc(disc)}' })"
+                      class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-600 border border-emerald-200 text-emerald-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
+                      title="Click xem ${c} hạng mục ${esc(disc)} đóng ngày ${esc(formatWorkDateLabel(d))}"
+                    >
+                      ${c}
+                    </button>
+                  </td>
+                `;
+              }
+              return `
+                <td class="py-2.5 px-2 text-center border-l border-slate-100 align-middle">
+                  <span class="text-slate-300 text-xs font-mono">-</span>
+                </td>
+              `;
+            })
+            .join("");
+
+          const discBadgeClass =
+            {
+              Mechanical: "bg-blue-100 text-blue-800 border-blue-200",
+              "Electrical & Instruments": "bg-purple-100 text-purple-800 border-purple-200",
+              Piping: "bg-teal-100 text-teal-800 border-teal-200",
+              Structural: "bg-amber-100 text-amber-800 border-amber-200",
+              "Pre-Commissioning": "bg-rose-100 text-rose-800 border-rose-200",
+              Material: "bg-slate-100 text-slate-800 border-slate-200",
+              General: "bg-emerald-100 text-emerald-800 border-emerald-200"
+            }[disc] || "bg-slate-100 text-slate-800 border-slate-200";
+
+          const totalBtnHtml =
+            rowTotal > 0
+              ? `<button
+                   onclick="openDetailTab({ discipline: '${esc(disc)}', sigFilter: 'BOTH_SIGNED', unit: '${unit}', title: 'Closed • ${esc(disc)} (All Dates)' })"
+                   class="px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-600 border border-blue-200 text-blue-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
+                   title="Click xem ${rowTotal} hạng mục đã đóng thuộc ${esc(disc)}"
+                 >
+                   ${rowTotal}
+                 </button>`
+              : `<span class="text-slate-400 text-xs font-mono">0</span>`;
+
+          return `
+            <tr class="hover:bg-blue-50/30 border-b border-slate-100 text-xs sm:text-sm bg-white">
+              <td class="py-2.5 px-3.5 font-bold text-slate-800 whitespace-nowrap">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border ${discBadgeClass}">
+                  <i class="fas fa-layer-group text-[10px]"></i>
+                  ${esc(disc)}
+                </span>
+              </td>
+              ${cellsHtml}
+              <td class="py-2.5 px-3 text-center border-l border-slate-200 bg-slate-50/70 align-middle">
+                ${totalBtnHtml}
+              </td>
+            </tr>
+          `;
+        }).join("");
+
+        const footerColsHtml = sortedDates
+          .map((d) => {
+            const c = colTotals[d] || 0;
+            return `
+              <td class="py-2.5 px-2 text-center border-l border-slate-700/60 align-middle">
+                ${
+                  c > 0
+                    ? `<button
+                         onclick="openDetailTab({ closingWorkDate: '${d}', unit: '${unit}', title: 'Closed • ${esc(formatWorkDateLabel(d))}' })"
+                         class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition-all shadow-sm"
+                         title="Click xem tất cả ${c} hạng mục đóng ngày ${esc(formatWorkDateLabel(d))}"
+                       >
+                         ${c}
+                       </button>`
+                    : `<span class="text-slate-400 text-xs font-mono">0</span>`
+                }
+              </td>
+            `;
+          })
+          .join("");
+
+        matrixContainer.innerHTML = `
+          <table class="w-full text-left sqcl-grid-table">
+            <thead>
+              <tr class="bg-slate-900 text-white text-xs uppercase font-extrabold tracking-wider">
+                <th class="py-3 px-4 min-w-[200px]">Discipline / Remarks</th>
+                ${dateHeadersHtml}
+                <th class="py-3 px-3 text-center border-l border-slate-700 bg-slate-800 text-amber-400 min-w-[100px]">Total Closed</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+            <tfoot>
+              <tr class="bg-slate-900 text-white font-extrabold text-xs border-t-2 border-slate-700">
+                <td class="py-3 px-4 uppercase tracking-wider text-amber-300">
+                  <div class="flex items-center gap-1.5">
+                    <i class="fas fa-calculator"></i>
+                    <span>Daily Total (All Disciplines)</span>
+                  </div>
+                </td>
+                ${footerColsHtml}
+                <td class="py-3 px-3 text-center border-l border-slate-700 bg-slate-950 align-middle">
+                  <button
+                    onclick="openDetailTab({ sigFilter: 'BOTH_SIGNED', unit: '${unit}', title: 'All Closed Activities (${grandTotal})' })"
+                    class="px-3.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs transition-all shadow-md"
+                    title="Click xem toàn bộ ${grandTotal} hạng mục đã hoàn thành ký duyệt"
+                  >
+                    ${grandTotal}
+                  </button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+      }
+    }
+
+    // 2. Render Line Chart
+    if (window.Chart && document.getElementById("chart-daily-closing")) {
+      const ctx = document.getElementById("chart-daily-closing");
+      if (state.charts.dailyClosing) {
+        state.charts.dailyClosing.destroy();
+        state.charts.dailyClosing = null;
+      }
+
+      if (sortedDates.length > 0) {
+        const labels = sortedDates.map((d) => formatWorkDateShort(d));
+
+        const DISC_COLORS = {
+          Mechanical: { border: "#2563EB", bg: "rgba(37, 99, 235, 0.1)" },
+          "Electrical & Instruments": { border: "#7C3AED", bg: "rgba(124, 58, 237, 0.1)" },
+          Piping: { border: "#0D9488", bg: "rgba(13, 148, 136, 0.1)" },
+          Structural: { border: "#D97706", bg: "rgba(217, 119, 6, 0.1)" },
+          "Pre-Commissioning": { border: "#DC2626", bg: "rgba(220, 38, 38, 0.1)" },
+          Material: { border: "#64748B", bg: "rgba(100, 116, 139, 0.1)" },
+          General: { border: "#059669", bg: "rgba(5, 150, 105, 0.1)" }
+        };
+
+        const isCum = state.closingChartMetric === "cumulative";
+        const datasets = [];
+
+        // Total Line
+        let totalRunning = 0;
+        const totalData = sortedDates.map((d) => {
+          let daySum = 0;
+          DISCIPLINES.forEach((disc) => {
+            daySum += matrixData[disc][d] || 0;
+          });
+          if (isCum) {
+            totalRunning += daySum;
+            return totalRunning;
+          }
+          return daySum;
+        });
+
+        datasets.push({
+          label: isCum ? "Cumulative Total (All Disciplines)" : "Daily Total (All Disciplines)",
+          data: totalData,
+          borderColor: "#0F172A",
+          backgroundColor: "rgba(15, 23, 42, 0.08)",
+          borderWidth: 3,
+          pointRadius: 5,
+          pointHoverRadius: 8,
+          pointBackgroundColor: "#0F172A",
+          tension: 0.3,
+          fill: false,
+          disciplineCode: "ALL"
+        });
+
+        // Disciplines
+        DISCIPLINES.forEach((disc) => {
+          let sum = 0;
+          sortedDates.forEach((d) => {
+            sum += matrixData[disc][d] || 0;
+          });
+          if (sum === 0) return;
+
+          let running = 0;
+          const data = sortedDates.map((d) => {
+            const c = matrixData[disc][d] || 0;
+            if (isCum) {
+              running += c;
+              return running;
+            }
+            return c;
+          });
+
+          const col = DISC_COLORS[disc] || { border: "#64748B", bg: "rgba(100, 116, 139, 0.1)" };
+          datasets.push({
+            label: disc,
+            data: data,
+            borderColor: col.border,
+            backgroundColor: col.bg,
+            borderWidth: 2,
+            pointRadius: 4,
+            pointHoverRadius: 7,
+            pointBackgroundColor: col.border,
+            tension: 0.3,
+            fill: false,
+            disciplineCode: disc
+          });
+        });
+
+        state.charts.dailyClosing = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: datasets
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: "index",
+              intersect: false
+            },
+            onClick: (evt, elements) => {
+              if (elements && elements.length > 0) {
+                const el = elements[0];
+                const dateIdx = el.index;
+                const dsIdx = el.datasetIndex;
+                const targetDate = sortedDates[dateIdx];
+                const ds = datasets[dsIdx];
+                const discCode = ds.disciplineCode;
+
+                if (discCode === "ALL") {
+                  openDetailTab({
+                    closingWorkDate: targetDate,
+                    unit: unit,
+                    title: `Closed • ${formatWorkDateLabel(targetDate)}`
+                  });
+                } else {
+                  openDetailTab({
+                    closingWorkDate: targetDate,
+                    discipline: discCode,
+                    unit: unit,
+                    title: `Closed • ${formatWorkDateShort(targetDate)} • ${discCode}`
+                  });
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                position: "top",
+                labels: {
+                  boxWidth: 12,
+                  font: { size: 11, weight: "bold" }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  title: (items) => {
+                    if (!items.length) return "";
+                    const idx = items[0].dataIndex;
+                    const targetDate = sortedDates[idx];
+                    return `Work Date: ${formatWorkDateLabel(targetDate)}`;
+                  },
+                  afterBody: () => "\n(Click vào điểm dữ liệu để mở danh sách chi tiết)"
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: "Work Date (07:30 AM Cut-off)",
+                  font: { size: 11, weight: "bold" }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: isCum ? "Cumulative Closed Items" : "Daily Closed Items Count",
+                  font: { size: 11, weight: "bold" }
+                },
+                ticks: {
+                  precision: 0
+                }
+              }
+            }
+          }
+        });
+      }
     }
   }
 
@@ -2711,6 +3254,16 @@
               <p class="text-xs sm:text-sm text-blue-700 font-medium mt-0.5">
                 <i class="fas fa-filter mr-1"></i>${esc(filterDesc)}
               </p>
+              ${
+                tab.baseCriteria.closingWorkDate && tab.baseCriteria.closingWorkDate !== "ALL"
+                  ? `
+                <div class="mt-2.5 p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-xs text-emerald-900 font-medium">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span><strong>Báo cáo Đóng hàng ngày:</strong> Ngày làm việc <strong>${esc(formatWorkDateLabel(tab.baseCriteria.closingWorkDate))}</strong> (Cut-off 07:30 AM). Tiêu chuẩn hoàn thành: Cả BH và CU đều đã ký xác nhận.</span>
+                </div>
+              `
+                  : ""
+              }
             </div>
 
             <!-- Export & Browser Tab Buttons -->
@@ -3611,6 +4164,8 @@
   }
 
   const FIELD_MAP_INFO = {
+    bh_signature: { col: 4, letter: "D", name: "BH Signature" },
+    cu_signature: { col: 5, letter: "E", name: "CU Signature" },
     note: { col: 13, letter: "M", name: "NOTE" },
     pic_pmc: { col: 14, letter: "N", name: "Person-In-Charge (PMC)" },
     pic_pq: { col: 15, letter: "O", name: "Person-In-Charge (PQ POC & BV)" },
@@ -3824,6 +4379,33 @@
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);
     }
+    if (field === "bh_signature" || field === "cu_signature") {
+      const bhVal = (field === "bh_signature" ? newValue : (act.bh_signature || "")).trim();
+      const cuVal = (field === "cu_signature" ? newValue : (act.cu_signature || "")).trim();
+      act.bh_signed = bhVal !== "" && bhVal !== "-" && bhVal.toLowerCase() !== "not yet" && bhVal.toLowerCase() !== "n/a";
+      act.cu_signed = cuVal !== "" && cuVal !== "-" && cuVal.toLowerCase() !== "not yet" && cuVal.toLowerCase() !== "n/a";
+      act.both_signed = act.bh_signed && act.cu_signed;
+      if (act.both_signed) {
+        act.sig_status = "Both Signed";
+        const ledger = getClosingLedger();
+        if (ledger && ledger.records && !ledger.records[act.id]) {
+          const wDate = computeWorkDateJS(new Date());
+          ledger.records[act.id] = {
+            id: act.id,
+            unit,
+            activity: act.activity,
+            section: act.section,
+            section_title: act.section_title,
+            description: act.description,
+            discipline: act.discipline || "General",
+            work_date: wDate,
+            closed_timestamp: new Date().toISOString(),
+            source: "in_app_edit"
+          };
+          saveClosingLedger(ledger);
+        }
+      }
+    }
 
     // 2. Save locally into SQCL_USER_EDITS
     const colInfo = FIELD_MAP_INFO[field] || { col: 18, letter: "R", name: field };
@@ -4034,6 +4616,33 @@
     }
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);
+    }
+    if (field === "bh_signature" || field === "cu_signature") {
+      const bhVal = (field === "bh_signature" ? newValue : (act.bh_signature || "")).trim();
+      const cuVal = (field === "cu_signature" ? newValue : (act.cu_signature || "")).trim();
+      act.bh_signed = bhVal !== "" && bhVal !== "-" && bhVal.toLowerCase() !== "not yet" && bhVal.toLowerCase() !== "n/a";
+      act.cu_signed = cuVal !== "" && cuVal !== "-" && cuVal.toLowerCase() !== "not yet" && cuVal.toLowerCase() !== "n/a";
+      act.both_signed = act.bh_signed && act.cu_signed;
+      if (act.both_signed) {
+        act.sig_status = "Both Signed";
+        const ledger = getClosingLedger();
+        if (ledger && ledger.records && !ledger.records[act.id]) {
+          const wDate = computeWorkDateJS(new Date());
+          ledger.records[act.id] = {
+            id: act.id,
+            unit,
+            activity: act.activity,
+            section: act.section,
+            section_title: act.section_title,
+            description: act.description,
+            discipline: act.discipline || "General",
+            work_date: wDate,
+            closed_timestamp: new Date().toISOString(),
+            source: "in_app_edit"
+          };
+          saveClosingLedger(ledger);
+        }
+      }
     }
 
     // 2. Save into local persistent edits

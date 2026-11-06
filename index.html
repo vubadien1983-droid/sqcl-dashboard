@@ -25,6 +25,8 @@
   <script src="./static/fonts/roboto_vfs.js"></script>
   <!-- Pre-bundled Initial Data from OneDrive Excel -->
   <script src="./sqcl_data_bundle.js"></script>
+  <!-- Closing Ledger Bundle (07:30 AM Cut-off) -->
+  <script src="./sqcl_closing_ledger_bundle.js"></script>
   <!-- English Spellcheck & Typo Highlighter -->
   <script src="./static/spellcheck.js"></script>
 
@@ -547,6 +549,98 @@
             </thead>
             <tbody id="discipline-summary-tbody"></tbody>
           </table>
+        </div>
+      </section>
+
+      <!-- Section 4B: Daily Closed Items Tracking & Discipline Trend (07:30 AM Cut-off) -->
+      <section class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <h2 class="text-xs sm:text-base font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-2">
+                <i class="fas fa-chart-line text-emerald-600"></i>
+                4B. Daily Closed Items Tracking & Discipline Trend (Cut-off 07:30 AM Daily)
+              </h2>
+              <span id="closing-total-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs"></span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Thống kê số lượng hạng mục đã hoàn thành (BH & CU cùng ký duyệt) theo Ngày làm việc (Work Date với mốc Cut-off 07:30 AM hàng ngày). Click vào ô số lượng hoặc điểm trên biểu đồ để mở xem chi tiết các hạng mục.
+            </p>
+          </div>
+
+          <!-- Controls: View Mode, Metric Toggle, Date Range -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <!-- Cut-off info pill -->
+            <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-semibold" title="Ví dụ: Ký từ 07:30 05/11 đến 07:29 06/11 tính vào Ngày làm việc 05/11">
+              <i class="fas fa-clock text-amber-600"></i>
+              <span>Cut-off: 07:30 AM</span>
+            </div>
+
+            <!-- View Switcher (Matrix vs Line Chart) -->
+            <div class="flex items-center bg-slate-100 p-1 rounded-xl">
+              <button
+                id="btn-closing-view-matrix"
+                onclick="setClosingViewMode('matrix')"
+                class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm"
+              >
+                <i class="fas fa-table-cells mr-1.5"></i>Ma trận Ngày
+              </button>
+              <button
+                id="btn-closing-view-chart"
+                onclick="setClosingViewMode('chart')"
+                class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900"
+              >
+                <i class="fas fa-chart-line mr-1.5"></i>Biểu đồ đường
+              </button>
+            </div>
+
+            <!-- Chart Metric Toggle (Daily vs Cumulative) - only relevant for Chart -->
+            <div id="closing-metric-toggle-container" class="hidden flex items-center bg-slate-100 p-1 rounded-xl">
+              <button
+                id="btn-closing-metric-daily"
+                onclick="setClosingChartMetric('daily')"
+                class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-white text-blue-700 shadow-sm"
+                title="Số lượng đóng từng ngày"
+              >
+                Từng ngày
+              </button>
+              <button
+                id="btn-closing-metric-cumulative"
+                onclick="setClosingChartMetric('cumulative')"
+                class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900"
+                title="Lũy kế theo thời gian (S-Curve)"
+              >
+                Lũy kế S-Curve
+              </button>
+            </div>
+
+            <!-- Date Range Selector -->
+            <select
+              id="closing-range-select"
+              onchange="setClosingRange(this.value)"
+              class="px-3 py-1.5 rounded-xl border border-slate-300 text-xs sm:text-sm bg-white font-semibold text-slate-700 focus:outline-none focus:border-blue-500"
+            >
+              <option value="all">Tất cả ngày</option>
+              <option value="7">7 ngày gần nhất</option>
+              <option value="14">14 ngày gần nhất</option>
+              <option value="30">30 ngày gần nhất</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Matrix Table Container -->
+        <div id="closing-matrix-container" class="overflow-x-auto rounded-xl border border-slate-200">
+          <!-- Rendered dynamically via renderDailyClosingSection() -->
+        </div>
+
+        <!-- Line Chart Container -->
+        <div id="closing-chart-container" class="hidden">
+          <div class="h-72 sm:h-80 w-full pt-2">
+            <canvas id="chart-daily-closing"></canvas>
+          </div>
+          <div class="text-[11px] text-slate-400 text-right mt-1.5 italic">
+            * Mẹo: Click vào bất kỳ điểm dữ liệu nào trên đường biểu đồ để mở danh sách chi tiết của ngày & chuyên môn đó.
+          </div>
         </div>
       </section>
 
