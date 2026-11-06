@@ -355,6 +355,8 @@
     "Material": { bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200", bar: "#0D9488", badge: "bg-teal-100 text-teal-800 border-teal-200" },
     "Package": { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", bar: "#059669", badge: "bg-emerald-100 text-emerald-800 border-emerald-200" },
     "Civil": { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", bar: "#EA580C", badge: "bg-orange-100 text-orange-800 border-orange-200" },
+    "P&M": { bg: "bg-lime-50", text: "text-lime-800", border: "border-lime-300", bar: "#65A30D", badge: "bg-lime-100 text-lime-900 border-lime-300" },
+    "Piping & Mechanical": { bg: "bg-lime-50", text: "text-lime-800", border: "border-lime-300", bar: "#65A30D", badge: "bg-lime-100 text-lime-900 border-lime-300" },
     "Unassigned": { bg: "bg-slate-50", text: "text-slate-600", border: "border-slate-200", bar: "#64748B", badge: "bg-slate-100 text-slate-700 border-slate-200" }
   };
 
@@ -377,9 +379,10 @@
 
   function getDisciplineShortLabel(dName) {
     if (!dName) return "-";
-    if (dName === "Electrical & Instruments") return "E&I";
+    if (dName === "Electrical & Instruments" || dName === "EIT") return "E&I";
     if (dName === "Mechanical") return "Mech";
-    if (dName === "Pre-Commissioning") return "Pre-Com";
+    if (dName === "Piping & Mechanical" || dName === "P&M") return "P&M";
+    if (dName === "Pre-Commissioning" || dName === "COM_INS") return "Pre-Com";
     if (dName === "Structural") return "Struct";
     return dName;
   }
@@ -431,13 +434,20 @@
         (sc.items || []).forEach((it) => {
           it.units.forEach((u) => {
             if (unitFilter === "ALL" || unitFilter === u) {
-              tuples.push({
-                unit: u,
-                section: sec.section,
-                section_title: sec.title,
-                date: sc.date,
-                discipline: it.discipline,
-                raw: it.raw
+              const discList = (it.disciplines && it.disciplines.length > 0)
+                ? it.disciplines
+                : (it.discipline === "P&M" ? ["Piping", "Mechanical"] : [it.discipline]);
+
+              discList.forEach((dName) => {
+                tuples.push({
+                  unit: u,
+                  section: sec.section,
+                  section_title: sec.title,
+                  date: sc.date,
+                  discipline: dName,
+                  raw: it.raw,
+                  is_pm: Boolean(it.is_pm || it.discipline === "P&M" || (it.disciplines && it.disciplines.length > 1))
+                });
               });
             }
           });
@@ -466,15 +476,27 @@
         if (criteria.scheduleDate && criteria.scheduleDate !== "ALL" && t.date !== criteria.scheduleDate) {
           return;
         }
-        if (criteria.discipline && criteria.discipline !== "ALL" && t.discipline !== criteria.discipline) {
-          return;
+        if (criteria.discipline && criteria.discipline !== "ALL") {
+          if (criteria.discipline === "P&M" || criteria.discipline === "Piping & Mechanical") {
+            if (t.discipline !== "Piping" && t.discipline !== "Mechanical") return;
+          } else if (criteria.discipline === "Piping") {
+            if (t.discipline !== "Piping") return;
+          } else if (criteria.discipline === "Mechanical") {
+            if (t.discipline !== "Mechanical") return;
+          } else if (t.discipline !== criteria.discipline) {
+            return;
+          }
         }
         if (criteria.section && criteria.section !== "ALL" && t.section !== criteria.section) {
           return;
         }
         validTriples.add(`${t.unit}__${t.section}__${t.discipline}`);
       });
-      list = list.filter((a) => validTriples.has(`${a.unit}__${a.section}__${a.discipline}`));
+      list = list.filter((a) => {
+        if (validTriples.has(`${a.unit}__${a.section}__${a.discipline}`)) return true;
+        if (a.discipline === "Piping & Mechanical" && (validTriples.has(`${a.unit}__${a.section}__Piping`) || validTriples.has(`${a.unit}__${a.section}__Mechanical`))) return true;
+        return false;
+      });
     }
 
     if (criteria.closingWorkDate && criteria.closingWorkDate !== "ALL") {
@@ -491,6 +513,15 @@
     }
     if (criteria.discipline && criteria.discipline !== "ALL") {
       list = list.filter((a) => {
+        if (criteria.discipline === "P&M" || criteria.discipline === "Piping & Mechanical") {
+          return a.discipline === "Piping" || a.discipline === "Mechanical" || a.discipline === "Piping & Mechanical";
+        }
+        if (criteria.discipline === "Piping") {
+          return a.discipline === "Piping" || a.discipline === "Piping & Mechanical";
+        }
+        if (criteria.discipline === "Mechanical") {
+          return a.discipline === "Mechanical" || a.discipline === "Piping & Mechanical";
+        }
         if (criteria.discipline === "General" || criteria.discipline === "Unassigned") {
           return a.discipline === "General" || a.discipline === "Unassigned" || !a.discipline;
         }
@@ -862,7 +893,10 @@
     const s = String(raw || "").trim();
     if (!s) return "Unassigned";
     const sl = s.toLowerCase();
-    if (sl.includes("electrical") || sl.includes("instrument") || sl.includes("e&i")) {
+    if (sl.includes("p&m") || sl.includes("p & m") || sl === "pm") {
+      return "Piping & Mechanical";
+    }
+    if (sl.includes("electrical") || sl.includes("instrument") || sl.includes("e&i") || sl.includes("eit")) {
       return "Electrical & Instruments";
     }
     if (sl.includes("pip")) {
@@ -871,7 +905,7 @@
     if (sl.includes("mech")) {
       return "Mechanical";
     }
-    if (sl.includes("pre/com") || sl.includes("precom") || sl.includes("commissioning")) {
+    if (sl.includes("pre/com") || sl.includes("precom") || sl.includes("commissioning") || sl.includes("com_ins")) {
       return "Pre-Commissioning";
     }
     if (sl.includes("struct")) {
@@ -916,25 +950,37 @@
     const items = [];
     parts.forEach((p) => {
       const pl = p.toLowerCase();
+      const has1 = p.includes("1");
+      const has2 = p.includes("2");
+      let units = ["GTG#1", "GTG#2"];
+      if (has1 && !has2) units = ["GTG#1"];
+      else if (has2 && !has1) units = ["GTG#2"];
+
+      // P&M represents both Piping and Mechanical disciplines
+      if (pl === "p&m" || pl.startsWith("p&m") || pl.includes("p&m") || pl.includes("p & m") || pl === "pm") {
+        items.push({
+          raw: p,
+          discipline: "P&M",
+          disciplines: ["Piping", "Mechanical"],
+          is_pm: true,
+          units: units
+        });
+        return;
+      }
+
       let disc = p;
       if (pl.includes("mech")) disc = "Mechanical";
-      else if (pl.includes("e&i") || pl.includes("elect") || pl.includes("inst")) disc = "Electrical & Instruments";
+      else if (pl.includes("e&i") || pl.includes("elect") || pl.includes("inst") || pl.includes("eit")) disc = "Electrical & Instruments";
       else if (pl.includes("pip")) disc = "Piping";
       else if (pl.includes("mat")) disc = "Material";
       else if (pl.includes("struct")) disc = "Structural";
-      else if (pl.includes("precom") || pl.includes("pre/com") || pl.includes("commission")) disc = "Pre-Commissioning";
+      else if (pl.includes("precom") || pl.includes("pre/com") || pl.includes("commission") || pl.includes("com_ins")) disc = "Pre-Commissioning";
       else if (pl.includes("pkg") || pl.includes("package")) disc = "Package";
       else if (pl.includes("civil")) disc = "Civil";
       else {
         const clean = p.replace(/[\d_#\s]+$/, "").trim();
         disc = clean || p;
       }
-
-      const has1 = p.includes("1");
-      const has2 = p.includes("2");
-      let units = ["GTG#1", "GTG#2"];
-      if (has1 && !has2) units = ["GTG#1"];
-      else if (has2 && !has1) units = ["GTG#2"];
 
       items.push({
         raw: p,
@@ -3153,7 +3199,12 @@
 
     if (schedDiscFilter !== "ALL") {
       scheduledSections = scheduledSections.filter((s) =>
-        s.schedule.some((sc) => sc.items.some((it) => it.discipline === schedDiscFilter))
+        s.schedule.some((sc) => sc.items.some((it) => {
+          if (it.discipline === schedDiscFilter) return true;
+          if (it.disciplines && it.disciplines.includes(schedDiscFilter)) return true;
+          if (it.is_pm && (schedDiscFilter === "Mechanical" || schedDiscFilter === "Piping")) return true;
+          return false;
+        }))
       );
     }
 
@@ -3179,11 +3230,22 @@
           new Set(
             sec.schedule.flatMap((sc) =>
               sc.items
-                .filter((it) => schedDiscFilter === "ALL" || it.discipline === schedDiscFilter)
-                .map((it) => it.discipline)
+                .flatMap((it) => {
+                  if (it.disciplines && it.disciplines.length > 0) return it.disciplines;
+                  if (it.is_pm) return ["Piping", "Mechanical"];
+                  return [it.discipline];
+                })
+                .filter((d) => schedDiscFilter === "ALL" || d === schedDiscFilter)
             )
           )
-        );
+        ).sort((a, b) => {
+          const ia = priority.indexOf(a);
+          const ib = priority.indexOf(b);
+          if (ia !== -1 && ib !== -1) return ia - ib;
+          if (ia !== -1) return -1;
+          if (ib !== -1) return 1;
+          return a.localeCompare(b);
+        });
 
         const discProgressPills = secDiscs
           .map((dName) => {
@@ -3211,23 +3273,31 @@
             if (!scEntry) {
               return `<td class="py-2 px-1 text-center border-l border-slate-100 text-slate-300">-</td>`;
             }
-            const matchingItems = scEntry.items.filter(
-              (it) => schedDiscFilter === "ALL" || it.discipline === schedDiscFilter
-            );
+            const matchingItems = scEntry.items.filter((it) => {
+              if (schedDiscFilter === "ALL") return true;
+              if (it.discipline === schedDiscFilter) return true;
+              if (it.disciplines && it.disciplines.includes(schedDiscFilter)) return true;
+              if (it.is_pm && (schedDiscFilter === "Mechanical" || schedDiscFilter === "Piping")) return true;
+              return false;
+            });
             if (matchingItems.length === 0) {
               return `<td class="py-2 px-1 text-center border-l border-slate-100 text-slate-300">-</td>`;
             }
             const pills = matchingItems
               .map((it) => {
-                const theme = getDisciplineTheme(it.discipline);
+                const isPm = Boolean(it.is_pm || it.discipline === "P&M" || (it.disciplines && it.disciplines.includes("Piping") && it.disciplines.includes("Mechanical")));
+                const displayDisc = isPm ? "P&M" : it.discipline;
+                const theme = getDisciplineTheme(displayDisc);
                 const targetUnit = unit !== "ALL" ? unit : it.units.length === 1 ? it.units[0] : "ALL";
                 const unitTag = it.units.length === 2 ? "GTG#1&2" : it.units[0];
-                const shortD = getDisciplineShortLabel(it.discipline);
+                const shortD = getDisciplineShortLabel(displayDisc);
+                const targetDiscipline = (schedDiscFilter !== "ALL" && isPm) ? schedDiscFilter : displayDisc;
+                const tooltipDisc = isPm ? "Piping & Mechanical" : it.discipline;
                 return `
                   <button
-                    onclick='openDetailTab({unit:"${targetUnit}", section:"${sec.section}", discipline:"${esc(it.discipline)}", title:"${targetUnit} • Sec ${sec.section} • ${shortD} (${formatShortDate(dt)})"})'
+                    onclick='openDetailTab({unit:"${targetUnit}", section:"${sec.section}", discipline:"${esc(targetDiscipline)}", title:"${targetUnit} • Sec ${sec.section} • ${shortD} (${formatShortDate(dt)})"})'
                     class="block w-full px-1.5 py-0.5 rounded border ${theme.badge} text-[10px] font-bold mb-0.5 last:mb-0 hover:scale-[1.02] transition-transform"
-                    title="Click to inspect Section ${sec.section} (${it.discipline}) in Detail Tab"
+                    title="Click to inspect Section ${sec.section} (${tooltipDisc}) in Detail Tab"
                   >
                     ${esc(shortD)} <span class="font-normal opacity-80">(${esc(unitTag)})</span>
                   </button>

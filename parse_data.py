@@ -22,13 +22,15 @@ def normalize_discipline(raw_remarks):
     if not s:
         return "Unassigned"
     sl = s.lower()
-    if "electrical" in sl or "instrument" in sl or "e&i" in sl:
+    if "p&m" in sl or "p & m" in sl or sl == "pm":
+        return "Piping & Mechanical"
+    if "electrical" in sl or "instrument" in sl or "e&i" in sl or "eit" in sl:
         return "Electrical & Instruments"
     if "pip" in sl:
         return "Piping"
     if "mech" in sl:
         return "Mechanical"
-    if "pre/com" in sl or "precom" in sl or "commissioning" in sl:
+    if "pre/com" in sl or "precom" in sl or "commissioning" in sl or "com_ins" in sl:
         return "Pre-Commissioning"
     if "struct" in sl:
         return "Structural"
@@ -70,25 +72,6 @@ def parse_schedule_cell(raw_str):
     items = []
     for p in parts:
         pl = p.lower()
-        if 'mech' in pl:
-            disc = 'Mechanical'
-        elif 'e&i' in pl or 'elect' in pl or 'inst' in pl:
-            disc = 'Electrical & Instruments'
-        elif 'pip' in pl:
-            disc = 'Piping'
-        elif 'mat' in pl:
-            disc = 'Material'
-        elif 'struct' in pl:
-            disc = 'Structural'
-        elif 'precom' in pl or 'pre/com' in pl or 'commission' in pl:
-            disc = 'Pre-Commissioning'
-        elif 'pkg' in pl or 'package' in pl:
-            disc = 'Package'
-        elif 'civil' in pl:
-            disc = 'Civil'
-        else:
-            clean_disc = re.sub(r'[\d_#\s]+$', '', p).strip()
-            disc = clean_disc if clean_disc else p
         has1 = '1' in p
         has2 = '2' in p
         if has1 and not has2:
@@ -97,6 +80,38 @@ def parse_schedule_cell(raw_str):
             units = ['GTG#2']
         else:
             units = ['GTG#1', 'GTG#2']
+
+        # P&M represents both Piping and Mechanical disciplines
+        if pl == 'p&m' or pl.startswith('p&m') or 'p & m' in pl or pl == 'pm':
+            items.append({
+                "raw": p,
+                "discipline": "P&M",
+                "disciplines": ["Piping", "Mechanical"],
+                "is_pm": True,
+                "units": units
+            })
+            continue
+
+        if 'mech' in pl:
+            disc = 'Mechanical'
+        elif 'e&i' in pl or 'elect' in pl or 'inst' in pl or 'eit' in pl:
+            disc = 'Electrical & Instruments'
+        elif 'pip' in pl:
+            disc = 'Piping'
+        elif 'mat' in pl:
+            disc = 'Material'
+        elif 'struct' in pl:
+            disc = 'Structural'
+        elif 'precom' in pl or 'pre/com' in pl or 'commission' in pl or 'com_ins' in pl:
+            disc = 'Pre-Commissioning'
+        elif 'pkg' in pl or 'package' in pl:
+            disc = 'Package'
+        elif 'civil' in pl:
+            disc = 'Civil'
+        else:
+            clean_disc = re.sub(r'[\d_#\s]+$', '', p).strip()
+            disc = clean_disc if clean_disc else p
+
         items.append({
             "raw": p,
             "discipline": disc,
