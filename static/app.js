@@ -293,7 +293,7 @@
       const recs = (ledger && ledger.records) || {};
       list = list.filter((a) => {
         const rec = recs[a.id];
-        return Boolean(a.both_signed && rec && rec.work_date === criteria.closingWorkDate);
+        return Boolean(a.status === "Done" && rec && rec.work_date === criteria.closingWorkDate);
       });
     }
 
@@ -2339,7 +2339,7 @@
     });
 
     if (badgeEl) {
-      badgeEl.textContent = `${matchingRecords.length} items closed`;
+      badgeEl.textContent = `${matchingRecords.length} items completed`;
     }
 
     // Grouping
@@ -2417,9 +2417,9 @@
                 return `
                   <td class="py-2.5 px-2 text-center border-l border-slate-100 align-middle">
                     <button
-                      onclick="openDetailTab({ closingWorkDate: '${d}', discipline: '${esc(disc)}', unit: '${unit}', title: 'Closed • ${esc(formatWorkDateShort(d))} • ${esc(disc)}' })"
+                      onclick="openDetailTab({ closingWorkDate: '${d}', discipline: '${esc(disc)}', unit: '${unit}', status: 'Done', title: 'Completed • ${esc(formatWorkDateShort(d))} • ${esc(disc)}' })"
                       class="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-600 border border-emerald-200 text-emerald-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
-                      title="Click xem ${c} hạng mục ${esc(disc)} đóng ngày ${esc(formatWorkDateLabel(d))}"
+                      title="Click xem ${c} hạng mục ${esc(disc)} hoàn thành ngày ${esc(formatWorkDateLabel(d))}"
                     >
                       ${c}
                     </button>
@@ -2448,9 +2448,9 @@
           const totalBtnHtml =
             rowTotal > 0
               ? `<button
-                   onclick="openDetailTab({ discipline: '${esc(disc)}', sigFilter: 'BOTH_SIGNED', unit: '${unit}', title: 'Closed • ${esc(disc)} (All Dates)' })"
+                   onclick="openDetailTab({ discipline: '${esc(disc)}', status: 'Done', unit: '${unit}', title: 'Completed • ${esc(disc)} (Status: Done • ${rowTotal})' })"
                    class="px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-600 border border-blue-200 text-blue-800 hover:text-white font-extrabold text-xs transition-all shadow-sm"
-                   title="Click xem ${rowTotal} hạng mục đã đóng thuộc ${esc(disc)}"
+                   title="Click xem ${rowTotal} hạng mục hoàn thành thuộc ${esc(disc)}"
                  >
                    ${rowTotal}
                  </button>`
@@ -2480,9 +2480,9 @@
                 ${
                   c > 0
                     ? `<button
-                         onclick="openDetailTab({ closingWorkDate: '${d}', unit: '${unit}', title: 'Closed • ${esc(formatWorkDateLabel(d))}' })"
+                         onclick="openDetailTab({ closingWorkDate: '${d}', unit: '${unit}', status: 'Done', title: 'Completed • ${esc(formatWorkDateLabel(d))}' })"
                          class="px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition-all shadow-sm"
-                         title="Click xem tất cả ${c} hạng mục đóng ngày ${esc(formatWorkDateLabel(d))}"
+                         title="Click xem tất cả ${c} hạng mục hoàn thành ngày ${esc(formatWorkDateLabel(d))}"
                        >
                          ${c}
                        </button>`
@@ -2499,7 +2499,7 @@
               <tr class="bg-slate-900 text-white text-xs uppercase font-extrabold tracking-wider">
                 <th class="py-3 px-4 min-w-[200px]">Discipline / Remarks</th>
                 ${dateHeadersHtml}
-                <th class="py-3 px-3 text-center border-l border-slate-700 bg-slate-800 text-amber-400 min-w-[100px]">Total Closed</th>
+                <th class="py-3 px-3 text-center border-l border-slate-700 bg-slate-800 text-amber-400 min-w-[100px]">Total Completed</th>
               </tr>
             </thead>
             <tbody>
@@ -2516,9 +2516,9 @@
                 ${footerColsHtml}
                 <td class="py-3 px-3 text-center border-l border-slate-700 bg-slate-950 align-middle">
                   <button
-                    onclick="openDetailTab({ sigFilter: 'BOTH_SIGNED', unit: '${unit}', title: 'All Closed Activities (${grandTotal})' })"
+                    onclick="openDetailTab({ status: 'Done', unit: '${unit}', title: 'All Completed Activities (Status: Done • ${grandTotal})' })"
                     class="px-3.5 py-1.5 rounded-lg bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs transition-all shadow-md"
-                    title="Click xem toàn bộ ${grandTotal} hạng mục đã hoàn thành ký duyệt"
+                    title="Click xem toàn bộ ${grandTotal} hạng mục đã hoàn thành (Status: Done)"
                   >
                     ${grandTotal}
                   </button>
@@ -2569,7 +2569,7 @@
         });
 
         datasets.push({
-          label: isCum ? "Cumulative Total (All Disciplines)" : "Daily Total (All Disciplines)",
+          label: isCum ? "Cumulative Completed (All Disciplines)" : "Daily Completed (All Disciplines)",
           data: totalData,
           borderColor: "#0F172A",
           backgroundColor: "rgba(15, 23, 42, 0.08)",
@@ -2641,15 +2641,17 @@
                 if (discCode === "ALL") {
                   openDetailTab({
                     closingWorkDate: targetDate,
+                    status: "Done",
                     unit: unit,
-                    title: `Closed • ${formatWorkDateLabel(targetDate)}`
+                    title: `Completed • ${formatWorkDateLabel(targetDate)}`
                   });
                 } else {
                   openDetailTab({
                     closingWorkDate: targetDate,
                     discipline: discCode,
+                    status: "Done",
                     unit: unit,
-                    title: `Closed • ${formatWorkDateShort(targetDate)} • ${discCode}`
+                    title: `Completed • ${formatWorkDateShort(targetDate)} • ${discCode}`
                   });
                 }
               }
@@ -2689,7 +2691,7 @@
                 beginAtZero: true,
                 title: {
                   display: true,
-                  text: isCum ? "Cumulative Closed Items" : "Daily Closed Items Count",
+                  text: isCum ? "Cumulative Completed Items (S-Curve)" : "Daily Completed Items Count (Status: Done)",
                   font: { size: 11, weight: "bold" }
                 },
                 ticks: {
@@ -3259,7 +3261,7 @@
                   ? `
                 <div class="mt-2.5 p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-xs text-emerald-900 font-medium">
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span><strong>Báo cáo Đóng hàng ngày:</strong> Ngày làm việc <strong>${esc(formatWorkDateLabel(tab.baseCriteria.closingWorkDate))}</strong> (Cut-off 07:30 AM). Tiêu chuẩn hoàn thành: Cả BH và CU đều đã ký xác nhận.</span>
+                  <span><strong>Báo cáo Hoàn thành Hàng ngày (Status: Done • Cột P):</strong> Ngày làm việc <strong>${esc(formatWorkDateLabel(tab.baseCriteria.closingWorkDate))}</strong> (Cut-off 07:30 AM). Thống nhất với số liệu tiến độ của bộ môn trong file Excel.</span>
                 </div>
               `
                   : ""
@@ -4375,6 +4377,31 @@
     act["_edited_" + field] = true;
     if (field === "status") {
       act.done_unsigned = (newValue === "Done") && (!act.both_signed);
+      const ledger = getClosingLedger();
+      if (newValue === "Done") {
+        if (ledger && ledger.records && !ledger.records[act.id]) {
+          const wDate = computeWorkDateJS(new Date());
+          ledger.records[act.id] = {
+            id: act.id,
+            unit,
+            activity: act.activity,
+            section: act.section,
+            section_title: act.section_title,
+            description: act.description,
+            discipline: act.discipline || "General",
+            work_date: wDate,
+            status: "Done",
+            closed_timestamp: new Date().toISOString(),
+            source: "in_app_edit"
+          };
+          saveClosingLedger(ledger);
+        }
+      } else {
+        if (ledger && ledger.records && ledger.records[act.id]) {
+          delete ledger.records[act.id];
+          saveClosingLedger(ledger);
+        }
+      }
     }
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);
@@ -4613,6 +4640,31 @@
     act["_edited_" + field] = true;
     if (field === "status") {
       act.done_unsigned = (newValue === "Done") && (!act.both_signed);
+      const ledger = getClosingLedger();
+      if (newValue === "Done") {
+        if (ledger && ledger.records && !ledger.records[act.id]) {
+          const wDate = computeWorkDateJS(new Date());
+          ledger.records[act.id] = {
+            id: act.id,
+            unit,
+            activity: act.activity,
+            section: act.section,
+            section_title: act.section_title,
+            description: act.description,
+            discipline: act.discipline || "General",
+            work_date: wDate,
+            status: "Done",
+            closed_timestamp: new Date().toISOString(),
+            source: "in_app_edit"
+          };
+          saveClosingLedger(ledger);
+        }
+      } else {
+        if (ledger && ledger.records && ledger.records[act.id]) {
+          delete ledger.records[act.id];
+          saveClosingLedger(ledger);
+        }
+      }
     }
     if (field === "remarks_raw") {
       act.discipline = normalizeDisciplineInBrowser(newValue);

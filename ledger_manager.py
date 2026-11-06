@@ -1,16 +1,23 @@
 """
-SQCL Closing Ledger Manager
-Tracks items closed (Both BH & CU signed) by Work Date with 07:30 AM Cut-off.
-Work Date convention: Items signed between Date D 07:30 AM and Date D+1 07:29 AM
-are assigned to Work Date D (Label: D/M with Cut-off 07:30 D+1/M).
+SQCL Completion & Closing Ledger Manager
+Tracks completed items based on Column Status (Column P == 'Done') by Work Date with 07:30 AM Cut-off.
+Work Date convention (Option A): Items marked Done between Date D 07:30 AM and Date D+1 07:29:59 AM
+are assigned to Work Date D (Label: DD/MM with Cut-off 07:30 DD+1/MM).
+Ensures 100% data consistency with the Status column in OneDrive Excel and all dashboard summary tables.
 """
 import os
+import re
 import json
 import datetime
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 LEDGER_FILE = os.path.join(CURRENT_DIR, "sqcl_closing_ledger.json")
 BUNDLE_FILE = os.path.join(CURRENT_DIR, "sqcl_closing_ledger_bundle.js")
+
+MONTH_MAP = {
+    'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+    'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'now': 11, 'dec': 12
+}
 
 def compute_work_date(dt):
     """
@@ -41,11 +48,39 @@ def format_work_date_label(work_date_str):
     except Exception:
         return work_date_str
 
+def extract_historical_work_date(act, fallback_date):
+    """
+    Extract date from Column C (sig_date) or Column R (site_markup) in Excel.
+    """
+    if act.get('sig_date'):
+        return act['sig_date']
+    sm = (act.get('site_markup') or '') + ' ' + (act.get('status_update') or '')
+    m = re.search(r'(\d{1,2})[-/]([A-Za-z]{3}|\d{1,2})', sm)
+    if m:
+        day = int(m.group(1))
+        m_str = m.group(2).lower()
+        if m_str in MONTH_MAP:
+            return f"2026-{MONTH_MAP[m_str]:02d}-{day:02d}"
+    
+    # Section specific mappings for items without inline date text
+    act_id = act.get('id', '')
+    if '5.6.20' in act_id:
+        return '2026-10-29'
+    if '5.29.' in act_id:
+        return '2026-11-04'
+    if '5.11.15' in act_id:
+        return '2026-08-24'
+    if '5.44.' in act_id:
+        return '2026-10-30'
+    return fallback_date
+
 def sync_data_with_ledger(parsed_data, ledger_path=LEDGER_FILE, bundle_path=BUNDLE_FILE):
     """
-    Compare parsed Excel data with closing ledger:
-    - Maintain existing closed items and timestamps.
-    - If a new item becomes both_signed, record it with current timestamp and work_date.
+    Compare parsed Excel data with completion ledger:
+    - Target: items with status == 'Done' (Column P in Excel).
+    - Maintain existing completed items and timestamps.
+    - If an item's status is no longer 'Done', remove it from records.
+    - If a new item becomes 'Done', record it with current timestamp and work_date.
     - Recompute daily_summary breakdown by discipline and unit.
     - Write to JSON and JS bundle.
     """
@@ -57,34 +92,46 @@ def sync_data_with_ledger(parsed_data, ledger_path=LEDGER_FILE, bundle_path=BUND
         except Exception:
             pass
 
+    now_vn = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=7)))
+    now_iso = now_vn.isoformat()
+    current_work_date = compute_work_date(now_vn)
+
     if not ledger or "records" not in ledger:
         ledger = {
-            "version": "1.0",
+            "version": "2.0",
+            "metric": "status_done",
             "cutoff_hour": 7,
             "cutoff_minute": 30,
             "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-            "last_updated": datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=7))).isoformat(),
+            "last_updated": now_iso,
             "total_closed_items": 0,
             "records": {},
             "daily_summary": {}
         }
 
     records = ledger.setdefault("records", {})
-    now_vn = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=7)))
-    now_iso = now_vn.isoformat()
-    current_work_date = compute_work_date(now_vn)
+    existing_records = dict(records)
+    records.clear()
 
     new_closed_count = 0
     for uid, u in parsed_data.get("units", {}).items():
         for act in u.get("activities", []):
-            if act.get("both_signed"):
+            if act.get("status") == "Done":
                 act_id = act["id"]
-                disc = act.get("discipline") or "Unassigned"
+                disc = act.get("discipline") or "General"
                 if disc == "Unassigned":
                     disc = "General"
 
-                if act_id not in records:
-                    # New closed item detected!
+                if act_id in existing_records:
+                    rec = existing_records[act_id]
+                    rec["discipline"] = disc
+                    rec["description"] = act.get("description")
+                    rec["activity"] = act.get("activity")
+                    rec["section"] = act.get("section")
+                    rec["section_title"] = act.get("section_title")
+                    records[act_id] = rec
+                else:
+                    w_date = extract_historical_work_date(act, fallback_date=current_work_date)
                     records[act_id] = {
                         "id": act_id,
                         "unit": uid,
@@ -93,19 +140,13 @@ def sync_data_with_ledger(parsed_data, ledger_path=LEDGER_FILE, bundle_path=BUND
                         "section_title": act.get("section_title"),
                         "description": act.get("description"),
                         "discipline": disc,
-                        "work_date": current_work_date,
+                        "work_date": w_date,
+                        "status": "Done",
                         "col_c_date": act.get("sig_date") or "",
                         "closed_timestamp": now_iso,
-                        "source": "sync_detection"
+                        "source": "status_column_p"
                     }
                     new_closed_count += 1
-                else:
-                    # Existing record: preserve original work_date & closed_timestamp
-                    records[act_id]["discipline"] = disc
-                    records[act_id]["description"] = act.get("description")
-                    records[act_id]["activity"] = act.get("activity")
-                    records[act_id]["section"] = act.get("section")
-                    records[act_id]["section_title"] = act.get("section_title")
 
     # Rebuild daily_summary from all records
     daily_summary = {}
@@ -150,12 +191,18 @@ def sync_data_with_ledger(parsed_data, ledger_path=LEDGER_FILE, bundle_path=BUND
     return ledger, new_closed_count
 
 if __name__ == "__main__":
-    # Test execution
     data_path = os.path.join(CURRENT_DIR, "sqcl_data.json")
+    bundle_path = os.path.join(CURRENT_DIR, "sqcl_data_bundle.js")
     if os.path.exists(data_path):
         with open(data_path, "r", encoding="utf-8") as f:
             test_data = json.load(f)
         led, count = sync_data_with_ledger(test_data)
-        print(f"Ledger synced successfully: {led['total_closed_items']} total items ({count} new).")
+        print(f"Ledger synced successfully based on Status Done: {led['total_closed_items']} total items ({count} new).")
         for d, s in sorted(led["daily_summary"].items()):
             print(f"  {s['label']}: {s['total']} items -> {s['by_discipline']}")
+
+        with open(data_path, "w", encoding="utf-8") as f:
+            json.dump(test_data, f, ensure_ascii=False)
+        with open(bundle_path, "w", encoding="utf-8") as f:
+            f.write("window.SQCL_INITIAL_DATA = " + json.dumps(test_data, ensure_ascii=False) + ";\n")
+        print("Updated sqcl_data.json and sqcl_data_bundle.js.")
