@@ -2,8 +2,16 @@ name: Automated OneDrive Cloud Sync
 
 on:
   schedule:
-    # Run every 30 minutes automatically
-    - cron: '*/30 * * * *'
+    # 07:00 AM ICT (Vietnam Time) -> 00:00 UTC
+    - cron: '0 0 * * *'
+    # 07:30 AM ICT (Cut-off Time)  -> 00:30 UTC
+    - cron: '30 0 * * *'
+    # 01:30 PM ICT (13:30 VN Time) -> 06:30 UTC
+    - cron: '30 6 * * *'
+    # 04:30 PM ICT (16:30 VN Time) -> 09:30 UTC
+    - cron: '30 9 * * *'
+    # 06:00 PM ICT (18:00 VN Time) -> 11:00 UTC
+    - cron: '0 11 * * *'
   workflow_dispatch:
     # Allows manual trigger anytime from GitHub Actions tab or via API
 

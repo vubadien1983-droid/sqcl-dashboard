@@ -4503,10 +4503,34 @@
     saveStoredEdits(edits);
   }
 
-  // Periodic background auto-sync every 30 seconds
+  // Periodic background auto-sync of pending local edits every 30 seconds
   setInterval(() => {
     pushAllPendingEditsSilently().catch(() => {});
   }, 30000);
+
+  // In-App Automatic Scheduled Updates at 07:00, 07:30, 13:30 (1:30 PM), 16:30 (4:30 PM), 18:00 (6:00 PM)
+  const SCHEDULED_SYNC_TIMES = ["07:00", "07:30", "13:30", "16:30", "18:00"];
+  let lastTriggeredSyncMinute = "";
+
+  function checkScheduledAutoSync() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    const timeKey = `${hh}:${mm}`;
+
+    if (SCHEDULED_SYNC_TIMES.includes(timeKey) && lastTriggeredSyncMinute !== timeKey) {
+      lastTriggeredSyncMinute = timeKey;
+      console.log(`[AutoSync] Triggering scheduled update for ${timeKey}...`);
+      if (typeof window.syncFromOneDrive === "function") {
+        window.syncFromOneDrive().then(() => {
+          showToast(`✓ Đã tự động cập nhật dữ liệu OneDrive lúc ${timeKey}`, "info");
+        }).catch(() => {});
+      }
+    }
+  }
+
+  // Check clock every 20 seconds
+  setInterval(checkScheduledAutoSync, 20000);
 
   function updateActiveTypoHint(el, tdElement) {
     let hintEl = document.getElementById("active-cell-typo-hint");
