@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-07T12:32:17.898050+07:00",
-  "total_closed_items": 882,
+  "last_updated": "2026-11-07T20:23:19.622431+07:00",
+  "total_closed_items": 913,
   "records": {
     "GTG#1-5.1.2": {
       "id": "GTG#1-5.1.2",
@@ -1365,6 +1365,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.8.6": {
+      "id": "GTG#1-5.8.6",
+      "unit": "GTG#1",
+      "activity": "5.8.6",
+      "section": "5.8",
+      "section_title": "VENTILATION DUCTS AND FANS INSTALLATION (ref. TPI sect.7.8)",
+      "description": "Verify electric motors mechanical installation and power cable tightening torque check (refer to supplier manual for cable connections torque value)",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.8.8": {
       "id": "GTG#1-5.8.8",
       "unit": "GTG#1",
@@ -1461,6 +1475,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.8.15": {
+      "id": "GTG#1-5.8.15",
+      "unit": "GTG#1",
+      "activity": "5.8.15",
+      "section": "5.8",
+      "section_title": "VENTILATION DUCTS AND FANS INSTALLATION (ref. TPI sect.7.8)",
+      "description": "Actuated dampers correctly installed and free from interference. Mechanical operation checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.8.16": {
@@ -2709,6 +2737,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.15.11": {
+      "id": "GTG#1-5.15.11",
+      "unit": "GTG#1",
+      "activity": "5.15.11",
+      "section": "5.15",
+      "section_title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Tubing lines installation check and completion. No excessive bending, kinks, missing supports along the lines.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.15.12": {
       "id": "GTG#1-5.15.12",
       "unit": "GTG#1",
@@ -2765,6 +2807,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.15.16": {
+      "id": "GTG#1-5.15.16",
+      "unit": "GTG#1",
+      "activity": "5.15.16",
+      "section": "5.15",
+      "section_title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Level transmitter installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.15.17": {
       "id": "GTG#1-5.15.17",
       "unit": "GTG#1",
@@ -2777,6 +2833,48 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.15.18": {
+      "id": "GTG#1-5.15.18",
+      "unit": "GTG#1",
+      "activity": "5.15.18",
+      "section": "5.15",
+      "section_title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Cable trays / conduit installation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.15.19": {
+      "id": "GTG#1-5.15.19",
+      "unit": "GTG#1",
+      "activity": "5.15.19",
+      "section": "5.15",
+      "section_title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Instrument & device cables connection and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.15.20": {
+      "id": "GTG#1-5.15.20",
+      "unit": "GTG#1",
+      "activity": "5.15.20",
+      "section": "5.15",
+      "section_title": "RUNDOWN TANK (CPPT-T-1101-03) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.16.1": {
@@ -2931,6 +3029,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.16.12": {
+      "id": "GTG#1-5.16.12",
+      "unit": "GTG#1",
+      "activity": "5.16.12",
+      "section": "5.16",
+      "section_title": "MINERAL OIL VAPOR SEPARATOR (CPPT-SK-1101-02) (ref. TPI sect.7.14)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.16.14": {
@@ -3185,6 +3297,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.17.11": {
+      "id": "GTG#1-5.17.11",
+      "unit": "GTG#1",
+      "activity": "5.17.11",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Verify electric motors mechanical installation and power cable tightening torque check (refer to supplier manual for cable connections torque value)",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.12": {
+      "id": "GTG#1-5.17.12",
+      "unit": "GTG#1",
+      "activity": "5.17.12",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Verify electric motors electrical insulation and shaft rotation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.17.13": {
       "id": "GTG#1-5.17.13",
       "unit": "GTG#1",
@@ -3267,6 +3407,62 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.27": {
+      "id": "GTG#1-5.17.27",
+      "unit": "GTG#1",
+      "activity": "5.17.27",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Cable trays / conduit installation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.28": {
+      "id": "GTG#1-5.17.28",
+      "unit": "GTG#1",
+      "activity": "5.17.28",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Cooler and structure grounding system completed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.29": {
+      "id": "GTG#1-5.17.29",
+      "unit": "GTG#1",
+      "activity": "5.17.29",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Instrument & device cables connection and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.30": {
+      "id": "GTG#1-5.17.30",
+      "unit": "GTG#1",
+      "activity": "5.17.30",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.18.1": {
@@ -3701,6 +3897,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.19.30": {
+      "id": "GTG#1-5.19.30",
+      "unit": "GTG#1",
+      "activity": "5.19.30",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.20.1": {
@@ -4235,6 +4445,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.23.10": {
+      "id": "GTG#1-5.23.10",
+      "unit": "GTG#1",
+      "activity": "5.23.10",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Check-valves assembly check. Flow direction verification",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.23.11": {
+      "id": "GTG#1-5.23.11",
+      "unit": "GTG#1",
+      "activity": "5.23.11",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.23.13": {
       "id": "GTG#1-5.23.13",
       "unit": "GTG#1",
@@ -4359,6 +4597,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.24.6": {
+      "id": "GTG#1-5.24.6",
+      "unit": "GTG#1",
+      "activity": "5.24.6",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Vent line assembly and relevant supports.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.24.8": {
@@ -4513,6 +4765,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.25.13": {
+      "id": "GTG#1-5.25.13",
+      "unit": "GTG#1",
+      "activity": "5.25.13",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Oil vent lines assembly",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.25.14": {
@@ -4991,6 +5257,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.29.18": {
+      "id": "GTG#1-5.29.18",
+      "unit": "GTG#1",
+      "activity": "5.29.18",
+      "section": "5.29",
+      "section_title": "FUEL GAS CHROMATOGRAPH SYSTEM (CPPT-SK-1101-01) (ref. TPI sect.7.16)",
+      "description": "Orifices size and installation check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.29.19": {
       "id": "GTG#1-5.29.19",
       "unit": "GTG#1",
@@ -5271,6 +5551,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.35.7": {
+      "id": "GTG#1-5.35.7",
+      "unit": "GTG#1",
+      "activity": "5.35.7",
+      "section": "5.35",
+      "section_title": "DGS TREATMENT SKID (CPPT-SK-1101-05) INSTALLATION (ref. TPI sect. 7.18)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.35.9": {
       "id": "GTG#1-5.35.9",
       "unit": "GTG#1",
@@ -5423,6 +5717,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.35.20": {
+      "id": "GTG#1-5.35.20",
+      "unit": "GTG#1",
+      "activity": "5.35.20",
+      "section": "5.35",
+      "section_title": "DGS TREATMENT SKID (CPPT-SK-1101-05) INSTALLATION (ref. TPI sect. 7.18)",
+      "description": "Instruments & device cables connection and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.35.21": {
@@ -5647,6 +5955,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.36.18": {
+      "id": "GTG#1-5.36.18",
+      "unit": "GTG#1",
+      "activity": "5.36.18",
+      "section": "5.36",
+      "section_title": "DGS PANEL AND HEATER CANTILEVER INSTALLATION (ref. TPI sect. 7.18)",
+      "description": "Temperature transmitter installation check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.36.19": {
@@ -6216,7 +6538,7 @@
       "section": "5.39",
       "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
       "description": "Verify piping/tubing fabrication & welding as specification.",
-      "discipline": "Electrical & Instruments",
+      "discipline": "Mechanical",
       "work_date": "2026-11-06",
       "status": "Done",
       "col_c_date": "",
@@ -7959,6 +8281,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.8.15": {
+      "id": "GTG#2-5.8.15",
+      "unit": "GTG#2",
+      "activity": "5.8.15",
+      "section": "5.8",
+      "section_title": "VENTILATION DUCTS AND FANS INSTALLATION (ref. TPI sect.7.8)",
+      "description": "Actuated dampers correctly installed and free from interference. Mechanical operation checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.8.19": {
       "id": "GTG#2-5.8.19",
       "unit": "GTG#2",
@@ -9261,6 +9597,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.16.12": {
+      "id": "GTG#2-5.16.12",
+      "unit": "GTG#2",
+      "activity": "5.16.12",
+      "section": "5.16",
+      "section_title": "MINERAL OIL VAPOR SEPARATOR (CPPT-SK-1101-02) (ref. TPI sect.7.14)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.16.14": {
       "id": "GTG#2-5.16.14",
       "unit": "GTG#2",
@@ -10437,6 +10787,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.23.10": {
+      "id": "GTG#2-5.23.10",
+      "unit": "GTG#2",
+      "activity": "5.23.10",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Check-valves assembly check. Flow direction verification",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.23.11": {
+      "id": "GTG#2-5.23.11",
+      "unit": "GTG#2",
+      "activity": "5.23.11",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.23.13": {
       "id": "GTG#2-5.23.13",
       "unit": "GTG#2",
@@ -10561,6 +10939,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.24.6": {
+      "id": "GTG#2-5.24.6",
+      "unit": "GTG#2",
+      "activity": "5.24.6",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Vent line assembly and relevant supports.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.24.8": {
@@ -10715,6 +11107,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.25.13": {
+      "id": "GTG#2-5.25.13",
+      "unit": "GTG#2",
+      "activity": "5.25.13",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Oil vent lines assembly",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.25.14": {
@@ -11109,6 +11515,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.29.18": {
+      "id": "GTG#2-5.29.18",
+      "unit": "GTG#2",
+      "activity": "5.29.18",
+      "section": "5.29",
+      "section_title": "FUEL GAS CHROMATOGRAPH SYSTEM (CPPT-SK-1101-01) (ref. TPI sect.7.16)",
+      "description": "Orifices size and installation check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.29.19": {
       "id": "GTG#2-5.29.19",
       "unit": "GTG#2",
@@ -11331,6 +11751,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.35.7": {
+      "id": "GTG#2-5.35.7",
+      "unit": "GTG#2",
+      "activity": "5.35.7",
+      "section": "5.35",
+      "section_title": "DGS TREATMENT SKID (CPPT-SK-1101-05) INSTALLATION (ref. TPI sect. 7.18)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-07",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.35.9": {
@@ -12426,12 +12860,15 @@
     "2026-11-07": {
       "date": "2026-11-07",
       "label": "07/11 (Cut-off 07:30 08/11)",
-      "total": 3,
+      "total": 34,
       "by_discipline": {
-        "General": 3
+        "General": 3,
+        "Electrical & Instruments": 19,
+        "Mechanical": 12
       },
       "by_unit": {
-        "GTG#1": 3
+        "GTG#1": 26,
+        "GTG#2": 8
       }
     },
     "2026-11-03": {
@@ -12465,8 +12902,8 @@
       "label": "06/11 (Cut-off 07:30 07/11)",
       "total": 106,
       "by_discipline": {
-        "Mechanical": 46,
-        "Electrical & Instruments": 39,
+        "Mechanical": 47,
+        "Electrical & Instruments": 38,
         "Pre-Commissioning": 2,
         "Piping": 19
       },
