@@ -57,7 +57,10 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split('?')[0].rstrip('/')
-        if path == "/api/data" or path == "/api" or path == "":
+        if "sync" in path:
+            return self.do_POST()
+
+        if "data" in path or path in ("/api", ""):
             for candidate in [
                 os.path.join(current_dir, "sqcl_data.json"),
                 os.path.join(parent_dir, "sqcl_data.json")
@@ -75,9 +78,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_cors()
             self.end_headers()
             return
-        elif path == "/api/sync":
-            return self.do_POST()
-        
+
         self.send_response(200)
         self.send_cors()
         self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -94,46 +95,8 @@ class handler(BaseHTTPRequestHandler):
         except Exception:
             pass
 
-        if path == "/api/sync" or path == "/api" or path == "":
-            try:
-                target_url = req_json.get('url') or ONEDRIVE_SHARE_URL
-                xlsx_bytes = download_onedrive_bytes(target_url)
-                with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as tf:
-                    tf.write(xlsx_bytes)
-                    tmp_path = tf.name
-                try:
-                    data = parse_excel_workbook(tmp_path)
-                    ledger = None
-                    try:
-                        from ledger_manager import sync_data_with_ledger
-                        ledger, _ = sync_data_with_ledger(data)
-                    except Exception:
-                        pass
-                finally:
-                    if os.path.exists(tmp_path):
-                        try:
-                            os.unlink(tmp_path)
-                        except Exception:
-                            pass
-                resp_payload = {"status": "ok", "message": "Synced from OneDrive successfully!", "data": data}
-                if ledger:
-                    resp_payload["ledger"] = ledger
-                resp = json.dumps(resp_payload, ensure_ascii=False).encode('utf-8')
-                self.send_response(200)
-                self.send_cors()
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.end_headers()
-                self.wfile.write(resp)
-            except Exception as e:
-                err = json.dumps({"status": "error", "message": str(e)}, ensure_ascii=False).encode('utf-8')
-                self.send_response(500)
-                self.send_cors()
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.end_headers()
-                self.wfile.write(err)
-            return
-
-        if path == "/api/update_cell":
+        # 1. Update cell endpoint
+        if "update_cell" in path or req_json.get("action") == "update_cell":
             unit = req_json.get('unit', 'GTG#1')
             row_num = int(req_json.get('row_num', 0))
             field = str(req_json.get('field', 'site_markup')).lower()
@@ -158,9 +121,43 @@ class handler(BaseHTTPRequestHandler):
             self.wfile.write(resp)
             return
 
-        self.send_response(404)
-        self.send_cors()
-        self.end_headers()
+        # 2. Sync endpoint (default for /api/sync, /api/index.py, /api)
+        try:
+            target_url = req_json.get('url') or ONEDRIVE_SHARE_URL
+            xlsx_bytes = download_onedrive_bytes(target_url)
+            with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as tf:
+                tf.write(xlsx_bytes)
+                tmp_path = tf.name
+            try:
+                data = parse_excel_workbook(tmp_path)
+                ledger = None
+                try:
+                    from ledger_manager import sync_data_with_ledger
+                    ledger, _ = sync_data_with_ledger(data)
+                except Exception:
+                    pass
+            finally:
+                if os.path.exists(tmp_path):
+                    try:
+                        os.unlink(tmp_path)
+                    except Exception:
+                        pass
+            resp_payload = {"status": "ok", "message": "Synced from OneDrive successfully!", "data": data}
+            if ledger:
+                resp_payload["ledger"] = ledger
+            resp = json.dumps(resp_payload, ensure_ascii=False).encode('utf-8')
+            self.send_response(200)
+            self.send_cors()
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(resp)
+        except Exception as e:
+            err = json.dumps({"status": "error", "message": str(e)}, ensure_ascii=False).encode('utf-8')
+            self.send_response(500)
+            self.send_cors()
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(err)
 
 app = handler
 application = handler

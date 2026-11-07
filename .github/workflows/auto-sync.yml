@@ -2,8 +2,8 @@ name: Automated OneDrive Cloud Sync
 
 on:
   schedule:
-    # Run every 2 hours automatically
-    - cron: '0 */2 * * *'
+    # Run every 30 minutes automatically
+    - cron: '*/30 * * * *'
   workflow_dispatch:
     # Allows manual trigger anytime from GitHub Actions tab or via API
 

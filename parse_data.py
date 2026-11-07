@@ -68,7 +68,8 @@ def parse_schedule_cell(raw_str):
     s = clean_str(raw_str)
     if not s or s == "?":
         return []
-    parts = [p.strip() for p in re.split(r',\s*(?=[A-Za-z])', s) if p.strip()]
+    # Split by comma, semicolon, or period when followed by a letter (e.g. 'E&I 1,2. COM_INS')
+    parts = [p.strip() for p in re.split(r'[,;]|\.(?=\s*[A-Za-z])', s) if p.strip()]
     items = []
     for p in parts:
         pl = p.lower()
@@ -81,13 +82,46 @@ def parse_schedule_cell(raw_str):
         else:
             units = ['GTG#1', 'GTG#2']
 
-        # P&M represents both Piping and Mechanical disciplines
-        if pl == 'p&m' or pl.startswith('p&m') or 'p & m' in pl or pl == 'pm':
+        # 1. COM_P&M: Pre-Commissioning + Piping + Mechanical
+        if 'com' in pl and ('p&m' in pl or 'p & m' in pl or 'pm' in pl):
+            items.append({
+                "raw": p,
+                "discipline": "COM_P&M",
+                "disciplines": ["Pre-Commissioning", "Piping", "Mechanical"],
+                "is_com_pm": True,
+                "is_pm": True,
+                "units": units
+            })
+            continue
+
+        # 2. COM_INS / COM_E&I: Pre-Commissioning + Electrical & Instruments
+        if 'com' in pl and ('ins' in pl or 'e&i' in pl or 'eit' in pl or 'elect' in pl):
+            items.append({
+                "raw": p,
+                "discipline": "COM_INS",
+                "disciplines": ["Pre-Commissioning", "Electrical & Instruments"],
+                "is_com_ins": True,
+                "units": units
+            })
+            continue
+
+        # 3. P&M: Piping + Mechanical
+        if pl == 'p&m' or pl.startswith('p&m') or 'p & m' in pl or pl == 'pm' or 'p&m' in pl:
             items.append({
                 "raw": p,
                 "discipline": "P&M",
                 "disciplines": ["Piping", "Mechanical"],
                 "is_pm": True,
+                "units": units
+            })
+            continue
+
+        # 4. Mech & E&I / Mech & EIT: Mechanical + Electrical & Instruments
+        if 'mech' in pl and ('e&i' in pl or 'eit' in pl or 'elect' in pl or 'inst' in pl):
+            items.append({
+                "raw": p,
+                "discipline": "Mech & E&I",
+                "disciplines": ["Mechanical", "Electrical & Instruments"],
                 "units": units
             })
             continue
@@ -102,7 +136,7 @@ def parse_schedule_cell(raw_str):
             disc = 'Material'
         elif 'struct' in pl:
             disc = 'Structural'
-        elif 'precom' in pl or 'pre/com' in pl or 'commission' in pl or 'com_ins' in pl:
+        elif 'precom' in pl or 'pre/com' in pl or 'commission' in pl or 'com' in pl:
             disc = 'Pre-Commissioning'
         elif 'pkg' in pl or 'package' in pl:
             disc = 'Package'

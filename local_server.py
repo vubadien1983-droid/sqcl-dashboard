@@ -435,6 +435,9 @@ class SQCLRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode("utf-8"))
             return
 
+        if path == "/api/sync":
+            return self.do_POST()
+
         if path == "/" or path == "/index.html" or path == "/detail":
             self.path = "/index.html"
 
