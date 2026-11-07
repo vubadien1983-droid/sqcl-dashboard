@@ -274,7 +274,7 @@
       uObj.activities.forEach((act) => {
         const isDone = act.status === "Done";
         let disc = act.discipline || "General";
-        if (disc === "Unassigned") disc = "General";
+        if (disc === "Unassigned" || disc === "NA" || disc === "N/A" || disc === "None" || disc === "-") disc = "General";
 
         if (isDone) {
           activeDoneIds.add(act.id);
@@ -536,7 +536,31 @@
           return a.discipline === "Pre-Commissioning";
         }
         if (criteria.discipline === "General" || criteria.discipline === "Unassigned") {
-          return a.discipline === "General" || a.discipline === "Unassigned" || !a.discipline;
+          const knownDisciplines = [
+            "Mechanical",
+            "Electrical & Instruments",
+            "Piping",
+            "Pre-Commissioning",
+            "Structural",
+            "Material",
+            "Package",
+            "Civil",
+            "P&M",
+            "Piping & Mechanical",
+            "COM_P&M",
+            "COM_INS",
+            "Mech & E&I"
+          ];
+          return (
+            !a.discipline ||
+            a.discipline === "General" ||
+            a.discipline === "Unassigned" ||
+            a.discipline === "NA" ||
+            a.discipline === "N/A" ||
+            a.discipline === "None" ||
+            a.discipline === "-" ||
+            !knownDisciplines.includes(a.discipline)
+          );
         }
         return a.discipline === criteria.discipline;
       });
@@ -906,6 +930,9 @@
     const s = String(raw || "").trim();
     if (!s) return "Unassigned";
     const sl = s.toLowerCase();
+    if (sl === "na" || sl === "n/a" || sl === "none" || sl === "-" || sl === "general" || sl === "unassigned" || sl === "not applicable") {
+      return "Unassigned";
+    }
     if (sl.includes("p&m") || sl.includes("p & m") || sl === "pm") {
       return "Piping & Mechanical";
     }
@@ -2681,7 +2708,7 @@
       const wDate = r.work_date || "2026-08-24";
       dateSet.add(wDate);
       let disc = r.discipline || "General";
-      if (!DISCIPLINES.includes(disc)) {
+      if (disc === "Unassigned" || disc === "NA" || disc === "N/A" || !DISCIPLINES.includes(disc)) {
         disc = "General";
       }
       if (!matrixData[disc]) matrixData[disc] = {};
@@ -2763,13 +2790,24 @@
               General: "bg-emerald-100 text-emerald-800 border-emerald-200"
             }[disc] || "bg-slate-100 text-slate-800 border-slate-200";
 
-          const discStat = stats.disciplines.find(
-            (x) => x.discipline === disc || (disc === "General" && x.discipline === "Unassigned")
-          ) || { total: 0, done: 0, pct_done: 0 };
+          let discStat;
+          if (disc === "General") {
+            const genEntries = stats.disciplines.filter(
+              (x) => x.discipline === "General" || x.discipline === "Unassigned" || x.discipline === "NA" || !DISCIPLINES.includes(x.discipline)
+            );
+            discStat = {
+              total: genEntries.reduce((acc, x) => acc + (x.total || 0), 0),
+              done: genEntries.reduce((acc, x) => acc + (x.done || 0), 0),
+              pct_done: 0
+            };
+            discStat.pct_done = discStat.total > 0 ? Number(((discStat.done / discStat.total) * 100).toFixed(1)) : 0;
+          } else {
+            discStat = stats.disciplines.find((x) => x.discipline === disc) || { total: 0, done: 0, pct_done: 0 };
+          }
 
           const discTotal = matchingRecords.filter((r) => {
             let d = r.discipline || "General";
-            if (d === "Unassigned") d = "General";
+            if (d === "Unassigned" || d === "NA" || d === "N/A" || !DISCIPLINES.includes(d)) d = "General";
             return d === disc;
           }).length;
 
@@ -5176,6 +5214,7 @@
         sigFilter: params.get("sigFilter") || "ALL",
         scheduleDate: params.get("scheduleDate") || "ALL",
         scheduledOnly: params.get("scheduledOnly") === "1",
+        closingWorkDate: params.get("closingWorkDate") || "ALL",
         title: params.get("title") || ""
       };
       openDetailTab(criteria, false);

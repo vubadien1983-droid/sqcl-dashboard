@@ -4,7 +4,7 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-07T07:58:44.948980+07:00",
+  "last_updated": "2026-11-07T12:32:17.898050+07:00",
   "total_closed_items": 882,
   "records": {
     "GTG#1-5.1.2": {
@@ -1246,7 +1246,7 @@
       "section": "5.7",
       "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
       "description": "Lighting & other electrical systems assembly check as per drawings",
-      "discipline": "NA",
+      "discipline": "General",
       "work_date": "2026-11-07",
       "status": "Done",
       "col_c_date": "",
@@ -1260,7 +1260,7 @@
       "section": "5.7",
       "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
       "description": "Signal devices installation and connection",
-      "discipline": "NA",
+      "discipline": "General",
       "work_date": "2026-11-07",
       "status": "Done",
       "col_c_date": "",
@@ -1288,7 +1288,7 @@
       "section": "5.7",
       "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
       "description": "Identification tags application on instruments, devices and cables",
-      "discipline": "NA",
+      "discipline": "General",
       "work_date": "2026-11-07",
       "status": "Done",
       "col_c_date": "",
@@ -12428,7 +12428,7 @@
       "label": "07/11 (Cut-off 07:30 08/11)",
       "total": 3,
       "by_discipline": {
-        "NA": 3
+        "General": 3
       },
       "by_unit": {
         "GTG#1": 3

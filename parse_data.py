@@ -22,6 +22,8 @@ def normalize_discipline(raw_remarks):
     if not s:
         return "Unassigned"
     sl = s.lower()
+    if sl in ("na", "n/a", "none", "general", "unassigned", "-", "not applicable"):
+        return "Unassigned"
     if "p&m" in sl or "p & m" in sl or sl == "pm":
         return "Piping & Mechanical"
     if "electrical" in sl or "instrument" in sl or "e&i" in sl or "eit" in sl:
@@ -40,7 +42,7 @@ def normalize_discipline(raw_remarks):
         return "Package"
     if "civil" in sl:
         return "Civil"
-    return s
+    return "Unassigned"
 
 def normalize_status(raw_status):
     s = clean_str(raw_status)

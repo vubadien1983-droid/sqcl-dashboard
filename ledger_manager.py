@@ -119,7 +119,7 @@ def sync_data_with_ledger(parsed_data, ledger_path=LEDGER_FILE, bundle_path=BUND
             if act.get("status") == "Done":
                 act_id = act["id"]
                 disc = act.get("discipline") or "General"
-                if disc == "Unassigned":
+                if disc in ("Unassigned", "NA", "N/A", "none", "-") or not disc:
                     disc = "General"
 
                 if act_id in existing_records:
