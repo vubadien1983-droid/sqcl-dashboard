@@ -131,6 +131,8 @@
     closingChartMetric: "daily",
     closingRange: "all",
     closingLedger: getInitialClosingLedger(),
+    tabScrollPositions: {},
+    _isRestoringScroll: false,
     charts: {}
   };
 
@@ -792,6 +794,96 @@
     return `${window.location.pathname}?${params.toString()}`;
   }
 
+  function getSavedTabScroll(tabId) {
+    if (!tabId) return { x: 0, y: 0, tableX: 0 };
+    if (!state.tabScrollPositions) state.tabScrollPositions = {};
+    if (state.tabScrollPositions[tabId]) {
+      return state.tabScrollPositions[tabId];
+    }
+    try {
+      const saved = sessionStorage.getItem("sqcl_tab_scroll_" + tabId);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed.y === "number") {
+          state.tabScrollPositions[tabId] = parsed;
+          return parsed;
+        }
+      }
+    } catch (e) {}
+    return { x: 0, y: 0, tableX: 0 };
+  }
+
+  function saveCurrentTabScroll(tabId = state.activeTabId) {
+    if (!tabId) return;
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    const x = window.scrollX || document.documentElement.scrollLeft || 0;
+    let tableX = 0;
+    try {
+      const activeTable =
+        tabId === "summary"
+          ? document.querySelector("#view-summary .overflow-x-auto")
+          : document.querySelector("#view-detail .overflow-x-auto");
+      if (activeTable) {
+        tableX = activeTable.scrollLeft || 0;
+      }
+    } catch (e) {}
+
+    const pos = { x, y, tableX };
+    if (!state.tabScrollPositions) state.tabScrollPositions = {};
+    state.tabScrollPositions[tabId] = pos;
+    try {
+      sessionStorage.setItem("sqcl_tab_scroll_" + tabId, JSON.stringify(pos));
+    } catch (e) {}
+  }
+
+  function restoreTabScroll(tabId) {
+    if (!tabId) return;
+    const pos = getSavedTabScroll(tabId);
+    state._isRestoringScroll = true;
+
+    const targetY = typeof pos.y === "number" ? pos.y : 0;
+    const targetX = typeof pos.x === "number" ? pos.x : 0;
+    const targetTableX = typeof pos.tableX === "number" ? pos.tableX : 0;
+
+    const applyScroll = () => {
+      window.scrollTo({ left: targetX, top: targetY, behavior: "instant" });
+      if (targetTableX > 0) {
+        try {
+          const activeTable =
+            tabId === "summary"
+              ? document.querySelector("#view-summary .overflow-x-auto")
+              : document.querySelector("#view-detail .overflow-x-auto");
+          if (activeTable) {
+            activeTable.scrollLeft = targetTableX;
+          }
+        } catch (e) {}
+      }
+    };
+
+    applyScroll();
+
+    requestAnimationFrame(() => {
+      applyScroll();
+      setTimeout(() => {
+        applyScroll();
+        setTimeout(() => {
+          applyScroll();
+          state._isRestoringScroll = false;
+        }, 50);
+      }, 30);
+    });
+  }
+
+  function clearTabScroll(tabId) {
+    if (!tabId) return;
+    if (state.tabScrollPositions) {
+      delete state.tabScrollPositions[tabId];
+    }
+    try {
+      sessionStorage.removeItem("sqcl_tab_scroll_" + tabId);
+    } catch (e) {}
+  }
+
   window.openDetailTab = function (criteria, forceNewWindow = false) {
     if (forceNewWindow || state.openMode === "NEW_WINDOW") {
       const url = buildDetailUrl(criteria);
@@ -813,10 +905,16 @@
 
     const existing = state.tabs.find((t) => t.id === tabKey);
     if (existing) {
-      state.activeTabId = existing.id;
-      renderAll();
+      if (state.activeTabId !== existing.id) {
+        saveCurrentTabScroll(state.activeTabId);
+        state.activeTabId = existing.id;
+        renderAll();
+        restoreTabScroll(existing.id);
+      }
       return;
     }
+
+    saveCurrentTabScroll(state.activeTabId);
 
     let shortTitle = criteria.title || "";
     if (!shortTitle) {
@@ -867,31 +965,45 @@
 
     state.tabs.push(newTab);
     state.activeTabId = newTab.id;
+    state.tabScrollPositions[newTab.id] = { x: 0, y: 0, tableX: 0 };
     renderAll();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   };
 
   window.switchTab = function (tabId) {
+    if (!tabId || state.activeTabId === tabId) return;
+    saveCurrentTabScroll(state.activeTabId);
     state.activeTabId = tabId;
     renderAll();
+    restoreTabScroll(tabId);
   };
 
   window.closeTab = function (tabId, ev) {
     if (ev) ev.stopPropagation();
     const idx = state.tabs.findIndex((t) => t.id === tabId);
     if (idx === -1) return;
+    clearTabScroll(tabId);
     state.tabs.splice(idx, 1);
     if (state.activeTabId === tabId) {
       const nextTab = state.tabs[Math.max(0, idx - 1)] || state.tabs[0];
       state.activeTabId = nextTab ? nextTab.id : "summary";
+      renderAll();
+      restoreTabScroll(state.activeTabId);
+    } else {
+      renderTopNav();
     }
-    renderAll();
   };
 
   window.closeAllDetailTabs = function () {
+    state.tabs.forEach((t) => {
+      if (t.closable) {
+        clearTabScroll(t.id);
+      }
+    });
     state.tabs = state.tabs.filter((t) => !t.closable);
     state.activeTabId = "summary";
     renderAll();
+    restoreTabScroll("summary");
   };
 
   window.setSelectedUnit = function (unit) {
@@ -5205,6 +5317,31 @@
     // Initialize Microsoft MSAL / Graph API
     initMsal();
 
+    // Global scroll listener to preserve user position across tabs continuously
+    let scrollSaveTimer = null;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (state._isRestoringScroll || !state.activeTabId) return;
+        const y = window.scrollY || document.documentElement.scrollTop || 0;
+        const x = window.scrollX || document.documentElement.scrollLeft || 0;
+        if (!state.tabScrollPositions) state.tabScrollPositions = {};
+        const current = state.tabScrollPositions[state.activeTabId] || {};
+        state.tabScrollPositions[state.activeTabId] = { ...current, x, y };
+
+        if (scrollSaveTimer) clearTimeout(scrollSaveTimer);
+        scrollSaveTimer = setTimeout(() => {
+          try {
+            sessionStorage.setItem(
+              "sqcl_tab_scroll_" + state.activeTabId,
+              JSON.stringify(state.tabScrollPositions[state.activeTabId])
+            );
+          } catch (e) {}
+        }, 150);
+      },
+      { passive: true }
+    );
+
     if (params.get("view") === "detail") {
       const criteria = {
         unit: params.get("unit") || "ALL",
@@ -5220,6 +5357,7 @@
       openDetailTab(criteria, false);
     } else {
       renderAll();
+      restoreTabScroll("summary");
     }
   });
 })();
