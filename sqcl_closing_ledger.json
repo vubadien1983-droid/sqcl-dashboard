@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-09T13:56:35.015959+07:00",
-  "total_closed_items": 913,
+  "last_updated": "2026-11-09T23:42:08.727149+07:00",
+  "total_closed_items": 947,
   "records": {
     "GTG#1-5.1.2": {
       "id": "GTG#1-5.1.2",
@@ -3843,6 +3843,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.19.22": {
+      "id": "GTG#1-5.19.22",
+      "unit": "GTG#1",
+      "activity": "5.19.22",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Lube oil system instrumentation installation/assembly check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.19.23": {
+      "id": "GTG#1-5.19.23",
+      "unit": "GTG#1",
+      "activity": "5.19.23",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Verify instruments and devices cables connection and wiring",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.19.24": {
       "id": "GTG#1-5.19.24",
       "unit": "GTG#1",
@@ -4543,6 +4571,62 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.23.19": {
+      "id": "GTG#1-5.23.19",
+      "unit": "GTG#1",
+      "activity": "5.23.19",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Cable trays / conduit installation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.23.20": {
+      "id": "GTG#1-5.23.20",
+      "unit": "GTG#1",
+      "activity": "5.23.20",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Synthetic oil mist eliminator and structure grounding system completed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.23.22": {
+      "id": "GTG#1-5.23.22",
+      "unit": "GTG#1",
+      "activity": "5.23.22",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Confirm that the atmospheric reference leg of the Differential Pressure Transmitters / Gauge measuring the lube oil tank pressure is actually connected to a point not subject to pressurization / de-pressurization (such as a ventilated enclosure).",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.23.23": {
+      "id": "GTG#1-5.23.23",
+      "unit": "GTG#1",
+      "activity": "5.23.23",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.24.1": {
       "id": "GTG#1-5.24.1",
       "unit": "GTG#1",
@@ -4625,6 +4709,62 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.24.9": {
+      "id": "GTG#1-5.24.9",
+      "unit": "GTG#1",
+      "activity": "5.24.9",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Cable trays / conduit installation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.24.10": {
+      "id": "GTG#1-5.24.10",
+      "unit": "GTG#1",
+      "activity": "5.24.10",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Cooler bundle grounding system completed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.24.11": {
+      "id": "GTG#1-5.24.11",
+      "unit": "GTG#1",
+      "activity": "5.24.11",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Instrument & device cables connection and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.24.12": {
+      "id": "GTG#1-5.24.12",
+      "unit": "GTG#1",
+      "activity": "5.24.12",
+      "section": "5.24",
+      "section_title": "SYNTHETIC LUBE OIL COOLERS (CPPT-E-1101-02 & CPPT-E-1101-03) INSTALLATION (ref. TPI sect.7.15)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.25.1": {
@@ -6587,6 +6727,48 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.39.5": {
+      "id": "GTG#1-5.39.5",
+      "unit": "GTG#1",
+      "activity": "5.39.5",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Respect of preservation prescriptions for piping, tubing and installation related items checked.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.6": {
+      "id": "GTG#1-5.39.6",
+      "unit": "GTG#1",
+      "activity": "5.39.6",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "All manometers have been removed before piping installation",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.7": {
+      "id": "GTG#1-5.39.7",
+      "unit": "GTG#1",
+      "activity": "5.39.7",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "All thermometers have been removed before piping installation",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.39.8": {
       "id": "GTG#1-5.39.8",
       "unit": "GTG#1",
@@ -6629,6 +6811,48 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.39.11": {
+      "id": "GTG#1-5.39.11",
+      "unit": "GTG#1",
+      "activity": "5.39.11",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Pressure transmitters & pressure switches installation check.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.12": {
+      "id": "GTG#1-5.39.12",
+      "unit": "GTG#1",
+      "activity": "5.39.12",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Temperature transmitters & temperature switches installation check.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.13": {
+      "id": "GTG#1-5.39.13",
+      "unit": "GTG#1",
+      "activity": "5.39.13",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Other instruments, plugs, blind flanges installation check.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.39.14": {
       "id": "GTG#1-5.39.14",
       "unit": "GTG#1",
@@ -6657,6 +6881,34 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.39.17": {
+      "id": "GTG#1-5.39.17",
+      "unit": "GTG#1",
+      "activity": "5.39.17",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "All manometers have been installed",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.18": {
+      "id": "GTG#1-5.39.18",
+      "unit": "GTG#1",
+      "activity": "5.39.18",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "All thermometers have been installed",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.39.20": {
       "id": "GTG#1-5.39.20",
       "unit": "GTG#1",
@@ -6669,6 +6921,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.22": {
+      "id": "GTG#1-5.39.22",
+      "unit": "GTG#1",
+      "activity": "5.39.22",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Tubing lines installation according with components & unions supplier installation procedure.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.23": {
+      "id": "GTG#1-5.39.23",
+      "unit": "GTG#1",
+      "activity": "5.39.23",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Tubing lines check for loose fittings/connections.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.39.24": {
@@ -6685,6 +6965,20 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.39.25": {
+      "id": "GTG#1-5.39.25",
+      "unit": "GTG#1",
+      "activity": "5.39.25",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Tubing lines check for excessive bending, kinks and/or missing or loose supports.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.39.26": {
       "id": "GTG#1-5.39.26",
       "unit": "GTG#1",
@@ -6697,6 +6991,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.27": {
+      "id": "GTG#1-5.39.27",
+      "unit": "GTG#1",
+      "activity": "5.39.27",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Tubing routing check from on-site instrumentation to relevant panel.",
+      "discipline": "General",
+      "work_date": "2026-11-06",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.39.28": {
@@ -6797,6 +7105,132 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.44.20": {
+      "id": "GTG#1-5.44.20",
+      "unit": "GTG#1",
+      "activity": "5.44.20",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Instrument cables colour code check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.21": {
+      "id": "GTG#1-5.44.21",
+      "unit": "GTG#1",
+      "activity": "5.44.21",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Cables identification tags application.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.22": {
+      "id": "GTG#1-5.44.22",
+      "unit": "GTG#1",
+      "activity": "5.44.22",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Electrical utilities identification tags application.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.24": {
+      "id": "GTG#1-5.44.24",
+      "unit": "GTG#1",
+      "activity": "5.44.24",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Distribution panels installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.31": {
+      "id": "GTG#1-5.44.31",
+      "unit": "GTG#1",
+      "activity": "5.44.31",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Cables routing trays completion.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.32": {
+      "id": "GTG#1-5.44.32",
+      "unit": "GTG#1",
+      "activity": "5.44.32",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Cable trays/conduits installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.33": {
+      "id": "GTG#1-5.44.33",
+      "unit": "GTG#1",
+      "activity": "5.44.33",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "All the electric motors have been wired according to schematics and wiring diagrams. Jumpers have been correctly positioned in function of the motor characteristics.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.1": {
+      "id": "GTG#1-5.45.1",
+      "unit": "GTG#1",
+      "activity": "5.45.1",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Ce.Co. thermo elements on bearings installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.2": {
+      "id": "GTG#1-5.45.2",
+      "unit": "GTG#1",
+      "activity": "5.45.2",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Ce.Co. axial displacement probes installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.45.4": {
       "id": "GTG#1-5.45.4",
       "unit": "GTG#1",
@@ -6809,6 +7243,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.5": {
+      "id": "GTG#1-5.45.5",
+      "unit": "GTG#1",
+      "activity": "5.45.5",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "G.B. thermo elements on bearings installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.45.6": {
@@ -6851,6 +7299,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.9": {
+      "id": "GTG#1-5.45.9",
+      "unit": "GTG#1",
+      "activity": "5.45.9",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "G.B. accelerometer installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.10": {
+      "id": "GTG#1-5.45.10",
+      "unit": "GTG#1",
+      "activity": "5.45.10",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Flame detectors installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.45.29": {
@@ -12900,15 +13376,16 @@
     "2026-11-06": {
       "date": "2026-11-06",
       "label": "06/11 (Cut-off 07:30 07/11)",
-      "total": 106,
+      "total": 118,
       "by_discipline": {
         "Mechanical": 47,
         "Electrical & Instruments": 38,
         "Pre-Commissioning": 2,
-        "Piping": 19
+        "Piping": 19,
+        "General": 12
       },
       "by_unit": {
-        "GTG#1": 67,
+        "GTG#1": 79,
         "GTG#2": 39
       }
     },
@@ -12923,6 +13400,17 @@
       "by_unit": {
         "GTG#1": 8,
         "GTG#2": 5
+      }
+    },
+    "2026-11-09": {
+      "date": "2026-11-09",
+      "label": "09/11 (Cut-off 07:30 10/11)",
+      "total": 22,
+      "by_discipline": {
+        "Electrical & Instruments": 22
+      },
+      "by_unit": {
+        "GTG#1": 22
       }
     },
     "2026-10-28": {
