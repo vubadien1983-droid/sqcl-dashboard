@@ -4,9 +4,23 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-10T14:33:16.872497+07:00",
-  "total_closed_items": 956,
+  "last_updated": "2026-11-10T22:05:33.797680+07:00",
+  "total_closed_items": 1049,
   "records": {
+    "GTG#1-5.1.1": {
+      "id": "GTG#1-5.1.1",
+      "unit": "GTG#1",
+      "activity": "5.1.1",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Boxes opening and material check: customer signature, date and stamp marked on each page of packing list.",
+      "discipline": "Material",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.1.2": {
       "id": "GTG#1-5.1.2",
       "unit": "GTG#1",
@@ -33,6 +47,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.1.5": {
+      "id": "GTG#1-5.1.5",
+      "unit": "GTG#1",
+      "activity": "5.1.5",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Components painting integrity check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.1.6": {
@@ -75,6 +103,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.1.9": {
+      "id": "GTG#1-5.1.9",
+      "unit": "GTG#1",
+      "activity": "5.1.9",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Unit, auxiliaries and adjacent areas cleaning after installation activities completion.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.1.10": {
+      "id": "GTG#1-5.1.10",
+      "unit": "GTG#1",
+      "activity": "5.1.10",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Shipping devices and accessories removed. Transportation packaging materials removed.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.2.1": {
@@ -525,6 +581,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.4.13": {
+      "id": "GTG#1-5.4.13",
+      "unit": "GTG#1",
+      "activity": "5.4.13",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Piping and supports installation check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.4.14": {
       "id": "GTG#1-5.4.14",
       "unit": "GTG#1",
@@ -637,6 +707,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.4.22": {
+      "id": "GTG#1-5.4.22",
+      "unit": "GTG#1",
+      "activity": "5.4.22",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Enclosure grounding system completed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.4.23": {
       "id": "GTG#1-5.4.23",
       "unit": "GTG#1",
@@ -649,6 +733,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.4.24": {
+      "id": "GTG#1-5.4.24",
+      "unit": "GTG#1",
+      "activity": "5.4.24",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Test for light/smoke passage through sealings (fire fighting system).",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.4.25": {
+      "id": "GTG#1-5.4.25",
+      "unit": "GTG#1",
+      "activity": "5.4.25",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Verify instruments calibration and range",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.5.1": {
@@ -805,6 +917,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.5.12": {
+      "id": "GTG#1-5.5.12",
+      "unit": "GTG#1",
+      "activity": "5.5.12",
+      "section": "5.5",
+      "section_title": "FILTER HOUSE AND INLET DUCT SUPPORT STRUCTURE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.6.1": {
       "id": "GTG#1-5.6.1",
       "unit": "GTG#1",
@@ -861,6 +987,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.6.6": {
+      "id": "GTG#1-5.6.6",
+      "unit": "GTG#1",
+      "activity": "5.6.6",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Assembly of pre-filter stage and remaining internal filtering stages.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.6.7": {
       "id": "GTG#1-5.6.7",
       "unit": "GTG#1",
@@ -901,6 +1041,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.6.10": {
+      "id": "GTG#1-5.6.10",
+      "unit": "GTG#1",
+      "activity": "5.6.10",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Verify correct installation of filters elements (High Efficiency Static Systems):\n• Verify the neoprene gasket seal installation all around the frame surface of the pre-filters and high efficiency filter bags\n• Verify the neoprene gasket seals have the correct contact on the support structure once the pre filter and high efficiency filter bags are installed\n• Check if the neoprene gasket has not lost its typical mechanical properties of compression and sealing.\n• Inspect all filter bags for damage. Replace damaged bags if needed\n• Make sure that everything downstream the filters is clean.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.6.11": {
@@ -1083,6 +1237,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.6.25": {
+      "id": "GTG#1-5.6.25",
+      "unit": "GTG#1",
+      "activity": "5.6.25",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Filter house internal cleaning. Internal inspection execution and acceptance certification issuing.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.7.1": {
@@ -1293,6 +1461,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.7.16": {
+      "id": "GTG#1-5.7.16",
+      "unit": "GTG#1",
+      "activity": "5.7.16",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Air inlet system internal cleaning. Internal inspection execution and acceptance certification issuing.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.7.17": {
+      "id": "GTG#1-5.7.17",
+      "unit": "GTG#1",
+      "activity": "5.7.17",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.8.1": {
@@ -1743,6 +1939,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.9.13": {
+      "id": "GTG#1-5.9.13",
+      "unit": "GTG#1",
+      "activity": "5.9.13",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "No door deformation is observed: perform door fit-up, installing the door with 4 bolts at the corners, with minimum torque, confirming that the gap all over the perimeter is less than 2 mm.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.9.14": {
       "id": "GTG#1-5.9.14",
       "unit": "GTG#1",
@@ -1855,6 +2065,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.9.22": {
+      "id": "GTG#1-5.9.22",
+      "unit": "GTG#1",
+      "activity": "5.9.22",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "Exhaust duct drain piping assembly with relevant intercepting valve (false start valve) or possible siphon.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.9.23": {
       "id": "GTG#1-5.9.23",
       "unit": "GTG#1",
@@ -1895,6 +2119,90 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.3": {
+      "id": "GTG#1-5.10.3",
+      "unit": "GTG#1",
+      "activity": "5.10.3",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Verticality, elevation and alignment of the structure elements. (for tolerances see drawings and SIC00281)",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.4": {
+      "id": "GTG#1-5.10.4",
+      "unit": "GTG#1",
+      "activity": "5.10.4",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Walkways structure bolts tightening check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.5": {
+      "id": "GTG#1-5.10.5",
+      "unit": "GTG#1",
+      "activity": "5.10.5",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "All components (ladders, walkways, gratings, stairs, handrails) have been installed. Bolts tightening torque checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.6": {
+      "id": "GTG#1-5.10.6",
+      "unit": "GTG#1",
+      "activity": "5.10.6",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Verify the cleaning of the gratings: they are without presence of oil or slippery substance",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.7": {
+      "id": "GTG#1-5.10.7",
+      "unit": "GTG#1",
+      "activity": "5.10.7",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Plates indicating the relevant maximum admissible load have been applied.",
+      "discipline": "Structural",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.8": {
+      "id": "GTG#1-5.10.8",
+      "unit": "GTG#1",
+      "activity": "5.10.8",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Components painting integrity check",
+      "discipline": "Structural",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.11.1": {
@@ -2247,6 +2555,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.11.30": {
+      "id": "GTG#1-5.11.30",
+      "unit": "GTG#1",
+      "activity": "5.11.30",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "Hydraulic test.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.12.1": {
       "id": "GTG#1-5.12.1",
       "unit": "GTG#1",
@@ -2343,6 +2665,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.12.9": {
+      "id": "GTG#1-5.12.9",
+      "unit": "GTG#1",
+      "activity": "5.12.9",
+      "section": "5.12",
+      "section_title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.12.10": {
+      "id": "GTG#1-5.12.10",
+      "unit": "GTG#1",
+      "activity": "5.12.10",
+      "section": "5.12",
+      "section_title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
+      "description": "Assembly of drain lines relevant to inlet & exhaust plenum and turbine casing. Installation of supports and automatic/hand valves.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.12.11": {
@@ -2499,6 +2849,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.13.3": {
+      "id": "GTG#1-5.13.3",
+      "unit": "GTG#1",
+      "activity": "5.13.3",
+      "section": "5.13",
+      "section_title": "CENTRIFUGAL COMPRESSOR (CPPT-C-1101-01 - CPPT-C-1101-02) (2BCL456/A) ACTIVITIES (ref. TPI sect. 7.13)",
+      "description": "Centrifugal Compressor (2BCL456/A) transportation sealing flanges temporary gaskets are removed and installed with permanent gaskets and correct torquing applied to bolts and check the integrity.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.13.4": {
       "id": "GTG#1-5.13.4",
       "unit": "GTG#1",
@@ -2623,6 +2987,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.14.5": {
+      "id": "GTG#1-5.14.5",
+      "unit": "GTG#1",
+      "activity": "5.14.5",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Vent of gearbox casing assembly",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.14.6": {
+      "id": "GTG#1-5.14.6",
+      "unit": "GTG#1",
+      "activity": "5.14.6",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Verify correct size of flow orifice (RO-1101-12) according to note 1 of P&ID SOM9913412 Sh.13/29.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.14.7": {
@@ -3367,6 +3759,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.17.17": {
+      "id": "GTG#1-5.17.17",
+      "unit": "GTG#1",
+      "activity": "5.17.17",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.18": {
+      "id": "GTG#1-5.17.18",
+      "unit": "GTG#1",
+      "activity": "5.17.18",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Cooler / Oil System interconnecting piping connection. No tension and torsion on connections (to be checked in different condition of temperature and pressure).",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.17.19": {
       "id": "GTG#1-5.17.19",
       "unit": "GTG#1",
@@ -3435,6 +3855,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.24": {
+      "id": "GTG#1-5.17.24",
+      "unit": "GTG#1",
+      "activity": "5.17.24",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.17.26": {
+      "id": "GTG#1-5.17.26",
+      "unit": "GTG#1",
+      "activity": "5.17.26",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Components painting integrity check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.17.27": {
@@ -3549,6 +3997,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.18.5": {
+      "id": "GTG#1-5.18.5",
+      "unit": "GTG#1",
+      "activity": "5.18.5",
+      "section": "5.18",
+      "section_title": "MINERAL LUBE OIL PURIFIER TROLLEY (CPPT-TR-1101-02) POSITIONING (ref. TPI sect.7.14)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.18.6": {
       "id": "GTG#1-5.18.6",
       "unit": "GTG#1",
@@ -3617,6 +4079,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.19.1": {
+      "id": "GTG#1-5.19.1",
+      "unit": "GTG#1",
+      "activity": "5.19.1",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Mineral lube oil tank (CPPT-T-1101-04) internal inspection. VpCI emitting sponges removed. Verify lube oil tank cleaning.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.19.2": {
@@ -3955,6 +4431,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.19.28": {
+      "id": "GTG#1-5.19.28",
+      "unit": "GTG#1",
+      "activity": "5.19.28",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Before tank filling, check internal painting and correct installation of internal elements (valves, pumps, instruments)",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.19.29": {
+      "id": "GTG#1-5.19.29",
+      "unit": "GTG#1",
+      "activity": "5.19.29",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Verify oil tank filling (correct oil type and quantity), check instrument activation for pump protection.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.19.30": {
       "id": "GTG#1-5.19.30",
       "unit": "GTG#1",
@@ -4107,6 +4611,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.20.11": {
+      "id": "GTG#1-5.20.11",
+      "unit": "GTG#1",
+      "activity": "5.20.11",
+      "section": "5.20",
+      "section_title": "HYDRAULIC STARTING SYSTEM (CPPT-P-1101-10) (ref. TPI sect.7.14)",
+      "description": "Starter clutch lube oil lines connection.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.20.12": {
@@ -4403,6 +4921,20 @@
       "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.21.15": {
+      "id": "GTG#1-5.21.15",
+      "unit": "GTG#1",
+      "activity": "5.21.15",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Components painting integrity check",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.21.16": {
       "id": "GTG#1-5.21.16",
       "unit": "GTG#1",
@@ -4429,6 +4961,62 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.20": {
+      "id": "GTG#1-5.21.20",
+      "unit": "GTG#1",
+      "activity": "5.21.20",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Insulation & protection application. (where required).",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.21": {
+      "id": "GTG#1-5.21.21",
+      "unit": "GTG#1",
+      "activity": "5.21.21",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Piping identification plates and/or colours application.",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.24": {
+      "id": "GTG#1-5.21.24",
+      "unit": "GTG#1",
+      "activity": "5.21.24",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Components (lines and unions) check to ensure that no mixing between mm and inches (or non-compatible parts installation) occurs.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.26": {
+      "id": "GTG#1-5.21.26",
+      "unit": "GTG#1",
+      "activity": "5.21.26",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Assembly of flexible joints. No tension/torsion on flexible surface. Check to be done considering different conditions (temperature, pressure)",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.23.1": {
@@ -4879,6 +5467,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.25.2": {
+      "id": "GTG#1-5.25.2",
+      "unit": "GTG#1",
+      "activity": "5.25.2",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Synthetic lube oil tank internal inspection. VpCI emitting sponges removed. Verify lube oil tank cleaning.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.25.4": {
       "id": "GTG#1-5.25.4",
       "unit": "GTG#1",
@@ -5103,6 +5705,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.25.3": {
+      "id": "GTG#1-5.25.3",
+      "unit": "GTG#1",
+      "activity": "5.25.3",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Synthetic lube oil scavenge pumps & electric motors assembly check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.25.20": {
+      "id": "GTG#1-5.25.20",
+      "unit": "GTG#1",
+      "activity": "5.25.20",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Components painting integrity check",
+      "discipline": "General",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.25.21": {
       "id": "GTG#1-5.25.21",
       "unit": "GTG#1",
@@ -5171,6 +5801,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.25.26": {
+      "id": "GTG#1-5.25.26",
+      "unit": "GTG#1",
+      "activity": "5.25.26",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Before tank filling, check internal painting and correct installation of internal elements (valves, pumps, instruments)",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.25.27": {
+      "id": "GTG#1-5.25.27",
+      "unit": "GTG#1",
+      "activity": "5.25.27",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Verify oil tank filling (correct oil type and quantity), check instrument activation for pump protection. Before filling the tank verify that the system isolation valve is closed. After GG installation, it is a good practice to keep the valve closed if the engine has to be standstill for more than 7 days, in order to prevent potential oil flooding of the GG.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.25.28": {
@@ -7441,6 +8099,20 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.1.1": {
+      "id": "GTG#2-5.1.1",
+      "unit": "GTG#2",
+      "activity": "5.1.1",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Boxes opening and material check: customer signature, date and stamp marked on each page of packing list.",
+      "discipline": "Material",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.1.2": {
       "id": "GTG#2-5.1.2",
       "unit": "GTG#2",
@@ -7467,6 +8139,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.1.5": {
+      "id": "GTG#2-5.1.5",
+      "unit": "GTG#2",
+      "activity": "5.1.5",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Components painting integrity check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.1.6": {
@@ -7509,6 +8195,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.1.9": {
+      "id": "GTG#2-5.1.9",
+      "unit": "GTG#2",
+      "activity": "5.1.9",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Unit, auxiliaries and adjacent areas cleaning after installation activities completion.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.1.10": {
+      "id": "GTG#2-5.1.10",
+      "unit": "GTG#2",
+      "activity": "5.1.10",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Shipping devices and accessories removed. Transportation packaging materials removed.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.2.1": {
@@ -7959,6 +8673,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.4.13": {
+      "id": "GTG#2-5.4.13",
+      "unit": "GTG#2",
+      "activity": "5.4.13",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Piping and supports installation check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.4.14": {
       "id": "GTG#2-5.4.14",
       "unit": "GTG#2",
@@ -8083,6 +8811,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.4.24": {
+      "id": "GTG#2-5.4.24",
+      "unit": "GTG#2",
+      "activity": "5.4.24",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Test for light/smoke passage through sealings (fire fighting system).",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.4.25": {
+      "id": "GTG#2-5.4.25",
+      "unit": "GTG#2",
+      "activity": "5.4.25",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Verify instruments calibration and range",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.5.1": {
@@ -8239,6 +8995,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.5.12": {
+      "id": "GTG#2-5.5.12",
+      "unit": "GTG#2",
+      "activity": "5.5.12",
+      "section": "5.5",
+      "section_title": "FILTER HOUSE AND INLET DUCT SUPPORT STRUCTURE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.6.1": {
       "id": "GTG#2-5.6.1",
       "unit": "GTG#2",
@@ -8295,6 +9065,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.6.6": {
+      "id": "GTG#2-5.6.6",
+      "unit": "GTG#2",
+      "activity": "5.6.6",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Assembly of pre-filter stage and remaining internal filtering stages.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.6.7": {
       "id": "GTG#2-5.6.7",
       "unit": "GTG#2",
@@ -8335,6 +9119,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.6.10": {
+      "id": "GTG#2-5.6.10",
+      "unit": "GTG#2",
+      "activity": "5.6.10",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Verify correct installation of filters elements (High Efficiency Static Systems):\n• Verify the neoprene gasket seal installation all around the frame surface of the pre-filters and high efficiency filter bags\n• Verify the neoprene gasket seals have the correct contact on the support structure once the pre filter and high efficiency filter bags are installed\n• Check if the neoprene gasket has not lost its typical mechanical properties of compression and sealing.\n• Inspect all filter bags for damage. Replace damaged bags if needed\n• Make sure that everything downstream the filters is clean.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.6.11": {
@@ -8519,6 +9317,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.6.25": {
+      "id": "GTG#2-5.6.25",
+      "unit": "GTG#2",
+      "activity": "5.6.25",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Filter house internal cleaning. Internal inspection execution and acceptance certification issuing.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.7.1": {
       "id": "GTG#2-5.7.1",
       "unit": "GTG#2",
@@ -8685,6 +9497,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.7.16": {
+      "id": "GTG#2-5.7.16",
+      "unit": "GTG#2",
+      "activity": "5.7.16",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Air inlet system internal cleaning. Internal inspection execution and acceptance certification issuing.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.7.17": {
+      "id": "GTG#2-5.7.17",
+      "unit": "GTG#2",
+      "activity": "5.7.17",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.8.1": {
@@ -9037,6 +9877,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.9.13": {
+      "id": "GTG#2-5.9.13",
+      "unit": "GTG#2",
+      "activity": "5.9.13",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "No door deformation is observed: perform door fit-up, installing the door with 4 bolts at the corners, with minimum torque, confirming that the gap all over the perimeter is less than 2 mm.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.9.14": {
       "id": "GTG#2-5.9.14",
       "unit": "GTG#2",
@@ -9149,6 +10003,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.9.22": {
+      "id": "GTG#2-5.9.22",
+      "unit": "GTG#2",
+      "activity": "5.9.22",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "Exhaust duct drain piping assembly with relevant intercepting valve (false start valve) or possible siphon.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.9.23": {
       "id": "GTG#2-5.9.23",
       "unit": "GTG#2",
@@ -9189,6 +10057,90 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.3": {
+      "id": "GTG#2-5.10.3",
+      "unit": "GTG#2",
+      "activity": "5.10.3",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Verticality, elevation and alignment of the structure elements. (for tolerances see drawings and SIC00281)",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.4": {
+      "id": "GTG#2-5.10.4",
+      "unit": "GTG#2",
+      "activity": "5.10.4",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Walkways structure bolts tightening check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.5": {
+      "id": "GTG#2-5.10.5",
+      "unit": "GTG#2",
+      "activity": "5.10.5",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "All components (ladders, walkways, gratings, stairs, handrails) have been installed. Bolts tightening torque checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.6": {
+      "id": "GTG#2-5.10.6",
+      "unit": "GTG#2",
+      "activity": "5.10.6",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Verify the cleaning of the gratings: they are without presence of oil or slippery substance",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.7": {
+      "id": "GTG#2-5.10.7",
+      "unit": "GTG#2",
+      "activity": "5.10.7",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Plates indicating the relevant maximum admissible load have been applied.",
+      "discipline": "Structural",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.8": {
+      "id": "GTG#2-5.10.8",
+      "unit": "GTG#2",
+      "activity": "5.10.8",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Components painting integrity check",
+      "discipline": "Structural",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.11.1": {
@@ -9527,6 +10479,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.11.30": {
+      "id": "GTG#2-5.11.30",
+      "unit": "GTG#2",
+      "activity": "5.11.30",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "Hydraulic test.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.12.1": {
       "id": "GTG#2-5.12.1",
       "unit": "GTG#2",
@@ -9625,6 +10591,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.12.9": {
+      "id": "GTG#2-5.12.9",
+      "unit": "GTG#2",
+      "activity": "5.12.9",
+      "section": "5.12",
+      "section_title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.12.10": {
+      "id": "GTG#2-5.12.10",
+      "unit": "GTG#2",
+      "activity": "5.12.10",
+      "section": "5.12",
+      "section_title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
+      "description": "Assembly of drain lines relevant to inlet & exhaust plenum and turbine casing. Installation of supports and automatic/hand valves.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.12.12": {
       "id": "GTG#2-5.12.12",
       "unit": "GTG#2",
@@ -9707,6 +10701,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.13.3": {
+      "id": "GTG#2-5.13.3",
+      "unit": "GTG#2",
+      "activity": "5.13.3",
+      "section": "5.13",
+      "section_title": "CENTRIFUGAL COMPRESSOR (CPPT-C-1101-01 - CPPT-C-1101-02) (2BCL456/A) ACTIVITIES (ref. TPI sect. 7.13)",
+      "description": "Centrifugal Compressor (2BCL456/A) transportation sealing flanges temporary gaskets are removed and installed with permanent gaskets and correct torquing applied to bolts and check the integrity.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.13.4": {
@@ -9833,6 +10841,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.14.5": {
+      "id": "GTG#2-5.14.5",
+      "unit": "GTG#2",
+      "activity": "5.14.5",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Vent of gearbox casing assembly",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.14.6": {
+      "id": "GTG#2-5.14.6",
+      "unit": "GTG#2",
+      "activity": "5.14.6",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Verify correct size of flow orifice (RO-1101-12) according to note 1 of P&ID SOM9913412 Sh.13/29.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.14.7": {
@@ -10423,6 +11459,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.17.17": {
+      "id": "GTG#2-5.17.17",
+      "unit": "GTG#2",
+      "activity": "5.17.17",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Piping supports installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.17.18": {
+      "id": "GTG#2-5.17.18",
+      "unit": "GTG#2",
+      "activity": "5.17.18",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Cooler / Oil System interconnecting piping connection. No tension and torsion on connections (to be checked in different condition of temperature and pressure).",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.17.19": {
       "id": "GTG#2-5.17.19",
       "unit": "GTG#2",
@@ -10493,6 +11557,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.17.24": {
+      "id": "GTG#2-5.17.24",
+      "unit": "GTG#2",
+      "activity": "5.17.24",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.17.26": {
+      "id": "GTG#2-5.17.26",
+      "unit": "GTG#2",
+      "activity": "5.17.26",
+      "section": "5.17",
+      "section_title": "MINERAL LUBE OIL/AIR COOLER (CPPT-E-1101-01) INSTALLATION (ref. TPI sect.7.14)",
+      "description": "Components painting integrity check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.18.1": {
       "id": "GTG#2-5.18.1",
       "unit": "GTG#2",
@@ -10549,6 +11641,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.18.5": {
+      "id": "GTG#2-5.18.5",
+      "unit": "GTG#2",
+      "activity": "5.18.5",
+      "section": "5.18",
+      "section_title": "MINERAL LUBE OIL PURIFIER TROLLEY (CPPT-TR-1101-02) POSITIONING (ref. TPI sect.7.14)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.18.6": {
       "id": "GTG#2-5.18.6",
       "unit": "GTG#2",
@@ -10575,6 +11681,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.19.1": {
+      "id": "GTG#2-5.19.1",
+      "unit": "GTG#2",
+      "activity": "5.19.1",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Mineral lube oil tank (CPPT-T-1101-04) internal inspection. VpCI emitting sponges removed. Verify lube oil tank cleaning.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.19.2": {
@@ -10885,6 +12005,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.19.28": {
+      "id": "GTG#2-5.19.28",
+      "unit": "GTG#2",
+      "activity": "5.19.28",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Before tank filling, check internal painting and correct installation of internal elements (valves, pumps, instruments)",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.19.29": {
+      "id": "GTG#2-5.19.29",
+      "unit": "GTG#2",
+      "activity": "5.19.29",
+      "section": "5.19",
+      "section_title": "MINERAL LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.14)",
+      "description": "Verify oil tank filling (correct oil type and quantity), check instrument activation for pump protection.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.20.1": {
       "id": "GTG#2-5.20.1",
       "unit": "GTG#2",
@@ -11009,6 +12157,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.20.11": {
+      "id": "GTG#2-5.20.11",
+      "unit": "GTG#2",
+      "activity": "5.20.11",
+      "section": "5.20",
+      "section_title": "HYDRAULIC STARTING SYSTEM (CPPT-P-1101-10) (ref. TPI sect.7.14)",
+      "description": "Starter clutch lube oil lines connection.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.20.12": {
@@ -11261,6 +12423,76 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.21.15": {
+      "id": "GTG#2-5.21.15",
+      "unit": "GTG#2",
+      "activity": "5.21.15",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Components painting integrity check",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.21.20": {
+      "id": "GTG#2-5.21.20",
+      "unit": "GTG#2",
+      "activity": "5.21.20",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Insulation & protection application. (where required).",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.21.21": {
+      "id": "GTG#2-5.21.21",
+      "unit": "GTG#2",
+      "activity": "5.21.21",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Piping identification plates and/or colours application.",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.21.24": {
+      "id": "GTG#2-5.21.24",
+      "unit": "GTG#2",
+      "activity": "5.21.24",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Components (lines and unions) check to ensure that no mixing between mm and inches (or non-compatible parts installation) occurs.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.21.26": {
+      "id": "GTG#2-5.21.26",
+      "unit": "GTG#2",
+      "activity": "5.21.26",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Assembly of flexible joints. No tension/torsion on flexible surface. Check to be done considering different conditions (temperature, pressure)",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.23.1": {
@@ -11585,6 +12817,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.25.2": {
+      "id": "GTG#2-5.25.2",
+      "unit": "GTG#2",
+      "activity": "5.25.2",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Synthetic lube oil tank internal inspection. VpCI emitting sponges removed. Verify lube oil tank cleaning.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.25.3": {
+      "id": "GTG#2-5.25.3",
+      "unit": "GTG#2",
+      "activity": "5.25.3",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Synthetic lube oil scavenge pumps & electric motors assembly check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.25.4": {
       "id": "GTG#2-5.25.4",
       "unit": "GTG#2",
@@ -11809,6 +13069,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.25.20": {
+      "id": "GTG#2-5.25.20",
+      "unit": "GTG#2",
+      "activity": "5.25.20",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Components painting integrity check",
+      "discipline": "General",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.25.21": {
       "id": "GTG#2-5.25.21",
       "unit": "GTG#2",
@@ -11877,6 +13151,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.25.26": {
+      "id": "GTG#2-5.25.26",
+      "unit": "GTG#2",
+      "activity": "5.25.26",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Before tank filling, check internal painting and correct installation of internal elements (valves, pumps, instruments)",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.25.27": {
+      "id": "GTG#2-5.25.27",
+      "unit": "GTG#2",
+      "activity": "5.25.27",
+      "section": "5.25",
+      "section_title": "SYNTHETIC LUBE OIL CONSOLE ON MAIN SKID (ref. TPI sect.7.15)",
+      "description": "Verify oil tank filling (correct oil type and quantity), check instrument activation for pump protection. Before filling the tank verify that the system isolation valve is closed. After GG installation, it is a good practice to keep the valve closed if the engine has to be standstill for more than 7 days, in order to prevent potential oil flooding of the GG.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.25.28": {
@@ -13393,6 +14695,24 @@
     }
   },
   "daily_summary": {
+    "2026-11-10": {
+      "date": "2026-11-10",
+      "label": "10/11 (Cut-off 07:30 11/11)",
+      "total": 98,
+      "by_discipline": {
+        "Material": 2,
+        "Mechanical": 52,
+        "Electrical & Instruments": 6,
+        "Pre-Commissioning": 20,
+        "Structural": 4,
+        "Piping": 12,
+        "General": 2
+      },
+      "by_unit": {
+        "GTG#1": 52,
+        "GTG#2": 46
+      }
+    },
     "2026-08-24": {
       "date": "2026-08-24",
       "label": "24/08 (Cut-off 07:30 25/08)",
@@ -13551,18 +14871,6 @@
       "by_unit": {
         "GTG#1": 13,
         "GTG#2": 13
-      }
-    },
-    "2026-11-10": {
-      "date": "2026-11-10",
-      "label": "10/11 (Cut-off 07:30 11/11)",
-      "total": 5,
-      "by_discipline": {
-        "Piping": 4,
-        "Electrical & Instruments": 1
-      },
-      "by_unit": {
-        "GTG#1": 5
       }
     }
   }
