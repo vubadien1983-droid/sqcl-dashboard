@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-10T04:21:18.686869+07:00",
-  "total_closed_items": 947,
+  "last_updated": "2026-11-10T11:57:50.544693+07:00",
+  "total_closed_items": 952,
   "records": {
     "GTG#1-5.1.2": {
       "id": "GTG#1-5.1.2",
@@ -1867,6 +1867,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.1": {
+      "id": "GTG#1-5.10.1",
+      "unit": "GTG#1",
+      "activity": "5.10.1",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Respect of preservation prescriptions for enclosure elements and installation related items checked.",
+      "discipline": "Structural",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.10.2": {
+      "id": "GTG#1-5.10.2",
+      "unit": "GTG#1",
+      "activity": "5.10.2",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Walkways structure on main skid assembly check.",
+      "discipline": "Structural",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.11.1": {
@@ -4597,6 +4625,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.23.21": {
+      "id": "GTG#1-5.23.21",
+      "unit": "GTG#1",
+      "activity": "5.23.21",
+      "section": "5.23",
+      "section_title": "SYNTHETIC OIL MIST ELIMINATOR (CPPT-SK-1101-03) (ref. TPI sect.7.15)",
+      "description": "Instrument & device cables connection and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.23.22": {
@@ -9065,6 +9107,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.10.1": {
+      "id": "GTG#2-5.10.1",
+      "unit": "GTG#2",
+      "activity": "5.10.1",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Respect of preservation prescriptions for enclosure elements and installation related items checked.",
+      "discipline": "Structural",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.10.2": {
+      "id": "GTG#2-5.10.2",
+      "unit": "GTG#2",
+      "activity": "5.10.2",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Walkways structure on main skid assembly check.",
+      "discipline": "Structural",
+      "work_date": "2026-11-09",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T11:57:50.544693+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.11.1": {
       "id": "GTG#2-5.11.1",
       "unit": "GTG#2",
@@ -13347,6 +13417,19 @@
         "GTG#2": 8
       }
     },
+    "2026-11-09": {
+      "date": "2026-11-09",
+      "label": "09/11 (Cut-off 07:30 10/11)",
+      "total": 26,
+      "by_discipline": {
+        "Structural": 4,
+        "Electrical & Instruments": 22
+      },
+      "by_unit": {
+        "GTG#1": 24,
+        "GTG#2": 2
+      }
+    },
     "2026-11-03": {
       "date": "2026-11-03",
       "label": "03/11 (Cut-off 07:30 04/11)",
@@ -13402,17 +13485,6 @@
         "GTG#2": 5
       }
     },
-    "2026-11-09": {
-      "date": "2026-11-09",
-      "label": "09/11 (Cut-off 07:30 10/11)",
-      "total": 22,
-      "by_discipline": {
-        "Electrical & Instruments": 22
-      },
-      "by_unit": {
-        "GTG#1": 22
-      }
-    },
     "2026-10-28": {
       "date": "2026-10-28",
       "label": "28/10 (Cut-off 07:30 29/10)",
@@ -13423,6 +13495,17 @@
       "by_unit": {
         "GTG#1": 13,
         "GTG#2": 13
+      }
+    },
+    "2026-11-10": {
+      "date": "2026-11-10",
+      "label": "10/11 (Cut-off 07:30 11/11)",
+      "total": 1,
+      "by_discipline": {
+        "Electrical & Instruments": 1
+      },
+      "by_unit": {
+        "GTG#1": 1
       }
     }
   }
