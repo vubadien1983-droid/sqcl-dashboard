@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-10T11:57:50.544693+07:00",
-  "total_closed_items": 952,
+  "last_updated": "2026-11-10T14:33:16.872497+07:00",
+  "total_closed_items": 956,
   "records": {
     "GTG#1-5.1.2": {
       "id": "GTG#1-5.1.2",
@@ -4361,6 +4361,48 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.21.9": {
+      "id": "GTG#1-5.21.9",
+      "unit": "GTG#1",
+      "activity": "5.21.9",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Valves installation check.",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.10": {
+      "id": "GTG#1-5.21.10",
+      "unit": "GTG#1",
+      "activity": "5.21.10",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Piping installation and completion",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.14": {
+      "id": "GTG#1-5.21.14",
+      "unit": "GTG#1",
+      "activity": "5.21.14",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Plugs, blind flanges installation check",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.21.16": {
       "id": "GTG#1-5.21.16",
       "unit": "GTG#1",
@@ -4373,6 +4415,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.21.19": {
+      "id": "GTG#1-5.21.19",
+      "unit": "GTG#1",
+      "activity": "5.21.19",
+      "section": "5.21",
+      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
+      "description": "Gaskets and bolts according to lines characteristics (schedule, type of fluid,/gas, pressure, etc.)",
+      "discipline": "Piping",
+      "work_date": "2026-11-10",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.23.1": {
@@ -13500,12 +13556,13 @@
     "2026-11-10": {
       "date": "2026-11-10",
       "label": "10/11 (Cut-off 07:30 11/11)",
-      "total": 1,
+      "total": 5,
       "by_discipline": {
+        "Piping": 4,
         "Electrical & Instruments": 1
       },
       "by_unit": {
-        "GTG#1": 1
+        "GTG#1": 5
       }
     }
   }
