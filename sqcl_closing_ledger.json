@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-13T13:59:14.769746+07:00",
-  "total_closed_items": 1074,
+  "last_updated": "2026-11-13T21:45:35.684431+07:00",
+  "total_closed_items": 1090,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -33,6 +33,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.1.3": {
+      "id": "GTG#1-5.1.3",
+      "unit": "GTG#1",
+      "activity": "5.1.3",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Main skid and auxiliaries serial numbers check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.1.4": {
@@ -131,6 +145,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.1.11": {
+      "id": "GTG#1-5.1.11",
+      "unit": "GTG#1",
+      "activity": "5.1.11",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.2.1": {
@@ -2429,6 +2457,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.11.19": {
+      "id": "GTG#1-5.11.19",
+      "unit": "GTG#1",
+      "activity": "5.11.19",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "Discharge lines bolts & unions tightening check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.11.21": {
       "id": "GTG#1-5.11.21",
       "unit": "GTG#1",
@@ -2651,6 +2693,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.12.7": {
+      "id": "GTG#1-5.12.7",
+      "unit": "GTG#1",
+      "activity": "5.12.7",
+      "section": "5.12",
+      "section_title": "ON/OFF WATER WASHING TROLLEY (CPPT-TR-1101-03) (ref. TPI sect.7.12)",
+      "description": "Water headers unions tightening check and welding execution where required.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.12.8": {
@@ -3001,6 +3057,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.14.3": {
+      "id": "GTG#1-5.14.3",
+      "unit": "GTG#1",
+      "activity": "5.14.3",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "All preservation flanges removed",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.14.4": {
+      "id": "GTG#1-5.14.4",
+      "unit": "GTG#1",
+      "activity": "5.14.4",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Lube oil piping inlet and outlet connection.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.14.5": {
@@ -5089,34 +5173,6 @@
       "closed_timestamp": "2026-11-10T14:33:16.872497+07:00",
       "source": "status_column_p"
     },
-    "GTG#1-5.21.20": {
-      "id": "GTG#1-5.21.20",
-      "unit": "GTG#1",
-      "activity": "5.21.20",
-      "section": "5.21",
-      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
-      "description": "Insulation & protection application. (where required).",
-      "discipline": "Piping",
-      "work_date": "2026-11-10",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
-      "source": "status_column_p"
-    },
-    "GTG#1-5.21.21": {
-      "id": "GTG#1-5.21.21",
-      "unit": "GTG#1",
-      "activity": "5.21.21",
-      "section": "5.21",
-      "section_title": "MINERAL LUBE OIL INTERCONNECTING PIPING (ref. TPI sect.7.14)",
-      "description": "Piping identification plates and/or colours application.",
-      "discipline": "Piping",
-      "work_date": "2026-11-10",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
-      "source": "status_column_p"
-    },
     "GTG#1-5.21.22": {
       "id": "GTG#1-5.21.22",
       "unit": "GTG#1",
@@ -6391,6 +6447,20 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.27.24": {
+      "id": "GTG#1-5.27.24",
+      "unit": "GTG#1",
+      "activity": "5.27.24",
+      "section": "5.27",
+      "section_title": "SYNTHETIC OIL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.15)",
+      "description": "Components (lines and unions) check to ensure that no mixing between mm and inches (or non-compatible parts installation) occurs.",
+      "discipline": "Piping",
+      "work_date": "2026-11-11",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.27.26": {
       "id": "GTG#1-5.27.26",
       "unit": "GTG#1",
@@ -6979,6 +7049,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.33.9": {
+      "id": "GTG#1-5.33.9",
+      "unit": "GTG#1",
+      "activity": "5.33.9",
+      "section": "5.33",
+      "section_title": "PROCESS PIPING CONNECTION (ref. TPI sect.7.17)",
+      "description": "2BCL456/A correct pre-alignment checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.35.1": {
       "id": "GTG#1-5.35.1",
       "unit": "GTG#1",
@@ -7075,6 +7159,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T20:23:19.622431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.35.8": {
+      "id": "GTG#1-5.35.8",
+      "unit": "GTG#1",
+      "activity": "5.35.8",
+      "section": "5.35",
+      "section_title": "DGS TREATMENT SKID (CPPT-SK-1101-05) INSTALLATION (ref. TPI sect. 7.18)",
+      "description": "DGS treatment interconnecting piping connection. No tension and torsion on connections.",
+      "discipline": "Piping",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.35.9": {
@@ -7537,6 +7635,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.37.1": {
+      "id": "GTG#1-5.37.1",
+      "unit": "GTG#1",
+      "activity": "5.37.1",
+      "section": "5.37",
+      "section_title": "DGS TREATMENT SYSTEM COMPLETION (ref. TPI sect.7.18)",
+      "description": "Respect of preservation prescriptions for dry gas seal treatment system and installation related items checked.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.37.2": {
+      "id": "GTG#1-5.37.2",
+      "unit": "GTG#1",
+      "activity": "5.37.2",
+      "section": "5.37",
+      "section_title": "DGS TREATMENT SYSTEM COMPLETION (ref. TPI sect.7.18)",
+      "description": "Coalesced filters for process gas (seal gas) installation and connection with the system",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.37.3": {
@@ -8267,6 +8393,20 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.39.15": {
+      "id": "GTG#1-5.39.15",
+      "unit": "GTG#1",
+      "activity": "5.39.15",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Components painting integrity check",
+      "discipline": "General",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.39.16": {
       "id": "GTG#1-5.39.16",
       "unit": "GTG#1",
@@ -8335,6 +8475,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.39.21": {
+      "id": "GTG#1-5.39.21",
+      "unit": "GTG#1",
+      "activity": "5.39.21",
+      "section": "5.39",
+      "section_title": "DRY GAS SEAL SYSTEM INTERCONNECTING PIPING (ref. TPI sect.7.18)",
+      "description": "Piping identification plates and/or colours application.",
+      "discipline": "General",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.39.22": {
@@ -8855,6 +9009,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.1.3": {
+      "id": "GTG#2-5.1.3",
+      "unit": "GTG#2",
+      "activity": "5.1.3",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Main skid and auxiliaries serial numbers check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.1.4": {
       "id": "GTG#2-5.1.4",
       "unit": "GTG#2",
@@ -8951,6 +9119,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.1.11": {
+      "id": "GTG#2-5.1.11",
+      "unit": "GTG#2",
+      "activity": "5.1.11",
+      "section": "5.1",
+      "section_title": "ARRIVAL, UNLOADING & STORAGE OF MATERIALS (ref. TPI sect.7.2)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.2.1": {
@@ -11081,6 +11263,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.11.19": {
+      "id": "GTG#2-5.11.19",
+      "unit": "GTG#2",
+      "activity": "5.11.19",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "Discharge lines bolts & unions tightening check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.11.21": {
       "id": "GTG#2-5.11.21",
       "unit": "GTG#2",
@@ -11387,6 +11583,34 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.14.3": {
+      "id": "GTG#2-5.14.3",
+      "unit": "GTG#2",
+      "activity": "5.14.3",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "All preservation flanges removed",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.14.4": {
+      "id": "GTG#2-5.14.4",
+      "unit": "GTG#2",
+      "activity": "5.14.4",
+      "section": "5.14",
+      "section_title": "GEARBOX (CPPT-ZZ-1101) COMPLETION (ref. TPI sect. 7.13)",
+      "description": "Lube oil piping inlet and outlet connection.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.14.5": {
@@ -15048,18 +15272,18 @@
     "2026-11-10": {
       "date": "2026-11-10",
       "label": "10/11 (Cut-off 07:30 11/11)",
-      "total": 96,
+      "total": 94,
       "by_discipline": {
         "Material": 2,
         "Mechanical": 49,
         "Electrical & Instruments": 7,
         "Pre-Commissioning": 20,
         "Structural": 4,
-        "Piping": 12,
+        "Piping": 10,
         "General": 2
       },
       "by_unit": {
-        "GTG#1": 53,
+        "GTG#1": 51,
         "GTG#2": 43
       }
     },
@@ -15074,6 +15298,20 @@
       "by_unit": {
         "GTG#1": 187,
         "GTG#2": 188
+      }
+    },
+    "2026-11-13": {
+      "date": "2026-11-13",
+      "label": "13/11 (Cut-off 07:30 14/11)",
+      "total": 17,
+      "by_discipline": {
+        "Mechanical": 14,
+        "Piping": 1,
+        "General": 2
+      },
+      "by_unit": {
+        "GTG#1": 12,
+        "GTG#2": 5
       }
     },
     "2026-11-04": {
@@ -15201,13 +15439,13 @@
     "2026-11-11": {
       "date": "2026-11-11",
       "label": "11/11 (Cut-off 07:30 12/11)",
-      "total": 40,
+      "total": 41,
       "by_discipline": {
         "Electrical & Instruments": 27,
-        "Piping": 13
+        "Piping": 14
       },
       "by_unit": {
-        "GTG#1": 40
+        "GTG#1": 41
       }
     },
     "2026-10-30": {
