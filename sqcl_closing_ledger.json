@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-13T01:44:22.901011+07:00",
-  "total_closed_items": 1063,
+  "last_updated": "2026-11-13T10:51:26.500700+07:00",
+  "total_closed_items": 1074,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -6685,6 +6685,34 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.30.6": {
+      "id": "GTG#1-5.30.6",
+      "unit": "GTG#1",
+      "activity": "5.30.6",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "All manometers have been removed before piping installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.7": {
+      "id": "GTG#1-5.30.7",
+      "unit": "GTG#1",
+      "activity": "5.30.7",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "All thermometers have been removed before piping installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.30.8": {
       "id": "GTG#1-5.30.8",
       "unit": "GTG#1",
@@ -6755,6 +6783,62 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.30.17": {
+      "id": "GTG#1-5.30.17",
+      "unit": "GTG#1",
+      "activity": "5.30.17",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "All manometers have been installed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.18": {
+      "id": "GTG#1-5.30.18",
+      "unit": "GTG#1",
+      "activity": "5.30.18",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "All thermometers have been installed",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.22": {
+      "id": "GTG#1-5.30.22",
+      "unit": "GTG#1",
+      "activity": "5.30.22",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Tubing lines installation according with components & unions supplier installation procedure.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.23": {
+      "id": "GTG#1-5.30.23",
+      "unit": "GTG#1",
+      "activity": "5.30.23",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Tubing lines check for loose fittings/connections.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.30.24": {
       "id": "GTG#1-5.30.24",
       "unit": "GTG#1",
@@ -6767,6 +6851,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.25": {
+      "id": "GTG#1-5.30.25",
+      "unit": "GTG#1",
+      "activity": "5.30.25",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Tubing lines check for excessive bending, kinks and/or missing or loose supports.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.30.26": {
@@ -8365,6 +8463,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.44.3": {
+      "id": "GTG#1-5.44.3",
+      "unit": "GTG#1",
+      "activity": "5.44.3",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "UCS panel internal cleanliness, components & wiring integrity check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.44.4": {
       "id": "GTG#1-5.44.4",
       "unit": "GTG#1",
@@ -8377,6 +8489,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.5": {
+      "id": "GTG#1-5.44.5",
+      "unit": "GTG#1",
+      "activity": "5.44.5",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "DC panel internal cleanliness, components & wiring integrity check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.44.6": {
@@ -8531,6 +8657,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.34": {
+      "id": "GTG#1-5.44.34",
+      "unit": "GTG#1",
+      "activity": "5.44.34",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Verify electric motors mechanical installation and power cable tightening torque check (refer to supplier manual for cable connections torque value)",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.35": {
+      "id": "GTG#1-5.44.35",
+      "unit": "GTG#1",
+      "activity": "5.44.35",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Verify electric motors electrical insulation and shaft rotation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-12",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.45.1": {
@@ -15079,6 +15233,17 @@
       "by_unit": {
         "GTG#1": 13,
         "GTG#2": 13
+      }
+    },
+    "2026-11-12": {
+      "date": "2026-11-12",
+      "label": "12/11 (Cut-off 07:30 13/11)",
+      "total": 11,
+      "by_discipline": {
+        "Electrical & Instruments": 11
+      },
+      "by_unit": {
+        "GTG#1": 11
       }
     }
   }
