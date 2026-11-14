@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-14T13:48:31.724718+07:00",
-  "total_closed_items": 1113,
+  "last_updated": "2026-11-14T20:42:16.931781+07:00",
+  "total_closed_items": 1120,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -4830,7 +4830,7 @@
       "section": "5.20",
       "section_title": "HYDRAULIC STARTING SYSTEM (CPPT-P-1101-10) (ref. TPI sect.7.14)",
       "description": "Electric motor power cables connection.",
-      "discipline": "Electrical & Instruments",
+      "discipline": "General",
       "work_date": "2026-11-04",
       "status": "Done",
       "col_c_date": "",
@@ -8911,6 +8911,34 @@
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.44.9": {
+      "id": "GTG#1-5.44.9",
+      "unit": "GTG#1",
+      "activity": "5.44.9",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Battery set filling. WARNING: it should be necessary to charge batteries just after filling, refer to supplier manual for detail.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.11": {
+      "id": "GTG#1-5.44.11",
+      "unit": "GTG#1",
+      "activity": "5.44.11",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Cable routing check for possible interference with other plant/unit systems",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.44.12": {
       "id": "GTG#1-5.44.12",
       "unit": "GTG#1",
@@ -8953,20 +8981,6 @@
       "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
-    "GTG#1-5.44.15": {
-      "id": "GTG#1-5.44.15",
-      "unit": "GTG#1",
-      "activity": "5.44.15",
-      "section": "5.44",
-      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
-      "description": "Unit auxiliaries electrical system check",
-      "discipline": "Electrical & Instruments",
-      "work_date": "2026-10-30",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
-      "source": "status_column_p"
-    },
     "GTG#1-5.44.16": {
       "id": "GTG#1-5.44.16",
       "unit": "GTG#1",
@@ -9002,20 +9016,6 @@
       "section": "5.44",
       "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
       "description": "Electrical systems components compliance with area classification (cable glands, cables, JBs, terminal boxes, instruments and devices..)",
-      "discipline": "Electrical & Instruments",
-      "work_date": "2026-10-30",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
-      "source": "status_column_p"
-    },
-    "GTG#1-5.44.19": {
-      "id": "GTG#1-5.44.19",
-      "unit": "GTG#1",
-      "activity": "5.44.19",
-      "section": "5.44",
-      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
-      "description": "Power and signal cables check and positioning, conduits have been correctly installed with relevant seal fittings for explosion proof equipment",
       "discipline": "Electrical & Instruments",
       "work_date": "2026-10-30",
       "status": "Done",
@@ -9077,6 +9077,76 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.25": {
+      "id": "GTG#1-5.44.25",
+      "unit": "GTG#1",
+      "activity": "5.44.25",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Utilities local switch boards panel installation",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.26": {
+      "id": "GTG#1-5.44.26",
+      "unit": "GTG#1",
+      "activity": "5.44.26",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Power and signal cables insulation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.28": {
+      "id": "GTG#1-5.44.28",
+      "unit": "GTG#1",
+      "activity": "5.44.28",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "For each Differential Pressure Transmitter / Gauge with reference to atmospheric pressure, confirm that the reference primary leg is actually connected to a point not subject to pressurization / de-pressurization (such as a ventilated enclosure).",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.29": {
+      "id": "GTG#1-5.44.29",
+      "unit": "GTG#1",
+      "activity": "5.44.29",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Interconnection wiring point to point check (field – control room).",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.30": {
+      "id": "GTG#1-5.44.30",
+      "unit": "GTG#1",
+      "activity": "5.44.30",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Ground loops connection points identification and check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.44.31": {
@@ -9301,6 +9371,34 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.33": {
+      "id": "GTG#1-5.45.33",
+      "unit": "GTG#1",
+      "activity": "5.45.33",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Cables insulation check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.34": {
+      "id": "GTG#1-5.45.34",
+      "unit": "GTG#1",
+      "activity": "5.45.34",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Unit Control Panel check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.1.1": {
@@ -15642,7 +15740,8 @@
       "total": 85,
       "by_discipline": {
         "Mechanical": 64,
-        "Electrical & Instruments": 21
+        "Electrical & Instruments": 20,
+        "General": 1
       },
       "by_unit": {
         "GTG#1": 45,
@@ -15719,13 +15818,13 @@
     "2026-11-14": {
       "date": "2026-11-14",
       "label": "14/11 (Cut-off 07:30 15/11)",
-      "total": 15,
+      "total": 17,
       "by_discipline": {
-        "Electrical & Instruments": 7,
+        "Electrical & Instruments": 9,
         "Piping": 8
       },
       "by_unit": {
-        "GTG#1": 15
+        "GTG#1": 17
       }
     },
     "2026-11-03": {
@@ -15785,13 +15884,13 @@
     "2026-10-30": {
       "date": "2026-10-30",
       "label": "30/10 (Cut-off 07:30 31/10)",
-      "total": 20,
+      "total": 25,
       "by_discipline": {
         "Mechanical": 10,
-        "Electrical & Instruments": 10
+        "Electrical & Instruments": 15
       },
       "by_unit": {
-        "GTG#1": 15,
+        "GTG#1": 20,
         "GTG#2": 5
       }
     },
