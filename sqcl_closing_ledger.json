@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-14T10:49:47.847157+07:00",
-  "total_closed_items": 1090,
+  "last_updated": "2026-11-14T13:48:31.724718+07:00",
+  "total_closed_items": 1113,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -2233,6 +2233,20 @@
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.10.9": {
+      "id": "GTG#1-5.10.9",
+      "unit": "GTG#1",
+      "activity": "5.10.9",
+      "section": "5.10",
+      "section_title": "WALKWAYS ON MAIN SKID INSTALLATION (ref. TPI sect.7.10)",
+      "description": "Walkways grounding system completed.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.11.1": {
       "id": "GTG#1-5.11.1",
       "unit": "GTG#1",
@@ -2371,6 +2385,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.11.12": {
+      "id": "GTG#1-5.11.12",
+      "unit": "GTG#1",
+      "activity": "5.11.12",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "Fire fighting system piping blowing",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.11.13": {
@@ -6797,6 +6825,34 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.30.9": {
+      "id": "GTG#1-5.30.9",
+      "unit": "GTG#1",
+      "activity": "5.30.9",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Valves installation check.",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.30.10": {
+      "id": "GTG#1-5.30.10",
+      "unit": "GTG#1",
+      "activity": "5.30.10",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Piping installation and completion",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.30.11": {
       "id": "GTG#1-5.30.11",
       "unit": "GTG#1",
@@ -6951,6 +7007,20 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.31.1": {
+      "id": "GTG#1-5.31.1",
+      "unit": "GTG#1",
+      "activity": "5.31.1",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "“Y” Filter internal check.",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.31.3": {
       "id": "GTG#1-5.31.3",
       "unit": "GTG#1",
@@ -6979,6 +7049,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.31.5": {
+      "id": "GTG#1-5.31.5",
+      "unit": "GTG#1",
+      "activity": "5.31.5",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Check relief and isolation valves",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.31.6": {
       "id": "GTG#1-5.31.6",
       "unit": "GTG#1",
@@ -7005,6 +7089,90 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.8": {
+      "id": "GTG#1-5.31.8",
+      "unit": "GTG#1",
+      "activity": "5.31.8",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Fuel gas piping integrity and installation check. No tension and torsion on connections (to be checked in different condition of temperature and pressure).",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.9": {
+      "id": "GTG#1-5.31.9",
+      "unit": "GTG#1",
+      "activity": "5.31.9",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Fuel gas inlet lines assembly",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.10": {
+      "id": "GTG#1-5.31.10",
+      "unit": "GTG#1",
+      "activity": "5.31.10",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Fuel gas vent lines assembly",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.12": {
+      "id": "GTG#1-5.31.12",
+      "unit": "GTG#1",
+      "activity": "5.31.12",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Tubing lines assembly check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.13": {
+      "id": "GTG#1-5.31.13",
+      "unit": "GTG#1",
+      "activity": "5.31.13",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Tubing lines installation check and completion. No excessive bending, kinks, missing supports along the lines.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.14": {
+      "id": "GTG#1-5.31.14",
+      "unit": "GTG#1",
+      "activity": "5.31.14",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Manifolds and tubing assembly check on instrument console.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.31.15": {
@@ -7049,6 +7217,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.31.18": {
+      "id": "GTG#1-5.31.18",
+      "unit": "GTG#1",
+      "activity": "5.31.18",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Fuel gas system instrumentation installation/ assembly check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.20": {
+      "id": "GTG#1-5.31.20",
+      "unit": "GTG#1",
+      "activity": "5.31.20",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Off-skid fuel gas line completion and connection to turbine skid.",
+      "discipline": "Piping",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.33.9": {
       "id": "GTG#1-5.33.9",
       "unit": "GTG#1",
@@ -7061,6 +7257,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-13T21:45:35.684431+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.34.18": {
+      "id": "GTG#1-5.34.18",
+      "unit": "GTG#1",
+      "activity": "5.34.18",
+      "section": "5.34",
+      "section_title": "ANTI-SURGE SYSTEM (ref. TPI sect. 7.17)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-12-15",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.35.1": {
@@ -8673,6 +8883,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.44.7": {
+      "id": "GTG#1-5.44.7",
+      "unit": "GTG#1",
+      "activity": "5.44.7",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Remote Network panel internal cleanliness, components & wiring integrity check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.44.8": {
       "id": "GTG#1-5.44.8",
       "unit": "GTG#1",
@@ -8713,6 +8937,90 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-07T07:53:59.065938+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.14": {
+      "id": "GTG#1-5.44.14",
+      "unit": "GTG#1",
+      "activity": "5.44.14",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "On-skid electrical system check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.15": {
+      "id": "GTG#1-5.44.15",
+      "unit": "GTG#1",
+      "activity": "5.44.15",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Unit auxiliaries electrical system check",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.16": {
+      "id": "GTG#1-5.44.16",
+      "unit": "GTG#1",
+      "activity": "5.44.16",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "All cable glands are correctly installed and tight",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.17": {
+      "id": "GTG#1-5.44.17",
+      "unit": "GTG#1",
+      "activity": "5.44.17",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Electrical layout according to project drawings & documents.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.18": {
+      "id": "GTG#1-5.44.18",
+      "unit": "GTG#1",
+      "activity": "5.44.18",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Electrical systems components compliance with area classification (cable glands, cables, JBs, terminal boxes, instruments and devices..)",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.19": {
+      "id": "GTG#1-5.44.19",
+      "unit": "GTG#1",
+      "activity": "5.44.19",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Power and signal cables check and positioning, conduits have been correctly installed with relevant seal fittings for explosion proof equipment",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.44.20": {
@@ -8867,6 +9175,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.45.3": {
+      "id": "GTG#1-5.45.3",
+      "unit": "GTG#1",
+      "activity": "5.45.3",
+      "section": "5.45",
+      "section_title": "CONTROL & PROTECTION SYSTEM (ref. TPI sect. 7.21)",
+      "description": "Ce.Co. thermo elements on thrust bearings installation/connection check.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.45.4": {
@@ -15394,6 +15716,18 @@
         "GTG#2": 2
       }
     },
+    "2026-11-14": {
+      "date": "2026-11-14",
+      "label": "14/11 (Cut-off 07:30 15/11)",
+      "total": 15,
+      "by_discipline": {
+        "Electrical & Instruments": 7,
+        "Piping": 8
+      },
+      "by_unit": {
+        "GTG#1": 15
+      }
+    },
     "2026-11-03": {
       "date": "2026-11-03",
       "label": "03/11 (Cut-off 07:30 04/11)",
@@ -15451,13 +15785,13 @@
     "2026-10-30": {
       "date": "2026-10-30",
       "label": "30/10 (Cut-off 07:30 31/10)",
-      "total": 13,
+      "total": 20,
       "by_discipline": {
         "Mechanical": 10,
-        "Electrical & Instruments": 3
+        "Electrical & Instruments": 10
       },
       "by_unit": {
-        "GTG#1": 8,
+        "GTG#1": 15,
         "GTG#2": 5
       }
     },
@@ -15482,6 +15816,17 @@
       },
       "by_unit": {
         "GTG#1": 11
+      }
+    },
+    "2026-12-15": {
+      "date": "2026-12-15",
+      "label": "15/12 (Cut-off 07:30 16/12)",
+      "total": 1,
+      "by_discipline": {
+        "Electrical & Instruments": 1
+      },
+      "by_unit": {
+        "GTG#1": 1
       }
     }
   }
