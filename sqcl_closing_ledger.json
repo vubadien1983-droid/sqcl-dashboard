@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-14T23:54:27.427723+07:00",
-  "total_closed_items": 1120,
+  "last_updated": "2026-11-15T10:30:05.545394+07:00",
+  "total_closed_items": 1119,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -7005,20 +7005,6 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
-      "source": "status_column_p"
-    },
-    "GTG#1-5.31.1": {
-      "id": "GTG#1-5.31.1",
-      "unit": "GTG#1",
-      "activity": "5.31.1",
-      "section": "5.31",
-      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
-      "description": "“Y” Filter internal check.",
-      "discipline": "Piping",
-      "work_date": "2026-11-14",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.31.3": {
@@ -15818,13 +15804,13 @@
     "2026-11-14": {
       "date": "2026-11-14",
       "label": "14/11 (Cut-off 07:30 15/11)",
-      "total": 17,
+      "total": 16,
       "by_discipline": {
         "Electrical & Instruments": 9,
-        "Piping": 8
+        "Piping": 7
       },
       "by_unit": {
-        "GTG#1": 17
+        "GTG#1": 16
       }
     },
     "2026-11-03": {
