@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-17T15:12:27.684589+07:00",
-  "total_closed_items": 1202,
+  "last_updated": "2026-11-17T23:19:16.589086+07:00",
+  "total_closed_items": 1215,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -803,6 +803,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.4.26": {
+      "id": "GTG#1-5.4.26",
+      "unit": "GTG#1",
+      "activity": "5.4.26",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-16",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.5.1": {
@@ -7665,6 +7679,20 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.30.5": {
+      "id": "GTG#1-5.30.5",
+      "unit": "GTG#1",
+      "activity": "5.30.5",
+      "section": "5.30",
+      "section_title": "FUEL GAS INTERCONNECTING PIPING (ref. TPI sect.7.16)",
+      "description": "Respect of preservation prescriptions for piping, tubing and installation related items checked.",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.30.6": {
       "id": "GTG#1-5.30.6",
       "unit": "GTG#1",
@@ -7945,6 +7973,34 @@
       "closed_timestamp": "2026-11-11T21:37:03.117548+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.31.1": {
+      "id": "GTG#1-5.31.1",
+      "unit": "GTG#1",
+      "activity": "5.31.1",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "“Y” Filter internal check.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.2": {
+      "id": "GTG#1-5.31.2",
+      "unit": "GTG#1",
+      "activity": "5.31.2",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Primary and secondary temporary fuel filter installation check",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.31.3": {
       "id": "GTG#1-5.31.3",
       "unit": "GTG#1",
@@ -8125,6 +8181,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.31.16": {
+      "id": "GTG#1-5.31.16",
+      "unit": "GTG#1",
+      "activity": "5.31.16",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Bolts and nuts tightening on flanged connections.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.31.17": {
@@ -11109,6 +11179,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.4.9": {
+      "id": "GTG#2-5.4.9",
+      "unit": "GTG#2",
+      "activity": "5.4.9",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Sealing plates applied on enclosure piping/cables openings",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.4.10": {
       "id": "GTG#2-5.4.10",
       "unit": "GTG#2",
@@ -11319,6 +11403,20 @@
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.4.26": {
+      "id": "GTG#2-5.4.26",
+      "unit": "GTG#2",
+      "activity": "5.4.26",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-16",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.5.1": {
       "id": "GTG#2-5.5.1",
       "unit": "GTG#2",
@@ -11513,6 +11611,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.6.3": {
+      "id": "GTG#2-5.6.3",
+      "unit": "GTG#2",
+      "activity": "5.6.3",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Inlet plenum protection screen is in good condition without cracks or other defects.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-14",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.6.4": {
@@ -11781,6 +11893,20 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.6.23": {
+      "id": "GTG#2-5.6.23",
+      "unit": "GTG#2",
+      "activity": "5.6.23",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Verify instruments calibration and range",
+      "discipline": "Pre-Commissioning",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.6.24": {
       "id": "GTG#2-5.6.24",
       "unit": "GTG#2",
@@ -11807,6 +11933,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-10T22:05:33.797680+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.6.26": {
+      "id": "GTG#2-5.6.26",
+      "unit": "GTG#2",
+      "activity": "5.6.26",
+      "section": "5.6",
+      "section_title": "FILTER HOUSE INSTALLATION (ref. TPI sect.7.6)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.7.1": {
@@ -11963,6 +12103,34 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#2-5.7.12": {
+      "id": "GTG#2-5.7.12",
+      "unit": "GTG#2",
+      "activity": "5.7.12",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Lighting & other electrical systems assembly check as per drawings",
+      "discipline": "General",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.7.13": {
+      "id": "GTG#2-5.7.13",
+      "unit": "GTG#2",
+      "activity": "5.7.13",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Signal devices installation and connection",
+      "discipline": "General",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
+      "source": "status_column_p"
+    },
     "GTG#2-5.7.14": {
       "id": "GTG#2-5.7.14",
       "unit": "GTG#2",
@@ -11975,6 +12143,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#2-5.7.15": {
+      "id": "GTG#2-5.7.15",
+      "unit": "GTG#2",
+      "activity": "5.7.15",
+      "section": "5.7",
+      "section_title": "INLET DUCT INSTALLATION (ref. TPI sect.7.7)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "General",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T23:19:16.589086+07:00",
       "source": "status_column_p"
     },
     "GTG#2-5.7.16": {
@@ -16899,12 +17081,15 @@
     "2026-11-17": {
       "date": "2026-11-17",
       "label": "17/11 (Cut-off 07:30 18/11)",
-      "total": 1,
+      "total": 11,
       "by_discipline": {
-        "Mechanical": 1
+        "Mechanical": 6,
+        "Pre-Commissioning": 2,
+        "General": 3
       },
       "by_unit": {
-        "GTG#1": 1
+        "GTG#1": 5,
+        "GTG#2": 6
       }
     },
     "2026-11-05": {
@@ -16918,6 +17103,23 @@
       "by_unit": {
         "GTG#1": 40,
         "GTG#2": 36
+      }
+    },
+    "2026-11-16": {
+      "date": "2026-11-16",
+      "label": "16/11 (Cut-off 07:30 17/11)",
+      "total": 83,
+      "by_discipline": {
+        "Mechanical": 22,
+        "Pre-Commissioning": 26,
+        "Structural": 1,
+        "Piping": 27,
+        "General": 3,
+        "Electrical & Instruments": 4
+      },
+      "by_unit": {
+        "GTG#1": 82,
+        "GTG#2": 1
       }
     },
     "2026-10-29": {
@@ -16958,22 +17160,6 @@
         "GTG#1": 2
       }
     },
-    "2026-11-16": {
-      "date": "2026-11-16",
-      "label": "16/11 (Cut-off 07:30 17/11)",
-      "total": 81,
-      "by_discipline": {
-        "Pre-Commissioning": 26,
-        "Mechanical": 20,
-        "Structural": 1,
-        "Piping": 27,
-        "General": 3,
-        "Electrical & Instruments": 4
-      },
-      "by_unit": {
-        "GTG#1": 81
-      }
-    },
     "2026-11-07": {
       "date": "2026-11-07",
       "label": "07/11 (Cut-off 07:30 08/11)",
@@ -17004,13 +17190,15 @@
     "2026-11-14": {
       "date": "2026-11-14",
       "label": "14/11 (Cut-off 07:30 15/11)",
-      "total": 16,
+      "total": 17,
       "by_discipline": {
         "Electrical & Instruments": 9,
-        "Piping": 7
+        "Piping": 7,
+        "Mechanical": 1
       },
       "by_unit": {
-        "GTG#1": 16
+        "GTG#1": 16,
+        "GTG#2": 1
       }
     },
     "2026-11-03": {
