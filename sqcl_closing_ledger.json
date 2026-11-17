@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-17T12:29:18.596098+07:00",
-  "total_closed_items": 1201,
+  "last_updated": "2026-11-17T15:12:27.684589+07:00",
+  "total_closed_items": 1202,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -565,6 +565,20 @@
       "status": "Done",
       "col_c_date": "2026-08-24",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.4.9": {
+      "id": "GTG#1-5.4.9",
+      "unit": "GTG#1",
+      "activity": "5.4.9",
+      "section": "5.4",
+      "section_title": "ON BASE ENCLOSURE COMPLETION (ref. TPI sect.7.5)",
+      "description": "Sealing plates applied on enclosure piping/cables openings",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-17",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-17T15:12:27.684589+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.4.10": {
@@ -16880,6 +16894,17 @@
       "by_unit": {
         "GTG#1": 44,
         "GTG#2": 40
+      }
+    },
+    "2026-11-17": {
+      "date": "2026-11-17",
+      "label": "17/11 (Cut-off 07:30 18/11)",
+      "total": 1,
+      "by_discipline": {
+        "Mechanical": 1
+      },
+      "by_unit": {
+        "GTG#1": 1
       }
     },
     "2026-11-05": {
