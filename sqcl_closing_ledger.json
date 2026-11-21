@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-21T02:00:02.946940+07:00",
-  "total_closed_items": 1215,
+  "last_updated": "2026-11-21T11:32:36.613131+07:00",
+  "total_closed_items": 1214,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -9443,20 +9443,6 @@
       "closed_timestamp": "2026-11-16T23:11:54.300480+07:00",
       "source": "status_column_p"
     },
-    "GTG#1-5.38.13": {
-      "id": "GTG#1-5.38.13",
-      "unit": "GTG#1",
-      "activity": "5.38.13",
-      "section": "5.38",
-      "section_title": "DGS PANEL AND HEATER CANTILEVER COMPLETION (ref. TPI sect.7.18)",
-      "description": "Proper gasket and bolts installed on seal gas system piping.",
-      "discipline": "Mechanical",
-      "work_date": "2026-11-05",
-      "status": "Done",
-      "col_c_date": "",
-      "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
-      "source": "status_column_p"
-    },
     "GTG#1-5.38.14": {
       "id": "GTG#1-5.38.14",
       "unit": "GTG#1",
@@ -17095,13 +17081,13 @@
     "2026-11-05": {
       "date": "2026-11-05",
       "label": "05/11 (Cut-off 07:30 06/11)",
-      "total": 76,
+      "total": 75,
       "by_discipline": {
-        "Mechanical": 36,
+        "Mechanical": 35,
         "Electrical & Instruments": 40
       },
       "by_unit": {
-        "GTG#1": 40,
+        "GTG#1": 39,
         "GTG#2": 36
       }
     },
