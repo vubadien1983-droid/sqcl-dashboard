@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-26T15:40:23.050252+07:00",
-  "total_closed_items": 1214,
+  "last_updated": "2026-11-27T00:09:46.864348+07:00",
+  "total_closed_items": 1215,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -8265,6 +8265,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-16T23:11:54.300480+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.33.8": {
+      "id": "GTG#1-5.33.8",
+      "unit": "GTG#1",
+      "activity": "5.33.8",
+      "section": "5.33",
+      "section_title": "PROCESS PIPING CONNECTION (ref. TPI sect.7.17)",
+      "description": "Process gas temporary strainer installation check",
+      "discipline": "Piping",
+      "work_date": "2026-11-26",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-27T00:09:46.864348+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.33.9": {
@@ -17275,6 +17289,17 @@
       },
       "by_unit": {
         "GTG#1": 11
+      }
+    },
+    "2026-11-26": {
+      "date": "2026-11-26",
+      "label": "26/11 (Cut-off 07:30 27/11)",
+      "total": 1,
+      "by_discipline": {
+        "Piping": 1
+      },
+      "by_unit": {
+        "GTG#1": 1
       }
     },
     "2026-12-15": {
