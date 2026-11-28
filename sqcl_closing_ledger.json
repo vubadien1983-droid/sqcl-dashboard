@@ -4,8 +4,8 @@
   "cutoff_hour": 7,
   "cutoff_minute": 30,
   "baseline_cutoff_time": "2026-11-06T12:00:00+07:00",
-  "last_updated": "2026-11-28T12:15:38.102738+07:00",
-  "total_closed_items": 1225,
+  "last_updated": "2026-11-28T15:11:12.601652+07:00",
+  "total_closed_items": 1235,
   "records": {
     "GTG#1-5.1.1": {
       "id": "GTG#1-5.1.1",
@@ -2233,6 +2233,48 @@
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.9.24": {
+      "id": "GTG#1-5.9.24",
+      "unit": "GTG#1",
+      "activity": "5.9.24",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "Exhaust thermocouples installation and wiring.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-28",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.9.25": {
+      "id": "GTG#1-5.9.25",
+      "unit": "GTG#1",
+      "activity": "5.9.25",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "Exhaust system instruments and devices wiring",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-28",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.9.26": {
+      "id": "GTG#1-5.9.26",
+      "unit": "GTG#1",
+      "activity": "5.9.26",
+      "section": "5.9",
+      "section_title": "EXHAUST DUCT INSTALLATION (ref. TPI sect.7.9)",
+      "description": "Identification tags application on instruments, devices and cables",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-28",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.9.27": {
       "id": "GTG#1-5.9.27",
       "unit": "GTG#1",
@@ -2483,6 +2525,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-06T17:10:33.000091+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.11.8": {
+      "id": "GTG#1-5.11.8",
+      "unit": "GTG#1",
+      "activity": "5.11.8",
+      "section": "5.11",
+      "section_title": "WATER MIST FIRE FIGHTING SYSTEM (CPPT-SK-1101-04) (ref. TPI sect.7.11)",
+      "description": "The system does not present loose flange connections or loose unions. Gasket and orifices are installed",
+      "discipline": "Mechanical",
+      "work_date": "2026-11-27",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.11.9": {
@@ -8323,6 +8379,20 @@
       "closed_timestamp": "2026-11-14T13:48:31.724718+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.31.19": {
+      "id": "GTG#1-5.31.19",
+      "unit": "GTG#1",
+      "activity": "5.31.19",
+      "section": "5.31",
+      "section_title": "FUEL GAS SYSTEM COMPLETION (ref. TPI sect. 7.16)",
+      "description": "Verify instruments cables connection and wiring",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-28",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.31.20": {
       "id": "GTG#1-5.31.20",
       "unit": "GTG#1",
@@ -10423,6 +10493,20 @@
       "closed_timestamp": "2026-11-09T23:42:08.727149+07:00",
       "source": "status_column_p"
     },
+    "GTG#1-5.44.23": {
+      "id": "GTG#1-5.44.23",
+      "unit": "GTG#1",
+      "activity": "5.44.23",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Terminal/Junction boxes installation. Terminal boards inside the JB are properly installed, according to the interconnecting diagram and with the proper kind of terminals. Sealing grease on JB port contact surface applied.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-11-13",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
     "GTG#1-5.44.24": {
       "id": "GTG#1-5.44.24",
       "unit": "GTG#1",
@@ -10463,6 +10547,20 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-14T20:42:16.931781+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.27": {
+      "id": "GTG#1-5.44.27",
+      "unit": "GTG#1",
+      "activity": "5.44.27",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Primary & pneumatic hook-ups execution/completion.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.44.28": {
@@ -10575,6 +10673,48 @@
       "status": "Done",
       "col_c_date": "",
       "closed_timestamp": "2026-11-13T10:51:26.500700+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.36": {
+      "id": "GTG#1-5.44.36",
+      "unit": "GTG#1",
+      "activity": "5.44.36",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Electrical systems completion: lighting s., air conditioning s., heaters s., emergency s., heat tracing, etc.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.37": {
+      "id": "GTG#1-5.44.37",
+      "unit": "GTG#1",
+      "activity": "5.44.37",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Verify compliance of earthing system with BH standards and test execution.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
+      "source": "status_column_p"
+    },
+    "GTG#1-5.44.39": {
+      "id": "GTG#1-5.44.39",
+      "unit": "GTG#1",
+      "activity": "5.44.39",
+      "section": "5.44",
+      "section_title": "ELECTRICAL-INSTRUMENTAL ASSEMBLY (ref. TPI sect.7.21)",
+      "description": "Final check in compliance with the installation drawings. Preservation condition verified.",
+      "discipline": "Electrical & Instruments",
+      "work_date": "2026-10-30",
+      "status": "Done",
+      "col_c_date": "",
+      "closed_timestamp": "2026-11-28T15:11:12.601652+07:00",
       "source": "status_column_p"
     },
     "GTG#1-5.45.1": {
@@ -17193,14 +17333,15 @@
     "2026-11-13": {
       "date": "2026-11-13",
       "label": "13/11 (Cut-off 07:30 14/11)",
-      "total": 17,
+      "total": 18,
       "by_discipline": {
         "Mechanical": 14,
         "Piping": 1,
-        "General": 2
+        "General": 2,
+        "Electrical & Instruments": 1
       },
       "by_unit": {
-        "GTG#1": 12,
+        "GTG#1": 13,
         "GTG#2": 5
       }
     },
@@ -17315,6 +17456,17 @@
         "GTG#2": 8
       }
     },
+    "2026-11-28": {
+      "date": "2026-11-28",
+      "label": "28/11 (Cut-off 07:30 29/11)",
+      "total": 4,
+      "by_discipline": {
+        "Electrical & Instruments": 4
+      },
+      "by_unit": {
+        "GTG#1": 4
+      }
+    },
     "2026-11-09": {
       "date": "2026-11-09",
       "label": "09/11 (Cut-off 07:30 10/11)",
@@ -17353,6 +17505,19 @@
       "by_unit": {
         "GTG#1": 27,
         "GTG#2": 32
+      }
+    },
+    "2026-11-27": {
+      "date": "2026-11-27",
+      "label": "27/11 (Cut-off 07:30 28/11)",
+      "total": 7,
+      "by_discipline": {
+        "Mechanical": 2,
+        "Piping": 4,
+        "Electrical & Instruments": 1
+      },
+      "by_unit": {
+        "GTG#1": 7
       }
     },
     "2026-11-01": {
@@ -17396,29 +17561,16 @@
         "GTG#1": 41
       }
     },
-    "2026-11-27": {
-      "date": "2026-11-27",
-      "label": "27/11 (Cut-off 07:30 28/11)",
-      "total": 6,
-      "by_discipline": {
-        "Mechanical": 1,
-        "Piping": 4,
-        "Electrical & Instruments": 1
-      },
-      "by_unit": {
-        "GTG#1": 6
-      }
-    },
     "2026-10-30": {
       "date": "2026-10-30",
       "label": "30/10 (Cut-off 07:30 31/10)",
-      "total": 25,
+      "total": 29,
       "by_discipline": {
         "Mechanical": 10,
-        "Electrical & Instruments": 15
+        "Electrical & Instruments": 19
       },
       "by_unit": {
-        "GTG#1": 20,
+        "GTG#1": 24,
         "GTG#2": 5
       }
     },
